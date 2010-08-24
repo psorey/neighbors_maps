@@ -66,8 +66,8 @@
 </div>
 
    <p>
-    <%= f.label "How many years have you lived in Greenwood?" %><br />
-    <%= f.text_field :years %>
+    <%= f.label "How many years have you lived in Greenwood?" %>
+    <%= f.text_field :years, :size => 4 %>
   </p>
 <div class="green">     
 <h4 >Interested in being a Block Facilitator? </h4>
@@ -133,7 +133,7 @@
    		<tr><td><%= check_box_tag 'why_walk[]', '_dog', @neighbor.why_walk.index("_dog") %> Walk My Dog </td></tr>
    		<tr><td><%= check_box_tag 'why_walk[]', '_work', @neighbor.why_walk.index("_work") %> Get to Work </td></tr>
    		<tr><td><%= check_box_tag 'why_walk[]', '_shop', @neighbor.why_walk.index("_shop") %> Shopping / take care of business </td></tr>
-   		<tr><td><%= check_box_tag 'why_walk[]', '_exercize', @neighbor.why_walk.index("_exercize") %> Exercize </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_exercise', @neighbor.why_walk.index("_exercise") %> Exercise </td></tr>
    		<tr><td><%= check_box_tag 'why_walk[]', '_fun', @neighbor.why_walk.index("_fun") %> For Fun </td></tr>
    		<tr><td><%= check_box_tag 'why_walk[]', '_social', @neighbor.why_walk.index("_social") %> Social Interaction</td></tr>
    		<tr><td><%= check_box_tag 'why_walk[]', '_meet', @neighbor.why_walk.index("_meet") %> Meet My Neighbors </td></tr>
