@@ -1,0 +1,5 @@
+/config/database.yml
+/config/environment.rb
+/config/initializers/site_keys.rb
+/log/*.log
+

@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>King County</origin>
+				<pubdate>20060314</pubdate>
+				<title>Parks in King County</title>
+				<edition>One</edition>
+				<geoform>Vector digital data</geoform>
+				<pubinfo>
+					<pubplace>King County, WA</pubplace>
+					<publish>King County</publish>
+				</pubinfo>
+				<othercit>None</othercit>
+				<ftname Sync="TRUE">Carkeek</ftname><onlink Sync="TRUE">\\Encoserv\Shared Files\EnCo_Docs\GISFiles\Projects\Sustainable Development\Greenwood\Carkeek</onlink></citeinfo>
+		</citation>
+		<descript>
+			<abstract>Public parks within King County.  City parks and other agency parks may not be complete.</abstract>
+			<purpose>Public parks within King County.  City parks and other agency parks may not be complete.</purpose>
+			<supplinf>None</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate><caldate>REQUIRED: The year (and optionally month, or month and day) for which the data set corresponds to the ground.</caldate></sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>In work</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-122.384640</westbc>
+				<eastbc Sync="TRUE">-122.361488</eastbc>
+				<northbc Sync="TRUE">47.716301</northbc>
+				<southbc Sync="TRUE">47.701663</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">1258563.792000</leftbc><rightbc Sync="TRUE">1264160.246000</rightbc><bottombc Sync="TRUE">259792.631000</bottombc><topbc Sync="TRUE">265021.457000</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>Not applicable</themekt>
+				<themekey>recreatn</themekey>
+				<themekey>recreation</themekey>
+				<themekey>parks</themekey>
+			</theme>
+			<place>
+				<placekt>Not applicable</placekt>
+				<placekey>King County, WA</placekey>
+				<placekey>Pacific NW</placekey>
+				<placekey>Washington state</placekey>
+			</place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>King County data are made available with the understanding that they shall be used exclusively by the obtainer or his/her authorized agents. Digital products may not be reproduced or redistributed in any form or by any means without the express written authorization of King County.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntperp>
+					<cntper>Gavin Gray</cntper>
+					<cntorg>King County Dept. of Natural Resources and Parks</cntorg>
+				</cntperp>
+				<cntpos>GIS Analyst</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-263-4493</cntvoice>
+			</cntinfo>
+		</ptcontac>
+		<browse>
+			<browsen>http://www.metrokc.gov/gis/sdc/content/internal/images/park.jpg</browsen>
+			<browsed>JPG File of layer overlain on base of WA counties or local cities</browsed>
+			<browset>JPG</browset>
+		</browse>
+		<native>ArcView 3.x, ArcInfo 7.x, ArcGIS 8.3, Windows 2000, WindowsXP</native>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<attracc></attracc>
+		<lineage>
+			<procstep></procstep>
+			<procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE"></srcused><procdate Sync="TRUE">20100406</procdate><proctime Sync="TRUE">14115000</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset moved.</procdesc><srcused Sync="TRUE">S:\EnCo_Docs\GISFiles\Projects\Sustainable Development\Greenwood\Carkeek</srcused><procdate Sync="TRUE">20100413</procdate><proctime Sync="TRUE">15212700</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset moved.</procdesc><srcused Sync="TRUE">S:\EnCo_Docs\GISFiles\Projects\Sustainable Development\Greenwood\Clipped Data\Carkeek</srcused><procdate Sync="TRUE">20100413</procdate><proctime Sync="TRUE">15305500</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="Carkeek">
+				<sdtstype Sync="TRUE">G-polygon</sdtstype>
+				<ptvctcnt Sync="TRUE">1</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="Carkeek"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">1</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<planar>
+				<planci>
+					<plance Sync="TRUE">coordinate pair</plance>
+					<coordrep>
+						<absres Sync="TRUE">0.000000</absres>
+						<ordres Sync="TRUE">0.000000</ordres>
+					</coordrep>
+					<plandu Sync="TRUE">survey feet</plandu>
+				</planci>
+				<mapproj><mapprojn Sync="TRUE">Lambert Conformal Conic</mapprojn><lambertc><stdparll Sync="TRUE">47.500000</stdparll><stdparll Sync="TRUE">48.733333</stdparll><longcm Sync="TRUE">-120.833333</longcm><latprjo Sync="TRUE">47.000000</latprjo><feast Sync="TRUE">1640416.666667</feast><fnorth Sync="TRUE">0.000000</fnorth></lambertc></mapproj></planar>
+			<geodetic>
+				<horizdn Sync="TRUE">D_North_American_1983_HARN</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983_HARN</geogcsn><projcsn Sync="TRUE">NAD_1983_HARN_StatePlane_Washington_North_FIPS_4601_Feet</projcsn></cordsysn></horizsys>
+	</spref>
+	<eainfo>
+		<detailed Name="Carkeek">
+			<enttyp>
+				<enttypl>park.dbf</enttypl>
+				<enttypds>ESRI</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">1</enttypc></enttyp>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attrdef>Internal feature number</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Sequential unique whole numbers that are automatically generated</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attrdef>Feature Geometry</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>KC_FAC_FID</attrlabl>
+				<attrdef>The unique id for each site from Parks PSAFI database.</attrdef>
+				<attrdomv>
+					<rdom>
+						<rdommin>2252</rdommin>
+						<rdommax>5391</rdommax>
+						<attrmres>1</attrmres>
+					</rdom>
+				</attrdomv>
+				<attalias Sync="TRUE">KC_FAC_FID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">10</attwidth></attr>
+			<attr>
+				<attrlabl>KCPARKFID</attrlabl>
+				<attrdef>The spatial id for each site.</attrdef>
+				<attrdomv>
+					<rdom>
+						<rdommin>2221101</rdommin>
+						<rdommax>13260401</rdommax>
+						<attrmres>1</attrmres>
+					</rdom>
+				</attrdomv>
+				<attalias Sync="TRUE">KCPARKFID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">10</attwidth></attr>
+			<attr>
+				<attrlabl>SITENAME</attrlabl>
+				<attrdef>The name of the site.</attrdef>
+				<attrdomv></attrdomv>
+				<attalias Sync="TRUE">SITENAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">60</attwidth></attr>
+			<attr>
+				<attrlabl>SITETYPE</attrlabl>
+				<attrdef>The type of the site.</attrdef>
+				<attrdomv>
+					<edom>
+						<edomv>Park Site</edomv>
+						<edomvd>A collection of facilities used for public recreation, providing that the primary facility is not a trail or pool as defined by Trail Site or Pool Site.</edomvd>
+					</edom>
+					<edom>
+						<edomv>Shop Site</edomv>
+						<edomvd>A collection of facilities centered on a maintenance shop, where the primary use of the site is park maintenance, public use is not encouraged or is not allowed, also implying that the shop facility is not part of a larger Park Site.</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Trail Site Regional</edomv>
+						<edomvd>A site generally centered on a regional trail (ROW) used for public recreation.</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">SITETYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth></attr>
+			<attr>
+				<attrlabl>OWNER</attrlabl>
+				<attrdef>The name of the owner agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City Of Algona</edomv>
+						<edomvd>City Of Algona</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Auburn</edomv>
+						<edomvd>City of Auburn</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bellevue</edomv>
+						<edomvd>City of Bellevue</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Black Diamond</edomv>
+						<edomvd>City of Black Diamond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bothell</edomv>
+						<edomvd>City of Bothell</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Burien</edomv>
+						<edomvd>City of Burien</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Carnation</edomv>
+						<edomvd>City of Carnation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Clyde Hill</edomv>
+						<edomvd>City of Clyde Hill</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Covington</edomv>
+						<edomvd>City of Covington</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Des Moines</edomv>
+						<edomvd>City of Des Moines</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Duvall</edomv>
+						<edomvd>City of Duvall</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Enumclaw</edomv>
+						<edomvd>City of Enumclaw</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Federal Way</edomv>
+						<edomvd>City of Federal Way</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Hunts Point</edomv>
+						<edomvd>City of Hunts Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Issaquah</edomv>
+						<edomvd>City of Issaquah</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kenmore</edomv>
+						<edomvd>City of Kenmore</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kent</edomv>
+						<edomvd>City of Kent</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kirkland</edomv>
+						<edomvd>City of Kirkland</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Lake Forest Park</edomv>
+						<edomvd>City of Lake Forest Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Maple Valley</edomv>
+						<edomvd>City of Maple Valley</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Medina</edomv>
+						<edomvd>City of Medina</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Mercer Island</edomv>
+						<edomvd>City of Mercer Island</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Milton</edomv>
+						<edomvd>City of Milton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Newcastle</edomv>
+						<edomvd>City of Newcastle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Normandy Park</edomv>
+						<edomvd>City of Normandy Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of North Bend</edomv>
+						<edomvd>City of North Bend</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City Of Pacific</edomv>
+						<edomvd>City Of Pacific</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Redmond</edomv>
+						<edomvd>City of Redmond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Renton</edomv>
+						<edomvd>City of Renton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Sammamish</edomv>
+						<edomvd>City of Sammamish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of SeaTac</edomv>
+						<edomvd>City of SeaTac</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Seattle</edomv>
+						<edomvd>City of Seattle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Shoreline</edomv>
+						<edomvd>City of Shoreline</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Skykomish</edomv>
+						<edomvd>City of Skykomish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Snoqualmie</edomv>
+						<edomvd>City of Snoqualmie</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Tukwila</edomv>
+						<edomvd>City of Tukwila</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Woodinville</edomv>
+						<edomvd>City of Woodinville</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Yarrow Point</edomv>
+						<edomvd>City of Yarrow Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Dept. of Natural Resources</edomv>
+						<edomvd>Dept. of Natural Resources</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Dept. of Transportation</edomv>
+						<edomvd>Dept. of Transportation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Kent School District</edomv>
+						<edomvd>Kent School District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks and Recreation</edomv>
+						<edomvd>King County Parks and Recreation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Federal</edomv>
+						<edomvd>Other Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other King County</edomv>
+						<edomvd>Other King County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other School District</edomv>
+						<edomvd>Other School District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Utility District</edomv>
+						<edomvd>Other Utility District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Si View Metropolitan Park District</edomv>
+						<edomvd>Si View Metropolitan Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>US Forest Service</edomv>
+						<edomvd>US Forest Service</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Vashon PRSD</edomv>
+						<edomvd>Vashon PRSD</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State DNR</edomv>
+						<edomvd>Washington State DNR</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State Parks</edomv>
+						<edomvd>Washington State Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">OWNER</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">60</attwidth></attr>
+			<attr>
+				<attrlabl>OWNERTYPE</attrlabl>
+				<attrdef>The type of the owner agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City</edomv>
+						<edomvd>City</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>County</edomv>
+						<edomvd>County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Federal</edomv>
+						<edomvd>Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks</edomv>
+						<edomvd>King County Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Government</edomv>
+						<edomvd>Other Government</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Park District</edomv>
+						<edomvd>Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>School District</edomv>
+						<edomvd>School District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>State</edomv>
+						<edomvd>State</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">OWNERTYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth></attr>
+			<attr>
+				<attrlabl>MANAGER</attrlabl>
+				<attrdef>The name of the manager agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City Of Algona</edomv>
+						<edomvd>City Of Algona</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Auburn</edomv>
+						<edomvd>City of Auburn</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bellevue</edomv>
+						<edomvd>City of Bellevue</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Black Diamond</edomv>
+						<edomvd>City of Black Diamond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bothell</edomv>
+						<edomvd>City of Bothell</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Burien</edomv>
+						<edomvd>City of Burien</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Carnation</edomv>
+						<edomvd>City of Carnation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Clyde Hill</edomv>
+						<edomvd>City of Clyde Hill</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Covington</edomv>
+						<edomvd>City of Covington</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Des Moines</edomv>
+						<edomvd>City of Des Moines</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Duvall</edomv>
+						<edomvd>City of Duvall</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Enumclaw</edomv>
+						<edomvd>City of Enumclaw</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Federal Way</edomv>
+						<edomvd>City of Federal Way</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Hunts Point</edomv>
+						<edomvd>City of Hunts Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Issaquah</edomv>
+						<edomvd>City of Issaquah</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kenmore</edomv>
+						<edomvd>City of Kenmore</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kent</edomv>
+						<edomvd>City of Kent</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kirkland</edomv>
+						<edomvd>City of Kirkland</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Lake Forest Park</edomv>
+						<edomvd>City of Lake Forest Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Maple Valley</edomv>
+						<edomvd>City of Maple Valley</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Medina</edomv>
+						<edomvd>City of Medina</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Mercer Island</edomv>
+						<edomvd>City of Mercer Island</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Milton</edomv>
+						<edomvd>City of Milton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Newcastle</edomv>
+						<edomvd>City of Newcastle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Normandy Park</edomv>
+						<edomvd>City of Normandy Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of North Bend</edomv>
+						<edomvd>City of North Bend</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City Of Pacific</edomv>
+						<edomvd>City Of Pacific</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Redmond</edomv>
+						<edomvd>City of Redmond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Renton</edomv>
+						<edomvd>City of Renton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Sammamish</edomv>
+						<edomvd>City of Sammamish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of SeaTac</edomv>
+						<edomvd>City of SeaTac</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Seattle</edomv>
+						<edomvd>City of Seattle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Shoreline</edomv>
+						<edomvd>City of Shoreline</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Skykomish</edomv>
+						<edomvd>City of Skykomish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Snoqualmie</edomv>
+						<edomvd>City of Snoqualmie</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Tukwila</edomv>
+						<edomvd>City of Tukwila</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Woodinville</edomv>
+						<edomvd>City of Woodinville</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Yarrow Point</edomv>
+						<edomvd>City of Yarrow Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Cultural Resources Division</edomv>
+						<edomvd>Cultural Resources Division</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Finn Hill PRD</edomv>
+						<edomvd>Finn Hill PRD</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks and Recreation</edomv>
+						<edomvd>King County Parks and Recreation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Federal</edomv>
+						<edomvd>Other Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other King County</edomv>
+						<edomvd>Other King County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Utility District</edomv>
+						<edomvd>Other Utility District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Si View Metropolitan Park District</edomv>
+						<edomvd>Si View Metropolitan Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>US Forest Service</edomv>
+						<edomvd>US Forest Service</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Vashon PRSD</edomv>
+						<edomvd>Vashon PRSD</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State DNR</edomv>
+						<edomvd>Washington State DNR</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State Parks</edomv>
+						<edomvd>Washington State Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">MANAGER</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">60</attwidth></attr>
+			<attr>
+				<attrlabl>MANAGETYPE</attrlabl>
+				<attrdef>The type of the manager agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City</edomv>
+						<edomvd>City</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>County</edomv>
+						<edomvd>County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Federal</edomv>
+						<edomvd>Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks</edomv>
+						<edomvd>King County Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Government</edomv>
+						<edomvd>Other Government</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Park District</edomv>
+						<edomvd>Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>State</edomv>
+						<edomvd>State</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">MANAGETYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth></attr>
+			<attr>
+				<attrlabl>MAINTD_BY</attrlabl>
+				<attrdef>The name of the maintenance agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City Of Algona</edomv>
+						<edomvd>City Of Algona</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Auburn</edomv>
+						<edomvd>City of Auburn</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bellevue</edomv>
+						<edomvd>City of Bellevue</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Black Diamond</edomv>
+						<edomvd>City of Black Diamond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Bothell</edomv>
+						<edomvd>City of Bothell</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Burien</edomv>
+						<edomvd>City of Burien</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Carnation</edomv>
+						<edomvd>City of Carnation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Clyde Hill</edomv>
+						<edomvd>City of Clyde Hill</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Covington</edomv>
+						<edomvd>City of Covington</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Des Moines</edomv>
+						<edomvd>City of Des Moines</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Duvall</edomv>
+						<edomvd>City of Duvall</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Enumclaw</edomv>
+						<edomvd>City of Enumclaw</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Federal Way</edomv>
+						<edomvd>City of Federal Way</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Hunts Point</edomv>
+						<edomvd>City of Hunts Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Issaquah</edomv>
+						<edomvd>City of Issaquah</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kenmore</edomv>
+						<edomvd>City of Kenmore</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kent</edomv>
+						<edomvd>City of Kent</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Kirkland</edomv>
+						<edomvd>City of Kirkland</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Lake Forest Park</edomv>
+						<edomvd>City of Lake Forest Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Maple Valley</edomv>
+						<edomvd>City of Maple Valley</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Medina</edomv>
+						<edomvd>City of Medina</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Mercer Island</edomv>
+						<edomvd>City of Mercer Island</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Milton</edomv>
+						<edomvd>City of Milton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Newcastle</edomv>
+						<edomvd>City of Newcastle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Normandy Park</edomv>
+						<edomvd>City of Normandy Park</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of North Bend</edomv>
+						<edomvd>City of North Bend</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City Of Pacific</edomv>
+						<edomvd>City Of Pacific</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Redmond</edomv>
+						<edomvd>City of Redmond</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Renton</edomv>
+						<edomvd>City of Renton</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Sammamish</edomv>
+						<edomvd>City of Sammamish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of SeaTac</edomv>
+						<edomvd>City of SeaTac</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Seattle</edomv>
+						<edomvd>City of Seattle</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Shoreline</edomv>
+						<edomvd>City of Shoreline</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Skykomish</edomv>
+						<edomvd>City of Skykomish</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Snoqualmie</edomv>
+						<edomvd>City of Snoqualmie</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Tukwila</edomv>
+						<edomvd>City of Tukwila</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Woodinville</edomv>
+						<edomvd>City of Woodinville</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>City of Yarrow Point</edomv>
+						<edomvd>City of Yarrow Point</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Cultural Resources Division</edomv>
+						<edomvd>Cultural Resources Division</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Finn Hill PRD</edomv>
+						<edomvd>Finn Hill PRD</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks and Recreation</edomv>
+						<edomvd>King County Parks and Recreation</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Federal</edomv>
+						<edomvd>Other Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other King County</edomv>
+						<edomvd>Other King County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Utility District</edomv>
+						<edomvd>Other Utility District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Si View Metropolitan Park District</edomv>
+						<edomvd>Si View Metropolitan Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>US Forest Service</edomv>
+						<edomvd>US Forest Service</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Vashon PRSD</edomv>
+						<edomvd>Vashon PRSD</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State DNR</edomv>
+						<edomvd>Washington State DNR</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Washington State Parks</edomv>
+						<edomvd>Washington State Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">MAINTD_BY</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">60</attwidth></attr>
+			<attr>
+				<attrlabl>MAINTTYPE</attrlabl>
+				<attrdef>The type of the maintenance agency.</attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>City</edomv>
+						<edomvd>City</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>County</edomv>
+						<edomvd>County</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Federal</edomv>
+						<edomvd>Federal</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>King County Parks</edomv>
+						<edomvd>King County Parks</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Other Government</edomv>
+						<edomvd>Other Government</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>Park District</edomv>
+						<edomvd>Park District</edomvd>
+						<edomvds></edomvds>
+					</edom>
+					<edom>
+						<edomv>State</edomv>
+						<edomvd>State</edomvd>
+						<edomvds></edomvds>
+					</edom>
+				</attrdomv>
+				<attalias Sync="TRUE">MAINTTYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">30</attwidth></attr>
+			<attr>
+				<attrlabl>SHAPE_Area</attrlabl>
+				<attrdef></attrdef>
+				<attrdefs></attrdefs>
+				<attrdomv>
+					<rdom>
+						<rdommin>389.43839999800</rdommin>
+						<rdommax>6403018989.25000000000</rdommax>
+						<attrunit></attrunit>
+						<attrmres></attrmres>
+					</rdom>
+					<udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv>
+				<attalias Sync="TRUE">SHAPE_area</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr><attrlabl Sync="TRUE">SHAPE_len</attrlabl><attalias Sync="TRUE">SHAPE_len</attalias><attrtype Sync="TRUE">Float</attrtype><attwidth Sync="TRUE">19</attwidth><atnumdec Sync="TRUE">11</atnumdec></attr></detailed>
+		<overview></overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntperp>
+					<cntper>Cheryl Wilder</cntper>
+					<cntorg>KCGIS Center</cntorg>
+				</cntperp>
+				<cntpos>Data Sales Coordinator</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-263-5220</cntvoice>
+			</cntinfo>
+		</distrib>
+		<resdesc>/plibrary2/recreatn/shapes/polygon/park.shp</resdesc>
+		<distliab>
+King County disclaims any warranty of use of any digital
+product or data beyond that for which it was designed.
+</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ESRI Shapefile</formname>
+					<transize Sync="TRUE">0.051</transize>
+					<dssize Sync="TRUE">0.051</dssize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>\\Root\kclib\plibrary2\recreatn\shapes\polygon\park.shp</networkr>
+							</networka>
+						</computer>
+					</onlinopt>
+					<offoptn>
+						<offmedia>Yes</offmedia>
+						<recfmt>CD or DVD Read-only media, if offline</recfmt>
+					</offoptn>
+				</digtopt>
+			</digform>
+			<fees>Contact KCGIS Client Services for the cost of reproduction - http://www.metrokc.gov/gis/services/index.htm</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd>20060314</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>King County Dept. of Natural Resources and Parks</cntorg>
+					<cntper>Gavin Gray</cntper>
+				</cntorgp>
+				<cntpos>GIS Analyst</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-296-8720</cntvoice>
+				<cntemail>firstname.lastname@metrokc.gov</cntemail>
+			</cntinfo>
+		</metc>
+		<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metextns>
+			<metprof Sync="TRUE">ESRI Metadata Profile</metprof>
+		</metextns>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 2; ESRI ArcCatalog 9.3.1.3000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">Carkeek</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">1258563.792</westBL><eastBL Sync="TRUE">1264160.246</eastBL><northBL Sync="TRUE">265021.457</northBL><southBL Sync="TRUE">259792.631</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-122.38464</westBL><eastBL Sync="TRUE">-122.361488</eastBL><northBL Sync="TRUE">47.716301</northBL><southBL Sync="TRUE">47.701663</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\Encoserv\Shared Files\EnCo_Docs\GISFiles\Projects\Sustainable Development\Greenwood\Carkeek</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">0.051</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">NAD_1983_HARN_StatePlane_Washington_North_FIPS_4601_Feet</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="Carkeek"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">1</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><Esri><SyncDate>20100413</SyncDate><SyncTime>15283800</SyncTime><ModDate>20100413</ModDate><ModTime>15283800</ModTime><MetaID>{AA587736-1DB7-4E13-A554-022E9E35A20F}</MetaID><CreaDate>20100406</CreaDate><CreaTime>14115000</CreaTime><SyncOnce>FALSE</SyncOnce></Esri><mdDateSt Sync="TRUE">20100413</mdDateSt></metadata>

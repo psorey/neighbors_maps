@@ -1,0 +1,27 @@
+<h1>New half_block</h1>
+
+<% form_for(@half_block) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :half_block %><br />
+    <%= f.text_field :half_block %>
+  </p>
+  <p>
+    <%= f.label :alias %><br />
+    <%= f.text_field :alias %>
+  </p>
+  <p>
+    <%= f.label :neighbor_ids %><br />
+    <%= f.text_area :neighbor_ids %>
+  </p>
+  <p>
+    <%= f.label :forum_url %><br />
+    <%= f.text_field :forum_url %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', half_blocks_path %>

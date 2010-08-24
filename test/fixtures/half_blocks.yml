@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  half_block: MyString
+  alias: MyString
+  neighbor_ids: MyText
+  forum_url: MyString
+
+two:
+  half_block: MyString
+  alias: MyString
+  neighbor_ids: MyText
+  forum_url: MyString

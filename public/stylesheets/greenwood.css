@@ -1,0 +1,276 @@
+img.project_description {
+ border:solid #636468;
+ border-width:0px;
+ border-top-width:0px;
+	position:fixed;
+	top:173px;
+	left:67px;
+}
+
+img.dog_bark {
+	border:solid #636468;
+	border-width:0px;
+	border-top-width:0px;
+	position:fixed;
+	top:326px;
+	left:264px;
+}
+
+img.may18th {
+	border:solid #636468;
+	border-width:0px;
+	border-top-width:0px;
+	position:fixed;
+	top:126px;
+	left:464px;
+}
+
+body {
+	margin:0px;
+	padding:0px;
+	border:0px;
+	text-align:left;
+	font-family:"Trebuchet MS", Arial,sans-serif;
+	/*background-color:#9c9;*/
+	background-color: #efe;
+	font-size: 14px;
+  color: #343;
+  height:600px;
+}
+
+#banner {
+	width:100%;
+  background: #bdb;
+  padding-top: 3px;
+	padding-left: 150px;
+  padding-bottom: 7px;
+	padding-right: 0px;
+  border-bottom: 2px solid;
+	border-color: #575;
+  /*font-variant: small-caps;*/
+	font-family:"Trebuchet MS", Arial, Sans-Serif;
+	font-size:36px;
+  color: #467;
+  text-align: left;
+	margin: 0px;
+}
+
+#banner img {
+  margin-left:20px;
+}
+
+#columns {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+  background: #595;
+	height: 800px;
+	
+}
+
+#main {
+  margin-left: 120px;
+  padding-top: 0px;
+  padding-left: 00px;
+	padding-right: 40px;
+	height: 900px;
+	/*background-color:#9c9;*/
+	background-color: #efe;
+}
+
+.main-content { width: 600px; }
+.main-content p, .main-content ul {
+  margin: 5px;
+}
+
+#side {
+  float: left;
+  padding-top: 1em;
+  padding-left: 0px;
+  padding-bottom:0px;
+  width:120px;
+  height: 900px;
+  background: #595;
+	margin-top: 0px;
+}
+
+#side_menu {
+	padding-left:10px;
+	padding-top:20px;
+	width:120px;
+	height:100%;
+}
+
+#side a {
+  font-size: small;
+}
+
+#side a:link {color:#bfb; text-decoration:none; font-weight:bold;}    /* unvisited link  */
+#side a:visited {color:#bfb; text-decoration:none; font-weight:bold;} /* visited link    */
+#side a:hover {color:#fff; text-decoration:none; font-weight:bold;}   /* mouse over link */
+#side a:active {color:#fff; text-decoration:none; font-weight:bold;}  /* selected link   */
+
+
+
+h1 {
+ color: #6f9f9e;
+ background: rgb(192,225,178);
+ font-weight: normal;
+ font-size: 32px;
+ font-family: Arial,sans-serif;
+ margin: 1px;
+ border-style: solid;
+ border-width: 1px;
+ border-color: rgb(152,185,138);
+ padding: 4px;
+}
+
+h2 {
+ color: #696;
+ background: #cde;
+ margin: 1px;
+ font-family: Arial,sans-serif;
+ font-weight: normal;
+ font-size: 24px;
+ border-style: solid;
+ border-width: 1px;
+ border-color: #abc;
+ padding: 2px;
+}
+
+h3 {
+ color: #696;
+ font-family: Arial,sans-serif;
+ font-size: 16px;
+ border-style: solid;
+ border-width: 1px;
+ border-color: #bbccdd;
+ background: #dae0fa;
+}
+
+h4 {
+ color: #363;
+ font-family: Arial,sans-serif;
+ font-style: normal;
+ background: #cdf;
+ font-size: 14px;
+}
+
+input {
+	font-family:Arial,sans-serif;
+	font-weight:bold;
+	color:#666;
+}
+
+.left_padding {
+	 padding-left: 40px;
+}
+
+.top_padding {
+	padding-top: 40px;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.center {
+	text-align:center;
+}
+
+.grey {
+	color:#777;
+}
+
+.tiny {
+	font-size:9px;
+}
+
+.medium_size {
+	font-size:12px;
+}
+
+.list-heading {
+	font-size:16px;
+	font-weight:bold;
+	color:#162;
+	padding:20px;
+}
+
+form.button-to {
+  background-color: #ddf; 	
+}
+
+input.btn { 
+  background-color: #ddf; 
+} 
+
+/* END:mainlayout */
+
+
+
+/* The error box */
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #EEFFEE;
+  display: inline;
+}
+
+.fieldWithErrors * {
+  background-color: red;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* START:notice */
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+/* END:notice */
+
+
+/* START:i18n */
+.locale {
+        float:right;
+        padding-top: 0.2em
+}
+/* END:i18n */
+
+
+
+
+
+

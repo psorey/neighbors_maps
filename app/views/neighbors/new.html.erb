@@ -1,0 +1,171 @@
+<h1>New neighbor</h1>
+
+
+
+<div class="blue">
+	<br />
+<h3>Please fill out the questionnaire below to help us serve you. </h3>
+<h3>(Don't forget to hit the 'SAVE' button at the bottom of the page!)</h3>
+<br />
+
+
+
+<% form_for(@neighbor) do |f| %>
+  <%= f.error_messages %>
+
+
+  <p>
+    <%= f.label 'Street Address' %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label 'Unit / Apartment #' %><br />
+    <%= f.text_field :unit %>
+  </p>
+  <p>
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </p>
+	<h3> Occupant 1 </h3>
+	<p>
+    <%= f.label 'First Name'%><br />
+    <%= f.text_field :first_name1 %>
+  </p>
+  <p>
+    <%= f.label 'Last Name' %><br />
+    <%= f.text_field :last_name1 %>
+  </p>
+  <p>
+    <%= f.label 'Phone' %><br />
+    <%= f.text_field :phone_1 %>
+  </p>
+   <p>
+    <%= f.label "Email" %><br />
+    <%= f.text_field :email_1 %>
+  </p>
+	<h3> Occupant 2 </h3>
+  <p>
+    <%= f.label 'First Name'%><br />
+    <%= f.text_field :first_name2 %>
+  </p>
+   <p>
+    <%= f.label 'Last Name'%><br />
+    <%= f.text_field :last_name2 %>
+  </p>
+  <p>
+    <%= f.label 'Phone' %><br />
+    <%= f.text_field :phone_2%>
+  </p>
+   <p>
+    <%= f.label "Email" %><br />
+    <%= f.text_field :email_2 %>
+  </p>
+
+
+
+<div class="green">     
+<h4  > Resident? </h4>
+     <%= radio_button("neighbor", "resident", "resident") %> Resident
+     <%= radio_button("neighbor", "resident", "business")  %> Business Owner
+     <%= radio_button("neighbor", "resident", "both") %> Both
+     <%= radio_button("neighbor", "resident", "neither") %> Neither
+		 
+<br />    
+</div>
+
+<div class="green">     
+<h4 >Interested in being a Block Facilitator? </h4>
+     <%= radio_button("neighbor", "block_captain", "yes") %> yes
+     <%= radio_button("neighbor", "block_captain", "no")  %> no
+     <%= radio_button("neighbor", "block_captain", "maybe") %>  maybe
+<br />    
+</div>
+
+<div class="blue">   
+<h4 >Interested in volunteering?</h4>
+<table>  
+   		<tr><td><%= check_box_tag 'volunteer[]', '_non-skilled', @neighbor.volunteer.index("_non-skilled") %> I'll Do Whatever!</td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_LA', @neighbor.volunteer.index("_LA") %> Landscape Architect </td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_civil', @neighbor.volunteer.index("_civil") %> Civil Engineer </td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_writer', @neighbor.volunteer.index("_writer") %> Writer / Editor </td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_graphic', @neighbor.volunteer.index("_graphic") %> Graphic Designer </td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_gardening', @neighbor.volunteer.index("_gardening") %> Gardening </td></tr>
+     	<tr><td><%= check_box_tag 'volunteer[]', '_construction', @neighbor.volunteer.index("_construction") %> Construction </td></tr>			
+</table>
+</div>
+
+<div class="green">     
+<h4 >Do you want sidewalks / walkways built on your block?</h4>
+     <%= radio_button("neighbor", "sidewalks", "yes") %> yes
+     <%= radio_button("neighbor", "sidewalks", "have") %> we already have sidewalks
+     <%= radio_button("neighbor", "sidewalks", "no")  %> no, I don't want sidewalks
+     <%= radio_button("neighbor", "sidewalks", "maybe") %>  maybe / I'm not sure
+		 
+		 
+<br />    
+</div>
+
+
+<div class="blue">   
+<h4 >What other types of improvements would you like to see on your block? (check all that apply)</h4>
+<table>  
+   		<tr><td><%= check_box_tag 'improvements[]', '_none', @neighbor.improvements.index("_none") %> None </td></tr>
+      <tr><td><%= check_box_tag 'improvements[]', '_trees', @neighbor.improvements.index("_trees") %> Street Trees / Plants </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_plants', @neighbor.improvements.index("_plants") %> Vegetable Gardens (Agriculture) </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_curbs', @neighbor.improvements.index("_curbs") %> Curbs </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_slow', @neighbor.improvements.index("_slow") %> Traffic Calming Measures (slow traffic, reduce collisions!) </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_rain', @neighbor.improvements.index("_rain") %> Rain Gardens (put rain in garden, not the storm sewer!) </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_gather', @neighbor.improvements.index("_gather") %> Seating / Picnic Table / Small Gathering Space somewhere on your block</td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_play', @neighbor.improvements.index("_play") %> Play Area </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_parking', @neighbor.improvements.index("_parking") %> Parking Improvements </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_crosswalk', @neighbor.improvements.index("_crosswalk") %> Intersection / Crosswalk Improvements </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_lighting', @neighbor.improvements.index("_lighting") %> Lighting Improvements </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_drain', @neighbor.improvements.index("_drain") %> Drainage Improvements  </td></tr>
+     	<tr><td><%= check_box_tag 'improvements[]', '_ditch', @neighbor.improvements.index("_ditch") %> Drainage Ditch Improvements  </td></tr>
+			
+</table>
+</div>
+
+<div class="blue">   
+<h4 >Why Do You Walk in Greenwood?</h4>
+<table>  
+   		<tr><td><%= check_box_tag 'why_walk[]', '_school', @neighbor.why_walk.index("_school") %> School </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_daycare', @neighbor.why_walk.index("_daycare") %> Daycare </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_visit', @neighbor.why_walk.index("_visit") %> Visit Friends / Family </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_trans', @neighbor.why_walk.index("_trans") %> Get to Public Transportation </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_parks', @neighbor.why_walk.index("_parks") %> Parks </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_dog', @neighbor.why_walk.index("_dog") %> Walk My Dog </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_work', @neighbor.why_walk.index("_work") %> Get to Work </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_shop', @neighbor.why_walk.index("_shop") %> Shopping / take care of business </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_exercize', @neighbor.why_walk.index("_exercize") %> Exercize </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_fun', @neighbor.why_walk.index("_fun") %> For Fun </td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_social', @neighbor.why_walk.index("_social") %> Social Interaction</td></tr>
+   		<tr><td><%= check_box_tag 'why_walk[]', '_meet', @neighbor.why_walk.index("_meet") %> Meet My Neighbors </td></tr>
+
+</table>
+</div>
+
+<div class="blue">   
+<h4 >Why DON'T You Walk in Greenwood?</h4>
+<table>  
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_time', @neighbor.dont_walk.index("_time") %> Takes Too Long </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_weather', @neighbor.dont_walk.index("_weather") %> Weather </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_health', @neighbor.dont_walk.index("_health") %> Health Issues Prohibit </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_traffic', @neighbor.dont_walk.index("_traffic") %> Roads Too Busy </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_nothing', @neighbor.dont_walk.index("_nothing") %> Nothing of Interest Nearby </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_dislike', @neighbor.dont_walk.index("_dislike") %> Don't Want to Walk </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_hills', @neighbor.dont_walk.index("_hills") %> Too Many Hills </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_safety', @neighbor.dont_walk.index("_safety") %> I Don't feel safe / No Sidewalks </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_light', @neighbor.dont_walk.index("_light") %> Poor Lighting </td></tr>
+   		<tr><td><%= check_box_tag 'dont_walk[]', '_other', @neighbor.dont_walk.index("_other") %> Other </td></tr>
+
+</table>
+</div>
+
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', neighbors_path %>

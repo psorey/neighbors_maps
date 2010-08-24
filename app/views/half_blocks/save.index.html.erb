@@ -1,0 +1,26 @@
+<h1>Listing half_blocks</h1>
+
+<table>
+  <tr>
+    <th>Half block</th>
+    <th>Alias</th>
+    <th>Neighbor ids</th>
+    <th>Forum url</th>
+  </tr>
+
+<% @half_blocks.each do |half_block| %>
+  <tr>
+    <td><%=h half_block.half_block %></td>
+    <td><%=h half_block.alias %></td>
+    <td><%=h half_block.neighbor_ids %></td>
+    <td><%=h half_block.forum_url %></td>
+    <td><%= link_to 'Show', half_block %></td>
+    <td><%= link_to 'Edit', edit_half_block_path(half_block) %></td>
+    <td><%= link_to 'Destroy', half_block, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New half_block', new_half_block_path %>

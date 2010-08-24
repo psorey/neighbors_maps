@@ -1,0 +1,2 @@
+class UnderConstructionController < ApplicationController
+end

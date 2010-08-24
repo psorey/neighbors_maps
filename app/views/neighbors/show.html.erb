@@ -1,0 +1,88 @@
+	
+
+<div id="google_static_map">
+<br />
+
+<p><img border="3" height="450px" width="600px" style="background-color:grey;border-color:#222266" src="http://maps.google.com/maps/api/staticmap?center=<%= @address_string%>&zoom=19&size=600x450&maptype=hybrid&markers=size:small|color:red|label:S|<%= @address_string%>&sensor=false&key=ABQIAAAA8YVdlSd4v1D5lRGa_aoD5xSBHckdsl91USoRt6A_r8ab-2YHURR8BKKjYmVU2ENcRFGpaTvFHY34qA" alt="<%= @address_string%>" /></p>
+
+<br /><br />
+
+
+<p>
+  <b>First name1:</b>
+  <%=h @neighbor.first_name1 %>
+</p>
+
+<p>
+  <b>Last name1:</b>
+  <%=h @neighbor.last_name1 %>
+</p>
+
+<p>
+  <b>First name2:</b>
+  <%=h @neighbor.first_name2 %>
+</p>
+
+<p>
+  <b>Last name2:</b>
+  <%=h @neighbor.last_name2 %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @neighbor.address %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @neighbor.zip %>
+</p>
+
+<p>
+  <b>Block:</b>
+  <%=h @neighbor.half_block_id %>
+</p>
+
+<p>
+  <b>Phone 1:</b>
+  <%=h @neighbor.phone_1 %>
+</p>
+
+<p>
+  <b>Phone 2:</b>
+  <%=h @neighbor.phone_2 %>
+</p>
+
+<p>
+  <b>Email list:</b>
+  <%=h @neighbor.email_list %>
+</p>
+
+<p>
+  <b>Block captain:</b>
+  <%=h @neighbor.block_captain %>
+</p>
+
+<p>
+  <b>Volunteer:</b>
+  <%=h @neighbor.volunteer %>
+</p>
+
+<p>
+  <b>Resident:</b>
+  <%=h @neighbor.resident %>
+</p>
+
+<p>
+  <b>Professional:</b>
+  <%=h @neighbor.professional %>
+</p>
+
+<p>
+  <b>Interest expertise:</b>
+  <%=h @neighbor.interest_expertise %>
+</p>
+
+
+<%= link_to 'Edit', edit_neighbor_path(@neighbor) %> |
+<%= link_to 'Back', neighbors_path %>

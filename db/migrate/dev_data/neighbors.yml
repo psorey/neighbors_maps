@@ -1,0 +1,35 @@
+neighbor_1:
+  id: 1
+  first_name1: Bob
+  last_name1: Messina
+  first_name2:
+  last_name2:
+  address: 1301 N 90th St
+  email_1: bjmessina@mindspring.com
+  
+neighbor_2:
+  id: 2
+  first_name1: Susanne
+  last_name1: Michaud
+  first_name2:
+  last_name2:
+  address: 9046 Phinney Ave N
+  email_1: juli.susanne@gmail.com
+  
+neighbor_3:
+  id: 3
+  first_name1: Angela
+  last_name1: Gunn
+  first_name2: Jon
+  last_name2: Espenscheid
+  address: 8739 Evanston Ave N
+  email_1: angela.gunn@gmail.com
+  email_2: jon.espenscheid@gmail.com
+  
+neighbor_4:
+  id: 4
+  first_name1: Paul
+  last_name1: Sorey
+  address: 9021 12th Ave SW
+  email_1: psorey@comcast.net
+  

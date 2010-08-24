@@ -1,0 +1,23 @@
+<p>
+  <b>Half block:</b>
+  <%=h @half_block.half_block %>
+</p>
+
+<p>
+  <b>Alias:</b>
+  <%=h @half_block.alias %>
+</p>
+
+<p>
+  <b>Neighbor ids:</b>
+  <%=h @half_block.neighbor_ids %>
+</p>
+
+<p>
+  <b>Forum url:</b>
+  <%=h @half_block.forum_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_half_block_path(@half_block) %> |
+<%= link_to 'Back', half_blocks_path %>
