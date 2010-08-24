@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823232949) do
+ActiveRecord::Schema.define(:version => 20100823232950) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20100823232949) do
     t.datetime "updated_at"
     t.point    "location",           :limit => nil, :srid => 4326
     t.string   "alias"
+    t.string   "years"
     t.string   "sidewalks"
     t.string   "unit"
     t.text     "improvements"
