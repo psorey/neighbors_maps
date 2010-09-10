@@ -1,0 +1,773 @@
+record_1:
+  id: 1
+  first_name1: Seth
+  last_name1: Amshein
+  phone_1: 
+  email_1: sjamshein@hotmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 355 N 102nd St
+  unit: 
+  zip: 98133
+  resident: resident
+  years: 5
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_2:
+  id: 2
+  first_name1: Billy
+  last_name1: Borton
+  phone_1: 206 781 1937
+  email_1: billyb53@comcast.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9732 Payton Ave N
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 10
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_3:
+  id: 3
+  first_name1: Betty
+  last_name1: Brennan
+  phone_1: 
+  email_1: bjbrennan@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 343 NW 77th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 14
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_4:
+  id: 4
+  first_name1: Leah
+  last_name1: Cooper
+  phone_1: 
+  email_1: lcoopergg@msn.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9235 8th Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 5
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_5:
+  id: 5
+  first_name1: Janet
+  last_name1: Dockery
+  phone_1: 206 784 4498
+  email_1: tomjanet@premier1.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 306 NW 87th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 19
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_6:
+  id: 6
+  first_name1: Erin
+  last_name1: Doonan
+  phone_1: 206 420 2577
+  email_1: wyattdunlap@hotmail.com
+  first_name2: Wyatt
+  last_name2: Dunlap
+  phone_2: 
+  email_2: 
+  address: 411 N 90th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 2.5
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_7:
+  id: 7
+  first_name1: Richard
+  last_name1: Dykstergkks
+  phone_1: 206 363 6224
+  email_1: improvenorth@msn.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 
+  unit: 
+  zip: 
+  resident: resident
+  years: 15
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_8:
+  id: 8
+  first_name1: Jon
+  last_name1: Espenschied
+  phone_1: 206 465 4775
+  email_1: jon.espenschied@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8739 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: both
+  years: 2
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_9:
+  id: 9
+  first_name1: Rob
+  last_name1: Fellows
+  phone_1: 
+  email_1: rob.fellows@mac.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 115 N 84th
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 16
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_10:
+  id: 10
+  first_name1: Kevin
+  last_name1: Fogarty
+  phone_1: 206 297 1419
+  email_1: kertfog@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 722 N 101st St
+  unit: 
+  zip: 98133
+  resident: resident
+  years: 8
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_11:
+  id: 11
+  first_name1: Angela
+  last_name1: Gunn
+  phone_1: 917 570 2282
+  email_1: angela.gunn@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8739 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 2
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_12:
+  id: 12
+  first_name1: Hugh
+  last_name1: Handeyside
+  phone_1: 206 455 4467
+  email_1: hugh.handeyside@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9014 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 1
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_13:
+  id: 13
+  first_name1: Rick
+  last_name1: Harris
+  phone_1: 
+  email_1: rickgharris@comcast.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9710 13th Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 10
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_14:
+  id: 14
+  first_name1: Matt
+  last_name1: Heilgeist
+  phone_1: 206 789 8498
+  email_1: matthewheilgeist@mac.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 340 NW 87th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 15
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_15:
+  id: 15
+  first_name1: Tyan
+  last_name1: Hynes
+  phone_1: 206 920 9164
+  email_1: tyanlee@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9018 9th Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 1
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_16:
+  id: 16
+  first_name1: Austin
+  last_name1: King
+  phone_1: 206 399 9335
+  email_1: shout@ozten.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 
+  unit: 
+  zip: 
+  resident: resident
+  years: 7
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_17:
+  id: 17
+  first_name1: Diann
+  last_name1: Knezovich
+  phone_1: 206 784 2951
+  email_1: dknezovich@hotmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8712 Palatine N
+  unit: 511
+  zip: 98103
+  resident: resident
+  years: 20
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_18:
+  id: 18
+  first_name1: Daniel
+  last_name1: Kopald
+  phone_1: 206 696 1782
+  email_1: daniel@danielkopald.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 11009 Evantson Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 65
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_19:
+  id: 19
+  first_name1: Cindy
+  last_name1: Kozzi
+  phone_1: 206 335 6292
+  email_1: cynthiakozzi@comcast.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 332 NW 89th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 5
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_20:
+  id: 20
+  first_name1: Liz
+  last_name1: Krueger
+  phone_1: 206 782 2342
+  email_1: kruegernick@comcast.net
+  first_name2: Nick
+  last_name2: Krueger
+  phone_2: 
+  email_2: 
+  address: 331 NW 87th St
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 9
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_21:
+  id: 21
+  first_name1: Bob
+  last_name1: Messina
+  phone_1: 
+  email_1: bjmessina@mindspring.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 1301 N 90th St
+  unit: 
+  zip: 98103
+  resident: neither
+  years: 
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_22:
+  id: 22
+  first_name1: Susanne
+  last_name1: Michaud
+  phone_1: 206 297 7262
+  email_1: juli.susanne@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9046 Phinney Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 10
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_23:
+  id: 23
+  first_name1: Karen
+  last_name1: Mitchell
+  phone_1: 206 784 2025
+  email_1: ottoman55@msn.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8701 1st Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 11
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_24:
+  id: 24
+  first_name1: Steve
+  last_name1: Nakazawa Hewitt
+  phone_1: 831 566 2353
+  email_1: hewittsama@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 744 N 101st 
+  unit: 
+  zip: 98133
+  resident: resident
+  years: 1
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_25:
+  id: 25
+  first_name1: Andrea
+  last_name1: Okamski
+  phone_1: 
+  email_1: okomski@msn.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 933 N 84th
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 21
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_26:
+  id: 26
+  first_name1: Mike
+  last_name1: Perfetti
+  phone_1: 206 755 7212
+  email_1: mikeperfetti@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8745 Greenwood Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 8
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_27:
+  id: 27
+  first_name1: Crystal
+  last_name1: Perry
+  phone_1: 206 781 9727
+  email_1: c_perry@msn.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9042 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 15
+  block_captain: 'yes'
+  signup_date: 6/12/2010
+
+record_28:
+  id: 28
+  first_name1: Tom
+  last_name1: Rasmussen
+  phone_1: 206 684 8808
+  email_1: tom.rasmussen@seattle.gov
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 600 4th Ave
+  unit: 
+  zip: 98104
+  resident: neither
+  years: 
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_29:
+  id: 29
+  first_name1: Tim
+  last_name1: Robinson
+  phone_1: 
+  email_1: x@art4321.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 705 N 85th
+  unit: 
+  zip: 98103
+  resident: both
+  years: 21
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_30:
+  id: 30
+  first_name1: Rachel
+  last_name1: Schilke
+  phone_1: 
+  email_1: lil-bitweed@hotmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 756 N 91st 
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 3
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_31:
+  id: 31
+  first_name1: Sandra
+  last_name1: Snow
+  phone_1: 206 524 3431
+  email_1: sahmhs@hotmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9579 Dayton Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 2
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_32:
+  id: 32
+  first_name1: Vicky 
+  last_name1: Tiberio
+  phone_1: 206 782 2408
+  email_1: utiberio@comcast.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9227 1st Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 6
+  block_captain: 'no'
+  signup_date: 6/12/2010
+
+record_33:
+  id: 33
+  first_name1: Laura 
+  last_name1: Tiberio
+  phone_1: 206 784 8252
+  email_1: k-and-i@comcast.net
+  first_name2: Kevin
+  last_name2: Goss
+  phone_2: 
+  email_2: 
+  address: 9200 2nd Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 6
+  block_captain: maybe
+  signup_date: 6/12/2010
+
+record_34:
+  id: 34
+  first_name1: Michael
+  last_name1: Toupal
+  phone_1: 
+  email_1: bleacherspub@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9557 7th Ave NW
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_35:
+  id: 35
+  first_name1: J.C. 
+  last_name1: Veith
+  phone_1: 206 406 6937
+  email_1: jc@visualsavant.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9008 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 4
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_36:
+  id: 36
+  first_name1: Al
+  last_name1: Vetrovs
+  phone_1: 206 853 6585
+  email_1: avetrovs@gmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9007 Phinney Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 20
+  block_captain: 'yes' 
+  signup_date: 6/12/2010
+
+record_37:
+  id: 37
+  first_name1: Jennifer
+  last_name1: Vetrovs
+  phone_1: 
+  email_1: jlvetrovs@earthlink.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9007 Phinney Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 6
+  block_captain: 'no'
+  signup_date: 5/18/2010
+
+record_38:
+  id: 38
+  first_name1: Ian 
+  last_name1: Whyte
+  phone_1: 206 284 3504
+  email_1: ianwhyte@comcast.net
+  first_name2: Kaiam
+  last_name2: Whyte
+  phone_2: 
+  email_2: 
+  address: 9528 Dayton Ave N
+  unit: 104
+  zip: 98103
+  resident: resident
+  years: 5
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_39:
+  id: 39
+  first_name1: Situia
+  last_name1: Withrow
+  phone_1: 206 621 9604
+  email_1: silvia_miea@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 12018 8th Ave NE
+  unit: 
+  zip: 98125
+  resident: resident
+  years: 7
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_40:
+  id: 40
+  first_name1: David
+  last_name1: Wright
+  phone_1: 206 353 0130
+  email_1: davidhw2008@clearwire.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9209 Palatine Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 6.5
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_41:
+  id: 41
+  first_name1: Jean
+  last_name1: Wu
+  phone_1: 206 297 3223
+  email_1: jean119@earthlink.net
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 420 N 70th St
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 
+  block_captain: 'yes'
+  signup_date: 5/18/2010
+
+record_42:
+  id: 42
+  first_name1: Pete
+  last_name1: Y
+  phone_1: 206 782 5352
+  email_1: union1786@hotmail.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 8544 Evanston Ave N
+  unit: 
+  zip: 98103
+  resident: resident
+  years: 10
+  block_captain: maybe
+  signup_date: 5/18/2010
+
+record_43:
+  id: 43
+  first_name1: Brian
+  last_name1: Zeallear
+  phone_1: 
+  email_1: bzeallear@yahoo.com
+  first_name2: 
+  last_name2: 
+  phone_2: 
+  email_2: 
+  address: 9059 3rd Ave NW
+  unit: 
+  zip: 98117
+  resident: resident
+  years: 3
+  block_captain: 'yes'
+  signup_date: 5/18/2010
