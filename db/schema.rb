@@ -9,6 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20100826194158) do
 
   create_table "administrators", :force => true do |t|
@@ -39,13 +40,14 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.string   "phone_2"
     t.string   "email_list"
     t.string   "block_captain"
-    t.text     "volunteer"
+    t.string   "volunteer"
     t.string   "resident"
     t.string   "professional"
     t.text     "interest_expertise"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.point    "location",           :limit => nil, :srid => 4326
+<<<<<<< HEAD
     t.string   "alias"
     t.string   "years"
     t.string   "sidewalks"
@@ -54,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.text     "why_walk"
     t.text     "dont_walk"
     t.date     "signup_date"
+=======
+>>>>>>> 180ad5ecb4c6dbf52458a0e382026a83893fb22c
   end
 
   create_table "users", :force => true do |t|
