@@ -1,0 +1,213 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Draw Feature Example</title>
+        
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <style type="text/css">
+            #controlToggle li {
+                list-style: none;
+            }
+            p {
+                width: 512px;
+            }
+
+            /* avoid pink tiles */
+            .olImageLoadError {
+                background-color: transparent !important;
+            }
+        </style>
+    <style type="text/css">
+        body {
+          width:100%;
+          height:100%;
+    border: 0px;
+    margin-left: 100px;
+    padding: 0px;
+    font:sans-serif;
+    font-size:small;
+    }
+    #map {
+    width: 1000px;
+    height: 525px;
+    border: 1px solid black;
+    padding: 0px;
+    margin:0px auto;
+    margin-top:30px;
+    position:relative;
+    }
+    </style>
+
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script type="text/javascript">
+            var map, drawControls;
+            function init(){
+                map = new OpenLayers.Map('map');
+
+            var aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
+                   format: 'png24',
+                   transparent: 'false'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:true,
+                   singleTile:true,
+                   }
+            );
+
+            var no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
+                   format: 'png',
+                   transparent: 'false'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:true,
+                   singleTile:true,
+                   }
+            );
+            
+            var walk_survey_layer = new OpenLayers.Layer.WMS( "walk survey",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map&filter_string=neighbor_id='2'",
+                 { layers: 'walk_survey',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   opacity:0.5
+                   }
+            );
+
+               var myStyles = new OpenLayers.StyleMap({
+                    "default": new OpenLayers.Style({
+                        strokeColor: "#ff9900",
+                        strokeWidth: 5
+                    }),
+                    "temporary": new OpenLayers.Style({
+                        strokeColor: "#ff9955",
+                        strokeWidth: 5
+                    }),
+                    "select": new OpenLayers.Style({
+                        strokeWidth: 5,
+                        strokeColor: "#0099ff"
+                    })
+                });
+
+                var lineLayer = new OpenLayers.Layer.Vector("Line Layer",
+                   { projection: new OpenLayers.Projection("epsg:4326"),
+                      styleMap:  myStyles
+                   }                                                                                                                                                       
+                );  
+                      
+                lineLayer.events.register('featureadded', this, function(obj){
+                  var wktwriter=new OpenLayers.Format.WKT();
+                  var wkt=wktwriter.write(obj.feature);
+                  //console.log(wkt);
+                  document.survey_form.elements[1].value = wkt;
+                } );
+                
+                map.addLayers([no_aerial_layer, aerial_layer, lineLayer, walk_survey_layer]);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                map.addControl(new OpenLayers.Control.MousePosition());
+
+                drawControls = {
+
+                    line: new OpenLayers.Control.DrawFeature(lineLayer,
+                                OpenLayers.Handler.Path)
+                };
+
+                for(var key in drawControls) {
+                    map.addControl(drawControls[key]);
+                }
+
+                // map.setCenter(new OpenLayers.LonLat(0, 0), 3);
+                map.zoomToMaxExtent();
+                document.getElementById('noneToggle').checked = true;
+            }
+
+            function toggleControl(element) {
+
+                for(key in drawControls) {
+                    var control = drawControls[key];
+                    if(element.value == key && element.checked) {
+                        control.activate();
+                    } else {
+                        control.deactivate();
+                    }
+                }
+            }
+
+        </script>
+    </head>
+    <body onload="init()">
+      
+
+<% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
+  <%= f.error_messages %>
+
+        <%= hidden_field(:line, :wkt) %>
+
+        <div id="tags"></div>
+
+        <p id="shortdesc">
+            walk_surveys/new.html.erb.
+        </p>
+        <div id="map" class="smallmap"></div>
+        <ul id="controlToggle">
+            <li>
+                <input type="radio" name="type" value="none" id="noneToggle"
+                       onclick="toggleControl(this);" checked="checked" />
+                <label for="noneToggle">navigate</label>
+            </li>
+            <li>
+                <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+                <label for="lineToggle">draw line</label>
+            </li>
+
+        </ul>
+
+        <div id="docs">
+
+            <p>With the line drawing control active, click on the map to add the points that make up your line.
+            Double-click to finish drawing.</p>
+
+
+        </div>
+
+
+
+  <p>
+    <%= f.label :neighbor_id %><br />
+    <%= f.text_field :neighbor_id %>
+  </p>
+  <p>
+    <%= f.label :route_frequencies %><br />
+    <%= f.text_area :route_frequencies %>
+  </p>
+  <p>
+    <%= f.label :routes %><br />
+    <%= f.text_field :routes %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', walk_surveys_path %>

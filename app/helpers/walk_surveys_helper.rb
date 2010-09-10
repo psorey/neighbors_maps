@@ -1,0 +1,2 @@
+module WalkSurveysHelper
+end

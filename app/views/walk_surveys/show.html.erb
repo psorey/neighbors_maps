@@ -1,0 +1,18 @@
+<p>
+  <b>Neighbor:</b>
+  <%=h @walk_survey.neighbor_id %>
+</p>
+
+<p>
+  <b>Route frequencies:</b>
+  <%=h @walk_survey.route_frequencies %>
+</p>
+
+<p>
+  <b>Routes:</b>
+  <%=h @walk_survey.routes %>
+</p>
+
+
+<%= link_to 'Edit', edit_walk_survey_path(@walk_survey) %> |
+<%= link_to 'Back', walk_surveys_path %>

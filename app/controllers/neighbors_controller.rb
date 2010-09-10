@@ -3,10 +3,23 @@ require 'rubygems'
 require 'curl'
 #require 'json'
 require 'proj4'
+require 'ya2yaml'
 
 class NeighborsController < ApplicationController
   # GET /neighbors
   # GET /neighbors.xml
+  
+  def to_yaml
+		@neighbors = Neighbor.all
+		today = Date.today
+		file = File.new('neighbors_latest.yml' + today, 'w')
+		@neighbors.each do |n|
+			yaml_string = ya2yaml(n)
+			file.puts yaml_string
+		end
+		
+  end
+  
   def index
     @neighbors = Neighbor.all
     logger.debug " ---------------- Neighbor = #{@neighbors.inspect}"
@@ -23,8 +36,11 @@ class NeighborsController < ApplicationController
     @neighbor = Neighbor.find(params[:id])
     logger.debug " ---------------- Neighbor = #{@neighbor.inspect}"
 
-    get_block_id
-    
+    #if @neighbor.half_block_id == ''
+      get_block_id
+      #@neighbor.save
+    #end
+   
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @neighbor }
@@ -85,7 +101,7 @@ class NeighborsController < ApplicationController
     @neighbor.why_walk = params[:why_walk]
     @neighbor.dont_walk = params[:dont_walk]
 
-    get_block_id
+    #get_block_id
 
 
     respond_to do |format|
@@ -109,7 +125,10 @@ class NeighborsController < ApplicationController
     @neighbor.why_walk = params[:why_walk]
     @neighbor.dont_walk = params[:dont_walk]
     
-    get_block_id
+    #if @neighbor.half_block_id == '' 
+      get_block_id
+      #@neighbor.save
+    #end
     
     respond_to do |format|
       if @neighbor.update_attributes(params[:neighbor])
@@ -139,6 +158,10 @@ class NeighborsController < ApplicationController
 protected
 
   def get_block_id
+		if @neighbor.address == '' or @neighbor.address == nil
+			return
+		end
+		
     @address_string = @neighbor.get_address_string
     geoJson= Curl::Easy.perform("http://maps.google.com/maps/api/geocode/json?address=#{@address_string}&sensor=false")
     json = geoJson.body_str

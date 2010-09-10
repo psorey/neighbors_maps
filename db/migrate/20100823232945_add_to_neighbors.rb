@@ -7,6 +7,7 @@ class AddToNeighbors < ActiveRecord::Migration
     add_column :neighbors, :improvements, :text
     add_column :neighbors, :why_walk, :text
     add_column :neighbors, :dont_walk, :text
+    add_column :neighbors, :signup_date, :date
     change_column :neighbors, :volunteer, :text 
   end
 
@@ -18,6 +19,7 @@ class AddToNeighbors < ActiveRecord::Migration
     remove_column :neighbors, :improvements
     remove_column :neighbors, :why_walk
     remove_column :neighbors, :dont_walk
+    remove_column :neighbors, :signup_date
     change_column :neighbors, :volunteer, :string
   end
 end

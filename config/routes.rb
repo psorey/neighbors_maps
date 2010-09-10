@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :walk_surveys
+
   map.resources :administrators
 
   map.resources :half_blocks
@@ -28,6 +30,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :resources
   map.resources :welcome
   map.resources :under_construction
+  
+    
   
   
 

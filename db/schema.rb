@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823232950) do
+ActiveRecord::Schema.define(:version => 20100826194158) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20100823232950) do
     t.text     "improvements"
     t.text     "why_walk"
     t.text     "dont_walk"
+    t.date     "signup_date"
   end
 
   create_table "users", :force => true do |t|
@@ -70,5 +71,13 @@ ActiveRecord::Schema.define(:version => 20100823232950) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "walk_surveys", :force => true do |t|
+    t.string      "neighbor_id"
+    t.text        "frequency"
+    t.datetime    "created_at"
+    t.datetime    "updated_at"
+    t.line_string "route",       :limit => nil, :srid => 4326
+  end
 
 end
