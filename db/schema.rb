@@ -9,7 +9,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20100826194158) do
 
   create_table "administrators", :force => true do |t|
@@ -40,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.string   "phone_2"
     t.string   "email_list"
     t.string   "block_captain"
-    t.string   "volunteer"
+    t.text     "volunteer"
     t.string   "resident"
     t.string   "professional"
     t.text     "interest_expertise"
