@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.point    "location",           :limit => nil, :srid => 4326
-<<<<<<< HEAD
     t.string   "alias"
     t.string   "years"
     t.string   "sidewalks"
@@ -56,8 +55,6 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.text     "why_walk"
     t.text     "dont_walk"
     t.date     "signup_date"
-=======
->>>>>>> 180ad5ecb4c6dbf52458a0e382026a83893fb22c
   end
 
   create_table "users", :force => true do |t|
