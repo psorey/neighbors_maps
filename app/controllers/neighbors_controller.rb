@@ -3,7 +3,7 @@ require 'rubygems'
 require 'curl'
 #require 'json'
 require 'proj4'
-require 'ya2yaml'
+#require 'ya2yaml'
 
 class NeighborsController < ApplicationController
   # GET /neighbors
