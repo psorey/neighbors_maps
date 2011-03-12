@@ -28,21 +28,20 @@
     <div id="side">
  
         <div id="side_menu">
-        <%= link_to 'Home',    				                :controller=> 'welcome'   %><br /><br />
-	<%= link_to 'FAQ',                                  :controller=> 'FAQ'       %><br /><br />
-	<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
-        <a href="http://blog.streetscapes.org">Blog</a><br/><br/>
-	<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
-				
-    <!--    <a href="http://mapserver.streetscapes.org">Maps</a><br /><br />  -->
-        <a href="http://dokuwiki.streetscapes.org">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
-        <%= link_to 'Contact',    		          :controller=> 'contact'   %><br /><br />
+        <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
+				<%= link_to 'FAQ',                                  :controller=> 'FAQ'       %><br /><br />
+				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
+				<a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/>
+				<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
+							
+				<a href="http://dokuwiki.<%=APP_CONFIG['BASE_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
+				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br />
 
-     <!--   <%= link_to 'Sign Up!',    				      '/signup'   %><br /><br />   -->
-        <%= link_to 'Sign Up!',    				      '/neighbors'   %><br /><br />
+        <!--   <%= link_to 'Sign Up!',    				      '/signup'   %><br /><br />   -->
+        <%= link_to 'Sign Up!',    				              '/neighbors'   %><br /><br />
   
-        <%= link_to 'Login',    				      '/login'   %><br /><br />
-        <%= link_to 'Log Out',    				      '/logout'   %><br /><br />
+        <%= link_to 'Login',    				                '/login'   %><br /><br />
+        <%= link_to 'Log Out',    				              '/logout'   %><br /><br />
   
       </div>
 

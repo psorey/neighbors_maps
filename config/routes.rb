@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :neighbor_surveys
+
   map.resources :walk_surveys
 
   map.resources :administrators

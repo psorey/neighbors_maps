@@ -10,8 +10,8 @@
 <% @walk_surveys.each do |walk_survey| %>
   <tr>
     <td><%=h walk_survey.neighbor_id %></td>
-    <td><%=h walk_survey.route_frequencies %></td>
-    <td><%=h walk_survey.routes %></td>
+    <td><%=h walk_survey.frequency %></td>
+    <td><%=h walk_survey.route %></td>
     <td><%= link_to 'Show', walk_survey %></td>
     <td><%= link_to 'Edit', edit_walk_survey_path(walk_survey) %></td>
     <td><%= link_to 'Destroy', walk_survey, :confirm => 'Are you sure?', :method => :delete %></td>

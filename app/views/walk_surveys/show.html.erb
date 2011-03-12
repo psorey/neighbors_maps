@@ -5,14 +5,14 @@
 
 <p>
   <b>Route frequencies:</b>
-  <%=h @walk_survey.route_frequencies %>
+  <%=h @walk_survey.frequency %>
 </p>
 
 <p>
-  <b>Routes:</b>
-  <%=h @walk_survey.routes %>
+  <b>Paths:</b>
+  <%=h @walk_survey.route %>
 </p>
 
 
-<%= link_to 'Edit', edit_walk_survey_path(@walk_survey) %> |
+<%= link_to 'Edit', edit_walk_survey_path(@walk_survey) %>
 <%= link_to 'Back', walk_surveys_path %>

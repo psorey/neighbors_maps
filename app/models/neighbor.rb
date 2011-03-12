@@ -1,4 +1,4 @@
-require 'spatial_adapter/postgresql'
+# require 'spatial_adapter/postgresql'
 
 class Neighbor < ActiveRecord::Base
   

@@ -37,18 +37,22 @@
             }
         </style>
 
-        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <!-- <script src="http://www.openlayers.org/api/OpenLayers.js"></script> -->
+        
+        <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+        
         <script type="text/javascript">
             
             var map, drawControls;
             
             function init(){
                 var i;
-                var exist_lines =<%= @javascript_lines %>;
+                var exist_lines = <%= @javascript_lines %>;
                 var exist_freqs = <%= @javascript_freqs %>;
                 
                 map = new OpenLayers.Map('map');
 
+                console.log("here 1");
                 var aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
                      "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
                      { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
@@ -62,7 +66,7 @@
                        gutter:0,
                        ratio:1,
                        isBaselayer:true,
-                       singleTile:true,
+                       singleTile:true
                        }
                 );
     
@@ -75,14 +79,15 @@
                      { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
                        scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
                        units: 'm',
-                       projection:new OpenLayers.Projection("epsg:4326"),
+                       projection: new OpenLayers.Projection("epsg:4326"),
                        gutter:0,
                        ratio:1,
                        isBaselayer:true,
-                       singleTile:true,
+                       singleTile:true
                        }
                 );
-
+                console.log("here 2");
+ 
                 OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
                 OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
                 OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
@@ -95,7 +100,8 @@
                      opacity:0.5,
                      rendererOptions: {zIndexing: true}
                 } );
-                
+                console.log("here 3");
+                 
                 var lineLabelLayer = new OpenLayers.Layer.Vector("Line Label Layer",
                    { projection: new OpenLayers.Projection("epsg:4326"),
                      opacity:0.5,
@@ -120,7 +126,8 @@
                     }}),
                      rendererOptions: {zIndexing: true}
                 } );
-
+                console.log("here 4");
+ 
                 lineLayer.setZIndex(10);
                 lineLabelLayer.setZIndex(20);
                 
@@ -133,7 +140,8 @@
                      }
                      makeLabeledDots(lineLayer, lineLabelLayer);
                 } );
-                
+                console.log("here 5");
+ 
                 // update the label layer after editing the lines...
                 lineLayer.events.register('afterfeaturemodified', this, function(obj){
                     makeLabeledDots(lineLayer, lineLabelLayer);
@@ -166,18 +174,26 @@
                 for(var key in drawControls) {
                     map.addControl(drawControls[key]);
                 };
-
+                console.log("here 6");
+ 
                 map.zoomToMaxExtent();
                 document.getElementById('noneToggle').checked = true;
                 
+                console.log("here 7");
+ 
                 // now add the walk_survey paths and frequencies from the database-loaded arrays...
+                console.log("exist_lines.length = %d", exist_lines.length);
+ /*
                 for(i=0; i < exist_lines.length; i = i + 1)
                 {
                     var geom = new OpenLayers.Geometry.fromWKT(exist_lines[i]);
                     var feature = new OpenLayers.Feature.Vector(geom, {freq: exist_freqs[i]});
                     lineLayer.addFeatures(feature);
                     // and this triggers the makeLabeledDots function through the 'featureadded' event callback
-                }
+                };
+ */
+                console.log("end of init");
+ 
             } // end of init().
 
             function update() {
@@ -198,28 +214,39 @@
             }
             
             function makeLabeledDots(lineLayer, lineLabelLayer) {
-                var lineFeatures = lineLayer.features;
+                
+                var lineFeatures = lineLayer.features; //returns: {Array(OpenLayers.Feature.Vector)}
+                
+                console.log("line features length = %d", lineFeatures.length);
+                
                 lineLabelLayer.destroyFeatures();
-                var paths = [];
+                var routes = [];
                 var frequencies = [];
 
-                for (var i in lineFeatures) {
-                    var nodes = lineFeatures[i].geometry.getVertices();
-                    var lastNode = nodes[nodes.length -1]
-                    var pointFeature = new OpenLayers.Feature.Vector(lastNode)
-                    var count = i + '';
-                    pointFeature.attributes = {frequency: lineFeatures[i].attributes.freq, whichLine: count};
-                    lineLabelLayer.addFeatures(pointFeature);
-                    var wktwriter=new OpenLayers.Format.WKT();
-                    var wkt=wktwriter.write(lineFeatures[i]);
-                    paths.push(wkt)
-                    frequencies.push(lineFeatures[i].attributes.freq);
+                for (var i = 0; i < lineFeatures.length; i = i+1) {
+                    console.log("i = %d",i);
+                    if (lineFeatures[i] != null) {                  
+                        var geometry = lineFeatures[i].geometry;
+                        var nodes = lineFeatures[i].geometry.getVertices();
+                        var lastNode = nodes[nodes.length -1];
+                        var pointFeature = new OpenLayers.Feature.Vector(lastNode);
+                        var count = i + '';
+                        pointFeature.attributes = {frequency: lineFeatures[i].attributes.freq, whichLine: count};
+                        lineLabelLayer.addFeatures(pointFeature);
+                        var wktwriter=new OpenLayers.Format.WKT();
+                        var wkt=wktwriter.write(lineFeatures[i]);
+                        routes.push(wkt);
+                        frequencies.push(lineFeatures[i].attributes.freq);
+                    }
                 }
 
                 // store the latest multi-line data for transmitting to controller...
-                json_paths = JSON.stringify(paths);
+                json_routes = JSON.stringify(routes);
                 json_freqs = JSON.stringify(frequencies);
-                document.survey_form.elements[1].value = json_paths;
+                console.log("routes = %s", routes);
+                console.log("frequencies = %s", frequencies);
+
+                document.survey_form.elements[1].value = json_routes;
                 document.survey_form.elements[2].value = json_freqs;
             }
 
@@ -231,8 +258,8 @@
 <% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
   <%= f.error_messages %>
 
-        <%= hidden_field(:line, :paths) %>
-        <%= hidden_field(:line2, :frequencies) %>
+        <%= hidden_field(:line, :route) %>
+        <%= hidden_field(:line2, :frequency) %>
 
         <div id="tags"></div>
 
@@ -268,25 +295,12 @@
             <p>With the line drawing control active, click on the map to add the points that make up your line.
             Double-click to finish drawing.</p>
 
-
         </div>
 
 
 
   <p>
-    <%= f.label :neighbor_id %><br />
-    <%= f.text_field :neighbor_id %>
-  </p>
-  <p>
-    <%= f.label :route_frequencies %><br />
-    <%= f.text_area :route_frequencies %>
-  </p>
-  <p>
-    <%= f.label :routes %><br />
-    <%= f.text_field :routes %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Submit' %>
   </p>
 <% end %>
 

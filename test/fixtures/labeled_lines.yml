@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  geometry: 
+  label: MyString
+
+two:
+  geometry: 
+  label: MyString

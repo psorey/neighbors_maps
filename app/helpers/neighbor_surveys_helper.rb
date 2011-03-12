@@ -1,0 +1,2 @@
+module NeighborSurveysHelper
+end

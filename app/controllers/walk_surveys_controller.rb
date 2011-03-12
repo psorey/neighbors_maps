@@ -53,32 +53,47 @@ class WalkSurveysController < ApplicationController
   # POST /walk_surveys
   # POST /walk_surveys.xml
   def create
-    @walk_survey = WalkSurvey.new(params[:walk_survey])
-    paths = JSON.parse(params[:line][:paths])
-    frequencies = JSON.parse(params[:line2][:frequencies])
-    logger.debug "paths:"
-    paths.each do |p|
-      logger.debug p
+    #@walk_survey = WalkSurvey.new(params[:walk_survey])
+    #logger.debug("creating paths = #{params[:line][:route]}")
+    routes = JSON.parse(params[:line][:route])
+    frequencies = JSON.parse(params[:line2][:frequency])
+    #logger.debug "routes="
+    #route_string = ''
+    success = 1
+    for i in 0..routes.length - 1
+      walk_survey = WalkSurvey.new
+      walk_survey.route = Geometry.from_ewkt(routes[i])
+      walk_survey.route.srid = 4326
+      walk_survey.frequency = frequencies[i]
+      walk_survey.neighbor_id = 2
+      if !walk_survey.save
+        success = 0
+      end
     end
-    logger.debug "frequencies"
-    frequencies.each do |f|
-      logger.debug f
-    end
-    logger.debug "paths = #{paths}"
-    logger.debug "frequencies = #{frequencies}"
+    #routes.each do |p|
+    #  logger.debug p
+      #route_string += p
+      #route_string += ';'
+    #end
+    #logger.debug "route string = #{route_string}"
+    #logger.debug "frequencies="
+    #frequencies.each do |f|
+    #  logger.debug f
+    #end
 
-    #line = Geometry.from_ewkt(wkt)
+    #line = Geometry.from_ewkt(route_string)
     #line.srid = 4326
-    #@walk_survey.routes = line
+    #@walk_survey.route = line
     
-    # @walk_survey.routes = ST_LineFromText(wkt,4326)
+    #@walk_survey.routes = ST_LineFromText(routes,4326)
+    
     respond_to do |format|
-      if @walk_survey.save
-        format.html { redirect_to(@walk_survey, :notice => 'WalkSurvey was successfully created.') }
-        format.xml  { render :xml => @walk_survey, :status => :created, :location => @walk_survey }
+      if success
+        format.html { render :action => 'new', :notice => 'routes were successfully updated.' }
+        #format.xml  { render :xml => @walk_survey, :status => :created, :location => @walk_survey }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @walk_survey.errors, :status => :unprocessable_entity }
+        format.html { render :action => "new", :notice => 'an error occurred'}
+        #format.xml  { render :xml => @walk_survey.errors, :status => :unprocessable_entity }
       end
     end
   end
