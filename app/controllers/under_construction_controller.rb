@@ -1,2 +1,0 @@
-class UnderConstructionController < ApplicationController
-end

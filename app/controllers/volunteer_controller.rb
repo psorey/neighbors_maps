@@ -1,5 +1,0 @@
-class VolunteerController < UsersController
-  
-  
-  
-end
