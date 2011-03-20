@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Draw Feature Example</title>
+        <title>Walking Paths Survey</title>
         
         <link rel="stylesheet" href="style.css" type="text/css" />
         <style type="text/css">
@@ -43,16 +43,18 @@
         
         <script type="text/javascript">
             
+            // to_do: handle (delete) null frequency lines here, not in controller...
+            
             var map, drawControls;
             
             function init(){
                 var i;
-                var exist_lines = <%= @javascript_lines %>;
-                var exist_freqs = <%= @javascript_freqs %>;
+
+                var exist_lines = <%= @json_geometry %>;
+                var exist_freqs = <%= @json_frequencies %>;
                 
                 map = new OpenLayers.Map('map');
 
-                console.log("here 1");
                 var aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
                      "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
                      { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
@@ -67,7 +69,7 @@
                        ratio:1,
                        isBaselayer:true,
                        singleTile:true
-                       }
+                      }
                 );
     
                 var no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
@@ -84,10 +86,9 @@
                        ratio:1,
                        isBaselayer:true,
                        singleTile:true
-                       }
+                    }
                 );
-                console.log("here 2");
- 
+
                 OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
                 OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
                 OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
@@ -100,8 +101,7 @@
                      opacity:0.5,
                      rendererOptions: {zIndexing: true}
                 } );
-                console.log("here 3");
-                 
+            
                 var lineLabelLayer = new OpenLayers.Layer.Vector("Line Label Layer",
                    { projection: new OpenLayers.Projection("epsg:4326"),
                      opacity:0.5,
@@ -126,21 +126,64 @@
                     }}),
                      rendererOptions: {zIndexing: true}
                 } );
-                console.log("here 4");
  
                 lineLayer.setZIndex(10);
                 lineLabelLayer.setZIndex(20);
+                 
+                /*
+                lineLayer.events.register('beforefeatureadded', this, function(obj){
+                    console.log ("before line feature added");
+                    if(obj.feature.attributes.freq == null)
+                    {
+                        obj.feature.state = OpenLayers.State.DELETE;
+                    }
+                } );
+                */
                 
+                lineLabelLayer.events.register('featureadded', this, function(obj){
+                    console.log ("label feature added");
+                    if(obj.feature.attributes.frequency == null)
+                    {
+                        obj.feature.destroy;
+                        obj.feature.state = OpenLayers.State.DELETE;
+                    }
+                } );
+                
+                lineLayer.events.register('featuresadded', this, function(obj){
+                    for(i = 0; i < obj.features.length; i = i + 1)
+                    {
+                        feature = obj.features[i];
+                        if(feature.attributes.freq == null)
+                        {
+                            var n = prompt("Monthly Frequency", "Enter number of trips per month");
+                            feature.attributes.freq = n;
+                            if (feature.attributes.freq == null)
+                            {
+                                //feature.destroy;
+                                feature.state = OpenLayers.State.DELETE;
+                            }
+                        }
+                    };
+                    console.log ("featuresadded");
+                    makeLabeledDots(lineLayer, lineLabelLayer); 
+                    //lineLayer.refresh();
+                    //lineLabelLayer.refresh();
+                } );
+                
+                
+                /*
                 // add the labels after adding the lines...
                 lineLayer.events.register('featureadded', this, function(obj){
+                    console.log ("feature added");
                     if(obj.feature.attributes.freq == null)
                     {
                         var n = prompt("Monthly Frequency", "Please enter number of trips per month:");
                         obj.feature.attributes.freq = n;
-                     }
-                     makeLabeledDots(lineLayer, lineLabelLayer);
+                    }
+                    makeLabeledDots(lineLayer, lineLabelLayer);
                 } );
-                console.log("here 5");
+                */
+
  
                 // update the label layer after editing the lines...
                 lineLayer.events.register('afterfeaturemodified', this, function(obj){
@@ -174,31 +217,30 @@
                 for(var key in drawControls) {
                     map.addControl(drawControls[key]);
                 };
-                console.log("here 6");
  
                 map.zoomToMaxExtent();
                 document.getElementById('noneToggle').checked = true;
-                
-                console.log("here 7");
  
                 // now add the walk_survey paths and frequencies from the database-loaded arrays...
-                console.log("exist_lines.length = %d", exist_lines.length);
- /*
+ 
+                var exist_features = []
                 for(i=0; i < exist_lines.length; i = i + 1)
                 {
                     var geom = new OpenLayers.Geometry.fromWKT(exist_lines[i]);
-                    var feature = new OpenLayers.Feature.Vector(geom, {freq: exist_freqs[i]});
-                    lineLayer.addFeatures(feature);
-                    // and this triggers the makeLabeledDots function through the 'featureadded' event callback
+                    feature = new OpenLayers.Feature.Vector(geom, {freq: exist_freqs[i]});
+                    exist_features[i] = feature;
                 };
- */
-                console.log("end of init");
- 
+                console.log("adding all existing features");
+                lineLayer.addFeatures(exist_features);
+                
+                // and this triggers the makeLabeledDots function through
+                // the 'featuresadded' event callback
+                
             } // end of init().
 
             function update() {
                 // reset modification mode
-                //drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
+                // drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
             }
 
             function toggleControl(element) {
@@ -214,17 +256,15 @@
             }
             
             function makeLabeledDots(lineLayer, lineLabelLayer) {
-                
-                var lineFeatures = lineLayer.features; //returns: {Array(OpenLayers.Feature.Vector)}
-                
-                console.log("line features length = %d", lineFeatures.length);
-                
+                var lineFeatures = lineLayer.features; //returns: {Array(OpenLayers.Feature.Vector)}               
                 lineLabelLayer.destroyFeatures();
-                var routes = [];
+                
+                var line_geometries = [];
                 var frequencies = [];
-
-                for (var i = 0; i < lineFeatures.length; i = i+1) {
-                    console.log("i = %d",i);
+                //var line_ids = [];
+                //var line_status = [];
+                
+                for (var i = 0; i < lineFeatures.length; i = i+1) {       
                     if (lineFeatures[i] != null) {                  
                         var geometry = lineFeatures[i].geometry;
                         var nodes = lineFeatures[i].geometry.getVertices();
@@ -235,25 +275,29 @@
                         lineLabelLayer.addFeatures(pointFeature);
                         var wktwriter=new OpenLayers.Format.WKT();
                         var wkt=wktwriter.write(lineFeatures[i]);
-                        routes.push(wkt);
+                        line_geometries.push(wkt);
                         frequencies.push(lineFeatures[i].attributes.freq);
+                        //line_ids.push(lineFeatures[i].attributes.id);
+                        //line_status.push(lineFeatures[i].attributes.line_status)
                     }
                 }
 
                 // store the latest multi-line data for transmitting to controller...
-                json_routes = JSON.stringify(routes);
+                json_routes = JSON.stringify(line_geometries);
                 json_freqs = JSON.stringify(frequencies);
-                console.log("routes = %s", routes);
+                
+                console.log("routes = %s", line_geometries);
                 console.log("frequencies = %s", frequencies);
 
                 document.survey_form.elements[1].value = json_routes;
                 document.survey_form.elements[2].value = json_freqs;
+                //document.survey_form.elements[3].value = json_ids;
             }
 
         </script>
     </head>
     <body onload="init()">
-      
+<p style="color: green"><%= notice %></p>
 
 <% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
   <%= f.error_messages %>

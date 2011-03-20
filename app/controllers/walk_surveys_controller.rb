@@ -1,4 +1,9 @@
 class WalkSurveysController < ApplicationController
+  
+  
+  before_filter :login_required
+  
+  
   # GET /walk_surveys
   # GET /walk_surveys.xml
   def index
@@ -9,6 +14,7 @@ class WalkSurveysController < ApplicationController
       format.xml  { render :xml => @walk_surveys }
     end
   end
+
 
   # GET /walk_surveys/1
   # GET /walk_surveys/1.xml
@@ -25,17 +31,26 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/new
   # GET /walk_surveys/new.xml
   def new
-    @walk_survey = WalkSurvey.new
-    @neighbor_id = '2'
-    @existing_lines = WalkSurvey.find(:all, :conditions => {:neighbor_id => '2'})
-    @lines = []
-    @freqs = []
-    @existing_lines.each do |ws|
-      @lines << ws.routes.as_wkt()
-      @freqs << ws.route_frequencies
+    @walk_survey = WalkSurvey.new  # remove; this is unnecessary. use 
+    @current_neighbor_id = '2'  # !!! for testing
+    
+    existing_mapped_lines = MappedLine.find(:all, :conditions =>
+       {:owner_id => @current_neighbor_id, :map_layer_id => 'walk_survey'})
+    
+    # back to erasing and re-filling the database with the lines each time...
+    # sending just the relevant information via JSON,
+    # not the whole mapped_line object which may grow
+
+    geometry_list  = []
+    end_label_list = []
+    
+    existing_mapped_lines.each do |mapped_line|
+      geometry_list       << mapped_line.geometry.as_wkt()
+      end_label_list      << mapped_line.end_label
     end
-    @javascript_lines = "['#{@lines.join('\',\'')}']"
-    @javascript_freqs = "['#{@freqs.join('\',\'')}']"
+    
+    @json_geometry = geometry_list.to_json
+    @json_frequencies = end_label_list.to_json
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,49 +62,43 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/1/edit
   def edit
     @walk_survey = WalkSurvey.find(params[:id])
-
   end
+
 
   # POST /walk_surveys
   # POST /walk_surveys.xml
   def create
-    #@walk_survey = WalkSurvey.new(params[:walk_survey])
-    #logger.debug("creating paths = #{params[:line][:route]}")
+    @current_neighbor_id = '2'
+    @walk_survey = WalkSurvey.new(params[:walk_survey])
+    # logger.debug("creating paths = #{params[:line][:route]}")
     routes = JSON.parse(params[:line][:route])
     frequencies = JSON.parse(params[:line2][:frequency])
-    #logger.debug "routes="
-    #route_string = ''
+
     success = 1
+    
+    MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => 'walk_survey')
+
     for i in 0..routes.length - 1
-      walk_survey = WalkSurvey.new
-      walk_survey.route = Geometry.from_ewkt(routes[i])
-      walk_survey.route.srid = 4326
-      walk_survey.frequency = frequencies[i]
-      walk_survey.neighbor_id = 2
-      if !walk_survey.save
-        success = 0
+      if frequencies[i] == nil
+        #do nothing
+      else
+        mapped_line = MappedLine.new
+        mapped_line.geometry = Geometry.from_ewkt(routes[i])
+        mapped_line.geometry.srid = 4326
+        mapped_line.end_label = frequencies[i]
+        mapped_line.owner_id = @current_neighbor_id
+        mapped_line.map_layer_id = 'walk_survey'
+  
+        if !mapped_line.save
+          success = 0
+        end
       end
     end
-    #routes.each do |p|
-    #  logger.debug p
-      #route_string += p
-      #route_string += ';'
-    #end
-    #logger.debug "route string = #{route_string}"
-    #logger.debug "frequencies="
-    #frequencies.each do |f|
-    #  logger.debug f
-    #end
-
-    #line = Geometry.from_ewkt(route_string)
-    #line.srid = 4326
-    #@walk_survey.route = line
-    
-    #@walk_survey.routes = ST_LineFromText(routes,4326)
     
     respond_to do |format|
       if success
-        format.html { render :action => 'new', :notice => 'routes were successfully updated.' }
+
+        format.html { redirect_to :action => 'new', :notice => 'routes were successfully updated.' }
         #format.xml  { render :xml => @walk_survey, :status => :created, :location => @walk_survey }
       else
         format.html { render :action => "new", :notice => 'an error occurred'}

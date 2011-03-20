@@ -5,6 +5,9 @@ require 'curl'
 require 'proj4'
 #require 'ya2yaml'
 
+# before_filter :login_required
+
+
 class NeighborsController < ApplicationController
   # GET /neighbors
   # GET /neighbors.xml

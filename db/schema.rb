@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100826194158) do
+ActiveRecord::Schema.define(:version => 20110312203733) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.datetime      "created_at"
     t.datetime      "updated_at"
     t.multi_polygon "the_geom",      :limit => nil, :srid => 4326
+  end
+
+  create_table "mapped_lines", :force => true do |t|
+    t.string      "end_label"
+    t.string      "data"
+    t.string      "owner_id"
+    t.string      "map_layer_id"
+    t.datetime    "created_at"
+    t.datetime    "updated_at"
+    t.line_string "geometry",     :limit => nil, :srid => 4326
   end
 
   create_table "neighbors", :force => true do |t|
@@ -45,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.text     "interest_expertise"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "location",           :limit => nil, :srid => 4326
     t.string   "alias"
     t.string   "years"
     t.string   "sidewalks"
@@ -54,6 +63,16 @@ ActiveRecord::Schema.define(:version => 20100826194158) do
     t.text     "why_walk"
     t.text     "dont_walk"
     t.date     "signup_date"
+    t.point    "location",           :limit => nil, :srid => 4326
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "type"
+    t.string   "relationships"
+    t.string   "groups"
+    t.string   "privileges"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
