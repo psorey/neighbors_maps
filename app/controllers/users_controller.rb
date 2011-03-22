@@ -11,7 +11,11 @@ class UsersController < ApplicationController
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
-    success = @user && @user.save
+    role = Role.find(:all, :conditions => {:name => 'neighbor'})
+    neighbor = Neighbor.new(:user_id => @user.id)
+    @user.neighbor_id = neighbor.id
+    @user.roles = role
+    success = @user && @user.save && neighbor.save
     if success && @user.errors.empty?
       redirect_back_or_default('/')
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
       flash[:notice] = "Signup complete! Please sign in to continue."
-      redirect_to '/login'
+      redirect_to "/neighbors/show/#{user.neighbor_id}"
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default('/')

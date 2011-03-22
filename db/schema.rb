@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110312203733) do
+ActiveRecord::Schema.define(:version => 20110322003646) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -63,17 +63,21 @@ ActiveRecord::Schema.define(:version => 20110312203733) do
     t.text     "why_walk"
     t.text     "dont_walk"
     t.date     "signup_date"
+    t.integer  "user_id"
     t.point    "location",           :limit => nil, :srid => 4326
   end
 
   create_table "roles", :force => true do |t|
-    t.string   "type"
-    t.string   "relationships"
-    t.string   "groups"
-    t.string   "privileges"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
   end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -87,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20110312203733) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
+    t.integer  "neighbor_id"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

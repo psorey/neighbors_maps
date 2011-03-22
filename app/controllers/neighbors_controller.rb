@@ -9,8 +9,8 @@ require 'proj4'
 
 
 class NeighborsController < ApplicationController
-  # GET /neighbors
-  # GET /neighbors.xml
+	
+	require_role "admin", :only => :index # only admin gets to see all the neighbors
   
   def to_yaml
 		@neighbors = Neighbor.all
@@ -23,6 +23,7 @@ class NeighborsController < ApplicationController
 		
   end
   
+  
   def index
     @neighbors = Neighbor.all
     logger.debug " ---------------- Neighbor = #{@neighbors.inspect}"
@@ -33,8 +34,7 @@ class NeighborsController < ApplicationController
     end
   end
 
-  # GET /neighbors/1
-  # GET /neighbors/1.xml
+
   def show
     @neighbor = Neighbor.find(params[:id])
     logger.debug " ---------------- Neighbor = #{@neighbor.inspect}"
@@ -51,8 +51,6 @@ class NeighborsController < ApplicationController
   end
 
 
-  # GET /neighbors/new
-  # GET /neighbors/new.xml
   def new
     
     @neighbor = Neighbor.new
@@ -75,7 +73,7 @@ class NeighborsController < ApplicationController
     end
   end
 
-  # GET /neighbors/1/edit
+
   def edit
 		
     @neighbor = Neighbor.find(params[:id])
@@ -92,20 +90,15 @@ class NeighborsController < ApplicationController
     if @neighbor.dont_walk == nil
 			@neighbor.dont_walk = []
     end
-    
   end
 
-  # POST /neighbors
-  # POST /neighbors.xml
+
   def create
     @neighbor = Neighbor.new(params[:neighbor])
     @neighbor.improvements = params[:improvements]
     @neighbor.volunteer = params[:volunteer]
     @neighbor.why_walk = params[:why_walk]
     @neighbor.dont_walk = params[:dont_walk]
-
-    #get_block_id
-
 
     respond_to do |format|
       if @neighbor.save
@@ -119,8 +112,7 @@ class NeighborsController < ApplicationController
     end
   end
 
-  # PUT /neighbors/1
-  # PUT /neighbors/1.xml
+
   def update
     @neighbor = Neighbor.find(params[:id])
     @neighbor.improvements = params[:improvements]
@@ -145,8 +137,7 @@ class NeighborsController < ApplicationController
     end
   end
 
-  # DELETE /neighbors/1
-  # DELETE /neighbors/1.xml
+
   def destroy
     @neighbor = Neighbor.find(params[:id])
     @neighbor.destroy

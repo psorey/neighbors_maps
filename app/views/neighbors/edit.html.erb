@@ -1,5 +1,5 @@
-<h1>Editing neighbor</h1>
-
+<br />
+<h3>Edit or update your information:</h3>
 
 
 <% form_for(@neighbor) do |f| %>
@@ -54,7 +54,6 @@
   </p>
 
 
-
 <div class="green">     
 <h4  > Resident? </h4>
      <%= radio_button("neighbor", "resident", "resident") %> Resident
@@ -69,6 +68,7 @@
     <%= f.label "How many years have you lived in Greenwood?" %>
     <%= f.text_field :years, :size => 4 %>
   </p>
+   
 <div class="green">     
 <h4 >Interested in being a Block Facilitator? </h4>
      <%= radio_button("neighbor", "block_captain", "yes") %> yes
@@ -76,6 +76,7 @@
      <%= radio_button("neighbor", "block_captain", "maybe") %>  maybe
 <br />    
 </div>
+
 
 <div class="blue">   
 <h4 >Interested in volunteering?</h4>

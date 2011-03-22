@@ -1,0 +1,9 @@
+admin_role:
+  id: 32947
+  name: admin
+neighbor_role:
+  id: 64826
+  name: neighbor
+user_role:
+  id: 87878
+  name: user

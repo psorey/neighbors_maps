@@ -23,6 +23,7 @@ neighbor_00028:
   phone_2: 
   dont_walk: 
   id: 28
+  user_id: 28
   half_block_id: outside project area
   email_list: 
   unit: 
@@ -60,6 +61,7 @@ neighbor_00006:
   phone_2: ""
   dont_walk: 
   id: 6
+  user_id: 6
   half_block_id: "336"
   email_list: 
   unit: ""
@@ -97,6 +99,7 @@ neighbor_00040:
   phone_2: ""
   dont_walk: 
   id: 40
+  user_id: 40
   half_block_id: "499"
   email_list: 
   unit: ""
@@ -134,6 +137,7 @@ neighbor_00017:
   phone_2: 
   dont_walk: 
   id: 17
+  user_id: 17
   half_block_id: "171"
   email_list: 
   unit: "511"
@@ -171,6 +175,7 @@ neighbor_00039:
   phone_2: 
   dont_walk: 
   id: 39
+  user_id: 39
   half_block_id: outside project area
   email_list: 
   unit: 
@@ -208,6 +213,7 @@ neighbor_00029:
   phone_2: 
   dont_walk: 
   id: 29
+  user_id: 29
   half_block_id: "200"
   email_list: 
   unit: 
@@ -245,6 +251,7 @@ neighbor_00018:
   phone_2: ""
   dont_walk: 
   id: 18
+  user_id: 18
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -275,6 +282,7 @@ neighbor_00007:
   phone_2: ""
   dont_walk: 
   id: 7
+  user_id: 7
   half_block_id: 
   email_list: 
   unit: ""
@@ -312,6 +320,7 @@ neighbor_00008:
   phone_2: ""
   dont_walk: 
   id: 8
+  user_id: 8
   half_block_id: "482"
   email_list: 
   unit: ""
@@ -349,6 +358,7 @@ neighbor_00041:
   phone_2: ""
   dont_walk: 
   id: 41
+  user_id: 41
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -386,6 +396,7 @@ neighbor_00019:
   phone_2: ""
   dont_walk: 
   id: 19
+  user_id: 19
   half_block_id: "355"
   email_list: 
   unit: ""
@@ -423,6 +434,7 @@ neighbor_00030:
   phone_2: ""
   dont_walk: 
   id: 30
+  user_id: 30
   half_block_id: "369"
   email_list: 
   unit: ""
@@ -460,6 +472,7 @@ neighbor_00009:
   phone_2: 
   dont_walk: 
   id: 9
+  user_id: 9
   half_block_id: "292"
   email_list: 
   unit: 
@@ -497,6 +510,7 @@ neighbor_00031:
   phone_2: ""
   dont_walk: 
   id: 31
+  user_id: 31
   half_block_id: "340"
   email_list: 
   unit: ""
@@ -534,6 +548,7 @@ neighbor_00042:
   phone_2: ""
   dont_walk: 
   id: 42
+  user_id: 42
   half_block_id: "238"
   email_list: 
   unit: ""
@@ -571,6 +586,7 @@ neighbor_00020:
   phone_2: ""
   dont_walk: 
   id: 20
+  user_id: 20
   half_block_id: "310"
   email_list: 
   unit: ""
@@ -608,6 +624,7 @@ neighbor_00043:
   phone_2: ""
   dont_walk: 
   id: 43
+  user_id: 43
   half_block_id: "354"
   email_list: 
   unit: ""
@@ -645,6 +662,7 @@ neighbor_00010:
   phone_2: ""
   dont_walk: 
   id: 10
+  user_id: 10
   half_block_id: "385"
   email_list: 
   unit: ""
@@ -682,6 +700,7 @@ neighbor_00021:
   phone_2: ""
   dont_walk: 
   id: 21
+  user_id: 21
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -719,6 +738,7 @@ neighbor_00032:
   phone_2: ""
   dont_walk: 
   id: 32
+  user_id: 32
   half_block_id: "250"
   email_list: 
   unit: ""
@@ -756,6 +776,7 @@ neighbor_00022:
   phone_2: ""
   dont_walk: 
   id: 22
+  user_id: 22
   half_block_id: "334"
   email_list: 
   unit: ""
@@ -793,6 +814,7 @@ neighbor_00011:
   phone_2: ""
   dont_walk: 
   id: 11
+  user_id: 11
   half_block_id: "482"
   email_list: 
   unit: ""
@@ -844,6 +866,7 @@ neighbor_00044:
   dont_walk: 
   - _safety
   id: 44
+  user_id: 44
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -888,6 +911,7 @@ neighbor_00033:
   phone_2: ""
   dont_walk: 
   id: 33
+  user_id: 33
   half_block_id: "491"
   email_list: 
   unit: ""
@@ -925,6 +949,7 @@ neighbor_00012:
   phone_2: ""
   dont_walk: 
   id: 12
+  user_id: 12
   half_block_id: "244"
   email_list: 
   unit: ""
@@ -962,6 +987,7 @@ neighbor_00001:
   phone_2: ""
   dont_walk: 
   id: 1
+  user_id: 1
   half_block_id: "455"
   email_list: 
   unit: ""
@@ -999,6 +1025,7 @@ neighbor_00023:
   phone_2: ""
   dont_walk: 
   id: 23
+  user_id: 23
   half_block_id: "172"
   email_list: 
   unit: ""
@@ -1036,6 +1063,7 @@ neighbor_00034:
   phone_2: ""
   dont_walk: 
   id: 34
+  user_id: 34
   half_block_id: "506"
   email_list: 
   unit: ""
@@ -1073,6 +1101,7 @@ neighbor_00002:
   phone_2: ""
   dont_walk: 
   id: 2
+  user_id: 2
   half_block_id: "140"
   email_list: 
   unit: ""
@@ -1110,6 +1139,7 @@ neighbor_00035:
   phone_2: ""
   dont_walk: 
   id: 35
+  user_id: 35
   half_block_id: "244"
   email_list: 
   unit: ""
@@ -1147,6 +1177,7 @@ neighbor_00013:
   phone_2: ""
   dont_walk: 
   id: 13
+  user_id: 13
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -1184,6 +1215,7 @@ neighbor_00024:
   phone_2: ""
   dont_walk: 
   id: 24
+  user_id: 24
   half_block_id: "385"
   email_list: 
   unit: ""
@@ -1221,6 +1253,7 @@ neighbor_00036:
   phone_2: ""
   dont_walk: 
   id: 36
+  user_id: 36
   half_block_id: "114"
   email_list: 
   unit: ""
@@ -1258,6 +1291,7 @@ neighbor_00025:
   phone_2: ""
   dont_walk: 
   id: 25
+  user_id: 25
   half_block_id: "296"
   email_list: 
   unit: ""
@@ -1295,6 +1329,7 @@ neighbor_00014:
   phone_2: ""
   dont_walk: 
   id: 14
+  user_id: 14
   half_block_id: "308"
   email_list: 
   unit: ""
@@ -1332,6 +1367,7 @@ neighbor_00003:
   phone_2: ""
   dont_walk: 
   id: 3
+  user_id: 3
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -1369,6 +1405,7 @@ neighbor_00015:
   phone_2: ""
   dont_walk: 
   id: 15
+  user_id: 15
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -1406,6 +1443,7 @@ neighbor_00004:
   phone_2: ""
   dont_walk: 
   id: 4
+  user_id: 4
   half_block_id: outside project area
   email_list: 
   unit: ""
@@ -1443,6 +1481,7 @@ neighbor_00037:
   phone_2: ""
   dont_walk: 
   id: 37
+  user_id: 37
   half_block_id: "114"
   email_list: 
   unit: ""
@@ -1480,6 +1519,7 @@ neighbor_00026:
   phone_2: ""
   dont_walk: 
   id: 26
+  user_id: 26
   half_block_id: "320"
   email_list: 
   unit: ""
@@ -1510,6 +1550,7 @@ neighbor_00016:
   phone_2: 
   dont_walk: 
   id: 16
+  user_id: 16
   half_block_id: 
   email_list: 
   unit: 
@@ -1547,6 +1588,7 @@ neighbor_00005:
   phone_2: ""
   dont_walk: 
   id: 5
+  user_id: 5
   half_block_id: "308"
   email_list: 
   unit: ""
@@ -1584,6 +1626,7 @@ neighbor_00038:
   phone_2: ""
   dont_walk: 
   id: 38
+  user_id: 38
   half_block_id: "149"
   email_list: 
   unit: "104"
@@ -1621,6 +1664,7 @@ neighbor_00027:
   phone_2: ""
   dont_walk: 
   id: 27
+  user_id: 27
   half_block_id: "244"
   email_list: 
   unit: ""

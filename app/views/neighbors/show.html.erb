@@ -3,28 +3,36 @@
 <div id="google_static_map">
 <br />
 
-<p><img border="3" height="450px" width="600px" style="background-color:grey;border-color:#222266" src="http://maps.google.com/maps/api/staticmap?center=<%= @address_string%>&zoom=19&size=600x450&maptype=hybrid&markers=size:small|color:red|label:S|<%= @address_string%>&sensor=false&key=ABQIAAAA8YVdlSd4v1D5lRGa_aoD5xSBHckdsl91USoRt6A_r8ab-2YHURR8BKKjYmVU2ENcRFGpaTvFHY34qA" alt="<%= @address_string%>" /></p>
+<p><img border="3" height="450px" width="600px" style="background-color:grey;border-color:#222266" src="http://maps.google.com/maps/api/staticmap?center=<%= @address_string%>&zoom=19&size=600x450&maptype=hybrid&markers=size:small|color:red|label:S|<%= @address_string%>&sensor=false&key=ABQIAAAA8YVdlSd4v1D5lRGa_aoD5xSBHckdsl91USoRt6A_r8ab-2YHURR8BKKjYmVU2ENcRFGpaTvFHY34qA" alt="<%= @address_string%>" />
+<br />
+This map should show your residence. If it doesn't, please review your address information
+</p>
 
 <br /><br />
+</div>
+
+<%= link_to 'Edit your information', edit_neighbor_path(@neighbor) %>
+
+<br /> <br />
 
 
 <p>
-  <b>First name1:</b>
+  <b>First name:</b>
   <%=h @neighbor.first_name1 %>
 </p>
 
 <p>
-  <b>Last name1:</b>
+  <b>Last name:</b>
   <%=h @neighbor.last_name1 %>
 </p>
 
 <p>
-  <b>First name2:</b>
+  <b>First name (additional resident):</b>
   <%=h @neighbor.first_name2 %>
 </p>
 
 <p>
-  <b>Last name2:</b>
+  <b>Last name:</b>
   <%=h @neighbor.last_name2 %>
 </p>
 
@@ -86,7 +94,5 @@
   <b>Interest expertise:</b>
   <%=h @neighbor.interest_expertise %>
 </p>
-
-
-<%= link_to 'Edit', edit_neighbor_path(@neighbor) %> |
-<%= link_to 'Back', neighbors_path %>
+<br /> 
+<%= link_to 'Edit your information', edit_neighbor_path(@neighbor) %>

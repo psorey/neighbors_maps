@@ -1,3 +1,5 @@
+
+
 img.project_description {
  border:solid #636468;
  border-width:0px;
@@ -7,14 +9,7 @@ img.project_description {
 	left:67px;
 }
 
-img.dog_bark {
-	border:solid #636468;
-	border-width:0px;
-	border-top-width:0px;
-	position:fixed;
-	top:326px;
-	left:264px;
-}
+
 
 img.may18th {
 	border:solid #636468;
@@ -25,18 +20,6 @@ img.may18th {
 	left:464px;
 }
 
-body {
-	margin:0px;
-	padding:0px;
-	border:0px;
-	text-align:left;
-	font-family:"Trebuchet MS", Arial,sans-serif;
-	/*background-color:#9c9;*/
-	background-color: #efe;
-	font-size: 14px;
-  color: #343;
-  height:600px;
-}
 
 #banner {
 	width:100%;
@@ -51,13 +34,16 @@ body {
 	font-family:"Trebuchet MS", Arial, Sans-Serif;
 	font-size:36px;
   color: #467;
+	color: #fff;
   text-align: left;
 	margin: 0px;
 }
 
+
 #banner img {
   margin-left:20px;
 }
+
 
 #columns {
 	margin-top: 0px;
@@ -65,56 +51,122 @@ body {
 	padding-top: 0px;
   background: #595;
 	height: 800px;
-	
 }
 
+
+/*
 #main {
-  margin-left: 120px;
+  margin-left: 145px;
   padding-top: 0px;
   padding-left: 00px;
 	padding-right: 40px;
-	height: 900px;
-	/*background-color:#9c9;*/
+	height: 1500px;
 	background-color: #efe;
 }
+*/
 
-.main-content { width: 600px; }
-.main-content p, .main-content ul {
+.main-content
+{
+	width: 600px;
+}
+
+.main-content p, .main-content ul
+{
   margin: 5px;
 }
 
+
+/*
 #side {
   float: left;
   padding-top: 1em;
   padding-left: 0px;
   padding-bottom:0px;
   width:120px;
-  height: 900px;
+  height: 100%;
   background: #595;
 	margin-top: 0px;
 }
+*/
+
+body {
+	margin:0px;
+	padding:0px;
+	border:0px;
+	text-align:left;
+	font-family:"Trebuchet MS", Arial,sans-serif;
+  width:100%;
+	background-color: #efe;
+	font-size: 14px;
+  color: #343;
+  /*height:600px;*/
+	border-left: 3px solid;
+	border-top:2px solid;
+	border-color: #153;
+}
+
 
 #side_menu {
 	padding-left:10px;
 	padding-top:20px;
 	width:120px;
 	height:100%;
+
+	
 }
 
-#side a {
+.sidebar a {
   font-size: small;
 }
 
-#side a:link {color:#bfb; text-decoration:none; font-weight:bold;}    /* unvisited link  */
-#side a:visited {color:#bfb; text-decoration:none; font-weight:bold;} /* visited link    */
-#side a:hover {color:#fff; text-decoration:none; font-weight:bold;}   /* mouse over link */
-#side a:active {color:#fff; text-decoration:none; font-weight:bold;}  /* selected link   */
+.sidebar a:link {color:#bfb; text-decoration:none; font-weight:bold;}    /* unvisited link  */
+.sidebar a:visited {color:#bfb; text-decoration:none; font-weight:bold;} /* visited link    */
+.sidebar a:hover {color:#fff; text-decoration:none; font-weight:bold;}   /* mouse over link */
+.sidebar a:active {color:#fff; text-decoration:none; font-weight:bold;}  /* selected link   */
 
+
+#container {
+	width: 100%;
+	background: #595;
+	background: #559055;
+} 
+.content {
+
+	border-left: 2px solid;
+	border-color: #174;
+/*float: right;*/
+
+  margin-left: 145px;
+  padding-top: 0px;
+  padding-left: 35px;
+	padding-right: 120px;
+	height: 100%;
+	/*background-color:#9c9;*/
+	background-color: #efe;
+}
+
+
+.sidebar {
+
+	float: left;
+	height: 100%;
+	padding: 5px;
+	background: #585;
+	background: #559055;
+
+}
+
+
+#footer {
+	clear:both;
+	background:#363;
+}
 
 
 h1 {
  color: #6f9f9e;
- background: rgb(192,225,178);
+ color: #cc3333;
+ /*background: rgb(192,225,178);*/
  font-weight: normal;
  font-size: 32px;
  font-family: Arial,sans-serif;
@@ -126,26 +178,18 @@ h1 {
 }
 
 h2 {
- color: #696;
- background: #cde;
+
+ color: #166;
  margin: 1px;
  font-family: Arial,sans-serif;
- font-weight: normal;
- font-size: 24px;
- border-style: solid;
- border-width: 1px;
- border-color: #abc;
- padding: 2px;
+ font-weight: lighter;
+ font-size: 30px;
 }
 
 h3 {
  color: #696;
  font-family: Arial,sans-serif;
- font-size: 16px;
- border-style: solid;
- border-width: 1px;
- border-color: #bbccdd;
- background: #dae0fa;
+ font-size: 18px;
 }
 
 h4 {
@@ -155,6 +199,7 @@ h4 {
  background: #cdf;
  font-size: 14px;
 }
+
 
 input {
 	font-family:Arial,sans-serif;
@@ -198,11 +243,12 @@ input {
 }
 
 form.button-to {
-  background-color: #ddf; 	
+ font-size: 16px;
 }
 
 input.btn { 
-  background-color: #ddf; 
+  font-size: 16px;
+ 
 } 
 
 /* END:mainlayout */
