@@ -1,0 +1,225 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+		
+		<%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>  
+  
+	  <style type="text/css">
+
+    #map {
+    width: 1000px;
+    height: 525px;
+    border: 1px solid black;
+    padding: 0px;
+    margin:0px auto;
+    margin-top:30px;
+    position:relative;
+    }
+    </style>
+
+
+    <script type="text/javascript">
+        var lat = 1264752.298906;
+        var lon= 256913.582215;
+        var zoom = 3;
+        var map, layer;
+
+        function init(){
+            map = new OpenLayers.Map( 'map' );
+        
+            aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
+                   format: 'png24',
+                   transparent: 'false'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:true,
+                   singleTile:true,
+                   }
+            );
+
+            no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
+                   format: 'png',
+                   transparent: 'false'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:true,
+                   singleTile:true,
+                   }
+            );
+
+            lt_contour_layer = new OpenLayers.Layer.WMS( "2' Contours (light)",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'light_contour',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:.6
+                   }
+            );
+                        
+
+            dk_contour_layer = new OpenLayers.Layer.WMS( "2' Contours (dark)",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'dark_contour',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:.7
+                   }
+            );
+            
+
+           poles_layer = new OpenLayers.Layer.WMS( "City Light Poles",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'CityLightPoles',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false
+                   }
+            );
+            
+           busstop_layer = new OpenLayers.Layer.WMS( "Bus Stops",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'Busstop',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false
+                   }
+            );
+          
+           blockid_layer = new OpenLayers.Layer.WMS( "Half-Block ID",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'half_block_id',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:0.5
+                   }
+            );
+        
+            busroutes_layer = new OpenLayers.Layer.WMS( "Bus Routes",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'BusRoutes',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:0.3
+                   }
+            );
+          
+           neighbors_layer = new OpenLayers.Layer.WMS( "Neighbors",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'Neighbors',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false
+                 }
+            );
+                        
+                
+            map.addLayer(no_aerial_layer);
+            map.addLayer(aerial_layer);
+            map.addLayer(blockid_layer);
+            map.addLayer(lt_contour_layer);
+            map.addLayer(dk_contour_layer);
+            map.addLayer(poles_layer);
+            map.addLayer(busstop_layer);
+            map.addLayer(busroutes_layer);
+            map.addLayer(neighbors_layer);
+
+            map.zoomToMaxExtent();
+            map.addControl(new OpenLayers.Control.Scale('scale'));
+            map.addControl(new OpenLayers.Control.Permalink('permalink'));
+            map.addControl(new OpenLayers.Control.MousePosition());
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+
+        }
+    </script>
+  </head>
+
+<body onload="init()">
+    <div id="map">
+    </div>
+<div id="controls">
+<span id="scale" style="float:left"></span>
+<a href="#" id="permalink" style="float:right">Link</a>
+</div>
+</body>
+</html>

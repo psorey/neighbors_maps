@@ -1,4 +1,8 @@
---- 
+---
+guest_neighbor:
+  id: 66
+  user_id: 66
+  
 neighbor_00028: 
   block_captain: "no"
   address: 600 4th Ave
@@ -24,7 +28,7 @@ neighbor_00028:
   dont_walk: 
   id: 28
   user_id: 28
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: 
   resident: neither
@@ -176,7 +180,7 @@ neighbor_00039:
   dont_walk: 
   id: 39
   user_id: 39
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: 
   resident: resident
@@ -252,7 +256,7 @@ neighbor_00018:
   dont_walk: 
   id: 18
   user_id: 18
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident
@@ -359,7 +363,7 @@ neighbor_00041:
   dont_walk: 
   id: 41
   user_id: 41
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident
@@ -701,7 +705,7 @@ neighbor_00021:
   dont_walk: 
   id: 21
   user_id: 21
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: neither
@@ -867,7 +871,7 @@ neighbor_00044:
   - _safety
   id: 44
   user_id: 44
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: neither
@@ -1178,7 +1182,7 @@ neighbor_00013:
   dont_walk: 
   id: 13
   user_id: 13
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident
@@ -1368,7 +1372,7 @@ neighbor_00003:
   dont_walk: 
   id: 3
   user_id: 3
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident
@@ -1406,7 +1410,7 @@ neighbor_00015:
   dont_walk: 
   id: 15
   user_id: 15
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident
@@ -1444,7 +1448,7 @@ neighbor_00004:
   dont_walk: 
   id: 4
   user_id: 4
-  half_block_id: outside project area
+  half_block_id: not in area
   email_list: 
   unit: ""
   resident: resident

@@ -1,0 +1,184 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+  <head>
+		
+    <title>Neighbors & Block Facilitators</title>
+
+    <!-- <script src="http://www.openlayers.org/api/OpenLayers.js"></script> -->
+    <!-- <script src="/home/paul/Projects/greenwood.streetscapes.org/public/javascripts/OpenLayers-2.8/OpenLayers.js"></script> -->
+			<!-- <script src="./javascript/OpenLayers-2.8/OpenLayers.js"></script> -->
+	  
+		<%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+    
+		<!--  !!! -->
+		
+    <link rel="stylesheet" href="../theme/default/style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <style type="text/css">
+        ul, li {
+            padding-left: 0px;
+            margin-left: 0px;
+            list-style: none;
+        }
+        #info {
+            
+            top: 6em;
+            left: 550px;
+        }
+        #info table td {
+            border:1px solid #ddd;
+            border-collapse: collapse;http://seattlestranger.com/
+            margin: 0;
+            padding: 0;
+            font-size: 90%;
+            padding: .2em .1em;
+            background:#fff;
+	       }
+         
+  #map {
+    width: 700px;
+    height: 480px;
+    border: 1px solid black;
+    padding: 0px;
+    margin:0px auto;
+    margin-top:30px;
+    
+    }
+    
+	#info table th{
+	    padding:.2em .2em;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: #eee;
+	}
+	
+	tr.odd td {
+            background:#eee;
+	}
+
+	table.featureInfo caption {
+            text-align:left;
+            font-size:100%;
+            font-weight:bold;
+            padding:.2em .2em;
+	}
+
+
+  </style>
+  <script defer="defer" type="text/javascript">
+    //OpenLayers.ProxyHost = "proxy.cgi?url=";
+    
+    var map, infocontrols, water, highlightlayer;
+    
+    function load() {
+ 
+        map = new OpenLayers.Map('map', {
+            maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)
+        });
+				
+        var no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
+                   format: 'png',
+                   transparent: 'false'},
+                  
+                 { 
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:true,
+                   singleTile:true,
+                   }
+            );
+
+        var blockid_layer = new OpenLayers.Layer.WMS( "Half-Block ID",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'half_block_id',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { 
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:0.5
+                   }
+            );
+        
+           var neighbors_layer = new OpenLayers.Layer.WMS( "Neighbors",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'Neighbors',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { 
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:true
+                 }
+            );
+
+        highlightLayer = new OpenLayers.Layer.Vector("Highlighted Features", {
+            displayInLayerSwitcher: false, 
+            isBaseLayer: false 
+            }
+        );
+
+        map.addLayers([no_aerial_layer, neighbors_layer, blockid_layer, highlightLayer]);
+        
+        info = new OpenLayers.Control.WMSGetFeatureInfo({
+            url:  "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+            title: 'Identify features by clicking',
+            //queryVisible: true,
+            maxFeatures: 1,
+            layers: [neighbors_layer],
+            eventListeners: {
+                getfeatureinfo: function(event) {
+                    map.addPopup(new OpenLayers.Popup.FramedCloud(
+                        "chicken", 
+                        map.getLonLatFromPixel(event.xy),
+                        null,
+                        event.text,
+                        null,
+                        true
+                    ));
+                }
+            }
+        });
+				
+        map.addControl(info);
+        info.activate();
+
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+        map.zoomToMaxExtent();
+    }
+
+  </script>
+  </head>
+
+  <body onload="load()">
+      <h2 id="title">Neighbors & Block Facilitators</h2>
+
+      <div id="tags"></div>
+
+      <p id="shortdesc">
+        Click on dots for name and contact info
+      </p>
+
+      <div id="map" class="smallmap"></div>
+
+    <div id="docs"></div>
+  </body>
+</html>

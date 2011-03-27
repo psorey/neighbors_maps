@@ -1,0 +1,2 @@
+class NeighborsMapController < ApplicationController
+end

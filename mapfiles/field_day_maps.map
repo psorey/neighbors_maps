@@ -1,0 +1,780 @@
+# Map file created from QGIS project file C:/3000 ArtProjects/042 Greenwood/3_BaseMaps/contour.buildable.qgs
+# Edit this file to customize for your map interface
+# (Created with PyQgis MapServer Export plugin)
+
+MAP
+  NAME "Physical Characteristics"
+  SIZE 900 900
+  UNITS meters
+  SHAPEPATH "data"
+  EXTENT 1259300 254000 1269500 262500
+  FONTSET './fonts/fonts.txt'
+  SYMBOLSET './symbols/symbols.txt'
+  PROJECTION
+    "init=epsg:4326"
+  END
+
+  TEMPLATEPATTERN 'field_day_maps.*'
+  # Background color for the map canvas -- change as desired
+  IMAGECOLOR 255 255 255
+  IMAGEQUALITY 25
+  IMAGETYPE png
+
+  OUTPUTFORMAT
+    NAME "agg"
+    MIMETYPE "image/png; mode=24bit"
+    DRIVER "AGG/PNG"
+    EXTENSION "png"
+    IMAGEMODE "RGB"
+    TRANSPARENT FALSE
+    FORMATOPTION "QUALITY=95"
+  END
+
+
+  # Web interface definition. Only the template parameter
+  # is required to display a map. See MapServer documentation
+  WEB
+    IMAGEPATH '/home/paul/mapserver/tmp/'
+    IMAGEURL '/tmp/'
+
+    # WMS server settings
+    METADATA
+      'wms_title'           'wms_title_field_day_maps'
+      "ows_onlineresource"	"http://streetscapes.org/cgi-bin/mapserv.exe?map=C:/3000 ArtProjects/042 Greenwood/3_BaseMaps/translate.map"
+      'wms_onlineresource'  'http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map&'
+      'ows_srs'             'epsg:4326'
+      'wms_srs'              "epsg:4326"
+      "wms_feature_info_mime_type"    "text/html"
+      'OWS_INCLUDE_ITEMS' "all"
+
+    END
+
+    #Scale range at which web interface will operate
+    # Template and header/footer settings
+    # Only the template parameter is required to display a map. See MapServer documentation
+    TEMPLATE 'field_day_maps.html'
+  END
+
+
+  LAYER
+    NAME 'ortho2'
+    TYPE RASTER
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'ortho2clip.tif'
+    METADATA
+      'wms_title' 'ortho2'
+      'wms_srs'   "epsg:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+  END
+
+  LAYER
+    NAME 'ortho1'
+    TYPE RASTER
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'ortho1clip.tif'
+    METADATA
+      'wms_title' 'ortho1'
+      'wms_srs'   "epsg:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+  END
+  
+  
+  LAYER
+    NAME 'zoning2'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'zoning2.shp|layerid=0'
+    METADATA
+        "wms_title" "zoning2"
+        'wms_srs'   "epsg:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+
+    END
+    STATUS on
+    TRANSPARENCY 20
+    PROJECTION
+    "init=epsg:4326"
+    END
+    CLASSITEM 'ZONELUT'
+    CLASS
+      NAME 'default'
+      EXPRESSION '' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 153 185 218
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = C1' 
+      EXPRESSION 'C1' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 0 59
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = C2' 
+      EXPRESSION 'C2' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 250 5 30
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L1' 
+      EXPRESSION 'L1' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 229 78
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L1/RC' 
+      EXPRESSION 'L1/RC' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 85 0
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L2' 
+      EXPRESSION 'L2' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 246 103 56
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L2/RC' 
+      EXPRESSION 'L2/RC' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 85 0
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L3' 
+      EXPRESSION 'L3' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 85 0
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = L3/RC' 
+      EXPRESSION 'L3/RC' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 85 0
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = LDT' 
+      EXPRESSION 'LDT' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 2 181 26
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = MIO' 
+      EXPRESSION 'MIO' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 159 221 126
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = MR' 
+      EXPRESSION 'MR' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 191 127 97
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = NC1' 
+      EXPRESSION 'NC1' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 0 255
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = NC2' 
+      EXPRESSION 'NC2' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 218 8 255
+       END
+    END
+    CLASS
+      NAME 'ZONELUT = NC3' 
+      EXPRESSION 'NC3' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 96 34 190
+       END
+    END
+
+  END
+
+
+  LAYER
+    NAME 'park'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'park.shp|layerid=0'
+    METADATA
+      'ows_title' 'park'
+      'wms_title' 'park'
+      'wms_srs'    "EPSG:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 18
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'park' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0 
+         OUTLINECOLOR 0 0 0
+         COLOR  0 255 0 
+       END
+    END
+  END
+
+
+  LAYER
+    NAME 'Parcel_Clip'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'Parcel_Clip.shp|layerid=0'
+    METADATA
+      'ows_title' 'Parcel_Clip'
+      'wms_title' 'Parcel_Clip'
+      'wms_srs'    "EPSG:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 36
+    PROJECTION
+    "init=epsg:4326"
+    END
+
+    CLASS
+       NAME 'Parcel_Clip' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0
+
+         COLOR 200 200 200
+       END
+    END
+  END
+
+
+
+
+  LAYER
+    NAME 'Parcel_Clip_Outline'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'Parcel_Clip.shp|layerid=0'
+    METADATA
+      'ows_title' 'Parcel_Clip_Outline'
+      'wms_title' 'Parcel_Clip'
+      'wms_srs'    "EPSG:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+   TRANSPARENCY 50
+    PROJECTION
+    "init=epsg:4326"
+    END
+
+    
+    CLASS
+      NAME 'Parcel_Clip_Outline_Thick' 
+      MAXSCALEDENOM 500000000
+
+      STYLE
+         #SYMBOL "dash-long"
+         SYMBOL 0
+         SIZE 7.0
+         OUTLINECOLOR 0 0 0
+         OPACITY 10
+         WIDTH 3
+       END
+    END
+
+    CLASS
+       NAME 'Parcel_Clip_Outline_Thin' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0
+         OUTLINECOLOR 0 0 0
+         OPACITY 20
+         WIDTH 1
+       END
+    END
+
+  END
+  
+  
+  
+  LAYER
+    NAME 'st_address_Clip'
+    TYPE LINE
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'st_address_Clip.shp|layerid=0'
+    METADATA
+      'ows_title' 'st_address_Clip'
+      'wms_title' 'st_address_Clip'
+      'wms_srs'    "EPSG:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+
+    END
+    STATUS on
+    TRANSPARENCY 40
+    PROJECTION
+      "init=epsg:4326"
+    END
+    
+    LABELITEM 'ST_NAME'
+    
+    CLASS
+       NAME 'st_address_Clip' 
+       
+       
+     LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 8
+      COLOR 100 100 100
+      ANGLE AUTO
+      BUFFER 1
+      POSITION cc
+      FORCE false
+      ANTIALIAS false
+      PARTIALS false
+      MINDISTANCE 100000000
+     END 
+    END
+  END
+
+
+  LAYER
+    NAME 'light_contour'
+    TYPE LINE
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    DATA 'contour.shp|layerid=0'
+    METADATA
+      'ows_title' 'light_contour'
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    #TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'light_contour' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0 
+         WIDTH 1
+         COLOR 254 254 254
+       END
+    END
+  END
+
+
+
+
+  LAYER
+    NAME 'dark_contour'
+    TYPE LINE
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    DATA 'contour.shp|layerid=0'
+    METADATA
+      'ows_title' 'dark_contour'
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'dark_contour' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0 
+         WIDTH 1
+         COLOR 100 100 100
+       END
+    END
+  END
+
+
+  LAYER
+    NAME 'CityLightPoles'
+    TYPE POINT
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1255781.009996 252154.768069 1276181.547177 263745.982377
+    DATA 'CityLightPoles.shp'
+    METADATA
+      'ows_title' 'CityLightPoles'
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'CityLightPoles' 
+       STYLE
+         SYMBOL "circle" 
+         SIZE 4.0 
+         OUTLINECOLOR 0 0 0
+         COLOR 177 214 186
+       END
+    END
+  END
+
+  LAYER
+    NAME 'Busstop'
+    TYPE POINT
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1255781.009996 252154.768069 1276181.547177 263745.982377
+    DATA 'Busstop.shp|layerid=0'
+    METADATA
+      'ows_title' 'Busstop'
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'Busstop' 
+       STYLE
+         SYMBOL "triangle" 
+         SIZE 8 
+         OUTLINECOLOR 0 0 0
+         COLOR 0 0 0
+       END
+    END
+  END
+  
+ 
+  LAYER
+    NAME 'BusRoutes'
+    TYPE LINE
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    DATA 'BusRoutes.shp|layerid=0'
+    METADATA
+      'ows_title' 'BusRoutes'
+      'OWS_INCLUDE_ITEMS' "all"
+      
+    END
+    STATUS ON
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'BusRoutes' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0
+         WIDTH 3
+         OPACITY 25
+         OUTLINECOLOR 255 100 0
+         COLOR 255 0 0
+       END
+    END
+  END 
+
+
+ 
+  LAYER
+    NAME 'Boundary'
+    TYPE LINE
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    DATA 'Boundary.shp'
+    METADATA
+      'ows_title' 'Boundary'
+
+      
+    END
+    STATUS default
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+       NAME 'Boundary' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0
+         WIDTH 3
+         OPACITY 25
+         OUTLINECOLOR 255 100 0
+         COLOR 255 0 0
+       END
+    END
+  END 
+
+    
+
+
+    
+  LAYER
+    NAME 'Neighbors'
+    TYPE POINT
+    DUMP true
+    TEMPLATE    'neighbor_query_response_template.html'
+    HEADER      'header.html'
+    FOOTER      'footer.html'
+
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432"
+    DATA "location from neighbors"
+    METADATA
+      'ows_title' 'neighbors_layer'
+      'OWS_INCLUDE_ITEMS' "all"
+
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+      'proj=longlat'
+      'ellps=WGS84'
+      'datum=WGS84'
+      'no_defs'
+    END
+   
+    LABELITEM 'last_name1'
+    CLASS
+       NAME 'neighbors' 
+       STYLE
+         SYMBOL "circle"
+         SIZE 15.
+         OUTLINECOLOR 255 100 0
+         COLOR 255 0 0
+       END
+      LABEL
+        FONT arial-bold
+        TYPE truetype
+        SIZE 11
+        POSITION CC
+        COLOR 0 0 0
+        FORCE true
+      END
+    END
+  END     
+   
+
+  LAYER
+    NAME 'half_block_id'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432"
+    DATA "the_geom from half_blocks"
+    METADATA
+      'ows_title'  'half_block_id'
+      'wms_title'  'half_block_id'
+      'wms_srs'    "EPSG:4326"    
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    
+   LABELITEM 'half_block_id'
+    
+    CLASS
+       NAME 'half_block_id' 
+       STYLE
+         SYMBOL 0 
+         SIZE 10.0 
+
+       END
+     LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 11
+      COLOR 50 50 255
+      ANGLE 0
+      BUFFER 10
+      POSITION cc
+      FORCE true
+      ANTIALIAS true
+      PARTIALS false
+      MINDISTANCE 1000000
+     END 
+    END
+  END
+
+  LAYER
+    NAME 'walk_survey'
+    TYPE LINE
+    DUMP true
+    TEMPLATE    'walk_survey_query_response_template.html'
+    HEADER      'header.html'
+    FOOTER      'footer.html'
+
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432"
+    DATA "routes from walk_surveys "
+
+    FILTER "%filter_string%"
+
+    METADATA
+      'ows_title'  'walk_survey'
+      'wms_title'  'walk_survey'
+      'wms_srs'    "EPSG:4326"    
+      'OWS_INCLUDE_ITEMS' "all"
+      'default_filter_string' '1=1'
+    END
+    STATUS on
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    
+   LABELITEM 'route_frequencies'
+    
+    CLASS
+       NAME 'route_frequencies' 
+       STYLE
+         SYMBOL 0 
+         SIZE 7.0
+         WIDTH 8
+         OPACITY 15
+
+         OUTLINECOLOR 255 0 0
+         COLOR 255 0 0
+       END
+     LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 15
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 5
+      REPEATDISTANCE 500
+      ANGLE 0
+      BUFFER 10
+      POSITION cc
+      FORCE true
+      ANTIALIAS true
+      PARTIALS false
+      MINDISTANCE 1000000
+     END 
+    END
+  END
+
+
+    
+    
+END

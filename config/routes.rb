@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :neighbor_surveys
 
   map.resources :walk_surveys
+  map.resources :overall_map
 
   map.resources :administrators
 
@@ -32,8 +33,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :resources
   map.resources :welcome
   map.resources :under_construction
-  
-    
+
+
+  map.resources :neighbors, :collection => {:index => :get}
   
   
 

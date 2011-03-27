@@ -21,28 +21,6 @@ img.may18th {
 }
 
 
-#banner {
-	width:100%;
-  background: #bdb;
-  padding-top: 3px;
-	padding-left: 150px;
-  padding-bottom: 7px;
-	padding-right: 0px;
-  border-bottom: 2px solid;
-	border-color: #575;
-  /*font-variant: small-caps;*/
-	font-family:"Trebuchet MS", Arial, Sans-Serif;
-	font-size:36px;
-  color: #467;
-	color: #fff;
-  text-align: left;
-	margin: 0px;
-}
-
-
-#banner img {
-  margin-left:20px;
-}
 
 
 #columns {
@@ -53,17 +31,6 @@ img.may18th {
 	height: 800px;
 }
 
-
-/*
-#main {
-  margin-left: 145px;
-  padding-top: 0px;
-  padding-left: 00px;
-	padding-right: 40px;
-	height: 1500px;
-	background-color: #efe;
-}
-*/
 
 .main-content
 {
@@ -76,19 +43,6 @@ img.may18th {
 }
 
 
-/*
-#side {
-  float: left;
-  padding-top: 1em;
-  padding-left: 0px;
-  padding-bottom:0px;
-  width:120px;
-  height: 100%;
-  background: #595;
-	margin-top: 0px;
-}
-*/
-
 body {
 	margin:0px;
 	padding:0px;
@@ -99,11 +53,34 @@ body {
 	background-color: #efe;
 	font-size: 14px;
   color: #343;
-  /*height:600px;*/
 	border-left: 3px solid;
 	border-top:2px solid;
 	border-color: #153;
 }
+
+
+#banner {
+	width:100%;
+  background: #bdb;
+	background: #8c8;
+	background-repeat: no-repeat;
+	background-image:url('got_sidewalks_only.jpg');
+  padding-top: 5px;
+	padding-left: 170px;
+  padding-bottom: 8px;
+	padding-right: 0px;
+
+  border-bottom: 2px solid;
+	border-color: #575;
+  /*font-variant: small-caps;*/
+	font-family:"Trebuchet MS", Arial, Sans-Serif;
+	font-size:36px;
+  color: #467;
+	color: #fff;
+  text-align: left;
+	margin: 0px;
+}
+
 
 
 #side_menu {
@@ -111,43 +88,29 @@ body {
 	padding-top:20px;
 	width:120px;
 	height:100%;
-
-	
 }
-
-.sidebar a {
-  font-size: small;
-}
-
-.sidebar a:link {color:#bfb; text-decoration:none; font-weight:bold;}    /* unvisited link  */
-.sidebar a:visited {color:#bfb; text-decoration:none; font-weight:bold;} /* visited link    */
-.sidebar a:hover {color:#fff; text-decoration:none; font-weight:bold;}   /* mouse over link */
-.sidebar a:active {color:#fff; text-decoration:none; font-weight:bold;}  /* selected link   */
 
 
 #container {
 	width: 100%;
 	background: #595;
 	background: #559055;
-} 
-.content {
+}
 
+
+.content {
 	border-left: 2px solid;
 	border-color: #174;
-/*float: right;*/
-
   margin-left: 145px;
-  padding-top: 0px;
+  padding-top: 30px;
   padding-left: 35px;
 	padding-right: 120px;
 	height: 100%;
-	/*background-color:#9c9;*/
 	background-color: #efe;
 }
 
 
 .sidebar {
-
 	float: left;
 	height: 100%;
 	padding: 5px;
@@ -157,28 +120,34 @@ body {
 }
 
 
+.sidebar a {
+  font-size: small;
+}
+
+.sidebar a:link {color:#bbffcc; text-decoration:none; font-weight:bold;}    /* unvisited link  */
+.sidebar a:visited {color:#bbffcc; text-decoration:none; font-weight:bold;} /* visited link    */
+.sidebar a:hover {color:#ff6; text-decoration:none; font-weight:bold;}   /* mouse over link */
+.sidebar a:active {color:#ff6; text-decoration:none; font-weight:bold;}  /* selected link   */
+
+
+
 #footer {
 	clear:both;
 	background:#363;
 }
 
 
+
 h1 {
  color: #6f9f9e;
- color: #cc3333;
- /*background: rgb(192,225,178);*/
  font-weight: normal;
  font-size: 32px;
  font-family: Arial,sans-serif;
  margin: 1px;
- border-style: solid;
- border-width: 1px;
- border-color: rgb(152,185,138);
  padding: 4px;
 }
 
 h2 {
-
  color: #166;
  margin: 1px;
  font-family: Arial,sans-serif;
@@ -199,6 +168,7 @@ h4 {
  background: #cdf;
  font-size: 14px;
 }
+
 
 
 input {

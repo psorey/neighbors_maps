@@ -20,7 +20,12 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       #redirect_back_or_default('/')
-      redirect_to "/neighbors/show/#{user.neighbor_id}"
+      if user.has_role? "admin"
+        redirect_to "/administrators"
+      else
+        redirect_to "/neighbors/show/#{user.neighbor_id}"
+      end
+      
       flash[:notice] = "Logged in successfully"
     else
       note_failed_signin

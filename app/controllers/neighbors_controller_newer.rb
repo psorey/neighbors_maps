@@ -1,6 +1,6 @@
 require 'spatial_adapter/postgresql'
 require 'rubygems'
-#require 'curb'
+require 'curl'
 #require 'json'
 require 'proj4'
 #require 'ya2yaml'
@@ -30,19 +30,24 @@ class NeighborsController < ApplicationController
 		         # 
 		         
 		# params :search_column    
-		# params :match_list
+		# params :matches_list
 		# params :order_by
-
+		
 		@neighbors = nil
-		if params[:search_column]
+		if params
+			search_column  = params[:search_column]
+			match_list =     params[:matches_list]
+			order_by   =     params[:order_by]
 			if params[:order_by]
-			  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
+        @neighbors = Neighbor.find(:all, :conditions => { search_column => match_list}, :order_by)				
 			else
-			  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
+			  @neighbors = Neighbor.find(:all, :conditions => { search_column => match_list})
+			# @neighbors = Neighbor.where(search_column => matches_list)
 			end
 		else # no params 
 			@neighbors = Neighbor.all
 		end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +73,7 @@ class NeighborsController < ApplicationController
 
 
   def new
+    
     @neighbor = Neighbor.new
 
     @neighbor.volunteer = []
@@ -90,6 +96,7 @@ class NeighborsController < ApplicationController
 
 
   def edit
+		
     @neighbor = Neighbor.find(params[:id])
     
     if @neighbor.improvements == nil

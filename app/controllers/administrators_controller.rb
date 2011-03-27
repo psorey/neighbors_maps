@@ -1,6 +1,9 @@
 class AdministratorsController < ApplicationController
   # GET /administrators
   # GET /administrators.xml
+  
+  require_role "admin"  
+  
   def index
     @administrators = Administrator.all
 

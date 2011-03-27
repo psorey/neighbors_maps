@@ -17,15 +17,7 @@
             }
         </style>
         <style type="text/css">
-            body {
-                width:100%;
-                height:100%;
-                border: 0px;
-                margin-left: 100px;
-                padding: 0px;
-                font:sans-serif;
-                font-size:small;
-            }
+
             #map {
                 width: 900px;
                 height: 480px;
@@ -307,45 +299,36 @@
 
         <div id="tags"></div>
 
-        <p id="shortdesc">
-            walk_surveys/new.html.erb.
-        </p>
         <div id="map" class="smallmap"></div>
         <ul id="controlToggle">
             <li>
                 <input type="radio" name="type" value="none" id="noneToggle"
                        onclick="toggleControl(this);" checked="checked" />
-                <label for="noneToggle">navigate</label>
+                <label for="noneToggle">navigate: pan and zoom</label>
             </li>
             <li>
                 <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
-                <label for="lineToggle">draw line</label>
+                <label for="lineToggle">draw line, then double-click to end the line</label>
             </li>
             <li>
                 <input type="radio" name="type" value="modify" id="modifyToggle"
                        onclick="toggleControl(this);" onchange="update();" />
-                <label for="modifyToggle">modify feature</label>
+                <label for="modifyToggle">modify a line</label>
             </li>
            <li>
                 <input type="radio" name="type" value="select" id="selectToggle"
                        onclick="toggleControl(this);" onchange="update();" />
-                <label for="selectToggle">delete feature</label>
+                <label for="selectToggle">delete a line</label>
             </li>
 
         </ul>
 
         <div id="docs">
 
-            <p>With the line drawing control active, click on the map to add the points that make up your line.
-            Double-click to finish drawing.</p>
 
         </div>
-
-
-
   <p>
     <%= f.submit 'Submit' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', walk_surveys_path %>

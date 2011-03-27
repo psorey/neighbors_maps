@@ -1,0 +1,2 @@
+class OverallMapController < ApplicationController
+end

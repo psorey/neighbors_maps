@@ -2,10 +2,10 @@
 <h2>Greenwood Maps</h2>
 <br />
        
-<a
-href="http://mapserver.<%=APP_CONFIG['BASE_URL']%>/openlayers.html"> Greenwood Map </a>
-<br /><br />
+<%= link_to 'Map of Greenwood with City GIS Layers', :controller => 'overall_map', :action => 'index' %>
 
+<br /><br />
+<%= link_to 'Locations of Interested Neighbors and Block Facilitators', :controller => 'neighbors_map', :action => 'index' %>
 <a
 href="http://mapserver.<%=APP_CONFIG['BASE_URL']%>/openlayers.neighbor_info_popup.html"> Neighbors & Block Facilitators Map </a>
 <br /><br />

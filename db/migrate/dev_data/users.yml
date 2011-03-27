@@ -11,9 +11,9 @@ me:
   roles:                     admin
   neighbor_id:               44
       
-test_neighbor:
+guest_neighbor:
   id:                        66
-  login:                     test
+  login:                     guest
   email:                     test@test.com
   salt:                      44d234b8ac26b0b80e302c22fcf3ebfce1b3f9cd
   crypted_password:          14d9a43831d02b330565dfacc3f92959110a4f94
@@ -21,6 +21,7 @@ test_neighbor:
   activation_code:           bd43d9e588d46709bd4a59171a32d4072f72d16c
   activated_at:              2011-03-21 00:13:48.138387       
   roles:                     neighbor
+  neighbor_id:               66
 
 
 neighbor_00028:
