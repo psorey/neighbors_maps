@@ -1,6 +1,6 @@
 require 'spatial_adapter/postgresql'
 require 'rubygems'
-#require 'curb'
+require 'curl'
 #require 'json'
 require 'proj4'
 #require 'ya2yaml'
