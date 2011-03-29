@@ -1,6 +1,8 @@
-/config/database.yml
-/config/environment.rb
-/config/initializers/site_keys.rb
-/db/schema.rb
-/log/*.log
+#.gitignore for 'green2'
 
+/config/*
+*.kpf
+Gemfile
+Gemfile.lock
+# /db/schema.rb
+/log/*.log
