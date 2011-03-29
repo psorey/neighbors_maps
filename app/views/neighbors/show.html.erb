@@ -1,64 +1,45 @@
-	
+
+
+<%= link_to 'Edit your information', edit_neighbor_path(@neighbor) %>
+
+<br /> <br />
+
+<p>
+  <b>Address:</b><br />
+  <%=h @neighbor.address %>
+</p>
+
+
+
+<p>
+  <b>Resident 1:</b><br />
+  <%=h @neighbor.first_name1 %> <%=h@neighbor.last_name1 %>
+  <br />
+  email: <%=h@neighbor.email_1 %><br />
+  phone: <%=h@neighbor.phone_1 %>
+</p>
+
+<p>
+  <b>Resident 2:</b><br />
+  <%=h @neighbor.first_name2 %> <%=h@neighbor.last_name2 %>
+  <br />
+  email: <%=h@neighbor.email_2 %><br />
+  phone: <%=h@neighbor.phone_2 %>
+</p>
+
 
 <div id="google_static_map">
 <br />
-
+This aerial photo should show your residence. If it doesn't, please review your address information
 <p><img border="3" height="450px" width="600px" style="background-color:grey;border-color:#222266" src="http://maps.google.com/maps/api/staticmap?center=<%= @address_string%>&zoom=19&size=600x450&maptype=hybrid&markers=size:small|color:red|label:S|<%= @address_string%>&sensor=false&key=ABQIAAAA8YVdlSd4v1D5lRGa_aoD5xSBHckdsl91USoRt6A_r8ab-2YHURR8BKKjYmVU2ENcRFGpaTvFHY34qA" alt="<%= @address_string%>" />
-<br />
-This map should show your residence. If it doesn't, please review your address information
+
 </p>
 
 <br /><br />
 </div>
-
-<%= link_to 'Edit your information', edit_neighbor_path(@neighbor) %>
-<%= button_to 'Edit your information', :method => 'post' %>
-<br /> <br />
-
-
 <p>
-  <b>First name:</b>
-  <%=h @neighbor.first_name1 %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%=h @neighbor.last_name1 %>
-</p>
-
-<p>
-  <b>First name (additional resident):</b>
-  <%=h @neighbor.first_name2 %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%=h @neighbor.last_name2 %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%=h @neighbor.address %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%=h @neighbor.zip %>
-</p>
-
-<p>
-  <b>Block:</b>
+  <b>Half-Block ID:</b>
   <%=h @neighbor.half_block_id %>
-</p>
-
-<p>
-  <b>Phone 1:</b>
-  <%=h @neighbor.phone_1 %>
-</p>
-
-<p>
-  <b>Phone 2:</b>
-  <%=h @neighbor.phone_2 %>
 </p>
 
 <p>
