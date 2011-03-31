@@ -1,17 +1,13 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :neighbor_surveys
+# rails 2.8.5 routes.rb
 
+ActionController::Routing::Routes.draw do |map|
+  
+  map.resources :neighbor_surveys
   map.resources :walk_surveys
   map.resources :overall_map
-
   map.resources :administrators
-
   map.resources :half_blocks
-
-  map.resources :households
-
   map.resources :neighbors
-
   map.resources :greenwood_users
 
 
@@ -19,27 +15,19 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  map.activate '/activate/:activation_code', :controller =>  'users', :action => 'activate', :activation_code => nil
   map.resources :users
-
   map.resource :session
-
-  map.resources :pages
-
-  map.resources :team_members
-  map.resources :events
+  
+  
   map.resources :about
   map.resources :guide
   map.resources :map
-  map.resources :resources
   map.resources :welcome
-  map.resources :under_construction
 
-
-  map.resources :neighbors, :collection => {:index => :get}
-  
-  
-
-  map.activate '/activate/:activation_code', :controller =>  'users', :action => 'activate', :activation_code => nil
+  # map.resources :neighbors, :collection => {:index => :get}
+  # example: map.connect 'products/:id', :controller => 'products', :action => 'view'
+  map.connect 'neighbors/:half_block_id/:match_list', :controller => 'neighbors', :action => 'index'
 
 # map.activate '/activate/:activation_code', :controller  => 'users', :action => 'activate'
   # The priority is based upon order of creation: first created -> highest priority.

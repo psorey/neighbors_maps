@@ -7,10 +7,43 @@
   <title><%= "greenwood.streetscapes.org" %></title>
 
   <%= stylesheet_link_tag "greenwood", :media => "all" %>
-  <%= javascript_include_tag 'prototype' %>
+
+	<%= javascript_include_tag 'prototype' %>
+	<%= javascript_include_tag 'effects' %>
+	<%= javascript_include_tag 'application' %>
+	<%= javascript_include_tag 'controls' %>
+	<%= javascript_include_tag 'dragdrop' %>
+	<%= javascript_include_tag 'dropdowntabs' %>
+	
 
 
+	<script type="text/javascript">
+	  /*
+	 // SYNTAX: tabdropdown.init("menu_id", [integer OR "auto"])
+		
+		console.log "before tabdropdowns init";
+		
+		tabdropdown.init("side_menu", 0);
+
+		console.log "after tabdropdowns init";
+		*/
+	
+	</script>
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 </head>
+
+
+
+
 
 <% if current_user %>
 <%   @user_name = current_user.login %>
@@ -22,9 +55,6 @@
 
 <body>
 
-
-
-	
  <!-- <p style="color: green"><%= flash[:notice] %></p>  -->
  <div id="banner">
 
@@ -34,21 +64,74 @@
  
 <div id="container">
 
+
+
+
+		<script type="text/javascript">
+		//SYNTAX: tabdropdown.init("menu_id", [integer OR "auto"])
+		tabdropdown.init("colortab", 3)
+		</script>
+
+
     <div class="sidebar">
         <div id="side_menu">
+					
+					
+					
+					
+	    <div id="colortab" class="ddcolortabs">
+			<ul>
+				<li><a href="http://www.dynamicdrive.com" title="Home"><span>Home</span></a></li>
+				<li><a href="http://www.dynamicdrive.com/new.htm" title="New"><span>New</span></a></li>
+				<li><a href="http://www.dynamicdrive.com/style/" title="CSS" rel="dropmenu1_a"><span>CSS</span></a></li>
+				<li><a href="http://www.dynamicdrive.com/resources/" title="Partners" rel="dropmenu2_a"><span>Partners</span></a></li>	
+				<li><a href="http://tools.dynamicdrive.com" title="Useful Tools"><span>Tools</span></a></li>	
+			</ul>
+		</div>
+		
+				
+			
+					
+		<!--1st drop down menu -->                                                   
+		<div id="dropmenu1_a" class="dropmenudiv_a">
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C1/">Horizontal CSS Menus</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C2/">Vertical CSS Menus</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C4/">Image CSS</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C6/">Form CSS</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C5/">DIVs and containers</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C7/">Links and Buttons</a><br />
+			<a href="http://www.dynamicdrive.com/style/csslibrary/category/C8/">Other</a><br />
+		
+		</div>
+		
+		<!--2nd drop down menu -->                                                
+		<div id="dropmenu2_a" class="dropmenudiv_a" style="width: 150px;">
+			<a href="http://www.cssdrive.com">CSS Drive</a><br />
+			<a href="http://www.javascriptkit.com">JavaScript Kit</a><br />
+			<a href="http://www.codingforums.com">Coding Forums</a><br />
+			<a href="http://www.javascriptkit.com/jsref/">JavaScript Reference</a><br />
+		</div>
+		
+					
+					
+					
 				name (login): <%= @user_name %><br /><br />
 				role: <%= @role %><br /><br />
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
-				<%= link_to 'FAQ',                                  :controller=> 'FAQ'       %><br /><br />
+				
+				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
+
 				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
+				
 				<a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/>
+				
 				<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
 							
 				<a href="http://dokuwiki.<%=APP_CONFIG['BASE_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
 				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br />
 				
 				<% if current_user %>
-				<%= link_to 'Update My Info',    		               :controller => 'neighbors', :action => "show", :id => current_user.neighbor_id  %><br /><br />
+				<%= link_to 'Update My Info', {  :controller => 'neighbors', :action => "show" }, :rel => 'dropmenu2', :id => current_user.neighbor_id  %><br /><br />
 				<% end %>
 
         <!--   <%= link_to 'Sign Up!',    				      '/signup'   %><br /><br />   -->
@@ -63,8 +146,22 @@
 				<% if @role == "admin" %>
             <%= link_to 'ADMIN',    				              '/administrators'   %><br /><br />
 				<% end %>
+				
+					<!--drop down menus --> 
+					<div id="dropmenu1" class="dropmenudiv">
+						<a href="http://www.cssdrive.com">CSS Drive</a>
+						<a href="http://www.javascriptkit.com">JavaScript Kit</a>
+						<a href="http://www.codingforums.com">Coding Forums</a>
+						<a href="http://www.javascriptkit.com/jsref/">JavaScript Reference</a>
+					</div>
+					
+					<div id="dropmenu2" class="dropmenudiv">
+						<a href="http://www.cssdrive.com">CSS Drive</a>
+						<a href="http://www.javascriptkit.com">JavaScript Kit</a>
+						<a href="http://www.codingforums.com">Coding Forums</a>
+						<a href="http://www.javascriptkit.com/jsref/">JavaScript Reference</a>
+					</div>
 
-  
       </div>
     </div>
 		

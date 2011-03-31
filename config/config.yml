@@ -1,5 +1,10 @@
+VERSION_DESCRIPTION: neighbors 2.0 dev
 
-BASE_URL: 'streetscapes.org'
+RAILS_VERSION: 2.3.8
+
+NEIGHBORHOOD: greenwood
+
+BASE_URL: streetscapes.org
 
 
 

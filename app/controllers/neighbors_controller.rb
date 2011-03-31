@@ -36,9 +36,19 @@ class NeighborsController < ApplicationController
 		@neighbors = nil
 		if params[:search_column]
 			if params[:order_by]
-			  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
+				if @rails3
+			    @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
+				else #rails2
+					@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list.split] })
+				end
+			
 			else
-			  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
+			  if @rails3
+			    @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
+			  else #rails2
+					@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list.split] })
+			  end
+			  
 			end
 		else # no params 
 			@neighbors = Neighbor.all

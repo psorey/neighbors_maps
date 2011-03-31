@@ -82,7 +82,6 @@ body {
 }
 
 
-
 #side_menu {
 	padding-left:10px;
 	padding-top:20px;
@@ -107,6 +106,9 @@ body {
 	padding-right: 120px;
 	height: 100%;
 	background-color: #efe;
+	background-color: #eeffc3;
+	background-color: #f2fada; /* pale, low intensity yellow */
+	
 }
 
 
@@ -116,7 +118,6 @@ body {
 	padding: 5px;
 	background: #585;
 	background: #559055;
-
 }
 
 

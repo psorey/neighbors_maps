@@ -1,2 +1,0 @@
-module UnderConstructionHelper
-end
