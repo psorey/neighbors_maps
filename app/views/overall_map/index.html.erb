@@ -60,6 +60,63 @@
                    }
             );
 
+            study_corridors_layer = new OpenLayers.Layer.WMS( "Corridor Study Areas",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'study_corridors',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:.5
+                   }
+            );
+                        
+            study_character_layer = new OpenLayers.Layer.WMS( "Character Study Areas",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'study_character',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:.5
+                   }
+            );
+
+            study_blocks_layer = new OpenLayers.Layer.WMS( "Block Study Areas",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'study_blocks',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+                   opacity:.5
+                   }
+            );
+
             lt_contour_layer = new OpenLayers.Layer.WMS( "2' Contours (light)",
                  "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
                  { layers: 'light_contour',
@@ -138,7 +195,7 @@
           
            blockid_layer = new OpenLayers.Layer.WMS( "Half-Block ID",
                  "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
-                 { layers: 'half_block_id',
+                 { layers: 'half_block_id,half_block_color',
                    format: 'png',
                    transparent: 'true'},
                   
@@ -151,7 +208,7 @@
                    isBaselayer:false,
                    singleTile:true,
                    visibility:false,
-                   opacity:0.5
+                   opacity:0.8
                    }
             );
         
@@ -170,7 +227,7 @@
                    isBaselayer:false,
                    singleTile:true,
                    visibility:false,
-                   opacity:0.3
+                   opacity:0.4
                    }
             );
           
@@ -195,22 +252,26 @@
                 
             map.addLayer(no_aerial_layer);
             map.addLayer(aerial_layer);
-            map.addLayer(blockid_layer);
             map.addLayer(lt_contour_layer);
             map.addLayer(dk_contour_layer);
             map.addLayer(poles_layer);
             map.addLayer(busstop_layer);
             map.addLayer(busroutes_layer);
+            map.addLayer(blockid_layer);
+						map.addLayer(study_corridors_layer);
+						map.addLayer(study_character_layer);
+						map.addLayer(study_blocks_layer);
+
             map.addLayer(neighbors_layer);
 
             map.zoomToMaxExtent();
+						
             map.addControl(new OpenLayers.Control.Scale('scale'));
             map.addControl(new OpenLayers.Control.Permalink('permalink'));
             map.addControl(new OpenLayers.Control.MousePosition());
             map.addControl(new OpenLayers.Control.LayerSwitcher());
-
-
         }
+				
     </script>
   </head>
 

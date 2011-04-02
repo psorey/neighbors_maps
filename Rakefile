@@ -3,6 +3,8 @@
 
 require(File.join(File.dirname(__FILE__), 'config', 'boot'))
 
+require 'thread'
+
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'

@@ -1,6 +1,10 @@
 # rails 2.8.5 routes.rb
 
 ActionController::Routing::Routes.draw do |map|
+  map.resources :map_layers
+
+  map.resources :projects
+
   
   map.resources :neighbor_surveys
   map.resources :walk_surveys
@@ -27,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # map.resources :neighbors, :collection => {:index => :get}
   # example: map.connect 'products/:id', :controller => 'products', :action => 'view'
-  map.connect 'neighbors/:half_block_id/:match_list', :controller => 'neighbors', :action => 'index'
+  map.connect 'neighbors/:search_column/:match_list', :controller => 'neighbors', :action => 'index'
 
 # map.activate '/activate/:activation_code', :controller  => 'users', :action => 'activate'
   # The priority is based upon order of creation: first created -> highest priority.

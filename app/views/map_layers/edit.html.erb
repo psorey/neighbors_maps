@@ -1,0 +1,64 @@
+<h1>Editing map_layer</h1>
+
+<% form_for(@map_layer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :short_desc %><br />
+    <%= f.text_area :short_desc %>
+  </p>
+  <p>
+    <%= f.label :projection %><br />
+    <%= f.text_field :projection %>
+  </p>
+  <p>
+    <%= f.label :database_table %><br />
+    <%= f.text_field :database_table %>
+  </p>
+  <p>
+    <%= f.label :database_column %><br />
+    <%= f.text_field :database_column %>
+  </p>
+  <p>
+    <%= f.label :opacity %><br />
+    <%= f.text_field :opacity %>
+  </p>
+  <p>
+    <%= f.label :lower_left_coords %><br />
+    <%= f.text_field :lower_left_coords %>
+  </p>
+  <p>
+    <%= f.label :upper_right_coords %><br />
+    <%= f.text_field :upper_right_coords %>
+  </p>
+  <p>
+    <%= f.label :symbol_type %><br />
+    <%= f.text_field :symbol_type %>
+  </p>
+  <p>
+    <%= f.label :symbol_file %><br />
+    <%= f.text_field :symbol_file %>
+  </p>
+  <p>
+    <%= f.label :line_color %><br />
+    <%= f.text_field :line_color %>
+  </p>
+  <p>
+    <%= f.label :fill_strategy %><br />
+    <%= f.text_field :fill_strategy %>
+  </p>
+  <p>
+    <%= f.label :fill_color %><br />
+    <%= f.text_field :fill_color %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @map_layer %> |
+<%= link_to 'Back', map_layers_path %>

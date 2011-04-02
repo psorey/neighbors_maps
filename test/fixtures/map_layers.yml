@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  short_desc: MyText
+  projection: MyString
+  database_table: MyString
+  database_column: MyString
+  opacity: 1
+  lower_left_coords: 
+  upper_right_coords: 
+  symbol_type: MyString
+  symbol_file: MyString
+  line_color: MyString
+  fill_strategy: MyString
+  fill_color: MyString
+
+two:
+  name: MyString
+  short_desc: MyText
+  projection: MyString
+  database_table: MyString
+  database_column: MyString
+  opacity: 1
+  lower_left_coords: 
+  upper_right_coords: 
+  symbol_type: MyString
+  symbol_file: MyString
+  line_color: MyString
+  fill_strategy: MyString
+  fill_color: MyString

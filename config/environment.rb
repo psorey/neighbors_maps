@@ -10,10 +10,12 @@
 
 
 # Bootstrap the Rails environment, frameworks, and default configuration
+require 'thread'
+
 require File.join(File.dirname(__FILE__), 'boot')
 
 require 'spatial_adapter/postgresql'
-require 'thread'
+
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.

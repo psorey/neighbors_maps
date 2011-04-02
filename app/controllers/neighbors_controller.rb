@@ -35,22 +35,28 @@ class NeighborsController < ApplicationController
 
 		@neighbors = nil
 		if params[:search_column]
+			logger.debug "search_column = #{params[:search_column]}"
+			logger.debug  "match_list = #{params[:match_list]}"
 			if params[:order_by]
-				if @rails3
-			    @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
-				else #rails2
-					@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list.split] })
+				if APP_CONFIG['RAILS_VERSION'] == '2.3.8'
+					  logger.debug 'rails2 order by'
+			    	@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list].split })
+				else # rails3
+					  logger.debug 'rails3'
+			    	@neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
 				end
 			
 			else
-			  if @rails3
+				if APP_CONFIG['RAILS_VERSION'] == '2.3.8'
+					logger.debug 'rails 2 search column'
+					@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list].split })
+			  else #rails3
 			    @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
-			  else #rails2
-					@neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list.split] })
 			  end
 			  
 			end
-		else # no params 
+		else # no params
+			logger.debug 'no params...'
 			@neighbors = Neighbor.all
 		end
 
@@ -62,6 +68,7 @@ class NeighborsController < ApplicationController
 
 
   def show
+		logger.debug "find neighbor with id #{params[:id]}"
     @neighbor = Neighbor.find(params[:id])
     logger.debug " ---------------- Neighbor = #{@neighbor.inspect}"
 

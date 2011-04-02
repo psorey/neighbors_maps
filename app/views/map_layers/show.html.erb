@@ -1,0 +1,68 @@
+<p>
+  <b>Name:</b>
+  <%=h @map_layer.name %>
+</p>
+
+<p>
+  <b>Short desc:</b>
+  <%=h @map_layer.short_desc %>
+</p>
+
+<p>
+  <b>Projection:</b>
+  <%=h @map_layer.projection %>
+</p>
+
+<p>
+  <b>Database table:</b>
+  <%=h @map_layer.database_table %>
+</p>
+
+<p>
+  <b>Database column:</b>
+  <%=h @map_layer.database_column %>
+</p>
+
+<p>
+  <b>Opacity:</b>
+  <%=h @map_layer.opacity %>
+</p>
+
+<p>
+  <b>Lower left coords:</b>
+  <%=h @map_layer.lower_left_coords %>
+</p>
+
+<p>
+  <b>Upper right coords:</b>
+  <%=h @map_layer.upper_right_coords %>
+</p>
+
+<p>
+  <b>Symbol type:</b>
+  <%=h @map_layer.symbol_type %>
+</p>
+
+<p>
+  <b>Symbol file:</b>
+  <%=h @map_layer.symbol_file %>
+</p>
+
+<p>
+  <b>Line color:</b>
+  <%=h @map_layer.line_color %>
+</p>
+
+<p>
+  <b>Fill strategy:</b>
+  <%=h @map_layer.fill_strategy %>
+</p>
+
+<p>
+  <b>Fill color:</b>
+  <%=h @map_layer.fill_color %>
+</p>
+
+
+<%= link_to 'Edit', edit_map_layer_path(@map_layer) %> |
+<%= link_to 'Back', map_layers_path %>

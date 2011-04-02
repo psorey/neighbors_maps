@@ -12,13 +12,25 @@ class ApplicationController < ActionController::Base
 
 
   layout 'overall'
+  
+	class Helper
+		include Singleton
+		include ActionView::Helpers::TextHelper
+		
+	end
+  
+  def help
+    Helper.instance
+  end
+
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  def access_denied
+	def access_denied
 		alias new_session_path login_path
 		super
 	end
 
 end
+

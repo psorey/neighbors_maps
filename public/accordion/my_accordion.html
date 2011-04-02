@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <title><!-- My Accordion Menu --></title>
+ 
+ 
+    <!-- JAVASCRIPT ------------------------------------------------------------- -->
+    
+    <script type="text/javascript" src="javascript/prototype.js"></script>
+    <script type="text/javascript" src="javascript/effects.js"></script>
+    <script type="text/javascript" src="javascript/accordion.js"></script>
+    <script type="text/javascript" src="javascript/code_highlighter.js"></script>
+    <script type="text/javascript" src="javascript/javascript.js"></script>
+    <script type="text/javascript" src="javascript/html.js"></script>
+    
+    
+    <!-- CSS Styling ----------------------------------------------------------------------- -->
+    
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/greenwood_copy.css" />
+   
+    
+    <style type='css'>
+    
+        div#test-accordion{
+            margin: 10px;
+            border: 1px solid #aaa;}
+        
+        div.accordion {
+            position: relative; /* required for bounding--works around a "peculiarity" in Prototype */
+        }
+        
+        div.accordion-toggle{
+            position: relative; /* required for effect */
+            z-index: 10;		/* required for effect */
+            background: #eee;   /* required for effect--can be anything except "transparent" */
+            cursor: pointer;
+        }
+        
+        div.accordion-toggle-active{
+            background: #fff;
+        }
+        
+        div.accordion-content{
+            overflow: hidden;	/* required for effect */
+            background: #aaa;
+        }
+        
+    </style>
+        
+    
+    
+    
+    
+</head>
+
+
+
+
+
+<body>
+
+ <div id="test-accordion" class="accordion">
+    <div class="accordion-toggle">Toggle 1</div>  
+    <div class="accordion-content">Content 1</div>  
+    <div class="accordion-toggle">Toggle 2</div>  
+    <div class="accordion-content">Content 2</div>  
+    <div class="accordion-toggle">Toggle 3</div>  
+    <div class="accordion-content">Content 3</div>  
+    <div class="accordion-toggle">Toggle 4</div>  
+    <div class="accordion-content">Content 4</div>  
+  </div>  
+
+
+
+    <!-- Insert your content here -->
+</body>
+</html>

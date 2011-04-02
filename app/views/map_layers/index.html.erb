@@ -1,0 +1,44 @@
+<h1>Listing map_layers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Short desc</th>
+    <th>Projection</th>
+    <th>Database table</th>
+    <th>Database column</th>
+    <th>Opacity</th>
+    <th>Lower left coords</th>
+    <th>Upper right coords</th>
+    <th>Symbol type</th>
+    <th>Symbol file</th>
+    <th>Line color</th>
+    <th>Fill strategy</th>
+    <th>Fill color</th>
+  </tr>
+
+<% @map_layers.each do |map_layer| %>
+  <tr>
+    <td><%=h map_layer.name %></td>
+    <td><%=h map_layer.short_desc %></td>
+    <td><%=h map_layer.projection %></td>
+    <td><%=h map_layer.database_table %></td>
+    <td><%=h map_layer.database_column %></td>
+    <td><%=h map_layer.opacity %></td>
+    <td><%=h map_layer.lower_left_coords %></td>
+    <td><%=h map_layer.upper_right_coords %></td>
+    <td><%=h map_layer.symbol_type %></td>
+    <td><%=h map_layer.symbol_file %></td>
+    <td><%=h map_layer.line_color %></td>
+    <td><%=h map_layer.fill_strategy %></td>
+    <td><%=h map_layer.fill_color %></td>
+    <td><%= link_to 'Show', map_layer %></td>
+    <td><%= link_to 'Edit', edit_map_layer_path(map_layer) %></td>
+    <td><%= link_to 'Destroy', map_layer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New map_layer', new_map_layer_path %>

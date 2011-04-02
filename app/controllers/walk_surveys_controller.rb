@@ -3,6 +3,9 @@ class WalkSurveysController < ApplicationController
   
   before_filter :login_required
   
+  require_role "admin", :only => :index # only admin gets to see all the walk surveys
+  #require_role 'neighbor'
+
   
   # GET /walk_surveys
   # GET /walk_surveys.xml
@@ -31,11 +34,12 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/new
   # GET /walk_surveys/new.xml
   def new
-    @walk_survey = WalkSurvey.new  # remove; this is unnecessary. use 
-    @current_neighbor_id = '2'  # !!! for testing
+    @walk_survey = WalkSurvey.new  # remove; this is unnecessary. use
+    logger.debug "made it here 1"
+    @current_neighbor_id = current_user.neighbor_id  # !!! for testing
     
     existing_mapped_lines = MappedLine.find(:all, :conditions =>
-       {:owner_id => @current_neighbor_id, :map_layer_id => 'walk_survey'})
+       {:owner_id => @current_neighbor_id.to_s, :map_layer_id => 'walk_survey'})
     
     # back to erasing and re-filling the database with the lines each time...
     # sending just the relevant information via JSON,
@@ -68,7 +72,7 @@ class WalkSurveysController < ApplicationController
   # POST /walk_surveys
   # POST /walk_surveys.xml
   def create
-    @current_neighbor_id = '2'
+    @current_neighbor_id = current_user.neighbor_id.to_s
     @walk_survey = WalkSurvey.new(params[:walk_survey])
     # logger.debug("creating paths = #{params[:line][:route]}")
     routes = JSON.parse(params[:line][:route])

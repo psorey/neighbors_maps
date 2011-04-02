@@ -18,25 +18,24 @@
 
 <% @neighbors.each do |neighbor| %>
   <tr>
-    <td><%=h neighbor.first_name1 %></td>
-    <td><%=h neighbor.last_name1 %></td>
+    <td>&nbsp;<%=h neighbor.first_name1 %></td>
+    <td>&nbsp;<%=h neighbor.last_name1 %></td>
 
-    <td><%=h neighbor.address %></td>
-    <td><%=h neighbor.half_block_id %></td>
-    <td><%=h neighbor.phone_1 %></td>
-    <td><%=h neighbor.email_1 %></td>
+    <td>&nbsp;<%=h neighbor.address %></td>
+    <td>&nbsp;&nbsp;<%=h neighbor.half_block_id %></td>
+    <td>&nbsp;<%=h neighbor.phone_1 %></td>
+    <td>&nbsp;<%=h neighbor.email_1 %></td>
 
-    <td><%=h neighbor.block_captain %></td>
+    <td>&nbsp;<%=h neighbor.block_captain %></td>
 
     <td><%= link_to 'Show', neighbor %></td>
     <td><%= link_to 'Edit', edit_neighbor_path(neighbor) %></td>
-    <td><%= link_to 'Destroy', neighbor, :confirm => 'Are you sure?', :method => :delete %></td>
+
   </tr>
 <% end %>
 </table>
 
-<br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-<%= link_to 'New neighbor', new_neighbor_path %>
 
 </div>

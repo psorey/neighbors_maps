@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322003646) do
+ActiveRecord::Schema.define(:version => 20110402040802) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -23,6 +23,25 @@ ActiveRecord::Schema.define(:version => 20110322003646) do
     t.datetime      "created_at"
     t.datetime      "updated_at"
     t.multi_polygon "the_geom",      :limit => nil, :srid => 4326
+    t.string        "fill_color"
+  end
+
+  create_table "map_layers", :force => true do |t|
+    t.string   "name"
+    t.text     "short_desc"
+    t.string   "projection"
+    t.string   "database_table"
+    t.string   "database_column"
+    t.integer  "opacity"
+    t.string   "symbol_type"
+    t.string   "symbol_file"
+    t.string   "line_color"
+    t.string   "fill_strategy"
+    t.string   "fill_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.point    "lower_left_coords",  :limit => nil
+    t.point    "upper_right_coords", :limit => nil
   end
 
   create_table "mapped_lines", :force => true do |t|
@@ -66,6 +85,23 @@ ActiveRecord::Schema.define(:version => 20110322003646) do
     t.integer  "user_id"
     t.point    "location",           :limit => nil, :srid => 4326
   end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "short_desc"
+    t.string   "forum_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.polygon  "project_boundary", :limit => nil, :srid => 4326
+  end
+
+  create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+  end
+
+  add_index "projects_users", ["project_id"], :name => "index_projects_users_on_project_id"
+  add_index "projects_users", ["user_id"], :name => "index_projects_users_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string "name"

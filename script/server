@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
+require 'thread'
+
 require File.expand_path('../../config/boot',  __FILE__)
 
-require 'thread'
 require 'commands/server'

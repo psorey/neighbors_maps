@@ -660,7 +660,7 @@ MAP
     END
   END     
    
-
+  # this layer/class shows the half_block_id label
   LAYER
     NAME 'half_block_id'
     TYPE POLYGON
@@ -710,6 +710,43 @@ MAP
      END 
     END
   END
+  
+  # this layer draws a polygon colored according to the 'fill_color' column of table 'half_blocks'
+  LAYER
+    NAME 'half_block_color'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+
+    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921
+    CONNECTIONTYPE POSTGIS
+    CONNECTION "host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432"
+    DATA "the_geom from half_blocks"
+    METADATA
+      'ows_title'  'half_block_id'
+      'wms_title'  'half_block_id'
+      'wms_srs'    "EPSG:4326"    
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 50
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    CLASS
+      NAME 'half_block_color'  
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR [fill_color]
+       END
+    END
+  END
+
+
 
   LAYER
     NAME 'walk_survey'
@@ -773,6 +810,148 @@ MAP
      END 
     END
   END
+
+
+
+
+
+LAYER
+    NAME 'study_corridors'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+  EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232
+    DATA 'study_corridors.shp'
+    METADATA
+      'ows_title' 'study_corridors'
+    END
+    STATUS OFF
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    LABELITEM 'kate areas'
+    CLASS
+       NAME 'study_corridors' 
+       STYLE
+         WIDTH 0.91 
+         OUTLINECOLOR 0 0 0
+         COLOR 229 61 99
+       END
+    LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 15
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 5
+      REPEATDISTANCE 500
+      ANGLE 0
+      BUFFER 10
+      POSITION cc
+      FORCE true
+      ANTIALIAS true
+      PARTIALS false
+      MINDISTANCE 1000000
+    END     
+    END
+  END
+
+  LAYER
+    NAME 'study_character'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+  EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232
+    DATA 'study_character.shp'
+    METADATA
+      'ows_title' 'study_character'
+    END
+    STATUS OFF
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    LABELITEM 'name'
+    CLASS
+       NAME 'study_character' 
+       STYLE
+         WIDTH 0.91 
+         OUTLINECOLOR 0 0 0
+         COLOR 116 69 196
+       END
+     LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 15
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 5
+      REPEATDISTANCE 500
+      ANGLE 0
+      BUFFER 10
+      POSITION cc
+      FORCE true
+      ANTIALIAS true
+      PARTIALS false
+      MINDISTANCE 1000000
+    END            
+    END
+  END
+
+  LAYER
+    NAME 'study_blocks'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+  EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232
+    DATA 'study_blocks.shp'
+    METADATA
+      'ows_title' 'study_blocks'
+    END
+    STATUS OFF
+    TRANSPARENCY 100
+    PROJECTION
+    'proj=longlat'
+    'ellps=WGS84'
+    'datum=WGS84'
+    'no_defs'
+    END
+    
+    LABELITEM 'kate areas'
+    CLASS
+       NAME 'study_blocks' 
+       STYLE
+         WIDTH 0.91 
+         OUTLINECOLOR 0 0 0
+         COLOR 174 31 183
+       END
+    
+
+     LABEL 
+      FONT arial-bold
+      TYPE truetype
+      SIZE 15
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 5
+      REPEATDISTANCE 500
+      ANGLE 0
+      BUFFER 10
+      POSITION cc
+      FORCE true
+      ANTIALIAS true
+      PARTIALS false
+      MINDISTANCE 1000000
+    END     
+  END
+END
 
 
     
