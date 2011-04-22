@@ -11,8 +11,28 @@ class ApplicationController < ActionController::Base
   include RoleRequirementSystem
 
 
+=begin  a controller variable accessible from the view...
+class Account < ActiveRecord::Base
+  cattr_accessor :current
+end
+
+
+  before_filter :set_current_account
+  def set_current_account
+    #  set @current_account from session data here
+    Account.current = @current_account
+  end
+
+=end
+
+
   layout 'overall'
   
+  def initialize
+    Rails.logger.info("PARAMS: #{params.inspect}")		
+  end
+
+
 	class Helper
 		include Singleton
 		include ActionView::Helpers::TextHelper

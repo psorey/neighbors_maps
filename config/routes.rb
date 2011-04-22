@@ -1,6 +1,10 @@
 # rails 2.8.5 routes.rb
 
 ActionController::Routing::Routes.draw do |map|
+  map.resources :forums
+
+  map.resources :views
+
   map.resources :map_layers
 
   map.resources :projects
@@ -23,7 +27,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
   
-  
+  map.resources :passwords
+  map.resources :users, :has_one => [:password]
+
+  #map.change_password '/change_password', :controller => 'users', :action => 'change_password'
+  #map.resources :users , :controller => 'users', :collection => {:change_password_update => :put}
+
   map.resources :about
   map.resources :guide
   map.resources :map

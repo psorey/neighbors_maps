@@ -50,16 +50,23 @@
 				role: <%= @role %><br /><br />
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
 				
-				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
-
-				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
 				
-				<a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/>
+				<!-- <a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/> -->
+				
+				<%= link_to 'Forum',    		   		                :controller=> 'forums'     %><br /><br />
+				
+				
+				
 				
 				<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
 							
 				<a href="http://dokuwiki.<%=APP_CONFIG['BASE_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
-				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br />
+				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
+
+				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
+
+
+				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br /><br /><br />
 				
 				<% if current_user %>
 				<%= link_to 'Update My Info', {  :controller => 'neighbors', :action => "show" ,

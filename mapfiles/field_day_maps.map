@@ -3,6 +3,7 @@
 # (Created with PyQgis MapServer Export plugin)
 
 MAP
+
   NAME "Physical Characteristics"
   SIZE 900 900
   UNITS meters
@@ -13,6 +14,8 @@ MAP
   PROJECTION
     "init=epsg:4326"
   END
+
+
 
   TEMPLATEPATTERN 'field_day_maps.*'
   # Background color for the map canvas -- change as desired
@@ -29,6 +32,9 @@ MAP
     TRANSPARENT FALSE
     FORMATOPTION "QUALITY=95"
   END
+
+
+
 
 
   # Web interface definition. Only the template parameter
@@ -56,6 +62,9 @@ MAP
   END
 
 
+
+
+
   LAYER
     NAME 'ortho2'
     TYPE RASTER
@@ -78,6 +87,9 @@ MAP
     END
   END
 
+
+
+
   LAYER
     NAME 'ortho1'
     TYPE RASTER
@@ -99,6 +111,10 @@ MAP
     'no_defs'
     END
   END
+  
+  
+  
+  
   
   
   LAYER
@@ -259,6 +275,10 @@ MAP
   END
 
 
+
+
+
+
   LAYER
     NAME 'park'
     TYPE POLYGON
@@ -292,6 +312,11 @@ MAP
   END
 
 
+
+
+
+
+
   LAYER
     NAME 'Parcel_Clip'
     TYPE POLYGON
@@ -321,6 +346,9 @@ MAP
        END
     END
   END
+
+
+
 
 
 
@@ -374,6 +402,87 @@ MAP
   
   
   
+  
+  
+  
+  
+  LAYER
+    NAME 'infiltration_p'
+    TYPE POLYGON
+    DUMP true
+    TEMPLATE fooOnlyForWMSGetFeatureInfo
+    EXTENT 1259300 254000 1269500 262500
+    DATA 'infiltration_p'
+    METADATA
+      'ows_title' 'infiltration_p'
+      'wms_title' 'infiltration_p'
+      'wms_srs'    "EPSG:4326"
+      'OWS_INCLUDE_ITEMS' "all"
+    END
+    STATUS on
+    TRANSPARENCY 50
+    PROJECTION
+    "init=epsg:4326"
+    END
+
+    
+    CLASSITEM 'PERM'
+
+    CLASS
+      NAME 'PERM = HIGH' 
+      EXPRESSION 'High' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 50 255 50
+       END
+    END
+
+    CLASS
+      NAME 'PERM = Medium' 
+      EXPRESSION 'Medium' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 250 250 00
+       END
+    END
+
+    CLASS
+      NAME 'PERM = LOW' 
+      EXPRESSION 'Low' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 255 0 0
+       END
+    END
+    CLASS
+      NAME 'PERM = SATURATED' 
+      EXPRESSION 'Saturated' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 200
+         COLOR 255 1 255
+       END
+    END
+    CLASS
+      NAME 'PERM = WATER' 
+      EXPRESSION 'Water' 
+      STYLE
+        SYMBOL 0
+         OUTLINECOLOR 0 0 0
+         COLOR 0 0 255 
+       END
+    END
+
+  END
+  
+  
+  
+  
+  
+  
   LAYER
     NAME 'st_address_Clip'
     TYPE LINE
@@ -417,6 +526,10 @@ MAP
   END
 
 
+
+
+
+
   LAYER
     NAME 'light_contour'
     TYPE LINE
@@ -446,6 +559,7 @@ MAP
        END
     END
   END
+
 
 
 
@@ -481,6 +595,10 @@ MAP
   END
 
 
+
+
+
+
   LAYER
     NAME 'CityLightPoles'
     TYPE POINT
@@ -510,6 +628,9 @@ MAP
        END
     END
   END
+
+
+
 
   LAYER
     NAME 'Busstop'
@@ -541,6 +662,8 @@ MAP
     END
   END
   
+ 
+ 
  
   LAYER
     NAME 'BusRoutes'

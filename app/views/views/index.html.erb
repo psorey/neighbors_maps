@@ -1,0 +1,32 @@
+<h1>Listing views</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Published</th>
+    <th>Map layer list</th>
+    <th>Scale</th>
+    <th>Lower left</th>
+    <th>Upper right</th>
+    <th>Mapfile name</th>
+  </tr>
+
+<% @views.each do |view| %>
+  <tr>
+    <td><%=h view.owner_id %></td>
+    <td><%=h view.published %></td>
+    <td><%=h view.map_layer_list %></td>
+    <td><%=h view.scale %></td>
+    <td><%=h view.lower_left %></td>
+    <td><%=h view.upper_right %></td>
+    <td><%=h view.mapfile_name %></td>
+    <td><%= link_to 'Show', view %></td>
+    <td><%= link_to 'Edit', edit_view_path(view) %></td>
+    <td><%= link_to 'Destroy', view, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New view', new_view_path %>

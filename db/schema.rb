@@ -9,10 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402040802) do
+ActiveRecord::Schema.define(:version => 20110407042118) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "forum_name"
+    t.string   "forum_url"
+    t.string   "forum_permissions"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,6 +139,18 @@ ActiveRecord::Schema.define(:version => 20110402040802) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "views", :force => true do |t|
+    t.string   "owner_id"
+    t.string   "published"
+    t.text     "map_layer_list"
+    t.float    "scale"
+    t.string   "mapfile_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.point    "lower_left",     :limit => nil
+    t.point    "upper_right",    :limit => nil
+  end
 
   create_table "walk_surveys", :force => true do |t|
     t.string      "neighbor_id"

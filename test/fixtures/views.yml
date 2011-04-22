@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  owner_id: MyString
+  published: MyString
+  map_layer_list: MyText
+  scale: 1.5
+  lower_left: 
+  upper_right: 
+  mapfile_name: MyString
+
+two:
+  owner_id: MyString
+  published: MyString
+  map_layer_list: MyText
+  scale: 1.5
+  lower_left: 
+  upper_right: 
+  mapfile_name: MyString

@@ -1,5 +1,19 @@
 
 
+
+
+.to_do a {
+	color: red;
+}
+.to_do {
+	color: red;
+}
+
+.strike {
+	text-decoration: line-through;
+}
+
+
 img.project_description {
  border:solid #636468;
  border-width:0px;
@@ -8,6 +22,7 @@ img.project_description {
 	top:173px;
 	left:67px;
 }
+
 
 
 

@@ -1,0 +1,38 @@
+<p>
+  <b>Owner:</b>
+  <%=h @view.owner_id %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%=h @view.published %>
+</p>
+
+<p>
+  <b>Map layer list:</b>
+  <%=h @view.map_layer_list %>
+</p>
+
+<p>
+  <b>Scale:</b>
+  <%=h @view.scale %>
+</p>
+
+<p>
+  <b>Lower left:</b>
+  <%=h @view.lower_left %>
+</p>
+
+<p>
+  <b>Upper right:</b>
+  <%=h @view.upper_right %>
+</p>
+
+<p>
+  <b>Mapfile name:</b>
+  <%=h @view.mapfile_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_view_path(@view) %> |
+<%= link_to 'Back', views_path %>

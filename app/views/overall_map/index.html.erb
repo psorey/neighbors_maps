@@ -249,7 +249,46 @@
                  }
             );
                         
-                
+           permeability_layer = new OpenLayers.Layer.WMS( "Permeability",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'infiltration_p',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+									 opacity:0.5
+                 }
+            );
+					 
+            paving_edges_layer = new OpenLayers.Layer.WMS( "Paving Edges",
+                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 { layers: 'paving_edges',
+                   format: 'png',
+                   transparent: 'true'},
+                  
+                 { maxExtent: new OpenLayers.Bounds(1259300,254000,1269500,262500),
+                   scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+                   units: 'm',
+                   projection:new OpenLayers.Projection("epsg:4326"),
+                   gutter:0,
+                   ratio:1,
+                   isBaselayer:false,
+                   singleTile:true,
+                   visibility:false,
+									 opacity:0.7
+                 }
+            );
+						
+						
+					 
             map.addLayer(no_aerial_layer);
             map.addLayer(aerial_layer);
             map.addLayer(lt_contour_layer);
@@ -261,6 +300,9 @@
 						map.addLayer(study_corridors_layer);
 						map.addLayer(study_character_layer);
 						map.addLayer(study_blocks_layer);
+						map.addLayer(permeability_layer);
+						map.addLayer(paving_edges_layer);
+						
 
             map.addLayer(neighbors_layer);
 

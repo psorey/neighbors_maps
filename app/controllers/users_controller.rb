@@ -7,7 +7,40 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
- 
+    
+  #
+  # Change user passowrd
+  def change_password
+  end
+    
+    
+  #
+  # Change user passowrd
+  def change_password_update
+      if User.authenticate(current_user.login, params[:old_password])
+          if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
+              current_user.password_confirmation = params[:password_confirmation]
+              current_user.password = params[:password]
+              
+              if current_user.save!
+                  flash[:notice] = "Password successfully updated"
+                  redirect_to change_password_path
+              else
+                  flash[:alert] = "Password not changed"
+                  render :action => 'change_password'
+              end
+               
+          else
+              flash[:alert] = "New Password mismatch" 
+              render :action => 'change_password'
+          end
+      else
+          flash[:alert] = "Old password incorrect" 
+          render :action => 'change_password'
+      end
+  end
+  
+  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
@@ -24,6 +57,7 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+
 
   def activate
     logout_keeping_session!
@@ -42,3 +76,6 @@ class UsersController < ApplicationController
     end
   end
 end
+
+  def update
+  end

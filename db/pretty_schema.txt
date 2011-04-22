@@ -1,0 +1,182 @@
+
+
+
+ADMINISTRATORS
+
+id                             integer                       
+admin_key                      string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+
+
+
+FORUMS
+
+id                             integer                       
+forum_name                     string                        
+forum_url                      string                        
+forum_permissions              string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+
+
+
+HALF_BLOCKS
+
+id                             integer                       
+half_block_id                  string                        
+boundary_t                     string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+the_geom                       multi_polygon                 
+fill_color                     string                        
+
+
+
+MAP_LAYERS
+
+id                             integer                       
+name                           string                        
+short_desc                     text                          
+projection                     string                        
+database_table                 string                        
+database_column                string                        
+opacity                        integer                       
+symbol_type                    string                        
+symbol_file                    string                        
+line_color                     string                        
+fill_strategy                  string                        
+fill_color                     string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+lower_left_coords              point                         
+upper_right_coords             point                         
+
+
+
+MAPPED_LINES
+
+id                             integer                       
+end_label                      string                        
+data                           string                        
+owner_id                       string                        
+map_layer_id                   string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+geometry                       line_string                   
+
+
+
+NEIGHBORS
+
+id                             integer                       
+first_name1                    string                        
+last_name1                     string                        
+email_1                        string                        
+first_name2                    string                        
+last_name2                     string                        
+email_2                        string                        
+address                        string                        
+zip                            string                        
+half_block_id                  string                        
+phone_1                        string                        
+phone_2                        string                        
+email_list                     string                        
+block_captain                  string                        
+volunteer                      text                          
+resident                       string                        
+professional                   string                        
+interest_expertise             text                          
+created_at                     datetime                      
+updated_at                     datetime                      
+alias                          string                        
+years                          string                        
+sidewalks                      string                        
+unit                           string                        
+improvements                   text                          
+why_walk                       text                          
+dont_walk                      text                          
+signup_date                    date                          
+user_id                        integer                       
+location                       point                         
+
+
+
+PROJECTS
+
+id                             integer                       
+name                           string                        
+short_desc                     text                          
+forum_url                      string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+project_boundary               polygon                       
+
+
+
+PROJECTS_USERS
+
+id                             integer                       
+project_id                     integer                       
+user_id                        integer                       
+
+
+
+ROLES
+guest, worker, pm, accountant, administrator, ztadmin, ztaccounting
+
+id                             integer                       
+name                           string                        
+
+
+
+ROLES_USERS
+
+id                             integer                       
+role_id                        integer                       
+user_id                        integer                       
+
+
+
+USERS
+
+id                             integer                       
+login                          string                        
+name                           string                        
+email                          string                        
+crypted_password               string                        
+salt                           string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+remember_token                 string                        
+remember_token_expires_at      datetime                      
+activation_code                string                        
+activated_at                   datetime                      
+neighbor_id                    integer                       
+
+
+
+VIEWS
+
+id                             integer                       
+owner_id                       string                        
+published                      string                        
+map_layer_list                 text                          
+scale                          float                         
+mapfile_name                   string                        
+created_at                     datetime                      
+updated_at                     datetime                      
+lower_left                     point                         
+upper_right                    point                         
+
+
+
+WALK_SURVEYS
+
+id                             integer                       
+neighbor_id                    string                        
+frequency                      text                          
+created_at                     datetime                      
+updated_at                     datetime                      
+route                          line_string                   
+
