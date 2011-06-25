@@ -4,11 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= "greenwood.streetscapes.org" %></title>
+  <title><%= APP_CONFIG['SITE_URL'] %></title>
 
   <%= stylesheet_link_tag "greenwood", :media => "all" %>
-
-  
 
 	<script type="text/javascript">
 
@@ -24,11 +22,11 @@
 <%   @role = '' %>
 
 <% if current_user %>
-<%   @user_name = current_user.login %>
+<%   @user_name = "Welcome, <br />#{current_user.login}" %>
 <%   user_role = current_user.roles[0] %>
 <%   @role = user_role.name %>
 <% else %>
-<%   @user_name = 'not logged in' %>
+<%   @user_name = 'You are not logged in' %>
 <% end %>
 
 <body>
@@ -46,8 +44,8 @@
     <div class="sidebar">
         <div id="side_menu">
 					
-				name (login): <%= @user_name %><br /><br />
-				role: <%= @role %><br /><br />
+				<%= @user_name %><br /><br />
+				
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
 				
 				
@@ -59,8 +57,10 @@
 				
 				
 				<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
-							
-				<a href="http://dokuwiki.<%=APP_CONFIG['BASE_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
+	
+				<a href="http://<%=APP_CONFIG['WIKI_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
+				
+				
 				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
 
 				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />

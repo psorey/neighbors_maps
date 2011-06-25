@@ -4,14 +4,14 @@ class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Please activate your new account'
-    @body[:url]  = "http://greenwood.nextdoorneighbors.org/activate/#{user.activation_code}"
+    @body[:url]  = "http://#{APP_CONFIG['SITE_URL']}/activate/#{user.activation_code}"
   end
   
   
   def activation(user)
     setup_email(user)
     @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://greenwood.nextdoorneighbors.org/"
+    @body[:url]  = "http://#{APP_CONFIG['SITE_URL']}/"
   end
   
   
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
       @recipients  = "#{user.email}"
 
       @from        = "mail.nextdoorneighbors.org"
-      @subject     = "http://greenwood.nextdoorneighbors.org "
+      @subject     = "http://#{APP_CONFIG['SITE_URL']}"
 
       @sent_on     = Time.now
       @body[:user] = user

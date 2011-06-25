@@ -123,7 +123,6 @@ user_id                        integer
 
 
 ROLES
-guest, worker, pm, accountant, administrator, ztadmin, ztaccounting
 
 id                             integer                       
 name                           string                        
@@ -169,14 +168,4 @@ updated_at                     datetime
 lower_left                     point                         
 upper_right                    point                         
 
-
-
-WALK_SURVEYS
-
-id                             integer                       
-neighbor_id                    string                        
-frequency                      text                          
-created_at                     datetime                      
-updated_at                     datetime                      
-route                          line_string                   
 

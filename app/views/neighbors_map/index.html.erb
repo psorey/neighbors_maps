@@ -69,15 +69,16 @@
     //OpenLayers.ProxyHost = "proxy.cgi?url=";
     
     var map, infocontrols, water, highlightlayer;
-    
-    function load() {
+    var mapserver_url = "<%= h @mapserver_url %>";
+		
+		function load() {
  
         map = new OpenLayers.Map('map', {
             maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)
         });
 				
         var no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
                    format: 'png',
                    transparent: 'false'},
@@ -94,7 +95,7 @@
             );
 
         var blockid_layer = new OpenLayers.Layer.WMS( "Half-Block ID",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'half_block_id',
                    format: 'png',
                    transparent: 'true'},
@@ -113,7 +114,7 @@
             );
         
            var neighbors_layer = new OpenLayers.Layer.WMS( "Neighbors",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'Neighbors',
                    format: 'png',
                    transparent: 'true'},
@@ -139,7 +140,7 @@
         map.addLayers([no_aerial_layer, neighbors_layer, blockid_layer, highlightLayer]);
         
         info = new OpenLayers.Control.WMSGetFeatureInfo({
-            url:  "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+            url:  mapserver_url,
             title: 'Identify features by clicking',
             //queryVisible: true,
             maxFeatures: 1,

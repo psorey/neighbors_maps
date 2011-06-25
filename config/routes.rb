@@ -8,7 +8,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :map_layers
 
   map.resources :projects
+  
+  #map.wiki '/wiki', :url=>'/home/paul/dokuwiki/doku.php'
 
+  #map.resources :dokuwiki
+  map.resources :wiki
   
   map.resources :neighbor_surveys
   map.resources :walk_surveys

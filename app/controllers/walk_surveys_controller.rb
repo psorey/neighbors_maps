@@ -34,6 +34,9 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/new
   # GET /walk_surveys/new.xml
   def new
+    
+    @mapserver_url = APP_CONFIG['MAPSERVER_URL']
+    
     @walk_survey = WalkSurvey.new  # remove; this is unnecessary. use
     logger.debug "made it here 1"
     @current_neighbor_id = current_user.neighbor_id  # !!! for testing

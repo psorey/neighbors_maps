@@ -38,17 +38,20 @@
             // to_do: handle (delete) null frequency lines here, not in controller...
             
             var map, drawControls;
-            
+                
+             var mapserver_url = "<%= h @mapserver_url %>";
+
             function init(){
                 var i;
 
                 var exist_lines = <%= @json_geometry %>;
                 var exist_freqs = <%= @json_frequencies %>;
+
                 
                 map = new OpenLayers.Map('map');
 
                 var aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
-                     "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                     mapserver_url,
                      { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
                        format: 'png24',
                        transparent: 'false'},
@@ -65,7 +68,7 @@
                 );
     
                 var no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
-                     "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                     mapserver_url,
                      { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
                        format: 'png',
                        transparent: 'false'},

@@ -6,8 +6,8 @@
 	  <style type="text/css">
 
     #map {
-    width: 1000px;
-    height: 525px;
+    width: 850px;
+    height: 480px;
     border: 1px solid black;
     padding: 0px;
     margin:0px auto;
@@ -18,16 +18,18 @@
 
 
     <script type="text/javascript">
+		
         var lat = 1264752.298906;
         var lon= 256913.582215;
         var zoom = 3;
         var map, layer;
-
+        var mapserver_url = "<%= h @mapserver_url %>";
+				
         function init(){
             map = new OpenLayers.Map( 'map' );
         
             aerial_layer = new OpenLayers.Layer.WMS( "with aerial",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'ortho1,ortho2,zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
                    format: 'png24',
                    transparent: 'false'},
@@ -44,7 +46,7 @@
             );
 
             no_aerial_layer = new OpenLayers.Layer.WMS( "no aerial",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'zoning2,park,Parcel_Clip,Parcel_Clip_Outline,st_address_Clip',
                    format: 'png',
                    transparent: 'false'},
@@ -61,7 +63,7 @@
             );
 
             study_corridors_layer = new OpenLayers.Layer.WMS( "Corridor Study Areas",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'study_corridors',
                    format: 'png',
                    transparent: 'true'},
@@ -80,7 +82,7 @@
             );
                         
             study_character_layer = new OpenLayers.Layer.WMS( "Character Study Areas",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'study_character',
                    format: 'png',
                    transparent: 'true'},
@@ -99,7 +101,7 @@
             );
 
             study_blocks_layer = new OpenLayers.Layer.WMS( "Block Study Areas",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'study_blocks',
                    format: 'png',
                    transparent: 'true'},
@@ -118,7 +120,7 @@
             );
 
             lt_contour_layer = new OpenLayers.Layer.WMS( "2' Contours (light)",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'light_contour',
                    format: 'png',
                    transparent: 'true'},
@@ -138,7 +140,7 @@
                         
 
             dk_contour_layer = new OpenLayers.Layer.WMS( "2' Contours (dark)",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'dark_contour',
                    format: 'png',
                    transparent: 'true'},
@@ -158,7 +160,7 @@
             
 
            poles_layer = new OpenLayers.Layer.WMS( "City Light Poles",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'CityLightPoles',
                    format: 'png',
                    transparent: 'true'},
@@ -176,7 +178,7 @@
             );
             
            busstop_layer = new OpenLayers.Layer.WMS( "Bus Stops",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'Busstop',
                    format: 'png',
                    transparent: 'true'},
@@ -194,7 +196,7 @@
             );
           
            blockid_layer = new OpenLayers.Layer.WMS( "Half-Block ID",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'half_block_id,half_block_color',
                    format: 'png',
                    transparent: 'true'},
@@ -213,7 +215,7 @@
             );
         
             busroutes_layer = new OpenLayers.Layer.WMS( "Bus Routes",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'BusRoutes',
                    format: 'png',
                    transparent: 'true'},
@@ -232,7 +234,7 @@
             );
           
            neighbors_layer = new OpenLayers.Layer.WMS( "Neighbors",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'Neighbors',
                    format: 'png',
                    transparent: 'true'},
@@ -250,7 +252,7 @@
             );
                         
            permeability_layer = new OpenLayers.Layer.WMS( "Permeability",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'infiltration_p',
                    format: 'png',
                    transparent: 'true'},
@@ -269,7 +271,7 @@
             );
 					 
             paving_edges_layer = new OpenLayers.Layer.WMS( "Paving Edges",
-                 "http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map",
+                 mapserver_url,
                  { layers: 'paving_edges',
                    format: 'png',
                    transparent: 'true'},

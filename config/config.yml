@@ -4,7 +4,7 @@ RAILS_VERSION: 2.3.8
 
 NEIGHBORHOOD: greenwood
 
-BASE_URL: streetscapes.org
+SITE_URL: greenwood.streetscapes.org
 
 WIKI_URL: dokuwiki.streetscapes.org
 
@@ -12,7 +12,7 @@ FORUM_URL: http://greenwood-streetscapes-forum.1046493.n5.nabble.com/
 
 BLOG_URL: blog.streetscapes.org
 
-
+MAPSERVER_URL: http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map
 
 
 
