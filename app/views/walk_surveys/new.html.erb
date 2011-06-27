@@ -254,8 +254,6 @@
                 
                 var line_geometries = [];
                 var frequencies = [];
-                //var line_ids = [];
-                //var line_status = [];
                 
                 for (var i = 0; i < lineFeatures.length; i = i+1) {       
                     if (lineFeatures[i] != null) {                  
@@ -270,8 +268,7 @@
                         var wkt=wktwriter.write(lineFeatures[i]);
                         line_geometries.push(wkt);
                         frequencies.push(lineFeatures[i].attributes.freq);
-                        //line_ids.push(lineFeatures[i].attributes.id);
-                        //line_status.push(lineFeatures[i].attributes.line_status)
+
                     }
                 }
 
@@ -284,21 +281,13 @@
 
                 document.survey_form.elements[1].value = json_routes;
                 document.survey_form.elements[2].value = json_freqs;
-                //document.survey_form.elements[3].value = json_ids;
             }
 
-				window.onload=init;
+				    window.onload=init;
 				
     </script>
 
 
-  <div id="map">
-  </div>
-		
-	<div id="controls">
-		<span id="scale" style="float:left"></span>
-		<a href="#" id="permalink" style="float:right">Link</a>
-	</div>
 
 
 <% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
