@@ -1,12 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-  <head>
-		
-    <title>Neighbors & Block Facilitators</title>
 
-    <!-- <script src="http://www.openlayers.org/api/OpenLayers.js"></script> -->
-    <!-- <script src="/home/paul/Projects/greenwood.streetscapes.org/public/javascripts/OpenLayers-2.8/OpenLayers.js"></script> -->
-			<!-- <script src="./javascript/OpenLayers-2.8/OpenLayers.js"></script> -->
 	  
 		<%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
     
@@ -27,23 +19,21 @@
         }
         #info table td {
             border:1px solid #ddd;
-            border-collapse: collapse;http://seattlestranger.com/
+            border-collapse: collapse;
             margin: 0;
             padding: 0;
             font-size: 90%;
             padding: .2em .1em;
             background:#fff;
 	       }
-         
-  #map {
-    width: 700px;
-    height: 480px;
-    border: 1px solid black;
-    padding: 0px;
-    margin:0px auto;
-    margin-top:30px;
-    
-    }
+				#map {
+						width: 700px;
+						height: 480px;
+						border: 1px solid black;
+						padding: 0px;
+						margin:0px auto;
+						margin-top:30px;
+				 }
     
 	#info table th{
 	    padding:.2em .2em;
@@ -63,15 +53,15 @@
             padding:.2em .2em;
 	}
 
-
   </style>
+		
   <script defer="defer" type="text/javascript">
     //OpenLayers.ProxyHost = "proxy.cgi?url=";
     
     var map, infocontrols, water, highlightlayer;
     var mapserver_url = "<%= h @mapserver_url %>";
 		
-		function load() {
+		function init() {
  
         map = new OpenLayers.Map('map', {
             maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)
@@ -166,10 +156,18 @@
         map.zoomToMaxExtent();
     }
 
-  </script>
-  </head>
+				window.onload=init;
+				
+    </script>
 
-  <body onload="load()">
+
+		
+	<div id="controls">
+		<span id="scale" style="float:left"></span>
+		<a href="#" id="permalink" style="float:right">Link</a>
+	</div>
+
+
       <h2 id="title">Neighbors & Block Facilitators</h2>
 
       <div id="tags"></div>

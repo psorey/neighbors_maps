@@ -1,5 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+
+
 		
 		<%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>  
   
@@ -316,15 +316,17 @@
             map.addControl(new OpenLayers.Control.LayerSwitcher());
         }
 				
+				window.onload=init;
+				
     </script>
-  </head>
 
-<body onload="init()">
-    <div id="map">
-    </div>
-<div id="controls">
-<span id="scale" style="float:left"></span>
-<a href="#" id="permalink" style="float:right">Link</a>
-</div>
-</body>
-</html>
+
+  <div id="map">
+  </div>
+		
+	<div id="controls">
+		<span id="scale" style="float:left"></span>
+		<a href="#" id="permalink" style="float:right">Link</a>
+	</div>
+
+

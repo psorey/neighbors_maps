@@ -1,7 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Walking Paths Survey</title>
-        
+
+    
         <link rel="stylesheet" href="style.css" type="text/css" />
         <style type="text/css">
             #controlToggle li {
@@ -289,10 +287,19 @@
                 //document.survey_form.elements[3].value = json_ids;
             }
 
-        </script>
-    </head>
-    <body onload="init()">
-<p style="color: green"><%= notice %></p>
+				window.onload=init;
+				
+    </script>
+
+
+  <div id="map">
+  </div>
+		
+	<div id="controls">
+		<span id="scale" style="float:left"></span>
+		<a href="#" id="permalink" style="float:right">Link</a>
+	</div>
+
 
 <% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
   <%= f.error_messages %>
