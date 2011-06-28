@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       if user.has_role? "admin"
         redirect_to "/administrators"
       else
-        redirect_to "/neighbors/show/#{user.neighbor_id}"
+        redirect_to "/welcome"
       end
       
       flash[:notice] = "Logged in successfully"
