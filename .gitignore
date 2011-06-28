@@ -1,7 +1,7 @@
 #.gitignore for 'green2'
 
-/config/initializers/*
-/config/*.yml
+config/initializers/*
+config/*.yml
 *.kpf
 Gemfile
 Gemfile.lock
