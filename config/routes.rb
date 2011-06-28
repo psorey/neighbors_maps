@@ -39,8 +39,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :passwords
   map.resources :users, :has_one => [:password]
 
-  #map.change_password '/change_password', :controller => 'users', :action => 'change_password'
-  #map.resources :users , :controller => 'users', :collection => {:change_password_update => :put}
+  map.change_password '/change_password', :controller => 'users', :action => 'change_password'
+  map.resources :users , :controller => 'users', :collection => {:change_password_update => :put}
 
 
 
