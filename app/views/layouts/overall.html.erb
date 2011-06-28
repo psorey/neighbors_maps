@@ -51,15 +51,15 @@
 				
 				<!-- <a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/> -->
 				
-				<%= link_to 'Forum',    		   		                :controller=> 'forums'     %><br /><br />
+				<%= link_to 'Discussion<br />Forum',    		   		                :controller=> 'forums'     %><br /><br />
 				
 				
 				
 				
-				<%= link_to 'Maps',    		   		                    :controller=> 'map'     %><br /><br />
+				<%= link_to 'Maps &<br />Resources',    		   		                    :controller=> 'maps'     %><br /><br />
 	
-				<a href="http://<%=APP_CONFIG['WIKI_URL']%>">Greenwood<br/>Streetscapes<br/>Guide</a><br/><br/>
-				
+
+				<%= link_to 'Greenwood<br/>Streetscapes<br/>Guide',    				              '/wiki'   %><br /><br />
 				
 				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
 

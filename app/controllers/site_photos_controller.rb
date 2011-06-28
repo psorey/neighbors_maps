@@ -1,0 +1,2 @@
+class SitePhotosController < ApplicationController
+end

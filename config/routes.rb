@@ -1,28 +1,33 @@
 # rails 2.8.5 routes.rb
 
 ActionController::Routing::Routes.draw do |map|
+  
+  
+  # main menu items
   map.resources :forums
-
-  map.resources :views
-
-  map.resources :map_layers
-
-  map.resources :projects
-  
-  #map.wiki '/wiki', :url=>'/home/paul/dokuwiki/doku.php'
-
-  #map.resources :dokuwiki
   map.resources :wiki
+  map.resources :about
+  map.resources :guide
+  map.resources :welcome 
+  map.resources :administrators  
+  map.resources :projects  
   
+  
+  # design resources, maps, photos, videos, cad:
+  map.resources :site_photos
+  map.resources :precompiled_maps
+  map.resources :views
+  map.resources :map_layers
   map.resources :neighbor_surveys
   map.resources :walk_surveys
   map.resources :overall_map
-  map.resources :administrators
   map.resources :half_blocks
   map.resources :neighbors
   map.resources :greenwood_users
+  map.resources :maps
 
 
+  # site internals:
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
@@ -37,10 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.change_password '/change_password', :controller => 'users', :action => 'change_password'
   #map.resources :users , :controller => 'users', :collection => {:change_password_update => :put}
 
-  map.resources :about
-  map.resources :guide
-  map.resources :map
-  map.resources :welcome
+
 
   # map.resources :neighbors, :collection => {:index => :get}
   # example: map.connect 'products/:id', :controller => 'products', :action => 'view'
