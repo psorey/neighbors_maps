@@ -31,7 +31,7 @@
 
 <body>
 
- <!-- <p style="color: green"><%= flash[:notice] %></p>  -->
+ <p style="color: green"><%= flash[:notice] %></p>
  <div id="banner">
 
 		 Greenwood Streetscapes
@@ -48,9 +48,9 @@
 				
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
 				
-				<%= link_to 'Discussion<br />Forum',    		   		                :controller=> 'forums'     %><br /><br />
+				<%= link_to 'Discussion<br />Forum',    		   		  :controller=> 'forums'     %><br /><br />
 				
-				<%= link_to 'Maps &<br />Resources',    		   		                    :controller=> 'maps'     %><br /><br />
+				<%= link_to 'Maps &<br />Resources',    		   		  :controller=> 'maps'     %><br /><br />
 	
 				<%= link_to 'Greenwood<br/>Streetscapes<br/>Guide',    				              '/wiki'   %><br /><br />
 				
@@ -62,37 +62,53 @@
 				
 				<% if current_user %>
 				<%= link_to 'Update My Info', {  :controller => 'neighbors', :action => "show" ,
-					:id => current_user.neighbor_id} %><br /><br />
+					                                :id => current_user.neighbor_id} %><br /><br />
 				<% end %>
 
-        <!--   <%= link_to 'Sign Up!',    				      '/signup'   %><br /><br />   -->
 				<% if current_user.nil? %>
+				
             <%= link_to 'Sign Up!',    				              '/signup'   %><br /><br />
   
             <%= link_to 'Login',    				                '/login'   %><br /><br />
-			  <% else %>
-        <%= link_to 'Log Out',    				              '/logout'   %><br /><br />
+			  
+				<% else %>
+						<%= link_to 'Log Out',    				              '/logout'   %><br /><br />
 				<% end %>
 
 				<% if @role == "admin" %>
             <%= link_to 'ADMIN',    				              '/administrators'   %><br /><br />
 				<% end %>
-				
-
 
       </div>
     </div>
 		
     <div class="content">
 			<%= yield %>
-		<br /><br /><br />
+			<br />
+			<br />
+			<br />
+			
 		</div>
 
 		<div id="footer">
 			...
 		</div>
 		
-</div>
+		<!-- Start of StatCounter Code  -->
+		<script type="text/javascript">
+		var sc_project=7003450; 
+		var sc_invisible=1; 
+		var sc_security="aa94c436"; 
+		</script>
+		<script type="text/javascript"
+		src="http://www.statcounter.com/counter/counter.js"></script>
+		<noscript><div class="statcounter"><a title="drupal
+		counter" href="http://statcounter.com/drupal/"
+		target="_blank"><img class="statcounter"
+		src="http://c.statcounter.com/7003450/0/aa94c436/1/"
+		alt="drupal counter"></a></div></noscript>
+		<!-- End of StatCounter Code -->
+		</div>
 
 
 </body>

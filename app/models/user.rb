@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   # You may wish to modify it to suit your need
   #has_many :roles, :through => :roles_users
   has_and_belongs_to_many :roles
+  has_one :neighbor, :dependent => :destroy
   
   # has_role? simply needs to return true or false whether a user has a role or not.  
   # It may be a good idea to have "admin" roles return true always

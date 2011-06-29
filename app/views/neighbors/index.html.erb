@@ -32,7 +32,7 @@
 
     <td><%= link_to 'Show', neighbor %></td>
     <td><%= link_to 'Edit', edit_neighbor_path(neighbor) %></td>
-
+    <td><%= link_to 'Destroy', neighbor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
