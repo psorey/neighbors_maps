@@ -25,12 +25,12 @@ class SessionsController < ApplicationController
         user.neighbor_id = neighbor.id
         neighbor.save!
         user.save!
-        redirect_to "/welcome"
+        redirect_to "/welcome" and return
       end
       if user.has_role? "admin"
-        redirect_to "/administrators"
+        redirect_to "/administrators" and return
       else
-        redirect_to "/welcome"
+        redirect_to "/welcome" and return
       end
       
       flash[:notice] = "Logged in successfully"
