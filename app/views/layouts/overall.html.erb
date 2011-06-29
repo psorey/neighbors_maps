@@ -18,15 +18,15 @@
 
 
 
-<%   @user_name = '' %>
+<%   @greeting = '' %>
 <%   @role = '' %>
 
 <% if current_user %>
-<%   @user_name = "Welcome, <br />#{current_user.login}" %>
+<%   @greeting = "Welcome, <br />#{current_user.login}" %>
 <%   user_role = current_user.roles[0] %>
 <%   @role = user_role.name %>
 <% else %>
-<%   @user_name = 'You are not logged in' %>
+<%   @greeting = 'You are not logged in' %>
 <% end %>
 
 <body>
@@ -44,27 +44,19 @@
     <div class="sidebar">
         <div id="side_menu">
 					
-				<%= @user_name %><br /><br />
+				<%= @greeting %><br /><br />
 				
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
 				
-				
-				<!-- <a href="http://blog.<%=APP_CONFIG['BASE_URL']%>">Blog</a><br/><br/> -->
-				
 				<%= link_to 'Discussion<br />Forum',    		   		                :controller=> 'forums'     %><br /><br />
-				
-				
-				
 				
 				<%= link_to 'Maps &<br />Resources',    		   		                    :controller=> 'maps'     %><br /><br />
 	
-
 				<%= link_to 'Greenwood<br/>Streetscapes<br/>Guide',    				              '/wiki'   %><br /><br />
 				
 				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
 
 				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
-
 
 				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br /><br /><br />
 				
