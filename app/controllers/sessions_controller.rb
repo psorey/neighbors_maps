@@ -25,15 +25,17 @@ class SessionsController < ApplicationController
         user.neighbor_id = neighbor.id
         neighbor.save!
         user.save!
+        flash[:notice] = "Logged in successfully"
         redirect_to "/welcome" and return
       end
       if user.has_role? "admin"
-        redirect_to "/administrators" and return
+      flash[:notice] = "Logged in successfully"
+       redirect_to "/administrators" and return
       else
+        flash[:notice] = "Logged in successfully"
         redirect_to "/welcome" and return
       end
-      
-      flash[:notice] = "Logged in successfully"
+
     else
       note_failed_signin
       @login       = params[:login]
