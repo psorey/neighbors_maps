@@ -2,22 +2,8 @@
 
 class Neighbor < ActiveRecord::Base
   
-=begin
-	serialize :user_preferences, Array
-	serialize :interests, Array
-	serialize :energy_priorities, Array
-	
-	has_many :assets, :as => :attachable, :dependent => :destroy
-	
-  Max_Attachments = 20
-  Max_Attachment_Size = 1.megabyte
-
-  def validate_attachments
-    errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if assets.length > Max_Attachments
-    assets.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
-
-  end
-=end
+  
+  belongs_to :users  # foreign_key = neighbor_id
 
   serialize :why_walk, Array
   serialize :dont_walk, Array

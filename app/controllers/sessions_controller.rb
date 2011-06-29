@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
       handle_remember_cookie! new_cookie_flag
       #redirect_back_or_default('/')
       if user.neighbor_id == nil
+        logger.debug ">>>>> user.neighbor_id is NIL!!!"
         neighbor = Neighbor.new
         user.neighbor_id = neighbor.id
         neighbor.save!
@@ -53,7 +54,7 @@ class SessionsController < ApplicationController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    flash[:error] = "Couldn't log you in as '#{params[:login]}'. Maybe you used the wrong password. Maybe you need to activate your account. Check your email!"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end
