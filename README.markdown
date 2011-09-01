@@ -9,6 +9,8 @@ The current project is an online '**social DESIGN networking**' tool with **inte
 
 Using spatially-enabled Postgres database with **PostGIS, [Mapserver](http://mapserver.org), [OpenLayers.js](http://openlayers.org), and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
 
+Currently the interactive mapping tool is being used in Greenwood to gather walking data from Neighbors: existing patterns of pedestrian circulation, desire routes, problem spots and opportunity zones. When a significant amount of data from a cross-section of Neighbors has been gathered we will use the data to inform the choice of several north-south pedestrian connections and several east-west connections so that no one will have to walk more than one or two blocks to reach a paved path.
+
 
 ##Project##
 
@@ -31,6 +33,7 @@ Anyone interested in developing this type of planning tool, be they urban planne
 * Gemify Mapserver/PostGIS functions
 * Gemify GeoEntity classes
 * Replace OpenLayers.js functions with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand
-* Implement needs/resources database and search engine
+* Implement geospatial needs/resources database and search functions (a whole new project, but related because
+    of the use of PostGIS and Mapserver)
 * Update to Rails 3.1
 
