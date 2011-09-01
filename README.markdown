@@ -1,3 +1,5 @@
+
+
 #Streetscapes.org - Developing Web-Based Tools for Community Planning and Development#
 
 The current project is an online '**social DESIGN networking**' tool with **interactive GIS maps**, database of participating **Neighbors** within a community, with links to a Nabble forum for design discussion and a wiki for creating content for reference such as design guidelines.
@@ -9,7 +11,7 @@ The current project is an online '**social DESIGN networking**' tool with **inte
 
 Using spatially-enabled Postgres database with **PostGIS, [Mapserver](http://mapserver.org), [OpenLayers.js](http://openlayers.org), and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
 
-Currently the interactive mapping tool is being used in Greenwood to gather walking data from Neighbors: existing patterns of pedestrian circulation, desire routes, problem spots and opportunity zones. When a significant amount of data from a cross-section of Neighbors has been gathered we will use the data to inform the choice of several north-south pedestrian connections and several east-west connections so that no one will have to walk more than one or two blocks to reach a paved path.
+Currently the interactive mapping tool is being used in the Greenwood neighborhood of Seattle to gather walking data from Neighbors: existing patterns of pedestrian circulation, desire routes, problem spots and opportunity zones. When a significant amount of data from a cross-section of Neighbors has been gathered we will use the data to inform the choice of several north-south pedestrian connections and several east-west connections so that no one will have to walk more than one or two blocks to reach a paved path.
 
 
 ##Project##
@@ -24,16 +26,17 @@ Anyone interested in developing this type of planning tool, be they urban planne
 ##To Do:##
 
 * Administrators create new thematic maps dynamically (and refactor mapping functions accordingly):
-    - ThemeMap.rb  :map_layers, {options}
-    - MapLayer.rb  :geo_entities, {options} 
-    - GeoEntity.rb :entity_type (polygon, polyline, point), :point_list, {options} 
+    - ThemeMap.rb  :map_layers, {options},
+    - MapLayer.rb  :geo_entities, {options}, 
+    - GeoEntity.rb :entity_type (polygon, polyline, point), :point_list, {options}, 
     - GeoPolygonEntity << GeoEntity, etc.  
-* Neighbors (users) create layers for these new thematic maps
-* CAD-like drawing functions - implement in MapEntity class hierarchy
-* Gemify Mapserver/PostGIS functions
-* Gemify GeoEntity classes
-* Replace OpenLayers.js functions with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand
+* Neighbors (users) create layers for these new thematic maps.
+* CAD-like drawing functions - implement in MapEntity class hierarchy.
+* Gemify Mapserver/PostGIS functions.
+* Gemify GeoEntity classes.
+* Replace OpenLayers.js functions with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand.
 * Implement geospatial needs/resources database and search functions (a whole new project, but related because
-    of the use of PostGIS and Mapserver)
-* Update to Rails 3.1
+    of the use of PostGIS and Mapserver).
+* Update to Rails 3.1.
+* Tests! RSpec.
 
