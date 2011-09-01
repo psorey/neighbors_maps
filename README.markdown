@@ -21,11 +21,13 @@ Anyone who is interested in developing this type of planning tool, whether they 
 ##To Do:##
 
 * administrators create new thematic maps dynamically
-  ThemeMap model :map_layers, 
-  MapLayer model :map_entities, 
-  MapEntity model :entity_type (polygon, polyline, point), :point_list, 
+    - ThemeMap.rb  :map_layers, :options,
+    - MapLayer.rb  :map_entities, :options,  
+    - MapEntity.rb :entity_type (polygon, polyline, point), :point_list, 
+    - PolygonEntity << MapEntity, etc.  
 * users create layers for these new thematic maps
-* more CAD-like drawing functions - Ruby MapEntity class hierarchy
+* more CAD-like drawing functions - implement in MapEntity class hierarchy
 * gemify the Mapserver/PostGIS functions
+* gemify the MapEntity classes
 * replace OpenLayers with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand
 
