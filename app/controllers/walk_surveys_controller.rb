@@ -22,7 +22,27 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/1
   # GET /walk_surveys/1.xml
   def show
-    @walk_survey = WalkSurvey.find(params[:id])
+        
+    @mapserver_url = APP_CONFIG['MAPSERVER_URL']
+    @walk_survey = WalkSurvey.new
+    
+    existing_mapped_lines = MappedLine.find(:all, :conditions =>
+       {:owner_id => params[:id].to_s, :map_layer_id => 'walk_survey'})
+    
+    # back to erasing and re-filling the database with the lines each time...
+    # sending just the relevant information via JSON,
+    # not the whole mapped_line object which may grow
+
+    geometry_list  = []
+    end_label_list = []
+    
+    existing_mapped_lines.each do |mapped_line|
+      geometry_list       << mapped_line.geometry.as_wkt()
+      end_label_list      << mapped_line.end_label
+    end
+    
+    @json_geometry = geometry_list.to_json
+    @json_frequencies = end_label_list.to_json
 
     respond_to do |format|
       format.html # show.html.erb

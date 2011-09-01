@@ -8,7 +8,8 @@
 <%= link_to 'Locations of Interested Neighbors and Block Facilitators', :controller => 'neighbors_map', :action => 'index' %>
 
 <br /><br />
-<%= link_to 'Draw your favorite walking paths', :controller => 'walk_surveys', :action => 'new' %>
+<%= link_to 'Draw your favorite walking paths', :controller => 'walk_surveys',
+                      :action => 'show' , :id => current_user.neighbor_id %>
 <br /><br />
 
 <br />
@@ -17,6 +18,8 @@
 <%= link_to 'Natural Resources', :controller => 'precompiled_maps', :action => 'index', :anchor => 'natural_resoures' %><br /><br />
 <%= link_to 'Neighborhood Infrastructure', :controller => 'precompiled_maps', :action => 'index', :anchor => 'infrastructure' %><br /><br />
 <%= link_to 'Transportation and Connectivity', :controller => 'precompiled_maps', :action => 'index', :anchor => 'transportation' %><br /><br />
-<%= link_to 'Public Utilities', :controller => 'precompiled_maps', :action => 'index', :anchor => 'utilities' %><br /><br />
+<%= link_to 'Public Utilities', :controller => 'precompiled_maps', :action => 'index', :anchor => 'utilities' %>
+
+<br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

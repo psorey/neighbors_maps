@@ -8,8 +8,8 @@
 
   <%= stylesheet_link_tag "greenwood", :media => "all" %>
 	
-   <%= javascript_include_tag 'prototype' -%>
- <%= javascript_include_tag 'application' -%>
+  <%= javascript_include_tag 'prototype' -%>
+  <%= javascript_include_tag 'application' -%>
   <%= javascript_include_tag 'effects' -%>
   <%= javascript_include_tag 'dragdrop' -%>
 	
@@ -32,13 +32,15 @@
 
 <body>
 
+<% if !(params[:controller].match('map') || params[:controller].match('survey')) %>
 
  <div id="banner">
 
-		 Greenwood Streetscapes
+		 Greenwood.Streetscapes.org
 
  </div>
  
+ <% end %>
 
 <div id="container">
 

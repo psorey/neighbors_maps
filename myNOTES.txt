@@ -16,3 +16,13 @@ Welcome:
   
   iconic / explanatory links
   
+
+types of map drawing elements:
+  polygon (filled/unfilled), point, polyline
+  each type has its own table with columns for map_name, layer_name, text data, neighbor_id,
+  
+other map element tables:
+  layers: name, state, color, linetype, permissions
+  
+  
+so all polygons 

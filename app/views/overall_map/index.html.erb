@@ -290,7 +290,6 @@
             );
 						
 						
-					 
             map.addLayer(no_aerial_layer);
             map.addLayer(aerial_layer);
             map.addLayer(lt_contour_layer);
@@ -304,8 +303,6 @@
 						map.addLayer(study_blocks_layer);
 						map.addLayer(permeability_layer);
 						map.addLayer(paving_edges_layer);
-						
-
             map.addLayer(neighbors_layer);
 
             map.zoomToMaxExtent();
@@ -313,7 +310,10 @@
             map.addControl(new OpenLayers.Control.Scale('scale'));
             map.addControl(new OpenLayers.Control.Permalink('permalink'));
             map.addControl(new OpenLayers.Control.MousePosition());
-            map.addControl(new OpenLayers.Control.LayerSwitcher());
+						
+            var layerSwitch = new OpenLayers.Control.LayerSwitcher();
+						map.addControl(layerSwitch);
+						layerSwitch.maximizeControl();
         }
 				
 				window.onload=init;
@@ -326,7 +326,7 @@
 		
 	<div id="controls">
 		<span id="scale" style="float:left"></span>
-		<a href="#" id="permalink" style="float:right">Link</a>
+
 	</div>
 
 
