@@ -7,7 +7,7 @@ An online '**social DESIGN networking**' tool with **interactive GIS maps**, dat
 
 ##Interactive GIS Map Layers##
 
-Using spatially-enabled Postgres database with **PostGIS, Mapserver, OpenLayers.js, and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
+Using spatially-enabled Postgres database with **PostGIS, [Mapserver](http://mapserver.org), [OpenLayers.js](http://openlayers.org), and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
 
 ##Project##
 
@@ -20,14 +20,15 @@ Anyone who is interested in developing this type of planning tool, whether they 
 
 ##To Do:##
 
-* administrators create new thematic maps dynamically
-    - ThemeMap.rb  :map_layers, :options,
-    - MapLayer.rb  :map_entities, :options,  
-    - MapEntity.rb :entity_type (polygon, polyline, point), :point_list, 
-    - PolygonEntity << MapEntity, etc.  
-* users create layers for these new thematic maps
-* more CAD-like drawing functions - implement in MapEntity class hierarchy
-* gemify the Mapserver/PostGIS functions
-* gemify the MapEntity classes
-* replace OpenLayers with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand
+* Administrators create new thematic maps dynamically
+    - ThemeMap.rb  :map_layers, {options},
+    - MapLayer.rb  :geo_entities, {options} 
+    - GeoEntity.rb :entity_type (polygon, polyline, point), :point_list, {options} 
+    - GeoPolygonEntity << GeoEntity, etc.  
+* Neighbors (users) create layers for these new thematic maps
+* CAD-like drawing functions - implement in MapEntity class hierarchy
+* gemify Mapserver/PostGIS functions
+* gemify GeoEntity classes
+* replace OpenLayers.js functions with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand
+* update to Rails 3.1
 
