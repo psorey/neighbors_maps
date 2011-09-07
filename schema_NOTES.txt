@@ -165,10 +165,6 @@ typical mapfile layers:
   END
 
 
-
-
-
-
   LAYER
     NAME 'walk_survey'
     TYPE LINE

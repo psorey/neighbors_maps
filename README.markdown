@@ -9,7 +9,7 @@ The current project is an online '**social DESIGN networking**' tool with **inte
 
 ##Interactive GIS Map Layers##
 
-Using spatially-enabled Postgres database with **PostGIS, [Mapserver](http://mapserver.org), [OpenLayers.js](http://openlayers.org), and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
+Using geospatially-enabled Postgres database with **PostGIS, [Mapserver](http://mapserver.org), [OpenLayers.js](http://openlayers.org), and Ruby Mapscript**, locally hosted City of Seattle GIS map layers (shapefiles) are displayed. WMS layers from other servers such as Google Maps can be added as overlays. Logged-in users can create their own layers to be displayed over the other static layers.
 
 Currently the interactive mapping tool is being used in the Greenwood neighborhood of Seattle to gather walking data from Neighbors: existing patterns of pedestrian circulation, desire routes, problem spots and opportunity zones. When a significant amount of data from a cross-section of Neighbors has been gathered we will use the data to inform the choice of several north-south pedestrian connections and several east-west connections so that no one will have to walk more than one or two blocks to reach a paved path.
 
@@ -18,7 +18,7 @@ Currently the interactive mapping tool is being used in the Greenwood neighborho
 
 This is an on-going project: as community groups use the tool we will respond with new functionality to meet their needs. The current project (Greenwood.streetscapes.org) is for the Greenwood neighborhood in Seattle which lacks sidewalks and other infrastructure for safe pedestrian access, and which received a Seattle Department of Neighborhoods Matching Fund grant ($100k) to study the area and plan an approach to designing and implementing these improvements.
 
-Link to the current online version of the [Greenwood tool](http://greenwood.streetscapes.org).
+Link to the current online version of the [Greenwood site](http://greenwood.streetscapes.org).
 
 Anyone interested in developing this type of planning tool, be they urban planners, landscape architects or software developers, are encouraged to dive in and help out with this open source project.
 
