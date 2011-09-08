@@ -35,7 +35,7 @@ Anyone interested in developing this type of planning tool, be they urban planne
 * Gemify Mapserver/PostGIS functions.
 * Gemify GeoEntity classes.
 * Replace OpenLayers.js functions with Ruby Mapscript where possible, bypassing need to edit mapfiles by hand.
-* Implement geospatial needs/resources database and search functions ([a whole new project](http://github/psorey/neighbors_needs_resources)a whole new project, but related because
+* Implement geospatial needs/resources database and search functions ([a whole new project](http://github.com/psorey/neighbors_needs_resources), but related because
     of the use of PostGIS and Mapserver).
 * Update to Rails 3.1.
 * Tests! RSpec.
