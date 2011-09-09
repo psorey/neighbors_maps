@@ -2,8 +2,10 @@
 
 config/initializers/*
 config/*.yml
+config/environment.rb
 *.kpf
-Gemfile
-Gemfile.lock
-# /db/schema.rb
 /log/*.log
+
+# Gemfile
+# Gemfile.lock
+# /db/schema.rb
