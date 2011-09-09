@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "2.3.8"
+gem "rails", "2.3.12"
 gem "curb", "0.7.15"
 
 gem "GeoRuby", "1.3.4"
@@ -14,7 +14,7 @@ gem "POpen4", "0.1.4"
 gem "proj4rb", "0.3.1", :require => "proj4"
 
 
-#gem "rack", "1.1.2"
+gem "rack", "1.1.0"
 
 #gem "rake", "0.8.7"
 
