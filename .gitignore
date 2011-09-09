@@ -1,5 +1,6 @@
 #.gitignore for 'green2'
 
+.gitignore
 config/initializers/*
 config/*.yml
 config/environment.rb
