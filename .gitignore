@@ -1,5 +1,5 @@
 #.gitignore for 'green2'
-
+.redcar/*
 .gitignore
 config/initializers/*
 config/*.yml
