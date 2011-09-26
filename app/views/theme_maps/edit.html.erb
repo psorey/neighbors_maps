@@ -1,0 +1,38 @@
+<h1>Editing theme_map</h1>
+
+<% form_for(@theme_map) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :layers %><br />
+    <ul>
+    <% @theme_map.map_layers.each do |tml|%>
+       <li><%=  tml.name %></li>
+    <% end %>
+    </ul>
+  </p>
+  <%= f.submit 'Update' %>
+  <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+  <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @theme_map %> |
+<%= link_to 'Back', theme_maps_path %>

@@ -5,9 +5,9 @@
             #controlToggle li {
                 list-style: none;
             }
-            p {
+         /*   p {
                 width: 512px;
-            }
+            }  */
 
             /* avoid pink tiles */
             .olImageLoadError {
@@ -16,7 +16,7 @@
         </style>
         <style type="text/css">
 
-            #map {
+         /*   #map {
                 width: 900px;
                 height: 480px;
                 border: 1px solid black;
@@ -24,11 +24,9 @@
                 margin:0px auto;
                 margin-top:30px;
                 position:relative;
-            }
+            }  */
         </style>
-
-        <!-- <script src="http://www.openlayers.org/api/OpenLayers.js"></script> -->
-        
+       
         <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
         
         <script type="text/javascript">
@@ -281,6 +279,11 @@
 
                 document.survey_form.elements[1].value = json_routes;
                 document.survey_form.elements[2].value = json_freqs;
+                
+              #  document.survey_form.elements[1].value = line_geometries;
+              #  document.survey_form.elements[2].value = frequencies;
+                
+                
             }
 
 				    window.onload=init;

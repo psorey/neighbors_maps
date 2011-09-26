@@ -1,0 +1,28 @@
+<h1>Listing theme_maps</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Layers</th>
+    <th>Width</th>
+    <th>Height</th>
+  </tr>
+
+<% @theme_maps.each do |theme_map| %>
+  <tr>
+    <td><%=h theme_map.name %></td>
+    <td><%=h theme_map.description %></td>
+    <td><%=h theme_map.layers %></td>
+    <td><%=h theme_map.width %></td>
+    <td><%=h theme_map.height %></td>
+    <td><%= link_to 'Show', theme_map %></td>
+    <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
+    <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New theme_map', new_theme_map_path %>

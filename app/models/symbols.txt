@@ -1,0 +1,27 @@
+SYMBOLSET
+
+  SYMBOL
+    NAME "circle"
+    TYPE ellipse
+    FILLED true
+    POINTS
+      1 1
+    END
+  END
+  
+  SYMBOL
+    NAME "triangle"
+    TYPE vector
+    POINTS
+      0 4
+      2 0
+      4 4
+      0 4
+    END
+  END
+  
+
+END
+
+
+

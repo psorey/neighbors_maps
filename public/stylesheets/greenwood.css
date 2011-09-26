@@ -23,9 +23,6 @@ img.project_description {
 	left:67px;
 }
 
-
-
-
 img.may18th {
 	border:solid #636468;
 	border-width:0px;
@@ -34,9 +31,6 @@ img.may18th {
 	top:126px;
 	left:464px;
 }
-
-
-
 
 #columns {
 	margin-top: 0px;
@@ -285,7 +279,7 @@ input.btn {
 
 /* START:notice */
 #notice {
-  border: 2px solid red;
+  border: 2px solid green;
   padding: 1em;
   margin-bottom: 2em;
   background-color: #f0f0f0;

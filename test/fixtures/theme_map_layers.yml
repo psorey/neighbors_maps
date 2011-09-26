@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  theme_maps_id: 1
+  map_layer_id: 1
+  line_color: MyString
+  fill_color: MyString
+
+two:
+  theme_maps_id: 1
+  map_layer_id: 1
+  line_color: MyString
+  fill_color: MyString

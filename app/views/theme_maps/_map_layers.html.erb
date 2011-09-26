@@ -1,0 +1,17 @@
+
+
+var <%=name%> = new OpenLayers.Layer.WMS( '<%= name %>', '<%= map_url %>',
+        { layers: '<%= name %>',
+          format: 'png',
+          transparent: 'false'},
+        { 
+          scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:false,
+          singleTile:true,
+        }
+      );
+

@@ -1,5 +1,17 @@
 
 
+.to_do a {
+	color: red;
+}
+.to_do {
+	color: red;
+}
+
+.strike {
+	text-decoration: line-through;
+}
+
+
 img.project_description {
  border:solid #636468;
  border-width:0px;
@@ -9,8 +21,6 @@ img.project_description {
 	left:67px;
 }
 
-
-
 img.may18th {
 	border:solid #636468;
 	border-width:0px;
@@ -19,9 +29,6 @@ img.may18th {
 	top:126px;
 	left:464px;
 }
-
-
-
 
 #columns {
 	margin-top: 0px;
@@ -61,8 +68,9 @@ body {
 
 #banner {
 	width:100%;
-  background: #bdb;
-	background: #8c8;
+  //background: #bdb;
+	//background: #8c8;
+	background: #88c;
 	background-repeat: no-repeat;
 	background-image:url('got_sidewalks_only.jpg');
   padding-top: 5px;
@@ -71,11 +79,11 @@ body {
 	padding-right: 0px;
 
   border-bottom: 2px solid;
-	border-color: #575;
+	border-color: #557;
   /*font-variant: small-caps;*/
 	font-family:"Trebuchet MS", Arial, Sans-Serif;
 	font-size:36px;
-  color: #467;
+  color: #476;
 	color: #fff;
   text-align: left;
 	margin: 0px;
@@ -92,8 +100,8 @@ body {
 
 #container {
 	width: 100%;
-	background: #595;
-	background: #559055;
+	background: #559;
+	background: #555590;
 }
 
 
@@ -105,8 +113,8 @@ body {
   padding-left: 35px;
 	padding-right: 120px;
 	height: 100%;
-	background-color: #efe;
-	background-color: #eeffc3;
+	background-color: #eef;
+	background-color: #eec3ff;
 	background-color: #f2fada; /* pale, low intensity yellow */
 	
 }
@@ -116,8 +124,8 @@ body {
 	float: left;
 	height: 100%;
 	padding: 5px;
-	background: #585;
-	background: #559055;
+	background: #558;
+	background: #555590;
 }
 
 
@@ -125,8 +133,8 @@ body {
   font-size: small;
 }
 
-.sidebar a:link {color:#bbffcc; text-decoration:none; font-weight:bold;}    /* unvisited link  */
-.sidebar a:visited {color:#bbffcc; text-decoration:none; font-weight:bold;} /* visited link    */
+.sidebar a:link {color:#bbccff; text-decoration:none; font-weight:bold;}    /* unvisited link  */
+.sidebar a:visited {color:#bbccff; text-decoration:none; font-weight:bold;} /* visited link    */
 .sidebar a:hover {color:#ff6; text-decoration:none; font-weight:bold;}   /* mouse over link */
 .sidebar a:active {color:#ff6; text-decoration:none; font-weight:bold;}  /* selected link   */
 
@@ -134,9 +142,8 @@ body {
 
 #footer {
 	clear:both;
-	background:#363;
+	background:#336;
 }
-
 
 
 h1 {
@@ -270,7 +277,7 @@ input.btn {
 
 /* START:notice */
 #notice {
-  border: 2px solid red;
+  border: 2px solid green;
   padding: 1em;
   margin-bottom: 2em;
   background-color: #f0f0f0;

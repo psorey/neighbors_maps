@@ -1,3 +1,4 @@
+Mapscript is a mixin
 
 
 

@@ -1,6 +1,10 @@
 # rails 2.8.5 routes.rb
 
 ActionController::Routing::Routes.draw do |map|
+  map.resources :theme_map_layers
+
+  map.resources :theme_maps
+  map.resources :map_layers
   
   
   # main menu items
@@ -17,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :site_photos
   map.resources :precompiled_maps
   map.resources :views
-  map.resources :map_layers
+
   map.resources :neighbor_surveys
   map.resources :walk_surveys
   map.resources :overall_map

@@ -1,0 +1,97 @@
+MAP
+  EXTENT 1255053.87242477 239541.583313177 1279032.27152446 266122.634434438
+  IMAGECOLOR 255 255 255
+  IMAGETYPE "png"
+  NAME "MS"
+  SHAPEPATH "/home/paul/mapserver/data"
+  SIZE 700 500
+  STATUS ON
+  SYMBOLSET "symbols.txt"
+  UNITS METERS
+
+  OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "AGG/PNG"
+    EXTENSION "png"
+    IMAGEMODE RGB
+    TRANSPARENT FALSE
+  END # OUTPUTFORMAT
+
+  LEGEND
+    IMAGECOLOR 255 255 255
+    KEYSIZE 20 10
+    KEYSPACING 5 5
+    LABEL
+      SIZE MEDIUM
+      COLOR 0 0 0
+      OFFSET 0 0
+      SHADOWSIZE 1 1
+      TYPE BITMAP
+    END # LABEL
+    STATUS OFF
+  END # LEGEND
+
+  QUERYMAP
+    COLOR 255 255 0
+    SIZE -1 -1
+    STATUS OFF
+    STYLE HILITE
+  END # QUERYMAP
+
+  SCALEBAR
+    COLOR 0 0 0
+    IMAGECOLOR 255 255 255
+    INTERVALS 4
+    LABEL
+      SIZE MEDIUM
+      COLOR 0 0 0
+      OFFSET 0 0
+      SHADOWSIZE 1 1
+      TYPE BITMAP
+    END # LABEL
+    SIZE 200 3
+    STATUS OFF
+    UNITS MILES
+  END # SCALEBAR
+
+  WEB
+  END # WEB
+
+  LAYER
+    DATA "BusRoutes.shp"
+    NAME "BusRoutes.shp"
+    STATUS ON
+    TILEITEM "location"
+    TYPE LINE
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 0
+        COLOR 107 158 160
+        OFFSET 0 0
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+  LAYER
+    CONNECTION "host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432"
+    CONNECTIONTYPE POSTGIS
+    DATA "location from neighbors"
+    NAME "neighbors"
+    STATUS ON
+    TILEITEM "location"
+    TYPE POINT
+    UNITS METERS
+    CLASS
+      STYLE
+        ANGLE 0
+        COLOR 10 10 55
+        OFFSET 0 0
+        SIZE 15
+        SYMBOL 1
+      END # STYLE
+    END # CLASS
+  END # LAYER
+
+END # MAP

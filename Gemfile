@@ -12,7 +12,7 @@ gem "Platform", "0.4.0"
 gem "POpen4", "0.1.4"
 
 gem "proj4rb", "0.3.1", :require => "proj4"
-
+gem 'rdoc'
 
 gem "rack", "1.1.2"
 

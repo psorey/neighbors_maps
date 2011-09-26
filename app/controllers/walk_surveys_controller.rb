@@ -1,3 +1,5 @@
+require 'json/pure'
+
 class WalkSurveysController < ApplicationController
   
   
@@ -92,8 +94,7 @@ class WalkSurveysController < ApplicationController
     logger.debug "made it here 1"
     @current_neighbor_id = current_user.neighbor_id  # !!! for testing
     
-    existing_mapped_lines = MappedLine.find(:all, :conditions =>
-       {:owner_id => @current_neighbor_id.to_s, :map_layer_id => 'walk_survey'})
+    existing_mapped_lines = MappedLine.find(:all, :conditions => {:owner_id => @current_neighbor_id.to_s, :map_layer_id => 'walk_survey'})
     
     # back to erasing and re-filling the database with the lines each time...
     # sending just the relevant information via JSON,
@@ -111,8 +112,9 @@ class WalkSurveysController < ApplicationController
     @json_frequencies = end_label_list.to_json
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @walk_survey }
+      render 'new'
+      #format.html # new.html.erb
+      #format.xml  { render :xml => @walk_survey }
     end
   end
 

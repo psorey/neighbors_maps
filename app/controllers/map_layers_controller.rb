@@ -2,7 +2,7 @@ class MapLayersController < ApplicationController
   # GET /map_layers
   # GET /map_layers.xml
   def index
-    @map_layers = MapLayer.all
+    @map_layers = MapLayer.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb

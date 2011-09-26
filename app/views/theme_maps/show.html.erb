@@ -1,0 +1,74 @@
+
+    <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+    <style type="text/css">
+        /* set the size of the map image here... */
+        #map {
+                width: 900px;
+                height: 520px;
+                border: 1px solid black;
+                padding: 0px;
+         }
+         /* get rid of extra white space so map can be larger... */
+         .content {
+            padding: 10px;
+         }
+  </style>
+    
+  <script defer="defer" type="text/javascript">    
+    
+    var map, infocontrols, water, highlightlayer;
+
+    function init() {
+      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)}); 
+      <% @theme_map.theme_map_layers.each do |tml| %>
+           <%= render :partial => 'map_layers', :locals => {:map_url => "#{APP_CONFIG['MAPSERVER_URL']}#{@theme_map.name.downcase.gsub(/\s+/, '_')}.map", :name => tml.map_layer.name.downcase.gsub(/\s+/, '_')} %>
+      <% end %>
+      
+
+
+      map.addLayers([<%= @layer_list.join(',')%>]);
+        
+
+/*
+        info = new OpenLayers.Control.WMSGetFeatureInfo({
+            url:  mapserver_url,
+            title: 'Identify features by clicking',
+            //queryVisible: true,
+            maxFeatures: 1,
+            layers: [neighbors_layer],
+            eventListeners: {
+                getfeatureinfo: function(event) {
+                    map.addPopup(new OpenLayers.Popup.FramedCloud(
+                        "chicken", 
+                        map.getLonLatFromPixel(event.xy),
+                        null,
+                        event.text,
+                        null,
+                        true
+                    ));
+                }
+            }
+        });
+        map.addControl(info);
+        info.activate();
+*/
+
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+        map.zoomToMaxExtent();
+    }
+
+  window.onload=init;
+        
+    </script>
+
+
+  <div id="map" class="smallmap"></div>
+  <h2 id="title"><%=h @theme_map.name %> </h2>
+  <p id="shortdesc">
+     Click on dots for name and contact info (currently disabled)
+  </p>
+  <div id="docs"></div>
+
+
+<%= link_to 'Edit', edit_theme_map_path(@theme_map) %> |
+<%= link_to 'Back', theme_maps_path %>

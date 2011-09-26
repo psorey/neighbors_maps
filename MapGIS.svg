@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="MapGIS.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective3650"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3754"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3818"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3891"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4002"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4066"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4138"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4300"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4412"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4434"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4459"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4525"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4597"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4619"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4647"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4669"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4669-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4708"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4730"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4752"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="1691.452"
+     inkscape:cy="899.30545"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1331"
+     inkscape:window-height="720"
+     inkscape:window-x="29"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3620">
+      <g
+         id="g3712">
+        <rect
+           style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect2816"
+           width="212.1321"
+           height="242.43665"
+           x="80.812202"
+           y="62.412693"
+           ry="0"
+           rx="2.4227273" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 86.873119,121.00154 208.091421,0"
+           id="path3590"
+           sodipodi:nodetypes="cc" />
+        <text
+           xml:space="preserve"
+           style="font-size:37.73581314px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+           x="91.807411"
+           y="102.10174"
+           id="text3592"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3594"
+             x="91.807411"
+             y="102.10174"><tspan
+               style="font-size:18.97676659px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+               id="tspan3616">Mapscript::</tspan><tspan
+               style="font-size:18.97676659px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:FreeSans;-inkscape-font-specification:FreeSans Bold"
+               id="tspan3614">MapObj</tspan></tspan><tspan
+             sodipodi:role="line"
+             x="91.807411"
+             y="127.67233"
+             id="tspan3596" /><tspan
+             sodipodi:role="line"
+             x="91.807411"
+             y="153.24294"
+             id="tspan3598" /></text>
+        <rect
+           style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect3604"
+           width="196.42857"
+           height="175"
+           x="91.428574"
+           y="125.21932"
+           ry="2.4227273" />
+        <flowRoot
+           xml:space="preserve"
+           style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+           id="flowRoot3606"><flowRegion
+             id="flowRegion3608"><use
+               x="0"
+               y="0"
+               xlink:href="#rect3604"
+               id="use3610"
+               width="744.09448"
+               height="1052.3622" /></flowRegion><flowPara
+             id="flowPara3612"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+             id="flowPara3636"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"></flowPara><flowPara
+             id="flowPara3639"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Or do we <flowSpan
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold"
+   id="flowSpan3618">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>      </g>
+    </g>
+    <rect
+       style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-1"
+       width="434.36536"
+       height="484.87277"
+       x="-173.93718"
+       y="-508.19049"
+       ry="2.4227273" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.47934568px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -173.34295,-451.62195 431.15683,0"
+       id="path3590-3"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:37.73581314px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="-144.75923"
+       y="-467.4913"
+       id="text3592-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3594-7"
+         x="-144.75923"
+         y="-467.4913">Mapserver</tspan><tspan
+         sodipodi:role="line"
+         x="-144.75923"
+         y="-420.32153"
+         id="tspan3596-3" /><tspan
+         sodipodi:role="line"
+         x="-144.75923"
+         y="-373.15176"
+         id="tspan3598-1" /></text>
+    <rect
+       style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3604-3"
+       width="414.62161"
+       height="399.25381"
+       x="-104.73196"
+       y="-427.20108"
+       ry="0" />
+    <flowRoot
+       xml:space="preserve"
+       style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       id="flowRoot3606-8"
+       transform="translate(-60.800091,-12.998972)"><flowRegion
+         id="flowRegion3608-7"><use
+           x="0"
+           y="0"
+           xlink:href="#rect3604-3"
+           id="use3610-9"
+           width="744.09448"
+           height="1052.3622" /></flowRegion><flowPara
+         id="flowPara3612-3"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+         id="flowPara3636-8"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans" /><flowPara
+         id="flowPara3639-8"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Or do we <flowSpan
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold"
+   id="flowSpan3618-4">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       id="flowRoot3606-8-9"
+       transform="translate(518.97821,63.392931)"><flowRegion
+         id="flowRegion3608-7-3"><use
+           x="0"
+           y="0"
+           xlink:href="#rect3604-3"
+           id="use3610-9-9"
+           width="744.09448"
+           height="1052.3622" /></flowRegion><flowPara
+         id="flowPara3612-3-4"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"> </flowPara><flowPara
+         id="flowPara3636-8-6"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans" /><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3788">OpenLayers functions:</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3796" /><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3798">Switch on and off layers</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3800">bring in layers from other WMS servers</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3804">widgets:</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3806">   layer switcher</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3808">   legends?</flowPara><flowPara
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         id="flowPara3802" /></flowRoot>    <g
+       id="g3712-0"
+       transform="translate(720.48877,-314.15747)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9"
+         y="100.25907"
+         x="92.247696"
+         style="font-size:31.05654335px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="100.25907"
+           x="92.247696"
+           id="tspan3594-3"
+           sodipodi:role="line">Shapefile</tspan><tspan
+           id="tspan3596-7"
+           y="139.07974"
+           x="92.247696"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6"
+           y="177.90042"
+           x="92.247696"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0"
+             xlink:href="#rect3604-5"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3612-0">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3636-6" /><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85">Or do we <flowSpan
+   id="flowSpan3618-49"
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    </g>
+    <g
+       id="g3712-0-4"
+       transform="translate(990.19951,-313.14731)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-6"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-4"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-2"
+         y="98.393242"
+         x="92.783714"
+         style="font-size:27.78820229px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="98.393242"
+           x="92.783714"
+           id="tspan3594-3-5"
+           sodipodi:role="line">PostGIS table</tspan><tspan
+           id="tspan3596-7-1"
+           y="133.12849"
+           x="92.783714"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-6"
+           y="167.86374"
+           x="92.783714"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-1"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-3"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-7"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-7"
+             xlink:href="#rect3604-5-1"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3612-0-1">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3636-6-2" /><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-1">Or do we <flowSpan
+   id="flowSpan3618-49-0"
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    </g>
+    <g
+       id="g3712-0-4-1"
+       transform="translate(1129.1778,-699.02558)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-6-3"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-4-1"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-2-5"
+         y="99.536163"
+         x="118.52502"
+         style="font-size:30.85395432px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="99.536163"
+           x="118.52502"
+           id="tspan3594-3-5-8"
+           sodipodi:role="line">SVG file</tspan><tspan
+           id="tspan3596-7-1-1"
+           y="138.10361"
+           x="118.52502"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-6-3"
+           y="176.67105"
+           x="118.52502"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-1-3"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-3-9"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-7-7"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-7-5"
+             xlink:href="#rect3604-5-1-3"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3612-0-1-4">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3636-6-2-4" /><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-1-9">Or do we <flowSpan
+   id="flowSpan3618-49-0-6"
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    </g>
+    <g
+       id="g3712-0-4-1-3"
+       transform="translate(868.98123,-697.00527)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-6-3-0"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-4-1-0"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-2-5-0"
+         y="99.536163"
+         x="110.44379"
+         style="font-size:30.85395432px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="99.536163"
+           x="110.44379"
+           id="tspan3594-3-5-8-2"
+           sodipodi:role="line">User input</tspan><tspan
+           id="tspan3596-7-1-1-2"
+           y="138.10361"
+           x="110.44379"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-6-3-2"
+           y="176.67105"
+           x="110.44379"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-1-3-4"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-3-9-7"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-7-7-9"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-7-5-8"
+             xlink:href="#rect3604-5-1-3-4"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3612-0-1-4-5">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3636-6-2-4-4" /><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-1-9-7">Or do we <flowSpan
+   id="flowSpan3618-49-0-6-8"
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1080.8632,-393.16611 78.7919,142.43151"
+       id="path4122" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1298.046,-394.4288 -102.0254,142.43151"
+       id="path4124" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 927.32004,-12.3386 82.83246,157.5838 4.0407,6.06091"
+       id="path4126"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1194.0003,-10.318295 1082.8835,151.30611"
+       id="path4128"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g3712-0-5"
+       transform="translate(858.87966,86.873097)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-0"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-2"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-7"
+         y="100.25907"
+         x="92.247696"
+         style="font-size:31.05654335px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="100.25907"
+           x="92.247696"
+           id="tspan3594-3-2"
+           sodipodi:role="line">MapLayer</tspan><tspan
+           id="tspan3596-7-8"
+           y="139.07976"
+           x="92.247696"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-1"
+           y="177.90044"
+           x="92.247696"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-7"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-7"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-9"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-79"
+             xlink:href="#rect3604-5-7"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-9">Currently only contains the mapfile layer data for one layer.</flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4844"> </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4846">When a ThemeMap is created the layer data from here is added to the MapObj owned by the ThemeMap</flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4848"> </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4850" /></flowRoot>    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="1020.2542"
+       y="-127.49599"
+       id="text4215"><tspan
+         sodipodi:role="line"
+         id="tspan4217"
+         x="1020.2542"
+         y="-127.49599">or</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 953.584,389.70211 0,30.30458 222.2336,0 0,-250.51783 -24.2437,0 0,0"
+       id="path4402"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 977.82761,417.98638 0,30.30458 222.23359,0 0,-250.51783 -24.2437,0 0,0"
+       id="path4402-6"
+       sodipodi:nodetypes="cccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="1293.6659"
+       y="-128.69984"
+       id="text4215-1"><tspan
+         sodipodi:role="line"
+         id="tspan4217-9"
+         x="1293.6659"
+         y="-128.69984">or</tspan></text>
+    <g
+       id="g3712-0-4-8"
+       transform="translate(1264.961,-315.16762)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-6-0"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-4-4"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-2-9"
+         y="98.393242"
+         x="92.783714"
+         style="font-size:27.78820229px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="98.393242"
+           x="92.783714"
+           id="tspan3594-3-5-0"
+           sodipodi:role="line">WMS Layer</tspan><tspan
+           id="tspan3596-7-1-5"
+           y="133.12849"
+           x="92.783714"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-6-5"
+           y="167.86375"
+           x="92.783714"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-1-0"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-3-1"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-7-6"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-7-0"
+             xlink:href="#rect3604-5-1-0"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3612-0-1-2">Mapscript object containing all the information of a mapfile. Do we need a physical wrapper for all mapscript object types so they can be saved in the DB?  </flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3636-6-2-8" /><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-1-8">Or do we <flowSpan
+   id="flowSpan3618-49-0-4"
+   style="font-weight:bold;-inkscape-font-specification:DejaVu Sans Bold">use Mapscript only for its methods, passing it our different objects for processing</flowSpan>?</flowPara></flowRoot>    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1129.3505,151.30611 1428.3557,-12.3386"
+       id="path4515" />
+    <g
+       id="g3712-0-4-4"
+       transform="translate(1697.9831,138.10609)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-6-6"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-4-3"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-2-8"
+         y="98.393242"
+         x="92.783714"
+         style="font-size:27.78820229px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="98.393242"
+           x="92.783714"
+           id="tspan3594-3-5-04"
+           sodipodi:role="line">ThemeMap</tspan><tspan
+           id="tspan3596-7-1-9"
+           y="133.12849"
+           x="92.783714"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-6-7"
+           y="167.86375"
+           x="92.783714"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-1-9"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-3-7"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-7-5"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-7-1"
+             xlink:href="#rect3604-5-1-9"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-1-80">has_many :theme_map_layers</flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4835">has_many :map_layers :through    =&gt; :theme_map_layers</flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4837" /></flowRoot>    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1129.2197,151.43687 c 2.984,0 39.9101,-13.24118 39.9101,-13.24118 l -8.2058,-14.36014 -31.7043,27.60132 z"
+       id="path4587"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1082.9085,151.84272 c 2.6164,-1.43495 31.7681,-31.37332 31.7681,-31.37332 l -17.2431,-8.07313 -14.525,39.44645 z"
+       id="path4587-8"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="-16.030192"
+       inkscape:transform-center-y="-20.224537" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1013.1805,149.89213 c -0.065,-2.9833 -13.1577,-42.66577 -13.1577,-42.66577 l -15.12344,11.5664 28.28114,31.09937 z"
+       id="path4587-8-5"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="-30.304576"
+       inkscape:transform-center-y="15.152288" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1151.5739,245.2503 145.0189,20.05948"
+       id="path4633"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1173.7973,271.51427 126.9079,19.88615"
+       id="path4635"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1199.0511,295.75793 97.9602,15.60044"
+       id="path4637"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1778.3967,334.42646 c -2.4415,-1.71561 -42.164,-14.68629 -42.164,-14.68629 l 0.3541,19.03611 41.8099,-4.34982 z"
+       id="path4587-8-5-8"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="21.598242"
+       inkscape:transform-center-y="-5.089637" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1776.9855,358.28134 c -2.4415,-1.71561 -42.164,-14.68629 -42.164,-14.68629 l 0.3541,19.03611 41.8099,-4.34982 z"
+       id="path4587-8-5-8-4"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="21.598242"
+       inkscape:transform-center-y="-5.089637" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1779.7201,382.525 c -2.4415,-1.71561 -42.164,-14.68629 -42.164,-14.68629 l 0.3541,19.03611 41.8099,-4.34982 z"
+       id="path4587-8-5-8-1"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="21.598242"
+       inkscape:transform-center-y="-5.089637" />
+    <rect
+       style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4692"
+       width="846.50781"
+       height="800.04083"
+       x="745.49261"
+       y="-767.93268"
+       rx="2.4227273" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 747.51288,-713.38447 840.44692,0 0,-2.0203"
+       id="path4694" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="826.30481"
+       y="-729.54694"
+       id="text4696"><tspan
+         sodipodi:role="line"
+         id="tspan4698"
+         x="826.30481"
+         y="-729.54694">MapDataSource</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1159.9061,-250.10985 c -0.065,-2.9833 -13.1577,-42.66577 -13.1577,-42.66577 l -15.1235,11.5664 28.2812,31.09937 z"
+       id="path4587-8-5-3"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="-30.304576"
+       inkscape:transform-center-y="15.152288" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.73848408px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1196.3483,-253.21763 c 2.7467,-1.16647 34.7426,-28.04373 34.7426,-28.04373 l -16.3506,-9.75486 -18.392,37.79859 z"
+       id="path4587-8-59"
+       sodipodi:nodetypes="cccc"
+       inkscape:transform-center-x="-17.566742"
+       inkscape:transform-center-y="-19.383507" />
+    <g
+       id="g3712-0-5-8"
+       transform="translate(1218.8445,87.839761)">
+      <rect
+         rx="2.4227273"
+         ry="0"
+         y="62.412693"
+         x="80.812202"
+         height="242.43665"
+         width="212.1321"
+         id="rect2816-2-0-4"
+         style="fill:none;stroke:#ae0000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3590-6-2-0"
+         d="m 86.873119,121.00154 208.091421,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3592-9-7-8"
+         y="98.183182"
+         x="92.225655"
+         style="font-size:23.53190994px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="98.183182"
+           x="92.225655"
+           id="tspan3594-3-2-4"
+           sodipodi:role="line">ThemeMapLayer</tspan><tspan
+           id="tspan3596-7-8-4"
+           y="127.59808"
+           x="92.225655"
+           sodipodi:role="line" /><tspan
+           id="tspan3598-6-1-8"
+           y="157.01297"
+           x="92.225655"
+           sodipodi:role="line" /></text>
+      <rect
+         ry="2.4227273"
+         y="125.21932"
+         x="91.428574"
+         height="175"
+         width="196.42857"
+         id="rect3604-5-7-2"
+         style="fill:none;stroke:#ae0000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         id="flowRoot3606-2-7-4"
+         style="font-size:12.14986897px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3608-4-9-2"><use
+             height="1052.3622"
+             width="744.09448"
+             id="use3610-0-79-7"
+             xlink:href="#rect3604-5-7-2"
+             y="0"
+             x="0" /></flowRegion><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara3639-85-9-9">belongs_to :theme_maps</flowPara><flowPara
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="flowPara4828">belongs_to :map_layers</flowPara></flowRoot>    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1313.5489,390.66877 0,30.30458 222.2336,0 0,-250.51783 -24.2437,0 0,0"
+       id="path4402-9"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1337.7925,418.95304 0,30.30458 222.2336,0 0,-250.51783 -24.2437,0 0,0"
+       id="path4402-6-8"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1509.3959,297.64553 229.3046,34.34519"
+       id="path4633-4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1531.6193,323.9095 204.0508,31.31472"
+       id="path4635-0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1556.8731,348.15316 180.8173,31.31473"
+       id="path4637-8" />
+  </g>
+</svg>

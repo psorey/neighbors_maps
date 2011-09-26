@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407042118) do
+ActiveRecord::Schema.define(:version => 20110924191123) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -36,20 +36,24 @@ ActiveRecord::Schema.define(:version => 20110407042118) do
 
   create_table "map_layers", :force => true do |t|
     t.string   "name"
-    t.text     "short_desc"
-    t.string   "projection"
-    t.string   "database_table"
-    t.string   "database_column"
+    t.text     "description"
+    t.text     "layer_mapfile_text"
     t.integer  "opacity"
     t.string   "symbol_type"
     t.string   "symbol_file"
     t.string   "line_color"
-    t.string   "fill_strategy"
     t.string   "fill_color"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "lower_left_coords",  :limit => nil
-    t.point    "upper_right_coords", :limit => nil
+  end
+
+  create_table "map_obj", :force => true do |t|
+    t.string   "name"
+    t.string   "shapepath"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "mapped_lines", :force => true do |t|
@@ -122,6 +126,25 @@ ActiveRecord::Schema.define(:version => 20110407042118) do
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
+  create_table "theme_map_layers", :force => true do |t|
+    t.integer  "theme_map_id"
+    t.integer  "map_layer_id"
+    t.string   "line_color"
+    t.string   "fill_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "theme_maps", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "layers"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40

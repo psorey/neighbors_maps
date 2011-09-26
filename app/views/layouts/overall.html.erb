@@ -6,18 +6,13 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= APP_CONFIG['SITE_URL'] %></title>
 
-  <%= stylesheet_link_tag "greenwood", :media => "all" %>
+  <%= stylesheet_link_tag APP_CONFIG['NEIGHBORHOOD'], :media => "all" %>
 	
   <%= javascript_include_tag 'prototype' -%>
   <%= javascript_include_tag 'application' -%>
   <%= javascript_include_tag 'effects' -%>
   <%= javascript_include_tag 'dragdrop' -%>
-	
-	
-	
 </head>
-
-
 
 <%   @greeting = '' %>
 <%   @role = '' %>
@@ -33,35 +28,21 @@
 <body>
 
 <% if !(params[:controller].match('map') || params[:controller].match('survey')) %>
-
  <div id="banner">
-
-		 Greenwood.Streetscapes.org
-
+		 <%= APP_CONFIG['BANNER_TITLE'] %>
  </div>
- 
  <% end %>
 
 <div id="container">
-
-
     <div class="sidebar">
         <div id="side_menu">
-					
 				<%= @greeting %><br /><br />
-				
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
-				
 				<%= link_to 'Discussion<br />Forum',    		   		  :controller=> 'forums'     %><br /><br />
-				
 				<%= link_to 'Maps &<br />Resources',    		   		  :controller=> 'maps'     %><br /><br />
-	
-				<%= link_to 'Greenwood<br/>Streetscapes<br/>Guide',    				              '/wiki'   %><br /><br />
-				
+				<%= link_to APP_CONFIG['GUIDE_TITLE'],    				              '/wiki'   %><br /><br />
 				<%= link_to 'FAQ',                                { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
-
 				<%= link_to 'About Us',    		   		                :controller=> 'about'     %><br /><br />
-
 				<%= link_to 'Contact',    		                     :controller=> 'contact'   %><br /><br /><br /><br />
 				
 				<% if current_user %>
@@ -70,17 +51,18 @@
 				<% end %>
 
 				<% if current_user.nil? %>
-				
             <%= link_to 'Sign Up!',    				              '/signup'   %><br /><br />
-  
             <%= link_to 'Login',    				                '/login'   %><br /><br />
-			  
 				<% else %>
 						<%= link_to 'Log Out',    				              '/logout'   %><br /><br />
 				<% end %>
 
 				<% if @role == "admin" %>
             <%= link_to 'ADMIN',    				              '/administrators'   %><br /><br />
+						<%= link_to 'map layers',                      :controller=> 'map_layers'  %><br /><br />
+						<%= link_to 'theme_maps',                      :controller=> 'theme_maps'  %><br /><br />
+						<%= link_to 'theme layers',                      :controller=> 'theme_map_layers'  %><br /><br />
+						
 				<% end %>
 
       </div>
