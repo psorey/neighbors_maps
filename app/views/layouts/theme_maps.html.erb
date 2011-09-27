@@ -27,23 +27,13 @@
 
 <body>
 
-<% if !(params[:controller].match('map') || params[:controller].match('survey')) %>
- <div id="banner">
-		 <%= APP_CONFIG['BANNER_TITLE'] %>
- </div>
- <% end %>
 
 <div id="container">
     <div class="sidebar">
         <div id="side_menu">
 
         <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
-
-				<%= link_to 'Maps &<br />Resources',    		   		  :controller=> 'maps'     %><br /><br />
-
-
-
-		
+				<%= link_to 'GIS Data Maps',    		   		  :controller=> 'theme_maps'     %><br /><br />
 
 				<% if @role == "admin" %>
             <%= link_to 'ADMIN',    				              '/administrators'   %><br /><br />
@@ -52,15 +42,14 @@
 						<%= link_to 'theme layers',                      :controller=> 'theme_map_layers'  %><br /><br />
 						
 				<% end %>
-
       </div>
     </div>
 		
     <div class="content">
 			<% flash.each do |key, msg| %>						  
-				<%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid red; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
+				<%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
 					<script type="text/javascript">
-						setTimeout("new Effect.Fade('notice_<%= key %>');", 10000);
+						setTimeout("new Effect.Fade('notice_<%= key %>');", 5000);
 					</script>
 			    
 			<% end %>

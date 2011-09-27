@@ -4,6 +4,7 @@
   <tr>
     <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
+    <th>Draw Order &nbsp; &nbsp;</th>
     <th>Description</th>
 
   </tr>
@@ -11,6 +12,7 @@
 <% @map_layers.each do |map_layer| %>
   <tr>
     <td><%=h map_layer.name %></td>
+    <td><%= map_layer.draw_order %></td>
     <td><%=h map_layer.description %></td>
 
     <td>&nbsp; &nbsp; <%= link_to 'Show', map_layer %></td>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924191123) do
+ActiveRecord::Schema.define(:version => 20110927063444) do
 
   create_table "administrators", :force => true do |t|
     t.string   "admin_key"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20110924191123) do
     t.string   "fill_color"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "draw_order",         :default => 50
   end
 
   create_table "map_obj", :force => true do |t|
@@ -134,6 +135,10 @@ ActiveRecord::Schema.define(:version => 20110924191123) do
     t.string   "fill_color"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_base_layer",  :default => false
+    t.integer  "opacity"
+    t.integer  "line_width"
+    t.boolean  "is_interactive", :default => false
   end
 
   create_table "theme_maps", :force => true do |t|

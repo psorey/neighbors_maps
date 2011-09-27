@@ -2,41 +2,21 @@
 
 <% form_for(@map_layer) do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :draw_order %><br />
+    <%= f.text_field :draw_order %>
   </p>
   <p>
     <%= f.label :layer_mapfile_text %><br />
     <%= f.text_area :layer_mapfile_text %>
   </p>
-
   <p>
-    <%= f.label :opacity %><br />
-    <%= f.text_field :opacity %>
-  </p>
-
-  <p>
-    <%= f.label :symbol_type %><br />
-    <%= f.text_field :symbol_type %>
-  </p>
-  <p>
-    <%= f.label :symbol_file %><br />
-    <%= f.text_field :symbol_file %>
-  </p>
-  <p>
-    <%= f.label :line_color %><br />
-    <%= f.text_field :line_color %>
-  </p>
-
-  <p>
-    <%= f.label :fill_color %><br />
-    <%= f.text_field :fill_color %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </p>
   <p>
     <%= f.submit 'Create' %>

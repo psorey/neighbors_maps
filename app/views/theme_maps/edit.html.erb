@@ -1,30 +1,34 @@
 <h1>Editing theme_map</h1>
 
+
 <% form_for(@theme_map) do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
 
-  <p>
-    <%= f.label :layers %><br />
-    <ul>
-    <% @theme_map.map_layers.each do |tml|%>
-       <li><%=  tml.name %></li>
-    <% end %>
-    </ul>
-  </p>
-  <%= f.submit 'Update' %>
-  <p>
-    <%= f.label :width %><br />
-    <%= f.text_field :width %>
-  </p>
-  <p>
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
-  </p>
+  <table>
+    <tr>
+      <th>Include?</th>
+      <th>Base Layer?</th>
+      <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
+      <th>Description</th>
+  
+    </tr>
+
+  <% @map_layers.each do |layer| %>
+    <tr>
+      <td><%= check_box_tag "layers[layer_ids][]", layer.id, @theme_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
+      <td><%= check_box_tag "base_layers[layer_ids][]", layer.id, @base_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
+      <td><%=h layer.name %></td>
+      <td><%=h layer.description %></td>
+    </tr>
+  <% end %>
+  </table>
+  
+<br />
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
@@ -32,6 +36,7 @@
   <p>
     <%= f.submit 'Update' %>
   </p>
+
 <% end %>
 
 <%= link_to 'Show', @theme_map %> |

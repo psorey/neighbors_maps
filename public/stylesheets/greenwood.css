@@ -13,7 +13,13 @@
 	text-decoration: line-through;
 }
 
-
+#map {
+  width: 900px;
+  height: 520px;
+  border: 1px solid black;
+  padding: 0px;
+ }
+ 
 img.project_description {
  border:solid #636468;
  border-width:0px;

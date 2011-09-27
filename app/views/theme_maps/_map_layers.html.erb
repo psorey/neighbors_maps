@@ -1,17 +1,16 @@
-
-
-var <%=name%> = new OpenLayers.Layer.WMS( '<%= name %>', '<%= map_url %>',
-        { layers: '<%= name %>',
-          format: 'png',
-          transparent: 'false'},
-        { 
-          scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
-          units: 'm',
-          projection:new OpenLayers.Projection("epsg:4326"),
-          gutter:0,
-          ratio:1,
-          isBaselayer:false,
-          singleTile:true,
-        }
-      );
-
+        <% name = tml.map_layer.name.downcase.gsub(/\s+/, '_') %>
+        var <%= name %> = new OpenLayers.Layer.WMS('<%= name %>',
+        '<%= "#{APP_CONFIG['MAPSERVER_URL']}#{theme_map.name.downcase.gsub(/\s+/, '_')}.map" %>',
+          { layers: '<%= name %>',
+            format: 'png',
+            transparent: '<%= !tml.is_base_layer %>'},
+          { 
+            scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+            units: 'm',
+            projection:new OpenLayers.Projection("epsg:4326"),
+            gutter:0,
+            ratio:1,
+            isBaselayer:<%= tml.is_base_layer %>,
+            singleTile:true,
+          }
+        );

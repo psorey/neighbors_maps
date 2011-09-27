@@ -1,0 +1,5 @@
+      map.addLayers([<%= @theme_map.layer_name_list.join(',')%>]);
+      map.addControl(new OpenLayers.Control.LayerSwitcher());
+      map.zoomToMaxExtent();
+    }
+    window.onload=init;
