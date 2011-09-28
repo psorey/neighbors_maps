@@ -1,87 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= APP_CONFIG['SITE_URL'] %></title>
-
-  <%= stylesheet_link_tag APP_CONFIG['NEIGHBORHOOD'], :media => "all" %>
-	
-  <%= javascript_include_tag 'prototype' -%>
-  <%= javascript_include_tag 'application' -%>
-  <%= javascript_include_tag 'effects' -%>
-  <%= javascript_include_tag 'dragdrop' -%>
-</head>
-
-<%   @greeting = '' %>
-<%   @role = '' %>
-
-<% if current_user %>
-<%   @greeting = "Welcome, <br />#{current_user.login}" %>
-<%   user_role = current_user.roles[0] %>
-<%   @role = user_role.name %>
-<% else %>
-<%   @greeting = 'You are not logged in' %>
-<% end %>
-
+ <%= render :partial => '/layouts/head' %>
+ 
 <body>
-
-
 <div id="container">
-    <div class="sidebar">
-        <div id="side_menu">
-
-        <%= link_to 'Home',    				                      :controller=> 'welcome'   %><br /><br />
-				<%= link_to 'GIS Data Maps',    		   		  :controller=> 'theme_maps'     %><br /><br />
-
-				<% if @role == "admin" %>
-            <%= link_to 'ADMIN',    				              '/administrators'   %><br /><br />
-						<%= link_to 'map layers',                      :controller=> 'map_layers'  %><br /><br />
-						<%= link_to 'theme_maps',                      :controller=> 'theme_maps'  %><br /><br />
-						<%= link_to 'theme layers',                      :controller=> 'theme_map_layers'  %><br /><br />
-						
-				<% end %>
-      </div>
+  <div class="sidebar">
+    <div id="side_menu">
+      <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
+      <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
+      <% if @role == "admin" %>
+        <%= link_to 'Map Layers',                :controller=> 'map_layers'  %><br /><br />
+      <% end %>
     </div>
-		
-    <div class="content">
-			<% flash.each do |key, msg| %>						  
-				<%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
-					<script type="text/javascript">
-						setTimeout("new Effect.Fade('notice_<%= key %>');", 5000);
-					</script>
-			    
-			<% end %>
+  </div>
+  
+ <%= render :partial => '/layouts/content' %>    
 
-			<%= yield %>
-			<br />
-			<br />
-			<br />
-			
-		</div>
-
-		<div id="footer">
-			...
-		</div>
-		
-		<!-- Start of StatCounter Code -->
-			<script type="text/javascript">
-			var sc_project=7003450; 
-			var sc_invisible=1; 
-			var sc_security="aa94c436"; 
-			</script>
-			<script type="text/javascript"
-			src="http://www.statcounter.com/counter/counter.js"></script>
-			<noscript><div class="statcounter"><a title="tumblr hit counter"
-			href="http://statcounter.com/tumblr/" target="_blank"><img
-			class="statcounter" src="http://c.statcounter.com/7003450/0/aa94c436/1/"
-			alt="tumblr hit counter"></a></div></noscript>
-		<!-- End of StatCounter Code -->
-
-
-		</div>
-
-
-</body>
-</html>

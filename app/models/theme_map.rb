@@ -2,7 +2,8 @@ require 'mapscript'
 include Mapscript
 
 class ThemeMap < ActiveRecord::Base
-  
+  before_create :create_slug
+
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   attr_accessor :map, :layer_name_list # these are helpful for cleaning up model code
@@ -16,21 +17,20 @@ class ThemeMap < ActiveRecord::Base
     # set up map parameters -- load these from config.yml file...!!!
     # MapObj and LayerObj are Mapscript classes...
     @map = MapObj.new
-    @map.setSymbolSet("/home/paul/mapserver/symbols/simple_symbols.txt")
-    @map.setFontSet("/home/paul/mapserver/fonts/fonts.txt")
-    @map.shapepath = "/home/paul/mapserver/data"
-    @map.setExtent(1255053.87242477, 239541.583313177, 1279032.27152446, 266122.634434438)
-    @map.setProjection("init=epsg:4326")
+    @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
+    @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
+    @map.shapepath = APP_CONFIG['MAPSERVER_DIRECTORY'] + "data"
+    #@map.setExtent(1255053.87242477, 239541.583313177, 1279032.27152446, 266122.634434438)
+    @map.setProjection(APP_CONFIG['MAPSERVER_PROJECTION'])
     
-    load_layers
+    add_ordered_layers
     
     # save the MapObj as a Mapfile
-    @map.save("/home/paul/mapserver/#{self.name.downcase.gsub(/\s+/, "_")}.map")
-    @layer_name_list
+    @map.save(APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.downcase.gsub(/\s+/, "_")}.map")
   end
   
   
-  def load_layers
+  def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
     theme_map_layers = ThemeMapLayer.find(:all, :conditions => {:theme_map_id => self.id})
@@ -105,4 +105,15 @@ class ThemeMap < ActiveRecord::Base
     end
     return theme_layers, layer_id_list, base_id_list
   end
+  
+  
+  def to_param
+    slug
+  end
+
+
+  def create_slug
+    self.slug = self.name.parameterize
+  end
+  
 end

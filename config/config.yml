@@ -14,7 +14,10 @@ BLOG_URL: blog.streetscapes.org
 
 #MAPSERVER_URL: http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map
 MAPSERVER_URL: http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/
-
+MAPSERVER_SYMBOL_FILE: "/home/paul/mapserver/symbols/simple_symbols.txt"
+MAPSERVER_FONTS_FILE:  "/home/paul/mapserver/fonts/fonts.txt"
+MAPSERVER_DIRECTORY:  "/home/paul/mapserver/"
+MAPSERVER_PROJECTION:  "init=epsg:4326"
 
 
 # put this in: config/initializers/load_config.rb

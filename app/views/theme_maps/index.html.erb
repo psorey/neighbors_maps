@@ -1,28 +1,26 @@
-<h1>Listing theme_maps</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Layers</th>
-    <th>Width</th>
-    <th>Height</th>
-  </tr>
+<div  class="grid" height="100%">
+  <h1>Theme Maps</h1>
+<br />    
+  <table  width="800" border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><strong>Map Name</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
+  <% @theme_maps.each do |theme_map| %>
+    <tr valign="top">
+      <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
+      <td><%=h theme_map.description %></td>
+    <% if current_user && current_user.roles[0].name  == "admin" %>
+      <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
+      <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+    </tr>
+  <% end %> 
+  </table>
+</div>
+<br /><br />
 
-<% @theme_maps.each do |theme_map| %>
-  <tr>
-    <td><%=h theme_map.name %></td>
-    <td><%=h theme_map.description %></td>
-    <td><%=h theme_map.layers %></td>
-    <td><%=h theme_map.width %></td>
-    <td><%=h theme_map.height %></td>
-    <td><%= link_to 'Show', theme_map %></td>
-    <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
-    <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if current_user && current_user.roles[0].name  == "admin" %>
+  <%= link_to 'New theme_map', new_theme_map_path %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New theme_map', new_theme_map_path %>

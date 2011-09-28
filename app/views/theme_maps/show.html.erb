@@ -1,13 +1,14 @@
-  
+
   <style type="text/css">
     .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
   </style>
 
   <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+
   <script defer="defer" type="text/javascript">    
     // generate the OpenLayers code to display the maps...
     <%= render :partial => 'open_layers_begin' %>
-    <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml, :locals => {:theme_map => @theme_map} %>
+    <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
     <%= render :partial => 'open_layers_end' %>
   </script>
 

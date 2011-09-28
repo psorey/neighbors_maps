@@ -1,6 +1,6 @@
         <% name = tml.map_layer.name.downcase.gsub(/\s+/, '_') %>
         var <%= name %> = new OpenLayers.Layer.WMS('<%= name %>',
-        '<%= "#{APP_CONFIG['MAPSERVER_URL']}#{theme_map.name.downcase.gsub(/\s+/, '_')}.map" %>',
+        '<%= "#{APP_CONFIG['MAPSERVER_URL']}#{@theme_map.name.downcase.gsub(/\s+/, '_')}.map" %>',
           { layers: '<%= name %>',
             format: 'png',
             transparent: '<%= !tml.is_base_layer %>'},

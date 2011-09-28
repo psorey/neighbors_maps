@@ -1,0 +1,36 @@
+ 
+    <div class="content">
+      <% flash.each do |key, msg| %>              
+        <%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
+        <script type="text/javascript">
+          setTimeout("new Effect.Fade('notice_<%= key %>');", 10000);
+        </script>         
+      <% end %>
+  
+      <%= yield %>
+      <br />
+      <br />
+      <br />
+    </div>
+
+    <div id="footer">
+      ...
+    </div>
+    
+    <!-- Start of StatCounter Code -->
+      <script type="text/javascript">
+      var sc_project=7003450; 
+      var sc_invisible=1; 
+      var sc_security="aa94c436"; 
+      </script>
+      <script type="text/javascript"
+      src="http://www.statcounter.com/counter/counter.js"></script>
+      <noscript><div class="statcounter"><a title="tumblr hit counter"
+      href="http://statcounter.com/tumblr/" target="_blank"><img
+      class="statcounter" src="http://c.statcounter.com/7003450/0/aa94c436/1/"
+      alt="tumblr hit counter"></a></div></noscript>
+    <!-- End of StatCounter Code -->
+    
+  </div>
+</body>
+</html>

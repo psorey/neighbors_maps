@@ -1,2 +1,0 @@
-class SitePhotosController < ApplicationController
-end

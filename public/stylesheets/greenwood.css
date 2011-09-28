@@ -1,18 +1,22 @@
-
-
-
-
-.to_do a {
-	color: red;
-}
-.to_do {
-	color: red;
-}
-
-.strike {
-	text-decoration: line-through;
-}
-
+.grid table {
+	border-bottom:1px dotted fuchsia;
+	border-left:1px dotted fuchsia
+	}
+.grid td {
+	padding:11px 20px 20px 11px;
+	border-top:1px dotted fuchsia;
+	border-right:1px dotted fuchsia
+	}
+.grid ul {
+	margin-top:10px;
+	margin-bottom:-10px;
+	margin-left:0;
+	padding-left:1em
+	}
+.grid li {
+	margin-bottom:10px
+	}
+	
 #map {
   width: 900px;
   height: 520px;

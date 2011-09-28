@@ -7,7 +7,7 @@ class ThemeMapsController < ApplicationController
 
 
   def show
-    @theme_map = ThemeMap.find(params[:id])
+    @theme_map = ThemeMap.find_by_slug(params[:id])
     # build the map_object and write it to a mapfile for Mapserver
     @theme_map.make_mapfile
   end
@@ -20,7 +20,7 @@ class ThemeMapsController < ApplicationController
 
 
   def edit
-    @theme_map = ThemeMap.find(params[:id])
+    @theme_map = ThemeMap.find_by_slug(params[:id])
     @theme_layers, @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
     @map_layers = MapLayer.find(:all, :order => 'name')
   end
@@ -41,11 +41,12 @@ class ThemeMapsController < ApplicationController
 
 
   def update
-    @theme_map = ThemeMap.find(params[:id])
+    @theme_map = ThemeMap.find_by_slug(params[:id])
     map_layers = params[:layers][:layer_ids]
     base_layers = params[:base_layers][:layer_ids]
     @theme_map.update_layers(map_layers, base_layers)
-    if @theme_map.save
+    @theme_map.save
+    if @theme_map.update_attributes(params[:theme_map])
       redirect_to(@theme_map, :notice => 'ThemeMap was successfully updated.')
     else
        render :action => "edit"
@@ -54,7 +55,7 @@ class ThemeMapsController < ApplicationController
 
 
   def destroy
-    @theme_map = ThemeMap.find(params[:id])
+    @theme_map = ThemeMap.find_by_slug(params[:id])
     @theme_map.destroy
     redirect_to(theme_maps_url) 
   end

@@ -8,38 +8,14 @@
 </p>
 <p>
   <b>Description:</b>
+  <%=h @map_layer.layer_mapfile_text %>
+</p>
+<p>
+  <b>Description:</b>
   <%=h @map_layer.description %>
 </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @map_layer.layer_mapfile_text %>
-</p>
 
-<p>
-  <b>Opacity:</b>
-  <%=h @map_layer.opacity %>
-</p>
-
-<p>
-  <b>Symbol type:</b>
-  <%=h @map_layer.symbol_type %>
-</p>
-
-<p>
-  <b>Symbol file:</b>
-  <%=h @map_layer.symbol_file %>
-</p>
-
-<p>
-  <b>Line color:</b>
-  <%=h @map_layer.line_color %>
-</p>
-
-<p>
-  <b>Fill color:</b>
-  <%=h @map_layer.fill_color %>
-</p>
 
 
 <%= link_to 'Edit', edit_map_layer_path(@map_layer) %> |

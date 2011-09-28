@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :theme_maps
   map.resources :map_layers
-  
+  map.connect 'theme_maps/:name', :controller => 'theme_maps', :action => 'show'
   
   # main menu items
   map.resources :forums
