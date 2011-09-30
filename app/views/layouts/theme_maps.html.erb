@@ -6,9 +6,9 @@
     <div id="side_menu">
       <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
       <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
-      <% if @role == "admin" %>
+  <% if current_user && current_user.roles[0].name  == "admin" %>
         <%= link_to 'Map Layers',                :controller=> 'map_layers'  %><br /><br />
-      <% end %>
+  <% end %>
     </div>
   </div>
   

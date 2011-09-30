@@ -28,9 +28,13 @@ class ThemeMapsController < ApplicationController
 
   def create
     @theme_map = ThemeMap.new(params[:theme_map])
-    @theme_map.save  # so we get an id...
-    map_layers = params[:layers][:layer_ids]
-    base_layers = params[:base_layers][:layer_ids]
+    if !@theme_map.save
+      @map_layers = MapLayer.find(:all, :order => 'name')      
+      render :action => "new" and return
+    end
+    logger.debug @theme_map.inspect  
+    map_layers = params[:theme_map][:layer_ids]
+    base_layers = params[:theme_map][:base_layer_ids]
     @theme_map.update_layers(map_layers, base_layers)
     if @theme_map.save
       redirect_to(@theme_map, :notice => 'ThemeMap was successfully created.') 
@@ -42,8 +46,8 @@ class ThemeMapsController < ApplicationController
 
   def update
     @theme_map = ThemeMap.find_by_slug(params[:id])
-    map_layers = params[:layers][:layer_ids]
-    base_layers = params[:base_layers][:layer_ids]
+    map_layers = params[:theme_map][:layer_ids]
+    base_layers = params[:theme_map][:base_layer_ids]
     @theme_map.update_layers(map_layers, base_layers)
     @theme_map.save
     if @theme_map.update_attributes(params[:theme_map])

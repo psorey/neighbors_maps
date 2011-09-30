@@ -3,10 +3,10 @@
       <% flash.each do |key, msg| %>              
         <%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
         <script type="text/javascript">
-          setTimeout("new Effect.Fade('notice_<%= key %>');", 10000);
+          setTimeout("new Effect.Fade('notice_<%= key %>');", 3000);
         </script>         
       <% end %>
-  
+ 
       <%= yield %>
       <br />
       <br />

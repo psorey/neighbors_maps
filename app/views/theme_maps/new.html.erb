@@ -24,8 +24,8 @@
 
   <% @map_layers.each do |layer| %>
     <tr>
-      <td><%= check_box_tag "layers[layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
-      <td><%= check_box_tag "base_layers[layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
+      <td><%= check_box_tag "theme_map[layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
+      <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
       <td><%=h layer.name %></td>
       <td><%=h layer.description %></td>
     </tr>

@@ -1,2 +1,0 @@
-Make greeting smaller, and below other menu items.
-

@@ -1,55 +1,92 @@
+# Notes on how we create maps in this web application:
+#
+# Currently we're using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
+# then we save the map_object as a mapfile ('theme_map_name.map') to be
+# served as WMS layers through the CGI version of Mapserver, so we can take advantage
+# of the OpenLayers WMS layer functions. This seems a round-about way to do
+# things; there may be a way to use the Mapscript version of Mapserver
+# to send layers to the OpenLayers interface directly from the MapObj.
+# The main goal, however, is to simplify the on-line creation and modification of theme
+# maps, and the present method does that well.
+#
+# In practice, the easiest path to great looking on-line maps is to design their 'look and feel'
+# in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
+# individual layers from the mapfile, then use the snippets to create 'map_layers'
+# in this web application, where they can be further tweaked and used in many different maps.
+#
+# MapObj and LayerObj are Mapscript classes.
+ 
+# TODO:
+# Add 'Export Mapfile' function so a theme_map can be viewed in desktop GIS applications.
+# Add OPACITY and COLOR attributes to theme_map_layer objects that override values set in map_layers.
+
 require 'mapscript'
 include Mapscript
 
 class ThemeMap < ActiveRecord::Base
-  before_create :create_slug
-
+  
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
-  attr_accessor :map, :layer_name_list # these are helpful for cleaning up model code
-                                       # and for passing attributes to views more easily
   
-  # is_base_layer: necessary for OpenLayers display; a base layer will be set up as transparent:false 
+  attr_accessor :map   # make the MapObj accessible to methods
+  attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
+  
+  validates_presence_of :name, :layer_ids, :base_layer_ids 
+  validates_uniqueness_of :name, :message => "that name has already been used"
+  validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
+      :message => "only letters, nubers, periods, underscores, dashes and spaces are allowed"
+
+  before_create :create_slug
   
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
-  # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!  
+  # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
   def make_mapfile
-    # set up map parameters -- load these from config.yml file...!!!
-    # MapObj and LayerObj are Mapscript classes...
     @map = MapObj.new
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
     @map.shapepath = APP_CONFIG['MAPSERVER_DIRECTORY'] + "data"
-    #@map.setExtent(1255053.87242477, 239541.583313177, 1279032.27152446, 266122.634434438)
+    #@map.setExtent(1264053.87242477, 245541.583313177, 1275032.27152446, 260122.634434438)
     @map.setProjection(APP_CONFIG['MAPSERVER_PROJECTION'])
-    
     add_ordered_layers
-    
-    # save the MapObj as a Mapfile
-    @map.save(APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.downcase.gsub(/\s+/, "_")}.map")
+    @map.save(mapfile_name)
+  end
+  
+  
+  def mapfile_url
+    APP_CONFIG['MAPSERVER_URL'] + "#{self.name.dashed}.map"
+  end
+  
+  
+  def mapfile_name
+    APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.dashed}.map"
   end
   
   
   def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
-    theme_map_layers = ThemeMapLayer.find(:all, :conditions => {:theme_map_id => self.id})
-    map_layers = []
-    theme_map_layers.each do |tml|
-      map_layers << tml.map_layer
-    end
-    map_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
-    map_layers.each do |map_layer|
-      layer = LayerObj.new(@map)
-      layer.updateFromString(map_layer.layer_mapfile_text)
-      mapfile_layer_name = map_layer.name.downcase.gsub(/\s+/, "_")
-      layer.name = mapfile_layer_name
-      @layer_name_list << mapfile_layer_name
+    if theme_map_layers = ThemeMapLayer.find(:all, :conditions => {:theme_map_id => self.id})
+      map_layers = []
+      theme_map_layers.each do |tml|
+        map_layers << tml.map_layer
+      end
+      map_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
+      map_layers.each do |map_layer|
+        layer = LayerObj.new(@map)
+        layer.updateFromString(map_layer.layer_mapfile_text)
+        mapfile_layer_name = map_layer.name.dashed
+        layer.name = mapfile_layer_name
+        @layer_name_list << mapfile_layer_name
+      end
+    else
+      logger.debug "no layers "
     end
   end
   
   # test: all the different scenarios...
   def update_layers (map_layers, base_layers)
+    logger.debug "map_layers = #{map_layers.inspect}   base_layers = #{base_layers.inspect}"
+    
     # map_layers: array of map_layer_id (strings) that are map_layers in self.theme_map_layers
     #    some of which may already already referenced by self.theme_map_layers,
     #    others of which may need to be created...
