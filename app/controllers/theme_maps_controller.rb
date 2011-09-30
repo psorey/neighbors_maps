@@ -21,7 +21,7 @@ class ThemeMapsController < ApplicationController
 
   def edit
     @theme_map = ThemeMap.find_by_slug(params[:id])
-    @theme_layers, @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
+    @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
     @map_layers = MapLayer.find(:all, :order => 'name')
   end
 

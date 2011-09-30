@@ -45,7 +45,7 @@ end
 
 
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
 
 	def access_denied
 		alias new_session_path login_path

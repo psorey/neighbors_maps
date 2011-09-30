@@ -3,11 +3,11 @@
 # Currently we're using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
 # then we save the map_object as a mapfile ('theme_map_name.map') to be
 # served as WMS layers through the CGI version of Mapserver, so we can take advantage
-# of the OpenLayers WMS layer functions. This seems a round-about way to do
-# things; there may be a way to use the Mapscript version of Mapserver
-# to send layers to the OpenLayers interface directly from the MapObj.
-# The main goal, however, is to simplify the on-line creation and modification of theme
+# of the OpenLayers WMS layer functions. This does seem a round-about approach;
+# the main goal, however, is to simplify the on-line creation and modification of theme
 # maps, and the present method does that well.
+# There may be an alternative using the Mapscript version of Mapserver
+# to send layers to the OpenLayers interface directly from the MapObj.
 #
 # In practice, the easiest path to great looking on-line maps is to design their 'look and feel'
 # in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
@@ -34,13 +34,14 @@ class ThemeMap < ActiveRecord::Base
   validates_presence_of :name, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
-      :message => "only letters, nubers, periods, underscores, dashes and spaces are allowed"
+      :message => "only: alpha-numeric, period, underscore, dash, space"
 
   before_create :create_slug
   
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
   def make_mapfile
+    # mapscript:
     @map = MapObj.new
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
@@ -65,6 +66,7 @@ class ThemeMap < ActiveRecord::Base
   def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
+    # wait...do we have to load them explicitly or just do self.theme_map_layers.each ???
     if theme_map_layers = ThemeMapLayer.find(:all, :conditions => {:theme_map_id => self.id})
       map_layers = []
       theme_map_layers.each do |tml|
@@ -72,8 +74,8 @@ class ThemeMap < ActiveRecord::Base
       end
       map_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
       map_layers.each do |map_layer|
-        layer = LayerObj.new(@map)
-        layer.updateFromString(map_layer.layer_mapfile_text)
+        layer = LayerObj.new(@map)  # mapscript
+        layer.updateFromString(map_layer.layer_mapfile_text)  # mapscript
         mapfile_layer_name = map_layer.name.dashed
         layer.name = mapfile_layer_name
         @layer_name_list << mapfile_layer_name
@@ -85,16 +87,19 @@ class ThemeMap < ActiveRecord::Base
   
   # test: all the different scenarios...
   def update_layers (map_layers, base_layers)
-    logger.debug "map_layers = #{map_layers.inspect}   base_layers = #{base_layers.inspect}"
-    
+   
     # map_layers: array of map_layer_id (strings) that are map_layers in self.theme_map_layers
     #    some of which may already already referenced by self.theme_map_layers,
     #    others of which may need to be created...
     # base_layers: array of map_layer_id (strings) that are defined as base_layers in self.theme_map_layers
     #    see comment above...
     # and be sure to destroy theme_map_layers that are removed from the theme map...
-    current_map_layer_ids = []  
+    
+    current_map_layer_ids = []
+    # make a list of all the existing theme_map_layers that are still selected
+    # and delete theme_map_layers that were de-selected
     self.theme_map_layers.each do |tml|
+      logger.debug "ThemeMap.update_layers: are we loading these from the database here?"
       if !map_layers.include?(tml.id.to_s)
         tml.delete
       else
@@ -102,7 +107,11 @@ class ThemeMap < ActiveRecord::Base
       end
     end
     # looks like we end up instantiating a ThemeMapLayer one way or another...
-    # so refactor to check if base_layer only once!!!
+    # so refactor to check if base_layer only once.  !!!
+    
+    # now load those existing theme_map_layers from the DB to see if they're base layers
+    #    and modify accordingly,
+    # then create the new theme_map_layers flagging them base layers if needed...
     map_layers.each do |map_layer_id|
       if current_map_layer_ids.include?(map_layer_id)
         theme_map_layer = ThemeMapLayer.find(:first, :conditions => {:map_layer_id => map_layer_id.to_i, :theme_map_id => self.id})
@@ -116,13 +125,10 @@ class ThemeMap < ActiveRecord::Base
             # throw exception ?? notify of error?
         end
       else
-        theme_map_layer = self.theme_map_layers.create(:map_layer_id => map_layer_id.to_i, :theme_map_id => self.id)   
-        if base_layers.include?(map_layer_id)
-          theme_map_layer.is_base_layer = true
-        else
-          theme_map_layer.is_base_layer = false
-        end
-        theme_map_layer.save
+        is_base_layer = base_layers.include?(map_layer_id)
+        theme_map_layer = self.theme_map_layers.create(:map_layer_id => map_layer_id.to_i,
+                        :theme_map_id => self.id, :is_base_layer => is_base_layer)   
+        theme_map_layer.save # mapscript
       end
     end
   end
@@ -131,16 +137,16 @@ class ThemeMap < ActiveRecord::Base
   # test: get_theme_layers should return an array of map_layer id's  !!!
   #       corresponding to the theme_map_layers !!!
   def get_theme_layers
-    theme_layers = ThemeMapLayer.find(:all, :conditions => {:theme_map_id => self.id})
     layer_id_list = []
     base_id_list = []
-    theme_map_layers.each do |tml|
+    self.theme_map_layers.each do |tml|
+      logger.debug "Theme_map.get_theme_layers: are we loading from db?"
       layer_id_list << tml.map_layer_id
       if tml.is_base_layer
         base_id_list << tml.map_layer_id
       end
     end
-    return theme_layers, layer_id_list, base_id_list
+    return layer_id_list, base_id_list
   end
   
   
