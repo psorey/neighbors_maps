@@ -1,0 +1,53 @@
+
+      
+      function toggleControl(element) {
+        for(key in drawControls) {
+          var control = drawControls[key];
+          if(element.value == key && element.checked) {
+            control.activate();
+          } else {
+            control.deactivate();
+          }
+        }
+      }
+     
+      function update() {
+      // reset modification mode
+        drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
+      }
+     
+     
+      function makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>) {
+        var lineFeatures = <%= @theme_map.name.dashed %>.features; //returns: {Array(OpenLayers.Feature.Vector)}               
+        <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
+      
+        var geometries = [];
+        var geometry_labels = [];
+      
+        for (var i = 0; i < lineFeatures.length; i = i+1) {       
+          if (lineFeatures[i] != null) {                  
+            var geometry = lineFeatures[i].geometry;
+            var nodes = lineFeatures[i].geometry.getVertices();
+            var lastNode = nodes[nodes.length -1];
+            var pointFeature = new OpenLayers.Feature.Vector(lastNode);
+            var count = i + '';
+            pointFeature.attributes = {geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
+                     whichLine: count};
+            <%= @theme_map.name.dashed  + '_labels' %>.addFeatures(pointFeature);
+            var wktwriter=new OpenLayers.Format.WKT();
+            var wkt=wktwriter.write(lineFeatures[i]);
+            geometries.push(wkt);
+            geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
+          }
+        }
+        update();
+
+        //console.log("geometries.stringify = %s", geometries);
+        //console.log("geometry_labels.stringify = %s", geometry_labels);
+        
+      
+        document.getElementById("geometries").value = JSON.stringify(geometries);
+        document.getElementById("labels").value = JSON.stringify(geometry_labels);
+       }
+      
+

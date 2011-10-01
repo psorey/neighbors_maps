@@ -6,12 +6,14 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
-
+  <p>
+    <%= f.label 'is interactive?' %><br />
+  <%= f.check_box :is_interactive %>
+  </p>  
   <table>
     <tr>
       <th>Include?</th>
@@ -19,13 +21,12 @@
       <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
       <th>Description</th>
-  
     </tr>
 
   <% @map_layers.each do |layer| %>
     <tr>
       <td><%= check_box_tag "theme_map[layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
-      <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>
+      <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, false, {:id => "layer_#{layer.id}"}%></td>      
       <td><%=h layer.name %></td>
       <td><%=h layer.description %></td>
     </tr>

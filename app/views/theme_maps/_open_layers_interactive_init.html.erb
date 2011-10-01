@@ -1,0 +1,126 @@
+      var prompt_title = 'prompt'
+      var prompt_string = 'enter something'
+      
+      var exist_geometries = <%= @json_geometries %>;
+      var exist_labels = <%= @json_labels %>;
+
+      OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
+      OpenLayers.Feature.Vector.style['temporary']['strokeColor'] = '#ff7777';
+      OpenLayers.Feature.Vector.style['select']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['select']['strokeColor'] = '#3300ff';
+      
+      var <%= @theme_map.name.dashed %> = new OpenLayers.Layer.Vector("<%= @theme_map.name %>",
+         { projection: new OpenLayers.Projection("epsg:4326"),
+           opacity:0.5,
+           rendererOptions: {zIndexing: true}
+      } );
+      
+      var <%= "#{@theme_map.name.dashed}" + '_labels' %> = new OpenLayers.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
+      { projection: new OpenLayers.Projection("epsg:4326"),
+        opacity:0.5,
+        rendererOptions: {zIndexing: true},
+        styleMap: new OpenLayers.StyleMap({'default':{
+          strokeColor: "#ff0000",
+          strokeOpacity: .8,
+          strokeWidth: 3,
+          fillColor: "#FFeeee",
+          fillOpacity: 1,
+          pointRadius: 12,
+          pointerEvents: "visiblePainted",
+          label : "${geometry_feature_attribute}",
+              
+          fontColor: "black",
+          fontSize: "20px",
+          fontFamily: "Courier New, monospace",
+          fontWeight: "bold",
+          labelAlign: "cm",
+          graphicZIndex: 100,
+          labelXOffset: "0",
+          labelYOffset: "0"
+        }}),
+      });
+      <%= @theme_map.name.dashed %>.setZIndex(10);
+      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(20);
+      
+      map.addLayers([<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed + '_labels' %>]);
+      
+      // now add the geometries and label strings from the database-loaded arrays...
+      
+      var exist_features = []
+      for(i=0; i < exist_geometries.length; i = i + 1)
+      {
+          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
+          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
+          exist_features[i] = feature;
+      };
+      
+      console.log("adding all existing features");
+      <%= @theme_map.name.dashed %>.addFeatures(exist_features);
+ 
+      <%= @theme_map.name.dashed %>.setZIndex(10);
+      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(20);
+
+       
+      /// ----------- callback functions ------------------///
+      
+      <%= @theme_map.name.dashed + '_labels' %>.events.register('featureadded', this, function(obj){
+          console.log ("label feature added");
+          if(obj.feature.attributes.geometry_feature_attribute == null)
+          {
+              obj.feature.destroy;
+              obj.feature.state = OpenLayers.State.DELETE;
+          }
+      });
+      
+      <%= @theme_map.name.dashed %>.events.register('featuresadded', this, function(obj){
+          for(i = 0; i < obj.features.length; i = i + 1)
+          {
+              geometry_feature = obj.features[i];
+              if(geometry_feature.attributes.geometry_feature_attribute == null)
+              {
+                  var geometry_feature_attribute = prompt(prompt_title, prompt_string);
+                  geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
+                  if (geometry_feature.attributes.geometry_feature_attribute == null)
+                  {
+                      //feature.destroy;
+                      geometry_feature.state = OpenLayers.State.DELETE;
+                  }
+              }
+          };
+          console.log ("featuresadded");
+          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>); 
+      } );
+      
+      // update the label layer after editing the lines...
+      <%= @theme_map.name.dashed %>.events.register('afterfeaturemodified', this, function(obj){
+          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
+      } );
+    
+      var deleteFeature = function(feature) {   // SelectFeature callback function
+          select.unselectAll();
+         <%= @theme_map.name.dashed %>.destroyFeatures(feature);
+          <%= @theme_map.name.dashed %>.selectedFeatures = [];
+          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
+      };
+       
+      var select = new OpenLayers.Control.SelectFeature(<%= @theme_map.name.dashed %>, {
+          onSelect: deleteFeature,  // calls deleteFeature(selected_feature)
+          clickout: true
+      } );
+
+      /// ----------- add controls for interaction ------------------///
+      
+      drawControls = {
+          line: new OpenLayers.Control.DrawFeature(<%= @theme_map.name.dashed %>,
+                      OpenLayers.Handler.Path),
+          modify: new OpenLayers.Control.ModifyFeature(<%= @theme_map.name.dashed %>),
+          select: select  // for deleting lines
+      };
+      
+      for(var key in drawControls) {
+          map.addControl(drawControls[key]);
+      };
+      
+     // document.getElementById('noneToggle').checked = true;

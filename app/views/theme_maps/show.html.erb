@@ -5,18 +5,33 @@
 
   <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
 
-  <script defer="defer" type="text/javascript">    
-    // generate the OpenLayers code to display the maps...
-    <%= render :partial => 'open_layers_begin' %>
-    <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
-    <%= render :partial => 'open_layers_end' %>
-  </script>
+  <script defer="defer" type="text/javascript">
+    var map, drawControls;
+    function init() {
+      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
+      <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
+      <%= render :partial => 'open_layers_init' %>
+<% if @theme_map.is_interactive %>
+      <%= render :partial => 'open_layers_interactive_init' %>
+<% end %>
+    }  // end of init()
 
-  <div id="map" class="smallmap"></div>
-  <h2 id="title"><%=h @theme_map.name %> </h2>
+<% if @theme_map.is_interactive %>
+   <%= render :partial => 'open_layers_interactive_functions' %>
+<% end %>
   
-  <% if current_user && current_user.roles[0].name  == "admin" %>
-    <%= link_to 'Edit', edit_theme_map_path(@theme_map) %> |
-    <%= link_to 'Back', theme_maps_path %>
-  <% end %>
+    window.onload=init;  
+  </script>
+  
+  <div id="map" class="smallmap"></div>
+  <h2 id="title"><%=h @theme_map.name %> </h2>  
+  
+<% if @theme_map.is_interactive %>
+<!-- don't render the drawing tools for 'show' -->
+<% end %>  
+
+<% if current_user && current_user.roles[0].name  == "admin" %>
+  <%= link_to 'Edit', edit_theme_map_path(@theme_map) %> |
+  <%= link_to 'Back', theme_maps_path %>
+<% end %>
 

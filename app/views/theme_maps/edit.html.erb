@@ -1,14 +1,81 @@
 <h1><%=@theme_map.name%></h1>
 
+  <style type="text/css">
+    .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
+  </style>
 
-<% form_for(@theme_map) do |f| %>
-  <%= f.error_messages %>
-  <p>
+  <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+
+  <script defer="defer" type="text/javascript">
+    var map, drawControls;
+    function init() {
+      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
+      <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
+      <%= render :partial => 'open_layers_init' %>
+<% if @theme_map.is_interactive %>
+      <%= render :partial => 'open_layers_interactive_init' %>
+<% end %>
+    }  // end of init()
+
+<% if @theme_map.is_interactive %>
+   <%= render :partial => 'open_layers_interactive_functions' %>
+<% end %>
+    window.onload=init;  
+  </script>
+  
+  <div id="map" class="smallmap"></div>
+  <h2 id="title"><%=h @theme_map.name %> </h2>  
+  
+<% if @theme_map.is_interactive %>
+  <ul id="controlToggle">
+    <li>
+      <input type="radio" name="type" value="none" id="noneToggle"
+             onclick="toggleControl(this);" checked="checked" />
+      <label for="noneToggle">navigate: pan and zoom</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+      <label for="lineToggle">draw line, then double-click to end the line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="modify" id="modifyToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+      <label for="modifyToggle">modify a line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="select" id="selectToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+      <label for="selectToggle">delete a line</label>
+    </li>
+  </ul>
+
+<% end %>  
+
+
+<% form_for(@theme_map, :html=>{:name=>'survey_form'}) do |f| %>
+    <%= f.submit 'Update' %>
+
+    <%= f.error_messages %>  <p>
+<% if @theme_map.is_interactive %>
+
+  <input type="hidden" id='geometries' name="geometries" value='1' />
+  <input type="hidden" id='labels' name="labels" value='1' />
+
+
+  <% end %> 
+
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+  <p>
+    <%= f.label 'is interactive?' %><br />
+    <%= f.check_box :is_interactive %>
+  </p>  
+  
 
+  
   <table>
+
     <tr>
       <th>Include?</th>
       <th>Base Layer?</th>

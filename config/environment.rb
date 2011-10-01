@@ -15,7 +15,7 @@ require 'thread'
 require File.join(File.dirname(__FILE__), 'boot')
 
 require 'spatial_adapter/postgresql'
-
+require 'json'   # !!! putting it here keeps if from breaking ActiveSuppors json code ???
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.

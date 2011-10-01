@@ -63,6 +63,17 @@ class ThemeMap < ActiveRecord::Base
   end
   
   
+  def add_interactive_layer
+    if interactive_layer = ThemeMapLayer.find(:first, :conditions)
+    end
+  end
+  
+  
+  def create_interactive_layer
+    #iLayer = ThemeMapLayer.new(:name =>)
+  end
+  
+  
   def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
