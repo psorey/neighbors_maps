@@ -1,3 +1,5 @@
+      ///// begin map_layers //////////////////////////////////////////////////     
+      
       <% name = tml.map_layer.name %>
       var <%= name.dashed %> = new OpenLayers.Layer.WMS('<%= name %>',
       '<%= @theme_map.mapfile_url %>',
@@ -15,3 +17,6 @@
           singleTile:true,
         }
       );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+    

@@ -92,26 +92,19 @@ class ThemeMapsController < ApplicationController
       @current_neighbor_id = '44'  # !!!
       geometries = params[:geometries]
       labels = params[:labels]
-      
-      logger.debug "GEOMETRIES before: #{geometries.inspect}"
+    
 
+      logger.debug "LABELS before: #{labels.inspect}"
       geometries.gsub!('"[', '[')
       geometries.gsub!(']"', ']')
       geometries.gsub!('\\', '')
-      
       labels.gsub!('"[', '[')
       labels.gsub!(']"', ']')
       labels.gsub!('\\', '')
-      
-      logger.debug "GEOMETRIES after: #{geometries.inspect}"
+      logger.debug "LABELS after: #{labels.inspect}"
 
-      geometries_array = JSON.parse(geometries)
-      labels_array = JSON.parse(labels)
-      
-      logger.debug "GEOMETRIES_ARRAY: #{geometries_array.inspect}"
-      logger.debug "LABELS_ARRAY: #{labels_array.inspect}"
-
-
+      labels_array = JSON.parse(labels)      
+      geometries_array = JSON.parse(geometries)  
       MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => @theme_map.name.dashed)
   
       for i in 0...geometries_array.length

@@ -11,7 +11,8 @@ SITE_URL: highlandpark.nextdoorneighbors.org
 WIKI_URL: http://wiki.nextdoorneighbors.org
 FORUM_URL: http://greenwood-streetscapes-forum.1046493.n5.nabble.com/
 BLOG_URL: blog.streetscapes.org
-
+OPEN_LAYERS_VERSION: OpenLayers-2.11  
+# OPEN_LAYERS_VERSION: OpenLayers-2.8  used this until October 1, 2011
 #MAPSERVER_URL: http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map
 MAPSERVER_URL: http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/
 MAPSERVER_SYMBOL_FILE: "/home/paul/mapserver/symbols/simple_symbols.txt"

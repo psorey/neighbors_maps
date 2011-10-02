@@ -1,4 +1,4 @@
-
+     ///// begin open_layers_interactive_functions ////////////////////////////////
       
       function toggleControl(element) {
         for(key in drawControls) {
@@ -33,6 +33,7 @@
             var count = i + '';
             pointFeature.attributes = {geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
                      whichLine: count};
+            console.log("count = %s  attribute = %s", count, lineFeatures[i].attributes.geometry_feature_attribute);
             <%= @theme_map.name.dashed  + '_labels' %>.addFeatures(pointFeature);
             var wktwriter=new OpenLayers.Format.WKT();
             var wkt=wktwriter.write(lineFeatures[i]);
@@ -40,14 +41,12 @@
             geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
           }
         }
-        update();
+        //console.log("UPDATE end of make_labeled_dots");
+        //update();
 
-        //console.log("geometries.stringify = %s", geometries);
-        //console.log("geometry_labels.stringify = %s", geometry_labels);
-        
-      
         document.getElementById("geometries").value = JSON.stringify(geometries);
         document.getElementById("labels").value = JSON.stringify(geometry_labels);
        }
-      
+       
+     ///// end open_layers_interactive_functions ////////////////////////////////      
 

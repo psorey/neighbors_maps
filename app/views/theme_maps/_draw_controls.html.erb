@@ -1,0 +1,24 @@
+  <!--  begin draw_controls ////////////////////////////////////////////////// -->    
+  <ul id="controlToggle">
+    <li>
+      <input type="radio" name="type" value="none" id="noneToggle"
+             onclick="toggleControl(this);" checked="checked" />
+      <label for="noneToggle">navigate: pan and zoom</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+      <label for="lineToggle">draw line, then double-click to end the line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="modify" id="modifyToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+      <label for="modifyToggle">modify a line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="select" id="selectToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+      <label for="selectToggle">delete a line</label>
+    </li>
+  </ul>
+  <!--  end draw_controls ////////////////////////////////////////////////// --> 
+    

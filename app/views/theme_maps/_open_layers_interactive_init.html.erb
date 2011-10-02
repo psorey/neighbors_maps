@@ -1,3 +1,5 @@
+      /////// begin open_layers_interactive_init /////////////////////////
+      
       var prompt_title = 'prompt'
       var prompt_string = 'enter something'
       
@@ -41,13 +43,12 @@
           labelYOffset: "0"
         }}),
       });
-      <%= @theme_map.name.dashed %>.setZIndex(10);
-      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(20);
+      <%= @theme_map.name.dashed %>.setZIndex(2);
+      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(1);
       
       map.addLayers([<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed + '_labels' %>]);
       
       // now add the geometries and label strings from the database-loaded arrays...
-      
       var exist_features = []
       for(i=0; i < exist_geometries.length; i = i + 1)
       {
@@ -55,12 +56,8 @@
           feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
           exist_features[i] = feature;
       };
-      
-      console.log("adding all existing features");
       <%= @theme_map.name.dashed %>.addFeatures(exist_features);
  
-      <%= @theme_map.name.dashed %>.setZIndex(10);
-      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(20);
 
        
       /// ----------- callback functions ------------------///
@@ -123,4 +120,4 @@
           map.addControl(drawControls[key]);
       };
       
-     // document.getElementById('noneToggle').checked = true;
+     // document.getElementById('noneToggle').checked = true;     ///// end open_layers_interactive_init /////////////////////////////////
