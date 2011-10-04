@@ -80,20 +80,12 @@ class ThemeMapsController < ApplicationController
     end      
   end
 
-
-  def update
-    @theme_map = ThemeMap.find_by_slug(params[:id])
-    map_layers = params[:theme_map][:layer_ids]
-    base_layers = params[:theme_map][:base_layer_ids]
-    @theme_map.update_layers(map_layers, base_layers)
-    @theme_map.save
-    
-    if @theme_map.is_interactive
+  def update_geo_db
+      @theme_map = ThemeMap.find_by_slug((params[:id]).gsub('_','-'))
       @current_neighbor_id = '44'  # !!!
       geometries = params[:geometries]
       labels = params[:labels]
     
-
       logger.debug "LABELS before: #{labels.inspect}"
       geometries.gsub!('"[', '[')
       geometries.gsub!(']"', ']')
@@ -106,7 +98,7 @@ class ThemeMapsController < ApplicationController
       labels_array = JSON.parse(labels)      
       geometries_array = JSON.parse(geometries)  
       MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => @theme_map.name.dashed)
-  
+      result = 'successfully saved...'
       for i in 0...geometries_array.length
         if labels_array[i] == nil
           #do nothing
@@ -118,9 +110,32 @@ class ThemeMapsController < ApplicationController
           #mapped_line.owner_id = @current_neighbor_id
           mapped_line.owner_id = '44' # !!!
           mapped_line.map_layer_id = @theme_map.name.dashed
-          mapped_line.save
+          if !mapped_line.save
+            result = 'save failed'
+          end
         end
       end
+    render :text => result
+  end
+	
+
+# If you are using Ubuntu 10.04 or Debian and you serve .json files through Apache,
+# you might want to serve the files with the correct content type. I am doing this primarily because
+# I want to use the Firefox extension JSONView
+#
+# The Apache module mod_mime will help to do this easily. However, with Ubuntu you need to edit the
+# file /etc/mime.types and add the line
+# application/json json
+
+  def update
+    @theme_map = ThemeMap.find_by_slug(params[:id])
+    map_layers = params[:theme_map][:layer_ids]
+    base_layers = params[:theme_map][:base_layer_ids]
+    @theme_map.update_layers(map_layers, base_layers)
+    @theme_map.save
+    
+    if @theme_map.is_interactive
+
     end
     if @theme_map.update_attributes(params[:theme_map])
       redirect_to(@theme_map, :notice => 'ThemeMap was successfully updated.')

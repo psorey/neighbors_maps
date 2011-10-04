@@ -1,12 +1,11 @@
-<h1><%=@theme_map.name%></h1>
- 
+
   <script defer="defer" type="text/javascript">
     var map, drawControls;
     function init() {
       map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
       <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
       <%= render :partial => 'open_layers_init' %>
-<% if @theme_map.is_interactive %>
+ <% if @theme_map.is_interactive %>
       <%= render :partial => 'open_layers_interactive_init' %>
 <% end %>
     }  // end of init()
@@ -14,67 +13,58 @@
 <% if @theme_map.is_interactive %>
        <%= render :partial => 'open_layers_interactive_functions' %>
 <% end %>
-
   window.onload=init;  
   </script>
   
   <div id="map" class="smallmap"></div>
   <h2 id="title"><%=h @theme_map.name %> </h2>  
   
-<% if @theme_map.is_interactive %>
-       <%= render :partial => 'draw_controls' %>
-<% end %>  
+  <% form_for @theme_map do |f| %>
+      <%= f.error_messages %> 
+    <p>
+      <% if @theme_map.is_interactive %>
+      NOTE: Changing title will orphan any existing data rows. <br />
+      <% end %>
+      <%= f.label 'Map Title' %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label 'is interactive?' %><br />
+      <%= f.check_box :is_interactive %>
+    </p>  
 
 
-<% form_for(@theme_map, :html=>{:name=>'survey_form'}) do |f| %>
- 
-<% if @theme_map.is_interactive %>
-    <input type="hidden" id="geometries" name="geometries" />
-    <input type="hidden" id="labels" name="labels"  />
-  <% end %> 
 
-    <%= f.submit 'Update' %>
-    <%= f.error_messages %> 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label 'is interactive?' %><br />
-    <%= f.check_box :is_interactive %>
-  </p>  
+    <table>
+      <tr>
+        <th>Include?</th>
+        <th>Base Layer?</th>
+        <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
+        <th>Description</th>
+      </tr>
   
-  <table>
+    <% @map_layers.each do |layer| %>
+      <tr>
+        <td><%= check_box_tag "theme_map[layer_ids][]", layer.id, @theme_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
+        <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, @base_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
+        <td><%=h layer.name %></td>
+        <td><%=h layer.description %></td>
+      </tr>
+    <% end %>
+    </table>
+    
+  <br />
+  <p>
+      <%= f.submit 'Update' %>
+    </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </p>
 
-    <tr>
-      <th>Include?</th>
-      <th>Base Layer?</th>
-      <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
-      <th>Description</th>
-  
-    </tr>
-
-  <% @map_layers.each do |layer| %>
-    <tr>
-      <td><%= check_box_tag "theme_map[layer_ids][]", layer.id, @theme_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
-      <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, @base_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
-      <td><%=h layer.name %></td>
-      <td><%=h layer.description %></td>
-    </tr>
   <% end %>
-  </table>
-  
-<br />
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
 
-<% end %>
 
 <%= link_to 'Show', @theme_map %> |
 <%= link_to 'Back', theme_maps_path %>

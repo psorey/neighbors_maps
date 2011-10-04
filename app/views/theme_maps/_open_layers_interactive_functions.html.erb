@@ -9,6 +9,7 @@
             control.deactivate();
           }
         }
+        makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       }
      
       function update() {
@@ -16,13 +17,12 @@
         drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
       }
      
-     
+      var geometries = [];
+      var geometry_labels = [];
+      
       function makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>) {
         var lineFeatures = <%= @theme_map.name.dashed %>.features; //returns: {Array(OpenLayers.Feature.Vector)}               
         <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
-      
-        var geometries = [];
-        var geometry_labels = [];
       
         for (var i = 0; i < lineFeatures.length; i = i+1) {       
           if (lineFeatures[i] != null) {                  
@@ -41,11 +41,11 @@
             geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
           }
         }
-        //console.log("UPDATE end of make_labeled_dots");
+        console.log("UPDATE end of make_labeled_dots");
         //update();
 
-        document.getElementById("geometries").value = JSON.stringify(geometries);
-        document.getElementById("labels").value = JSON.stringify(geometry_labels);
+        //document.getElementById("geometries").value = JSON.stringify(geometries);
+        console.log(("labels").value = JSON.stringify(geometry_labels));
        }
        
      ///// end open_layers_interactive_functions ////////////////////////////////      

@@ -19,7 +19,7 @@
 /* set the size of the map image here... */
 #map {
   width: 900px;
-  height: 540px;
+  height: 530px;
   border: 1px solid black;
   padding: 5px;
  }
@@ -29,7 +29,7 @@
   margin-bottom: 0px;
   padding-top: 0px;
   background: #595;
-  height: 650px;
+  height: 800px;
 }
 
 
@@ -88,14 +88,14 @@ body {
   padding-left:10px;
   padding-top:20px;
   width:120px;
-  height:650px;
+  height:100%;
 	margin: 0px;
 }
 
 
 #container {
   width: 100%;
-	height: 650px;
+	height: 100%;
   background: #559;
   background: #555590;
 	padding: 0px;
@@ -111,7 +111,7 @@ body {
   padding-top: 30px;
   padding-left: 35px;
   padding-right: 120px;
-  height: 650px;
+  height: 100%;
   background-color: #eef;
   background-color: #eec3ff;
   background-color: #f2fada; /* pale, low intensity yellow */
@@ -121,11 +121,10 @@ body {
 
 .sidebar {
   float: left;
-  height: 650px;
+  height: 100%;
   padding: 0px;
   background: #558;
   background: #555590;
-	  height: 650px;
 }
 
 

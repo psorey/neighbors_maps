@@ -1,4 +1,55 @@
+ <!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+     
+<!-- begin layouts/head ---------------------------------------------- -->
 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>highlandpark.nextdoorneighbors.org</title>
+
+  <link href="/stylesheets/highland_park.css?1317431074" media="all" rel="stylesheet" type="text/css" />
+
+  <script src="/javascripts/prototype.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/application.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/effects.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/dragdrop.js?1281040744" type="text/javascript"></script></head>
+
+<!-- end layouts/head ---------------------------------------------- -->
+<body>
+  <div id="banner">
+     Highland Park Neighbors
+  </div>
+  <div id="container">
+    <div class="sidebar">
+      <div id="side_menu">
+        <br /><br />
+
+        <a href="/welcome">Home</a><br /><br />
+        <a href="/forums">Discussion<br />Forum</a><br /><br />
+        <a href="/theme_maps">GIS Data Maps</a><br /><br />
+        <a href="/wiki">Highland Park<br/>Emergency<br/>Preparedness<br/>Guide</a><br /><br />
+        <a href="/faq" rel="dropmenu1">FAQ</a><br /><br />
+
+        <a href="/about">About Us</a><br /><br />
+        <a href="/contact">Contact</a><br /><br /><br /><br />
+        
+        
+        <a href="/neighbors/44">Update My Info</a><br /><br />
+        
+
+        
+          <a href="/logout">Log Out</a><br /><br />
+        
+
+        
+      </div>
+    </div>
+     <!-- begin layouts/content ------------------------------------ -->
+
+    
+    <div class="content">
+      
+ 
+      
     
         <link rel="stylesheet" href="style.css" type="text/css" />
         <style type="text/css">
@@ -27,7 +78,7 @@
             }  */
         </style>
        
-        <%= javascript_include_tag 'OpenLayers-2.8/OpenLayers' %>   
+        <script src="/javascripts/OpenLayers-2.8/OpenLayers.js?1245699139" type="text/javascript"></script>   
         
         <script type="text/javascript">
             
@@ -35,13 +86,13 @@
             
             var map, drawControls;
                 
-             var mapserver_url = "<%= h @mapserver_url %>";
+             var mapserver_url = "http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map";
 
             function init(){
                 var i;
 
-                var exist_lines = <%= @json_geometry %>;
-                var exist_freqs = <%= @json_frequencies %>;
+                var exist_lines = ["LINESTRING(1264004.8891022 255444.71262597,1265032.1774364 257321.48939028,1265684.1104177 254219.86884294,1266731.1542967 255622.51252995)","LINESTRING(1262602.2454152 254575.46865091,1264913.6441671 254180.35775316,1265506.3105137 255010.09063844,1268430.1311571 254516.20201625)","LINESTRING(1263945.6224676 257143.6894863,1268015.2647144 257479.53374939,1263254.1783965 258467.31099376,1268785.730965 258862.42189151)","LINESTRING(1262404.6899664 255583.00144018,1261950.3124339 258961.19961595,1261318.1349975 255444.71262597,1260844.0019202 259020.46625061)"];
+                var exist_freqs = ["4","5","3","6"];
 
                 
                 map = new OpenLayers.Map('map');
@@ -291,18 +342,18 @@
 
 
 
+<form action="/walk_surveys" class="new_walk_survey" id="new_walk_survey" method="post" name="survey_form"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="RtcbszCSkk8FH99IGQYjW1S7xpy12klBlV5cQ3Hjm3k=" /></div>
+  
 
-<% form_for(@walk_survey, :html=>{:name=>'survey_form'}) do |f| %>
-  <%= f.error_messages %>
-
-        <%= hidden_field(:line, :route) %>
-        <%= hidden_field(:line2, :frequency) %>
+        <input id="line_route" name="line[route]" type="hidden" />
+        <input id="line2_frequency" name="line2[frequency]" type="hidden" />
 
         <div id="tags"></div>
 
         <div id="map" class="smallmap"></div>
         <ul id="controlToggle">
             <li>
+
                 <input type="radio" name="type" value="none" id="noneToggle"
                        onclick="toggleControl(this);" checked="checked" />
                 <label for="noneToggle">navigate: pan and zoom</label>
@@ -312,6 +363,7 @@
                 <label for="lineToggle">draw line, then double-click to end the line</label>
             </li>
             <li>
+
                 <input type="radio" name="type" value="modify" id="modifyToggle"
                        onclick="toggleControl(this);" onchange="update();" />
                 <label for="modifyToggle">modify a line</label>
@@ -329,7 +381,35 @@
 
         </div>
   <p>
-    <%= f.submit 'Submit' %>
+    <input id="walk_survey_submit" name="commit" type="submit" value="Submit" />
   </p>
-<% end %>
+</form>
 
+      <br />
+      <br />
+      <br />
+    </div>
+
+    <div id="footer">
+      ...
+    </div>
+    
+    <!-- Start of StatCounter Code -->
+
+      <script type="text/javascript">
+      var sc_project=7003450; 
+      var sc_invisible=1; 
+      var sc_security="aa94c436"; 
+      </script>
+      <script type="text/javascript"
+      src="http://www.statcounter.com/counter/counter.js"></script>
+      <noscript><div class="statcounter"><a title="tumblr hit counter"
+      href="http://statcounter.com/tumblr/" target="_blank"><img
+      class="statcounter" src="http://c.statcounter.com/7003450/0/aa94c436/1/"
+      alt="tumblr hit counter"></a></div></noscript>
+    <!-- End of StatCounter Code -->
+   
+  </div>
+</body>
+</html>
+<!-- end layouts/content ------------------------------------ --> 

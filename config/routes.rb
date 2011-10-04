@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :theme_maps
   map.resources :map_layers
+  #map.update_geo_db 'theme_maps/update_geo_db', :controller => 'theme_maps', :action => 'update_geo_db', :method => 'put'
+  #map.connect 'theme_maps/update_geo_db', :controller => 'theme_maps', :action => 'update_geo_db'
+  map.connect 'theme_maps/:name/update_geo_db', :controller => 'theme_maps', :action => 'update_geo_db'
   map.connect 'theme_maps/:name', :controller => 'theme_maps', :action => 'show'
   
   # main menu items

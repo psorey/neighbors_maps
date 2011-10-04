@@ -22,7 +22,6 @@
       var <%= "#{@theme_map.name.dashed}" + '_labels' %> = new OpenLayers.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
       { projection: new OpenLayers.Projection("epsg:4326"),
         opacity:0.5,
-        rendererOptions: {zIndexing: true},
         styleMap: new OpenLayers.StyleMap({'default':{
           strokeColor: "#ff0000",
           strokeOpacity: .8,
@@ -42,22 +41,12 @@
           labelXOffset: "0",
           labelYOffset: "0"
         }}),
+        rendererOptions: {zIndexing: true}
       });
       <%= @theme_map.name.dashed %>.setZIndex(2);
       <%= @theme_map.name.dashed + '_labels' %>.setZIndex(1);
       
       map.addLayers([<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed + '_labels' %>]);
-      
-      // now add the geometries and label strings from the database-loaded arrays...
-      var exist_features = []
-      for(i=0; i < exist_geometries.length; i = i + 1)
-      {
-          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
-          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
-          exist_features[i] = feature;
-      };
-      <%= @theme_map.name.dashed %>.addFeatures(exist_features);
- 
 
        
       /// ----------- callback functions ------------------///
@@ -119,5 +108,20 @@
       for(var key in drawControls) {
           map.addControl(drawControls[key]);
       };
+            
+      // now add the geometries and label strings from the database-loaded arrays...
+      var exist_features = []
+      for(i=0; i < exist_geometries.length; i = i + 1)
+      {
+          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
+          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
+          exist_features[i] = feature;
+      };
       
-     // document.getElementById('noneToggle').checked = true;     ///// end open_layers_interactive_init /////////////////////////////////
+      // this triggers the makeLabeledDots function through
+      // the 'featuresadded' event callback      
+      <%= @theme_map.name.dashed %>.addFeatures(exist_features);
+
+     // document.getElementById('noneToggle').checked = true;
+     
+     ///// end open_layers_interactive_init /////////////////////////////////

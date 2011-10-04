@@ -1,0 +1,638 @@
+ <!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+     
+<!-- begin layouts/head ---------------------------------------------- -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>highlandpark.nextdoorneighbors.org</title>
+
+  <link href="/stylesheets/highland_park.css?1317431074" media="all" rel="stylesheet" type="text/css" />
+
+  <script src="/javascripts/prototype.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/application.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/effects.js?1281040744" type="text/javascript"></script>  <script src="/javascripts/dragdrop.js?1281040744" type="text/javascript"></script></head>
+
+<!-- end layouts/head ---------------------------------------------- -->
+ <!-- --- begin /layouts/theme_maps.html.erb --------  -->  
+<body>
+<div id="container">
+  <div class="sidebar">
+    <div id="side_menu">
+      <a href="/welcome">Home</a><br /><br />
+      <a href="/theme_maps">GIS Data Maps</a><br /><br />
+  
+        <a href="/map_layers">Map Layers</a><br /><br />
+  
+    </div>
+  </div>
+	
+  <style type="text/css">
+    .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
+  </style>
+  <script src="/javascripts/OpenLayers-2.11/OpenLayers.js?1315754231" type="text/javascript"></script>
+	
+  <!-- --- end /layouts/theme_maps.html.erb -------- --> 
+     <!-- begin layouts/content ------------------------------------ -->
+    
+    <div class="content">
+      
+ 
+      <h1>walk survey</h1>
+ 
+  <script defer="defer" type="text/javascript">
+    var map, drawControls;
+    function init() {
+      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
+            ///// begin map_layers //////////////////////////////////////////////////     
+      
+      
+      var parcel_outlines = new OpenLayers.Layer.WMS('Parcel Outlines',
+      'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/walk_survey.map',
+        { layers: 'parcel_outlines',
+          format: 'png',
+          transparent: 'true'},
+        { 
+          //scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:false,
+          singleTile:true,
+        }
+      );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+          ///// begin map_layers //////////////////////////////////////////////////     
+      
+      
+      var parcels = new OpenLayers.Layer.WMS('Parcels',
+      'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/walk_survey.map',
+        { layers: 'parcels',
+          format: 'png',
+          transparent: 'true'},
+        { 
+          //scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:false,
+          singleTile:true,
+        }
+      );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+          ///// begin map_layers //////////////////////////////////////////////////     
+      
+      
+      var parks = new OpenLayers.Layer.WMS('Parks',
+      'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/walk_survey.map',
+        { layers: 'parks',
+          format: 'png',
+          transparent: 'true'},
+        { 
+          //scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:false,
+          singleTile:true,
+        }
+      );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+          ///// begin map_layers //////////////////////////////////////////////////     
+      
+      
+      var street_names = new OpenLayers.Layer.WMS('Street Names',
+      'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/walk_survey.map',
+        { layers: 'street_names',
+          format: 'png',
+          transparent: 'true'},
+        { 
+          //scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:false,
+          singleTile:true,
+        }
+      );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+          ///// begin map_layers //////////////////////////////////////////////////     
+      
+      
+      var white_background = new OpenLayers.Layer.WMS('White Background',
+      'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/walk_survey.map',
+        { layers: 'white_background',
+          format: 'png',
+          transparent: 'false'},
+        { 
+          //scales: [100,200,400,800,1600,3200,6400,12800,25600,51200],
+          scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:true,
+          singleTile:true,
+        }
+      );
+     
+      ///// end map_layers ////////////////////////////////////////////////// 
+    
+           //// begin open_layers_init ////////////////////////////
+
+      map.addLayers([white_background,parcels,parks,parcel_outlines,street_names]);
+      map.zoomToMaxExtent();
+      map.addControl(new OpenLayers.Control.Scale('scale'));
+      map.addControl(new OpenLayers.Control.MousePosition());
+      var layerSwitch = new OpenLayers.Control.LayerSwitcher();
+      map.addControl(layerSwitch);
+      layerSwitch.maximizeControl();
+      
+      //// end open_layers_init ////////////////////////////////
+
+
+            /////// begin open_layers_interactive_init /////////////////////////
+      
+      var prompt_title = 'prompt'
+      var prompt_string = 'enter something'
+      
+      var exist_geometries = ["LINESTRING(1264004.8891022 255444.71262597,1265032.1774364 257321.48939028,1265684.1104177 254219.86884294,1266731.1542967 255622.51252995)","LINESTRING(1262602.2454152 254575.46865091,1264913.6441671 254180.35775316,1265506.3105137 255010.09063844,1268430.1311571 254516.20201625)","LINESTRING(1263945.6224676 257143.6894863,1268015.2647144 257479.53374939,1263254.1783965 258467.31099376,1268785.730965 258862.42189151)","LINESTRING(1262404.6899664 255583.00144018,1261950.3124339 258961.19961595,1261318.1349975 255444.71262597,1260844.0019202 259020.46625061)"];
+      var exist_labels = ["4","5","3","6"];
+
+      OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
+      OpenLayers.Feature.Vector.style['temporary']['strokeColor'] = '#ff7777';
+      OpenLayers.Feature.Vector.style['select']['strokeWidth'] = '4';
+      OpenLayers.Feature.Vector.style['select']['strokeColor'] = '#3300ff';
+      
+      var walk_survey = new OpenLayers.Layer.Vector("walk survey",
+         { projection: new OpenLayers.Projection("epsg:4326"),
+           opacity:0.5,
+           rendererOptions: {zIndexing: true}
+      } );
+      
+      var walk_survey_labels = new OpenLayers.Layer.Vector("walk survey Labels",
+      { projection: new OpenLayers.Projection("epsg:4326"),
+        opacity:0.5,
+        rendererOptions: {zIndexing: true},
+        styleMap: new OpenLayers.StyleMap({'default':{
+          strokeColor: "#ff0000",
+          strokeOpacity: .8,
+          strokeWidth: 3,
+          fillColor: "#FFeeee",
+          fillOpacity: 1,
+          pointRadius: 12,
+          pointerEvents: "visiblePainted",
+          label : "${geometry_feature_attribute}",
+              
+          fontColor: "black",
+          fontSize: "20px",
+          fontFamily: "Courier New, monospace",
+          fontWeight: "bold",
+          labelAlign: "cm",
+          graphicZIndex: 100,
+          labelXOffset: "0",
+          labelYOffset: "0"
+        }}),
+      });
+      walk_survey.setZIndex(2);
+      walk_survey_labels.setZIndex(1);
+      
+      map.addLayers([walk_survey, walk_survey_labels]);
+      
+      // now add the geometries and label strings from the database-loaded arrays...
+      var exist_features = []
+      for(i=0; i < exist_geometries.length; i = i + 1)
+      {
+          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
+          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
+          exist_features[i] = feature;
+      };
+      walk_survey.addFeatures(exist_features);
+ 
+
+       
+      /// ----------- callback functions ------------------///
+      
+      walk_survey_labels.events.register('featureadded', this, function(obj){
+          console.log ("label feature added");
+          if(obj.feature.attributes.geometry_feature_attribute == null)
+          {
+              obj.feature.destroy;
+              obj.feature.state = OpenLayers.State.DELETE;
+          }
+      });
+      
+      walk_survey.events.register('featuresadded', this, function(obj){
+          for(i = 0; i < obj.features.length; i = i + 1)
+          {
+              geometry_feature = obj.features[i];
+              if(geometry_feature.attributes.geometry_feature_attribute == null)
+              {
+                  var geometry_feature_attribute = prompt(prompt_title, prompt_string);
+                  geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
+                  if (geometry_feature.attributes.geometry_feature_attribute == null)
+                  {
+                      //feature.destroy;
+                      geometry_feature.state = OpenLayers.State.DELETE;
+                  }
+              }
+          };
+          console.log ("featuresadded");
+          makeLabeledDots(walk_survey, walk_survey_labels); 
+      } );
+      
+      // update the label layer after editing the lines...
+      walk_survey.events.register('afterfeaturemodified', this, function(obj){
+          makeLabeledDots(walk_survey, walk_survey_labels);
+      } );
+    
+      var deleteFeature = function(feature) {   // SelectFeature callback function
+          select.unselectAll();
+         walk_survey.destroyFeatures(feature);
+          walk_survey.selectedFeatures = [];
+          makeLabeledDots(walk_survey, walk_survey_labels);
+      };
+       
+      var select = new OpenLayers.Control.SelectFeature(walk_survey, {
+          onSelect: deleteFeature,  // calls deleteFeature(selected_feature)
+          clickout: true
+      } );
+
+      /// ----------- add controls for interaction ------------------///
+      
+      drawControls = {
+          line: new OpenLayers.Control.DrawFeature(walk_survey,
+                      OpenLayers.Handler.Path),
+          modify: new OpenLayers.Control.ModifyFeature(walk_survey),
+          select: select  // for deleting lines
+      };
+      
+      for(var key in drawControls) {
+          map.addControl(drawControls[key]);
+      };
+      
+     // document.getElementById('noneToggle').checked = true;
+     
+     ///// end open_layers_interactive_init /////////////////////////////////
+
+    }  // end of init()
+
+
+            ///// begin open_layers_interactive_functions ////////////////////////////////
+      
+      function toggleControl(element) {
+        for(key in drawControls) {
+          var control = drawControls[key];
+          if(element.value == key && element.checked) {
+            control.activate();
+          } else {
+            control.deactivate();
+          }
+        }
+        makeLabeledDots(walk_survey, walk_survey_labels);
+      }
+     
+      function update() {
+      // reset modification mode
+        drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
+      }
+     
+     
+      function makeLabeledDots(walk_survey, walk_survey_labels) {
+        var lineFeatures = walk_survey.features; //returns: {Array(OpenLayers.Feature.Vector)}               
+        walk_survey_labels.destroyFeatures();
+      
+        var geometries = [];
+        var geometry_labels = [];
+      
+        for (var i = 0; i < lineFeatures.length; i = i+1) {       
+          if (lineFeatures[i] != null) {                  
+            var geometry = lineFeatures[i].geometry;
+            var nodes = lineFeatures[i].geometry.getVertices();
+            var lastNode = nodes[nodes.length -1];
+            var pointFeature = new OpenLayers.Feature.Vector(lastNode);
+            var count = i + '';
+            pointFeature.attributes = {geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
+                     whichLine: count};
+            console.log("count = %s  attribute = %s", count, lineFeatures[i].attributes.geometry_feature_attribute);
+            walk_survey_labels.addFeatures(pointFeature);
+            var wktwriter=new OpenLayers.Format.WKT();
+            var wkt=wktwriter.write(lineFeatures[i]);
+            geometries.push(wkt);
+            geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
+          }
+        }
+        //console.log("UPDATE end of make_labeled_dots");
+        //update();
+
+        document.getElementById("geometries").value = JSON.stringify(geometries);
+        document.getElementById("labels").value = JSON.stringify(geometry_labels);
+       }
+       
+     ///// end open_layers_interactive_functions ////////////////////////////////      
+
+
+
+
+  window.onload=init;  
+  </script>
+  
+  <div id="map" class="smallmap"></div>
+
+  <h2 id="title">walk survey </h2>  
+  
+
+         <!--  begin draw_controls ////////////////////////////////////////////////// -->    
+  <ul id="controlToggle">
+    <li>
+      <input type="radio" name="type" value="none" id="noneToggle"
+             onclick="toggleControl(this);" checked="checked" />
+      <label for="noneToggle">navigate: pan and zoom</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+
+      <label for="lineToggle">draw line, then double-click to end the line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="modify" id="modifyToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+      <label for="modifyToggle">modify a line</label>
+    </li>
+    <li>
+      <input type="radio" name="type" value="select" id="selectToggle"
+             onclick="toggleControl(this);" onchange="update();" />
+
+      <label for="selectToggle">delete a line</label>
+    </li>
+  </ul>
+  <!--  end draw_controls ////////////////////////////////////////////////// --> 
+    
+  
+
+
+<form action="/theme_maps/walk-survey" class="edit_theme_map" id="edit_theme_map_83" method="post" name="survey_form"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="RtcbszCSkk8FH99IGQYjW1S7xpy12klBlV5cQ3Hjm3k=" /></div>
+ 
+
+    <input type="hidden" id="geometries" name="geometries" />
+    <input type="hidden" id="labels" name="labels"  />
+   
+
+    <input id="theme_map_submit" name="commit" type="submit" value="Update" />
+     
+  <p>
+
+    <label for="theme_map_name">Name</label><br />
+    <input id="theme_map_name" name="theme_map[name]" size="30" type="text" value="walk survey" />
+  </p>
+  <p>
+    <label for="theme_map_is interactive">Is interactive?</label><br />
+    <input name="theme_map[is_interactive]" type="hidden" value="0" /><input checked="checked" id="theme_map_is_interactive" name="theme_map[is_interactive]" type="checkbox" value="1" />
+  </p>  
+  
+  <table>
+
+    <tr>
+      <th>Include?</th>
+      <th>Base Layer?</th>
+      <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
+      <th>Description</th>
+  
+    </tr>
+
+  
+    <tr>
+      <td><input id="layer_22" name="theme_map[layer_ids][]" type="checkbox" value="22" /></td>
+
+      <td><input id="layer_22" name="theme_map[base_layer_ids][]" type="checkbox" value="22" /></td>
+      <td>Aerial High Res</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_23" name="theme_map[layer_ids][]" type="checkbox" value="23" /></td>
+      <td><input id="layer_23" name="theme_map[base_layer_ids][]" type="checkbox" value="23" /></td>
+      <td>Aerial Low Res</td>
+
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_16" name="theme_map[layer_ids][]" type="checkbox" value="16" /></td>
+      <td><input id="layer_16" name="theme_map[base_layer_ids][]" type="checkbox" value="16" /></td>
+      <td>Bus Routes</td>
+      <td>Bus route locations</td>
+    </tr>
+
+  
+    <tr>
+      <td><input id="layer_15" name="theme_map[layer_ids][]" type="checkbox" value="15" /></td>
+      <td><input id="layer_15" name="theme_map[base_layer_ids][]" type="checkbox" value="15" /></td>
+      <td>Bus Stops</td>
+      <td>Bus stop locations</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_13" name="theme_map[layer_ids][]" type="checkbox" value="13" /></td>
+
+      <td><input id="layer_13" name="theme_map[base_layer_ids][]" type="checkbox" value="13" /></td>
+      <td>Contours dark</td>
+      <td>2' contours - dark color</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_12" name="theme_map[layer_ids][]" type="checkbox" value="12" /></td>
+      <td><input id="layer_12" name="theme_map[base_layer_ids][]" type="checkbox" value="12" /></td>
+      <td>Contours light</td>
+
+      <td>2' contours - light color</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_3" name="theme_map[layer_ids][]" type="checkbox" value="3" /></td>
+      <td><input id="layer_3" name="theme_map[base_layer_ids][]" type="checkbox" value="3" /></td>
+      <td>Half Block Areas</td>
+      <td>Half Block colored polygons</td>
+
+    </tr>
+  
+    <tr>
+      <td><input id="layer_2" name="theme_map[layer_ids][]" type="checkbox" value="2" /></td>
+      <td><input id="layer_2" name="theme_map[base_layer_ids][]" type="checkbox" value="2" /></td>
+      <td>Half Block Labels</td>
+      <td>Half Block ID Labels</td>
+    </tr>
+  
+    <tr>
+
+      <td><input id="layer_1" name="theme_map[layer_ids][]" type="checkbox" value="1" /></td>
+      <td><input id="layer_1" name="theme_map[base_layer_ids][]" type="checkbox" value="1" /></td>
+      <td>Neighbors</td>
+      <td>Shows a red dot and last name of Neighbors who have signed up.</td>
+    </tr>
+  
+    <tr>
+      <td><input checked="checked" id="layer_9" name="theme_map[layer_ids][]" type="checkbox" value="9" /></td>
+      <td><input id="layer_9" name="theme_map[base_layer_ids][]" type="checkbox" value="9" /></td>
+
+      <td>Parcel Outlines</td>
+      <td>Parcel Outlines - near/far</td>
+    </tr>
+  
+    <tr>
+      <td><input checked="checked" id="layer_8" name="theme_map[layer_ids][]" type="checkbox" value="8" /></td>
+      <td><input id="layer_8" name="theme_map[base_layer_ids][]" type="checkbox" value="8" /></td>
+      <td>Parcels</td>
+
+      <td>Parcel Fill Color</td>
+    </tr>
+  
+    <tr>
+      <td><input checked="checked" id="layer_7" name="theme_map[layer_ids][]" type="checkbox" value="7" /></td>
+      <td><input id="layer_7" name="theme_map[base_layer_ids][]" type="checkbox" value="7" /></td>
+      <td>Parks</td>
+      <td>Park Areas (green)</td>
+
+    </tr>
+  
+    <tr>
+      <td><input id="layer_10" name="theme_map[layer_ids][]" type="checkbox" value="10" /></td>
+      <td><input id="layer_10" name="theme_map[base_layer_ids][]" type="checkbox" value="10" /></td>
+      <td>Permeability</td>
+      <td>Permeability high = green</td>
+    </tr>
+  
+    <tr>
+
+      <td><input id="layer_17" name="theme_map[layer_ids][]" type="checkbox" value="17" /></td>
+      <td><input id="layer_17" name="theme_map[base_layer_ids][]" type="checkbox" value="17" /></td>
+      <td>Project Boundary</td>
+      <td>Greenwood project boundary</td>
+    </tr>
+  
+    <tr>
+      <td><input checked="checked" id="layer_11" name="theme_map[layer_ids][]" type="checkbox" value="11" /></td>
+      <td><input id="layer_11" name="theme_map[base_layer_ids][]" type="checkbox" value="11" /></td>
+
+      <td>Street Names</td>
+      <td>Street names</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_21" name="theme_map[layer_ids][]" type="checkbox" value="21" /></td>
+      <td><input id="layer_21" name="theme_map[base_layer_ids][]" type="checkbox" value="21" /></td>
+      <td>Study Areas Blocks</td>
+
+      <td>Block Focus Study Areas</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_20" name="theme_map[layer_ids][]" type="checkbox" value="20" /></td>
+      <td><input id="layer_20" name="theme_map[base_layer_ids][]" type="checkbox" value="20" /></td>
+      <td>Study Areas Character </td>
+      <td>Study Areas: areas with typical character</td>
+
+    </tr>
+  
+    <tr>
+      <td><input id="layer_19" name="theme_map[layer_ids][]" type="checkbox" value="19" /></td>
+      <td><input id="layer_19" name="theme_map[base_layer_ids][]" type="checkbox" value="19" /></td>
+      <td>Study Areas Corridors</td>
+      <td>Study Areas: Corridors</td>
+    </tr>
+  
+    <tr>
+
+      <td><input id="layer_18" name="theme_map[layer_ids][]" type="checkbox" value="18" /></td>
+      <td><input id="layer_18" name="theme_map[base_layer_ids][]" type="checkbox" value="18" /></td>
+      <td>Survey Walking Paths</td>
+      <td>Surveys: Walking Paths</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_14" name="theme_map[layer_ids][]" type="checkbox" value="14" /></td>
+      <td><input id="layer_14" name="theme_map[base_layer_ids][]" type="checkbox" value="14" /></td>
+
+      <td>Utility Poles</td>
+      <td>City Light pole locations</td>
+    </tr>
+  
+    <tr>
+      <td><input checked="checked" id="layer_24" name="theme_map[layer_ids][]" type="checkbox" value="24" /></td>
+      <td><input checked="checked" id="layer_24" name="theme_map[base_layer_ids][]" type="checkbox" value="24" /></td>
+      <td>White Background</td>
+
+      <td>To be used as a default base layer.</td>
+    </tr>
+  
+    <tr>
+      <td><input id="layer_6" name="theme_map[layer_ids][]" type="checkbox" value="6" /></td>
+      <td><input id="layer_6" name="theme_map[base_layer_ids][]" type="checkbox" value="6" /></td>
+      <td>Zoning</td>
+      <td>Zoning Areas</td>
+
+    </tr>
+  
+  </table>
+  
+<br />
+  <p>
+    <label for="theme_map_description">Description</label><br />
+    <textarea cols="40" id="theme_map_description" name="theme_map[description]" rows="20"></textarea>
+  </p>
+  <p>
+
+    <input id="theme_map_submit" name="commit" type="submit" value="Update" />
+  </p>
+
+</form>
+
+<a href="/theme_maps/walk-survey">Show</a> |
+<a href="/theme_maps">Back</a>
+      <br />
+      <br />
+      <br />
+
+    </div>
+
+    <div id="footer">
+      ...
+    </div>
+    
+    <!-- Start of StatCounter Code -->
+      <script type="text/javascript">
+      var sc_project=7003450; 
+      var sc_invisible=1; 
+      var sc_security="aa94c436"; 
+      </script>
+      <script type="text/javascript"
+      src="http://www.statcounter.com/counter/counter.js"></script>
+      <noscript><div class="statcounter"><a title="tumblr hit counter"
+      href="http://statcounter.com/tumblr/" target="_blank"><img
+      class="statcounter" src="http://c.statcounter.com/7003450/0/aa94c436/1/"
+      alt="tumblr hit counter"></a></div></noscript>
+
+    <!-- End of StatCounter Code -->
+   
+  </div>
+</body>
+</html>
+<!-- end layouts/content ------------------------------------ -->     
+
+

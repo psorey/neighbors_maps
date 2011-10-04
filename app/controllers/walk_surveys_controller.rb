@@ -1,4 +1,4 @@
-require 'json/pure'
+
 
 class WalkSurveysController < ApplicationController
   
@@ -57,7 +57,7 @@ class WalkSurveysController < ApplicationController
   
   def show
         
-    @mapserver_url = APP_CONFIG['MAPSERVER_URL']
+    @mapserver_url =  'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map'
     @walk_survey = WalkSurvey.new
     
     existing_mapped_lines = MappedLine.find(:all, :conditions =>
@@ -88,11 +88,10 @@ class WalkSurveysController < ApplicationController
   # GET /walk_surveys/new.xml
   def new
     
-    @mapserver_url = APP_CONFIG['MAPSERVER_URL']
-    
+    @mapserver_url = 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map'
     @walk_survey = WalkSurvey.new  # remove; this is unnecessary. use
     logger.debug "made it here 1"
-    @current_neighbor_id = current_user.neighbor_id  # !!! for testing
+    @current_neighbor_id = '44'
     
     existing_mapped_lines = MappedLine.find(:all, :conditions => {:owner_id => @current_neighbor_id.to_s, :map_layer_id => 'walk_survey'})
     
@@ -112,9 +111,8 @@ class WalkSurveysController < ApplicationController
     @json_frequencies = end_label_list.to_json
 
     respond_to do |format|
-      render 'new'
-      #format.html # new.html.erb
-      #format.xml  { render :xml => @walk_survey }
+      format.html # new.html.erb
+      format.xml  { render :xml => @walk_survey }
     end
   end
 
@@ -128,17 +126,25 @@ class WalkSurveysController < ApplicationController
   # POST /walk_surveys
   # POST /walk_surveys.xml
   def create
-    @current_neighbor_id = current_user.neighbor_id.to_s
+    @current_neighbor_id = '44'
     @walk_survey = WalkSurvey.new(params[:walk_survey])
     # logger.debug("creating paths = #{params[:line][:route]}")
-    routes = JSON.parse(params[:line][:route])
-    frequencies = JSON.parse(params[:line2][:frequency])
+    geometries = params[:line][:route]
+    labels = params[:line2][:frequency]
+    geometries.gsub!('"[', '[')
+    geometries.gsub!(']"', ']')
+    geometries.gsub!('\\', '')
+    labels.gsub!('"[', '[')
+    labels.gsub!(']"', ']')
+    labels.gsub!('\\', '')
+    routes = JSON.parse(geometries)
+    frequencies = JSON.parse(labels)
 
     success = 1
     
     MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => 'walk_survey')
 
-    for i in 0..routes.length - 1
+    for i in 0...routes.length 
       if frequencies[i] == nil
         #do nothing
       else
