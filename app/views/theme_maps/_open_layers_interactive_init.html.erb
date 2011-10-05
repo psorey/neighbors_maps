@@ -13,13 +13,13 @@
       OpenLayers.Feature.Vector.style['select']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['select']['strokeColor'] = '#3300ff';
       
-      var <%= @theme_map.name.dashed %> = new OpenLayers.Layer.Vector("<%= @theme_map.name %>",
+      <%= @theme_map.name.dashed %> = new OpenLayers.Layer.Vector("<%= @theme_map.name %>",
          { projection: new OpenLayers.Projection("epsg:4326"),
            opacity:0.5,
            rendererOptions: {zIndexing: true}
       } );
       
-      var <%= "#{@theme_map.name.dashed}" + '_labels' %> = new OpenLayers.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
+      <%= "#{@theme_map.name.dashed}" + '_labels' %> = new OpenLayers.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
       { projection: new OpenLayers.Projection("epsg:4326"),
         opacity:0.5,
         styleMap: new OpenLayers.StyleMap({'default':{
@@ -70,7 +70,6 @@
                   geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
                   if (geometry_feature.attributes.geometry_feature_attribute == null)
                   {
-                      //feature.destroy;
                       geometry_feature.state = OpenLayers.State.DELETE;
                   }
               }

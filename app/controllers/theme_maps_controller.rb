@@ -2,7 +2,8 @@
 class ThemeMapsController < ApplicationController
   
   def index
-    @theme_maps = ThemeMap.all
+    @interactive_theme_maps = ThemeMap.find(:all, :conditions => {:is_interactive => true}, :order => :name)
+    @theme_maps = ThemeMap.find(:all, :conditions => {:is_interactive => false})
   end
 
 
@@ -147,7 +148,7 @@ class ThemeMapsController < ApplicationController
 
   def destroy
     @theme_map = ThemeMap.find_by_slug(params[:id])
-    MappedLine.destroy_all(:map_layer_id => @theme_map.name.slug)    
+    MappedLine.destroy_all(:map_layer_id => @theme_map.name.dashed)    
     @theme_map.destroy
     redirect_to(theme_maps_url) 
   end

@@ -1,5 +1,26 @@
 
 <div  class="grid" height="100%">
+  <h1>Interactive Maps</h1>
+<br />    
+  <table  width="800" border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><strong>Map Name</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
+  <% @interactive_theme_maps.each do |theme_map| %>
+    <tr valign="top">
+      <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
+      <td><%=h theme_map.description %></td>
+    <% if current_user && current_user.roles[0].name  == "admin" %>
+      <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
+      <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+    </tr>
+  <% end %> 
+  </table>
+</div>
+<br /><br />
+<div  class="grid" height="100%">
   <h1>Theme Maps</h1>
 <br />    
   <table  width="800" border="0" cellspacing="0" cellpadding="0">
@@ -19,8 +40,6 @@
   <% end %> 
   </table>
 </div>
-<br /><br />
-
 <% if current_user && current_user.roles[0].name  == "admin" %>
   <%= link_to 'New theme_map', new_theme_map_path %>
 <% end %>

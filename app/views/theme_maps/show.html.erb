@@ -11,47 +11,22 @@
     }  // end of init()
 
 <% if @theme_map.is_interactive %>
-       <%= render :partial => 'open_layers_interactive_functions' %>
+      <%= render :partial => 'open_layers_interactive_functions' %>
 <% end %>
 
-  window.onload=init;  
-  </script>
+    window.onload=init;  
+    </script>
+    
+    <div id="map" class="smallmap"></div>
+    <h2 id="title"><%=h @theme_map.name %> </h2>
   
-  <div id="map" class="smallmap"></div>
-  <h2 id="title"><%=h @theme_map.name %> </h2>
-  
-<script type='text/javascript'>
-
-  function saveChanges(){
-    new Ajax.Request("/theme_maps/<%=@theme_map.name.dashed%>/update_geo_db", {
-      // method: 'put',
-      parameters: {
-        id: '<%=@theme_map.name.dashed%>',
-        contentType: 'text/javascript',
-        //labels: geometry_labels.flatten(),
-        //geometries: geometries.flatten()
-        
-        labels: JSON.stringify(geometry_labels),
-        geometries: JSON.stringify(geometries)
-        //labels: geometry_labels.toString(),
-        //geometries: geometries.toString()
-      },
-      //onSuccess: showResponse,
-      //onFailure: showError
-    });
-  }
-  
-</script>
-
 <% if @theme_map.is_interactive %>
-      <%= render :partial => 'draw_controls' %>
-      <%= button_to_function "save changes", "saveChanges()" %>
+    <%= render :partial => 'draw_controls' %>
 <% end %>
 
-
-
+<div>
 <% if current_user && current_user.roles[0].name  == "admin" %>
   <%= link_to 'Edit', edit_theme_map_path(@theme_map) %> |
-
 <% end %>
-  <%= link_to 'Back', theme_maps_path %>
+
+</div>

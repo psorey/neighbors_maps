@@ -20,10 +20,11 @@
       var geometries = [];
       var geometry_labels = [];
       
-      function makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>) {
-        var lineFeatures = <%= @theme_map.name.dashed %>.features; //returns: {Array(OpenLayers.Feature.Vector)}               
-        <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
-      
+      function makeLabeledDots(geom_layer, label_layer) {
+        var lineFeatures = geom_layer.features; //returns: {Array(OpenLayers.Feature.Vector)}               
+        label_layer.destroyFeatures();
+        geometries = [];
+        geometry_labels = [];
         for (var i = 0; i < lineFeatures.length; i = i+1) {       
           if (lineFeatures[i] != null) {                  
             var geometry = lineFeatures[i].geometry;
@@ -31,22 +32,17 @@
             var lastNode = nodes[nodes.length -1];
             var pointFeature = new OpenLayers.Feature.Vector(lastNode);
             var count = i + '';
-            pointFeature.attributes = {geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
-                     whichLine: count};
-            console.log("count = %s  attribute = %s", count, lineFeatures[i].attributes.geometry_feature_attribute);
-            <%= @theme_map.name.dashed  + '_labels' %>.addFeatures(pointFeature);
+            pointFeature.attributes = {
+                    geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
+                    whichLine: count};
+            label_layer.addFeatures(pointFeature);
             var wktwriter=new OpenLayers.Format.WKT();
             var wkt=wktwriter.write(lineFeatures[i]);
             geometries.push(wkt);
             geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
           }
         }
-        console.log("UPDATE end of make_labeled_dots");
-        //update();
-
-        //document.getElementById("geometries").value = JSON.stringify(geometries);
-        console.log(("labels").value = JSON.stringify(geometry_labels));
-       }
+      }
        
      ///// end open_layers_interactive_functions ////////////////////////////////      
 
