@@ -12,12 +12,19 @@ describe ThemeMap do
   end
   
   it "should not be valid without name" do
-    @map = ThemeMap.new(@valid_attributes).except(:name)
-    @map.should be_valid
+    @map = ThemeMap.new(@valid_attributes.except(:name))
+    @map.should_not be_valid
   end
   
   it "should be valid with valid attributes" do
     @map = ThemeMap.new(@valid_attributes)
     @map.should be_valid
-  end  
+  end
+  
+  it "should have a unique name" do
+    @map = ThemeMap.new(@valid_attributes)
+    @map2 = ThemeMap.new(@valid_attributes)
+    @map2.should_not be_valid
+  end
+  
 end
