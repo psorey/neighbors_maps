@@ -23,6 +23,7 @@ describe ThemeMap do
   
   it "should have a unique name" do
     @map = ThemeMap.new(@valid_attributes)
+    @map.save
     @map2 = ThemeMap.new(@valid_attributes)
     @map2.should_not be_valid
   end

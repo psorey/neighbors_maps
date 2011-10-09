@@ -1,6 +1,6 @@
 # Notes on how we create maps in this web application:
 #
-# Currently we're using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
+# Currently using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
 # then we save the map_object as a mapfile ('theme_map_name.map') to be
 # served as WMS layers through the CGI version of Mapserver, so we can take advantage
 # of the OpenLayers WMS layer functions. This does seem a round-about approach;

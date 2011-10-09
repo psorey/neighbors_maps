@@ -1,0 +1,1263 @@
+--- 
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Half Block Areas
+    created_at: 2011-09-24 01:55:08.76141
+    layer_mapfile_text: "  \r\n\
+      \r\n  # this layer draws a polygon colored according to the 'fill_color' column of table 'half_blocks'\r\n\
+      \r\n  LAYER\r\n\
+      \r\n    NAME 'half_block_color'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n\
+      \r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    CONNECTIONTYPE POSTGIS\r\n\
+      \r\n    CONNECTION \"host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432\"\r\n\
+      \r\n    DATA \"the_geom from half_blocks\"\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title'  'half_block_id'\r\n\
+      \r\n      'wms_title'  'half_block_id'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"    \r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 50\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'half_block_color'  \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR [fill_color]\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n"
+    updated_at: 2011-09-27 07:02:45.043705
+    id: "3"
+    draw_order: "14"
+    description: Half Block colored polygons
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Zoning
+    created_at: 2011-09-24 02:05:56.507679
+    layer_mapfile_text: "  \r\n\
+      \r\n  LAYER\r\n\
+      \r\n    NAME 'zoning2'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'zoning2.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n        \"wms_title\" \"zoning2\"\r\n\
+      \r\n        'wms_srs'   \"epsg:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n\
+      \r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 20\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    \"init=epsg:4326\"\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASSITEM 'ZONELUT'\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'default'\r\n\
+      \r\n      EXPRESSION '' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 153 185 218\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = C1' \r\n\
+      \r\n      EXPRESSION 'C1' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 0 59\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = C2' \r\n\
+      \r\n      EXPRESSION 'C2' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 250 5 30\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L1' \r\n\
+      \r\n      EXPRESSION 'L1' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 229 78\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L1/RC' \r\n\
+      \r\n      EXPRESSION 'L1/RC' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 85 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L2' \r\n\
+      \r\n      EXPRESSION 'L2' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 246 103 56\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L2/RC' \r\n\
+      \r\n      EXPRESSION 'L2/RC' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 85 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L3' \r\n\
+      \r\n      EXPRESSION 'L3' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 85 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = L3/RC' \r\n\
+      \r\n      EXPRESSION 'L3/RC' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 85 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = LDT' \r\n\
+      \r\n      EXPRESSION 'LDT' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 2 181 26\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = MIO' \r\n\
+      \r\n      EXPRESSION 'MIO' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 159 221 126\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = MR' \r\n\
+      \r\n      EXPRESSION 'MR' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 191 127 97\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = NC1' \r\n\
+      \r\n      EXPRESSION 'NC1' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 0 255\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = NC2' \r\n\
+      \r\n      EXPRESSION 'NC2' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 218 8 255\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'ZONELUT = NC3' \r\n\
+      \r\n      EXPRESSION 'NC3' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 96 34 190\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 07:05:23.844199
+    id: "6"
+    draw_order: "13"
+    description: Zoning Areas
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Parcels
+    created_at: 2011-09-24 02:08:44.454233
+    layer_mapfile_text: |
+      
+        LAYER
+      
+          NAME 'Parcel_Clip'
+      
+          TYPE POLYGON
+      
+          DUMP true
+      
+          TEMPLATE fooOnlyForWMSGetFeatureInfo
+      
+          EXTENT 1259300 254000 1269500 262500
+      
+          DATA 'Parcel_Clip.shp|layerid=0'
+      
+          METADATA
+      
+            'ows_title' 'Parcel_Clip'
+      
+            'wms_title' 'Parcel_Clip'
+      
+            'wms_srs'    "EPSG:4326"
+      
+            'OWS_INCLUDE_ITEMS' "all"
+      
+          END
+      
+          STATUS on
+      
+          TRANSPARENCY 36
+      
+          PROJECTION
+      
+          "init=epsg:4326"
+      
+          END
+      
+      
+      
+          CLASS
+      
+             NAME 'Parcel_Clip' 
+      
+             STYLE
+      
+               SYMBOL 0 
+      
+               SIZE 7.0
+      
+      
+      
+               COLOR 200 200 200
+      
+             END
+      
+          END
+      
+        END
+      
+
+    updated_at: 2011-09-27 06:58:44.56535
+    id: "8"
+    draw_order: "10"
+    description: Parcel Fill Color
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Neighbors
+    created_at: 2011-09-24 01:42:36.07524
+    layer_mapfile_text: "  LAYER\r\n    NAME 'Neighbors'\r\n    TYPE POINT\r\n    DUMP true\r\n    TEMPLATE    'neighbor_query_response_template.html'\r\n    HEADER      'header.html'\r\n    FOOTER      'footer.html'\r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n    CONNECTIONTYPE POSTGIS\r\n    CONNECTION \"host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432\"\r\n    DATA \"location from neighbors\"\r\n    METADATA\r\n      'ows_title' 'neighbors_layer'\r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n    END\r\n    STATUS on\r\n    TRANSPARENCY 100\r\n    PROJECTION\r\n      'proj=longlat'\r\n      'ellps=WGS84'\r\n      'datum=WGS84'\r\n      'no_defs'\r\n    END\r\n    LABELITEM 'last_name1'\r\n\
+      \r\n    CLASS\r\n       NAME 'neighbors' \r\n       STYLE\r\n         SYMBOL \"circle\"\r\n         SIZE 8\r\n         OUTLINECOLOR 255 100 0\r\n         COLOR 255 0 0\r\n       END\r\n      LABEL\r\n        FONT arial-bold\r\n        TYPE truetype\r\n        SIZE 9\r\n        POSITION uc\r\n        COLOR 0 0 0\r\n        FORCE true\r\n      END\r\n    END\r\n  END     "
+    updated_at: 2011-10-05 01:35:33.931152
+    id: "1"
+    draw_order: "90"
+    description: Shows a red dot and last name of participating Neighbors.
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Parks
+    created_at: 2011-09-24 02:06:54.222901
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'park'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'park.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'park'\r\n\
+      \r\n      'wms_title' 'park'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 18\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'park' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0 \r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR  0 255 0 \r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n"
+    updated_at: 2011-09-27 06:59:42.531633
+    id: "7"
+    draw_order: "15"
+    description: Park Areas (green)
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Parcel Outlines
+    created_at: 2011-09-24 02:09:53.849815
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'Parcel_Clip_Outline'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'Parcel_Clip.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'Parcel_Clip_Outline'\r\n\
+      \r\n      'wms_title' 'Parcel_Clip'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n   TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    \"init=epsg:4326\"\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n    \r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'Parcel_Clip_Outline_Thick' \r\n\
+      \r\n      MAXSCALEDENOM 500000000\r\n\
+      \r\n\
+      \r\n\
+      \r\n      STYLE\r\n\
+      \r\n         #SYMBOL \"dash-long\"\r\n\
+      \r\n         SYMBOL 0\r\n\
+      \r\n         SIZE 7.0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         OPACITY 30\r\n\
+      \r\n         WIDTH 3\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'Parcel_Clip_Outline_Thin' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         OPACITY 30\r\n\
+      \r\n         WIDTH 1\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 18:13:38.941374
+    id: "9"
+    draw_order: "49"
+    description: Parcel Outlines - near/far
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Permeability
+    created_at: 2011-09-24 02:11:16.525806
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'infiltration_p'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'infiltration_p'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'infiltration_p'\r\n\
+      \r\n      'wms_title' 'infiltration_p'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 50\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    \"init=epsg:4326\"\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n    \r\n\
+      \r\n    CLASSITEM 'PERM'\r\n\
+      \r\n\
+      \r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'PERM = HIGH' \r\n\
+      \r\n      EXPRESSION 'High' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 50 255 50\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'PERM = Medium' \r\n\
+      \r\n      EXPRESSION 'Medium' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 250 250 00\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'PERM = LOW' \r\n\
+      \r\n      EXPRESSION 'Low' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 255 0 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'PERM = SATURATED' \r\n\
+      \r\n      EXPRESSION 'Saturated' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 200\r\n\
+      \r\n         COLOR 255 1 255\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n      NAME 'PERM = WATER' \r\n\
+      \r\n      EXPRESSION 'Water' \r\n\
+      \r\n      STYLE\r\n\
+      \r\n        SYMBOL 0\r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 0 0 255 \r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n\
+      \r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 07:00:01.522045
+    id: "10"
+    draw_order: "12"
+    description: Permeability high = green
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Bus Stops
+    created_at: 2011-09-24 02:16:11.422827
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'Busstop'\r\n\
+      \r\n    TYPE POINT\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1255781.009996 252154.768069 1276181.547177 263745.982377\r\n\
+      \r\n    DATA 'Busstop.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'Busstop'\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'Busstop' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL \"triangle\" \r\n\
+      \r\n         SIZE 8 \r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 0 0 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 07:06:46.714005
+    id: "15"
+    draw_order: "91"
+    description: Bus stop locations
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Project Boundary
+    created_at: 2011-09-24 02:17:49.284126
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'Boundary'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    DATA 'Boundary.shp'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'Boundary'\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'Boundary' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0\r\n\
+      \r\n         WIDTH 3\r\n\
+      \r\n         OPACITY 70\r\n\
+      \r\n         OUTLINECOLOR 255 100 0\r\n\
+      \r\n         COLOR 255 0 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END "
+    updated_at: 2011-09-28 02:08:12.187814
+    id: "17"
+    draw_order: "60"
+    description: Greenwood project boundary
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Utility Poles
+    created_at: 2011-09-24 02:15:24.446515
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'CityLightPoles'\r\n\
+      \r\n    TYPE POINT\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1255781.009996 252154.768069 1276181.547177 263745.982377\r\n\
+      \r\n    DATA 'CityLightPoles.shp'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'CityLightPoles'\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'CityLightPoles' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL \"circle\" \r\n\
+      \r\n         SIZE 4.0 \r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 177 214 186\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n"
+    updated_at: 2011-09-27 07:05:57.154169
+    id: "14"
+    draw_order: "87"
+    description: City Light pole locations
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Contours light
+    created_at: 2011-09-24 02:13:17.193832
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'light_contour'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    DATA 'contour.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'light_contour'\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    #TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'light_contour' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0 \r\n\
+      \r\n         WIDTH 1\r\n\
+      \r\n         COLOR 254 254 254\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-28 04:37:50.484904
+    id: "12"
+    draw_order: "89"
+    description: 2' contours - light color
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Contours dark
+    created_at: 2011-09-24 02:13:46.281992
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'dark_contour'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    DATA 'contour.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'dark_contour'\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'dark_contour' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0 \r\n\
+      \r\n         WIDTH 1\r\n\
+      \r\n         COLOR 100 100 100\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n"
+    updated_at: 2011-09-28 02:35:18.466968
+    id: "13"
+    draw_order: "88"
+    description: 2' contours - dark color
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Bus Routes
+    created_at: 2011-09-24 02:16:58.793936
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'BusRoutes'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    DATA 'BusRoutes.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'BusRoutes'\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS ON\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'BusRoutes' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0\r\n\
+      \r\n         WIDTH 3\r\n\
+      \r\n         OPACITY 25\r\n\
+      \r\n         OUTLINECOLOR 255 100 0\r\n\
+      \r\n         COLOR 255 0 0\r\n\
+      \r\n       END\r\n\
+      \r\n    END\r\n\
+      \r\n  END "
+    updated_at: 2011-09-27 18:07:25.037563
+    id: "16"
+    draw_order: "65"
+    description: Bus route locations
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Survey Walking Paths
+    created_at: 2011-09-24 02:20:14.593375
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'walk_survey'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE    'walk_survey_query_response_template.html'\r\n\
+      \r\n    HEADER      'header.html'\r\n\
+      \r\n    FOOTER      'footer.html'\r\n\
+      \r\n\
+      \r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    CONNECTIONTYPE POSTGIS\r\n\
+      \r\n    CONNECTION \"host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432\"\r\n\
+      \r\n    DATA \"routes from walk_surveys \"\r\n\
+      \r\n\
+      \r\n\
+      \r\n    FILTER \"%filter_string%\"\r\n\
+      \r\n\
+      \r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title'  'walk_survey'\r\n\
+      \r\n      'wms_title'  'walk_survey'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"    \r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n      'default_filter_string' '1=1'\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    \r\n\
+      \r\n   LABELITEM 'route_frequencies'\r\n\
+      \r\n    \r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'route_frequencies' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 7.0\r\n\
+      \r\n         WIDTH 8\r\n\
+      \r\n         OPACITY 15\r\n\
+      \r\n\
+      \r\n\
+      \r\n         OUTLINECOLOR 255 0 0\r\n\
+      \r\n         COLOR 255 0 0\r\n\
+      \r\n       END\r\n\
+      \r\n     LABEL \r\n\
+      \r\n      FONT arial-bold\r\n\
+      \r\n      TYPE truetype\r\n\
+      \r\n      SIZE 15\r\n\
+      \r\n      COLOR 0 0 0\r\n\
+      \r\n      OUTLINECOLOR 255 255 255\r\n\
+      \r\n      OUTLINEWIDTH 5\r\n\
+      \r\n      REPEATDISTANCE 500\r\n\
+      \r\n      ANGLE 0\r\n\
+      \r\n      BUFFER 10\r\n\
+      \r\n      POSITION cc\r\n\
+      \r\n      FORCE true\r\n\
+      \r\n      ANTIALIAS true\r\n\
+      \r\n      PARTIALS false\r\n\
+      \r\n      MINDISTANCE 1000000\r\n\
+      \r\n     END \r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n"
+    updated_at: 2011-09-28 05:04:19.321914
+    id: "18"
+    draw_order: "81"
+    description: "Surveys: Walking Paths"
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Aerial Low Res
+    created_at: 2011-09-27 02:47:28.059726
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'greenwood_half'\r\n\
+      \r\n    TYPE RASTER\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'greenwood_half.tif'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'wms_title' 'greenwood_half'\r\n\
+      \r\n      'wms_srs'   \"epsg:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-28 04:31:37.510969
+    id: "23"
+    draw_order: "2"
+    description: ""
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Street Names
+    created_at: 2011-09-24 02:12:19.188752
+    layer_mapfile_text: "  \r\n\
+      \r\n  LAYER\r\n\
+      \r\n    NAME 'st_address_Clip'\r\n\
+      \r\n    TYPE LINE\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'st_address_Clip.shp|layerid=0'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'st_address_Clip'\r\n\
+      \r\n      'wms_title' 'st_address_Clip'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n\
+      \r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 40\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n      \"init=epsg:4326\"\r\n\
+      \r\n    END\r\n\
+      \r\n    \r\n\
+      \r\n    LABELITEM 'ST_NAME'\r\n\
+      \r\n    \r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'st_address_Clip' \r\n\
+      \r\n       \r\n\
+      \r\n       \r\n\
+      \r\n     LABEL \r\n\
+      \r\n      FONT arial-bold\r\n\
+      \r\n      TYPE truetype\r\n\
+      \r\n      SIZE 8\r\n\
+      \r\n      COLOR 100 100 100\r\n\
+      \r\n      ANGLE AUTO\r\n\
+      \r\n      BUFFER 1\r\n\
+      \r\n      POSITION cc\r\n\
+      \r\n      FORCE false\r\n\
+      \r\n      ANTIALIAS false\r\n\
+      \r\n      PARTIALS false\r\n\
+      \r\n      MINDISTANCE 100000000\r\n\
+      \r\n     END \r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 07:03:34.745976
+    id: "11"
+    draw_order: "85"
+    description: Street names
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Aerial High Res
+    created_at: 2011-09-26 21:52:26.098359
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'greenwood'\r\n\
+      \r\n    TYPE RASTER\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n    EXTENT 1259300 254000 1269500 262500\r\n\
+      \r\n    DATA 'greenwood.tif'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'wms_title' 'ortho1'\r\n\
+      \r\n      'wms_srs'   \"epsg:4326\"\r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS off\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n  END\r\n\
+      \r\n\
+      \r\n"
+    updated_at: 2011-09-28 04:31:58.268413
+    id: "22"
+    draw_order: "4"
+    description: ""
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: "Study Areas Character "
+    created_at: 2011-09-24 02:23:35.093783
+    layer_mapfile_text: "  LAYER\r\n\
+      \r\n    NAME 'study_character'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n  EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232\r\n\
+      \r\n    DATA 'study_character.shp'\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title' 'study_character'\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    LABELITEM 'name'\r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'study_character' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         WIDTH 0.91 \r\n\
+      \r\n         OUTLINECOLOR 0 0 0\r\n\
+      \r\n         COLOR 116 69 196\r\n\
+      \r\n       END\r\n\
+      \r\n     LABEL \r\n\
+      \r\n      FONT arial-bold\r\n\
+      \r\n      TYPE truetype\r\n\
+      \r\n      SIZE 15\r\n\
+      \r\n      COLOR 0 0 0\r\n\
+      \r\n      OUTLINECOLOR 255 255 255\r\n\
+      \r\n      OUTLINEWIDTH 5\r\n\
+      \r\n      REPEATDISTANCE 500\r\n\
+      \r\n      ANGLE 0\r\n\
+      \r\n      BUFFER 10\r\n\
+      \r\n      POSITION cc\r\n\
+      \r\n      FORCE true\r\n\
+      \r\n      ANTIALIAS true\r\n\
+      \r\n      PARTIALS false\r\n\
+      \r\n      MINDISTANCE 1000000\r\n\
+      \r\n    END            \r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-28 02:36:34.967862
+    id: "20"
+    draw_order: "78"
+    description: "Study Areas: areas with typical character"
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Half Block Labels
+    created_at: 2011-09-24 01:52:56.201497
+    layer_mapfile_text: "   \r\n\
+      \r\n  # this layer/class shows the half_block_id label\r\n\
+      \r\n  LAYER\r\n\
+      \r\n    NAME 'half_block_id'\r\n\
+      \r\n    TYPE POLYGON\r\n\
+      \r\n    DUMP true\r\n\
+      \r\n    TEMPLATE fooOnlyForWMSGetFeatureInfo\r\n\
+      \r\n\
+      \r\n\
+      \r\n    EXTENT 1259532.633428 252753.973920 1272953.746014 262713.223921\r\n\
+      \r\n    CONNECTIONTYPE POSTGIS\r\n\
+      \r\n    CONNECTION \"host=localhost dbname=greenwood_dev user=paul password=kgb0186 port=5432\"\r\n\
+      \r\n    DATA \"the_geom from half_blocks\"\r\n\
+      \r\n    METADATA\r\n\
+      \r\n      'ows_title'  'half_block_id'\r\n\
+      \r\n      'wms_title'  'half_block_id'\r\n\
+      \r\n      'wms_srs'    \"EPSG:4326\"    \r\n\
+      \r\n      'OWS_INCLUDE_ITEMS' \"all\"\r\n\
+      \r\n    END\r\n\
+      \r\n    STATUS on\r\n\
+      \r\n    TRANSPARENCY 100\r\n\
+      \r\n    PROJECTION\r\n\
+      \r\n    'proj=longlat'\r\n\
+      \r\n    'ellps=WGS84'\r\n\
+      \r\n    'datum=WGS84'\r\n\
+      \r\n    'no_defs'\r\n\
+      \r\n    END\r\n\
+      \r\n    \r\n\
+      \r\n   LABELITEM 'half_block_id'\r\n\
+      \r\n    \r\n\
+      \r\n    CLASS\r\n\
+      \r\n       NAME 'half_block_id' \r\n\
+      \r\n       STYLE\r\n\
+      \r\n         SYMBOL 0 \r\n\
+      \r\n         SIZE 10.0 \r\n\
+      \r\n\
+      \r\n\
+      \r\n       END\r\n\
+      \r\n     LABEL \r\n\
+      \r\n      FONT arial-bold\r\n\
+      \r\n      TYPE truetype\r\n\
+      \r\n      SIZE 11\r\n\
+      \r\n      COLOR 50 50 255\r\n\
+      \r\n      ANGLE 0\r\n\
+      \r\n      BUFFER 10\r\n\
+      \r\n      POSITION cc\r\n\
+      \r\n      FORCE true\r\n\
+      \r\n      ANTIALIAS true\r\n\
+      \r\n      PARTIALS false\r\n\
+      \r\n      MINDISTANCE 1000000\r\n\
+      \r\n     END \r\n\
+      \r\n    END\r\n\
+      \r\n  END"
+    updated_at: 2011-09-27 07:04:06.378725
+    id: "2"
+    draw_order: "86"
+    description: Half Block ID Labels
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: White Background
+    created_at: 2011-09-27 17:16:45.663132
+    layer_mapfile_text: "  LAYER\r\n    NAME \"line\"\r\n    STATUS ON\r\n    TYPE line\r\n    PROJECTION\r\n      \"init=epsg:4326\"\r\n    END\r\n    CLASS\r\n      COLOR 0 0 0\r\n      NAME \"Some Line Layer\"\r\n    END\r\n    METADATA\r\n      \"wms_title\" \"Some Line Layer\"\r\n    END\r\n  END "
+    updated_at: 2011-09-27 19:36:21.826126
+    id: "24"
+    draw_order: "8"
+    description: To be used as a default base layer.
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Study Areas Corridors
+    created_at: 2011-09-24 02:21:14.20751
+    layer_mapfile_text: |
+      LAYER
+      
+          NAME 'study_corridors'
+      
+          TYPE POLYGON
+      
+          DUMP true
+      
+          TEMPLATE fooOnlyForWMSGetFeatureInfo
+      
+        EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232
+      
+          DATA 'study_corridors.shp'
+      
+          METADATA
+      
+            'ows_title' 'study_corridors'
+      
+          END
+      
+          STATUS on
+      
+          TRANSPARENCY 100
+      
+          PROJECTION
+      
+          'proj=longlat'
+      
+          'ellps=WGS84'
+      
+          'datum=WGS84'
+      
+          'no_defs'
+      
+          END
+      
+          LABELITEM 'kate areas'
+      
+          CLASS
+      
+             NAME 'study_corridors' 
+      
+             STYLE
+      
+               WIDTH 0.91 
+      
+               OUTLINECOLOR 0 0 0
+      
+               COLOR 229 61 99
+      
+             END
+      
+          LABEL 
+      
+            FONT arial-bold
+      
+            TYPE truetype
+      
+            SIZE 15
+      
+            COLOR 0 0 0
+      
+            OUTLINECOLOR 255 255 255
+      
+            OUTLINEWIDTH 5
+      
+            REPEATDISTANCE 500
+      
+            ANGLE 0
+      
+            BUFFER 10
+      
+            POSITION cc
+      
+            FORCE true
+      
+            ANTIALIAS true
+      
+            PARTIALS false
+      
+            MINDISTANCE 1000000
+      
+          END     
+      
+          END
+      
+        END
+      
+
+    updated_at: 2011-09-28 02:36:52.09243
+    id: "19"
+    draw_order: "79"
+    description: "Study Areas: Corridors"
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: Study Areas Blocks
+    created_at: 2011-09-24 02:24:55.211769
+    layer_mapfile_text: |-
+      LAYER
+      
+          NAME 'study_blocks'
+      
+          TYPE POLYGON
+      
+          DUMP true
+      
+          TEMPLATE fooOnlyForWMSGetFeatureInfo
+      
+          EXTENT 1261618.518886 256258.726399 1270194.665382 261411.937232
+      
+          DATA 'study_blocks.shp'
+      
+          METADATA
+      
+            'ows_title' 'study_blocks'
+      
+          END
+      
+          STATUS on
+      
+          OPACITY 100
+      
+          PROJECTION
+      
+          'proj=longlat'
+      
+          'ellps=WGS84'
+      
+          'datum=WGS84'
+      
+          'no_defs'
+      
+          END
+      
+          
+      
+          LABELITEM 'kate areas'
+      
+          CLASS
+      
+             NAME 'study_blocks' 
+             
+      
+             
+             STYLE
+      
+               WIDTH 0.91 
+      
+               OUTLINECOLOR 0 0 0
+      
+               COLOR 174 31 183
+      
+             END
+      
+           LABEL 
+      
+      
+            FONT arial-bold
+      
+            TYPE truetype
+      
+            SIZE 15
+      
+            COLOR 0 0 0
+      
+            OUTLINECOLOR 255 255 255
+      
+            OUTLINEWIDTH 5
+      
+            REPEATDISTANCE 500
+      
+            ANGLE 0
+      
+            BUFFER 10
+      
+            POSITION cc
+      
+            FORCE true
+      
+            ANTIALIAS true
+      
+            PARTIALS false
+      
+            MINDISTANCE 1000000
+      
+          END     
+      
+        END
+      
+      END
+    updated_at: 2011-09-30 00:01:13.915582
+    id: "21"
+    draw_order: "80"
+    description: Block Focus Study Areas
+  attributes_cache: {}
+
+- !ruby/object:MapLayer 
+  attributes: 
+    name: None
+    created_at: 2011-10-03 06:48:47.876565
+    layer_mapfile_text: "  LAYER\r\n    NAME \"line\"\r\n    STATUS ON\r\n    TYPE line\r\n    PROJECTION\r\n      \"init=epsg:4326\"\r\n    END\r\n    CLASS\r\n      COLOR 0 0 0\r\n      NAME \"Some Line Layer\"\r\n    END\r\n    METADATA\r\n      \"wms_title\" \"Some Line Layer\"\r\n    END\r\n  END "
+    updated_at: 2011-10-03 06:48:47.876565
+    id: "25"
+    draw_order: "1"
+    description: ""
+  attributes_cache: {}
+

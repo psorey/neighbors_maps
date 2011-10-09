@@ -1,7 +1,7 @@
 require 'spatial_adapter/postgresql'
 require 'rubygems'
 require 'curl'
-#require 'json'
+require 'json'
 require 'proj4'
 #require 'ya2yaml'
 
@@ -190,7 +190,11 @@ protected
     @address_string = @neighbor.get_address_string
     geoJson= Curl::Easy.perform("http://maps.google.com/maps/api/geocode/json?address=#{@address_string}&sensor=false")
     json = geoJson.body_str
-    parsed_json = JSON(json)
+    logger.debug "geoJson.body_str = #{json}"
+    # parsed_json = JSON(json)
+    parsed_json = JSON.parse(json)
+    #logger.debug "new parsed_json = #{new_parsed_json}"
+    #logger.debug "parsed_json = #{parsed_json}"
     results = parsed_json.fetch 'results'
     lat = results[0]["geometry"]["location"]["lat"].to_f
     lon = results[0]["geometry"]["location"]["lng"].to_f
