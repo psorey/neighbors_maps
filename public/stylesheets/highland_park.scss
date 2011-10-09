@@ -53,8 +53,10 @@ a {
   width: 900px;
   height: 530px;
   border-right: $thin_border;
-  border-bottom: $thin_border;
+  border-bottom: $thin_border; 
+  border: $thin_border;
   padding: 5px;
+  img { border: none;}
 }
 
 .border_top_thin li {
@@ -85,6 +87,7 @@ a {
 
 img { border: $thin_border;}
 
+
 .map_draw_controls {
 	width: 150px;
 }
@@ -102,14 +105,13 @@ body {
   font-size: 14px;
   color: $body_text;
   border-left: $thick_border;
+  
 }
-
 
 
 #banner {
   width:100%;
   margin-left: 0px;
-  
   background: $banner_bg;
   background-repeat: no-repeat;
   padding-top: 5px;
@@ -179,6 +181,7 @@ body {
   padding-right: 120px;
   height: 100%;
   background-color: $content_bg; /* pale, low intensity yellow */
+  min-height: 700px;
 }
 
 #footer {

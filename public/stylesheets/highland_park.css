@@ -40,7 +40,10 @@ a {
   height: 530px;
   border-right: 1px solid #333344;
   border-bottom: 1px solid #333344;
+  border: 1px solid #333344;
   padding: 5px; }
+  #map img {
+    border: none; }
 
 .border_top_thin li {
   border-top: 1px solid #333344; }
@@ -154,7 +157,8 @@ body {
   padding-right: 120px;
   height: 100%;
   background-color: #f4f3da;
-  /* pale, low intensity yellow */ }
+  /* pale, low intensity yellow */
+  min-height: 700px; }
 
 #footer {
   clear: both;
