@@ -1,6 +1,8 @@
 class MapLayersController < ApplicationController
   # GET /map_layers
   # GET /map_layers.xml
+  layout 'theme_maps'
+  
   def index
     @map_layers = MapLayer.find(:all, :order => 'name')
 

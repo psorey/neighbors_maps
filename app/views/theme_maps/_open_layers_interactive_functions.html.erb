@@ -1,4 +1,27 @@
+     
      ///// begin open_layers_interactive_functions ////////////////////////////////
+      
+      function emptyFeatures(){
+        <%= @theme_map.name.dashed %>.destroyFeatures();
+        <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
+        exist_geometries = [];
+        exist_labels = [];
+        exist_features = [];
+      }
+      
+      function buildFeatures(){
+        geometries = [];
+        geometry_labels = [];
+        for(i=0; i < exist_geometries.length; i = i + 1)
+        {
+          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
+          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
+          exist_features[i] = feature;
+        };
+       // this triggers the makeLabeledDots function through the 'featuresadded' event callback      
+        <%= @theme_map.name.dashed %>.addFeatures(exist_features);
+      }
+      
       
       function toggleControl(element) {
         for(key in drawControls) {
@@ -12,14 +35,10 @@
         makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       }
      
-      function update() {
-      // reset modification mode
-        drawControls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
-      }
-     
+
       var geometries = [];
       var geometry_labels = [];
-      
+       
       function makeLabeledDots(geom_layer, label_layer) {
         var lineFeatures = geom_layer.features; //returns: {Array(OpenLayers.Feature.Vector)}               
         label_layer.destroyFeatures();

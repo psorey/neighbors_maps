@@ -10,7 +10,7 @@
   <% @interactive_theme_maps.each do |theme_map| %>
     <tr valign="top">
       <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
-      <td><%=h theme_map.description %></td>
+      <td><%=h theme_map.get_description %></td>
     <% if current_user && current_user.roles[0].name  == "admin" %>
       <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
       <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -31,7 +31,7 @@
   <% @theme_maps.each do |theme_map| %>
     <tr valign="top">
       <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
-      <td><%=h theme_map.description %></td>
+      <td><%=h theme_map.get_description %></td>
     <% if current_user && current_user.roles[0].name  == "admin" %>
       <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
       <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -41,5 +41,6 @@
   </table>
 </div>
 <% if current_user && current_user.roles[0].name  == "admin" %>
+  <br />
   <%= link_to 'New theme_map', new_theme_map_path %>
 <% end %>

@@ -11,24 +11,10 @@ class ThemeMapsController < ApplicationController
     @theme_map = ThemeMap.find_by_slug(params[:id])
     # build the map_object and write it to a mapfile for Mapserver
     @theme_map.make_mapfile
-    
     if @theme_map.is_interactive
       # @current_neighbor_id = current_user.neighbor_id  !!!
       @current_neighbor_id = '44'
-      
-      existing_mapped_lines = MappedLine.find(:all,
-              :conditions => {:owner_id => @current_neighbor_id.to_s, :map_layer_id => @theme_map.name.dashed})
-    # back to erasing and re-filling the database with the lines each time...
-    # sending just the relevant information via JSON,
-    # not the whole mapped_line object which may grow
-      geometry_list  = []
-      end_label_list = []
-      existing_mapped_lines.each do |mapped_line|
-        geometry_list       << mapped_line.geometry.as_wkt()
-        end_label_list      << mapped_line.end_label
-      end
-      @json_geometries = geometry_list.to_json
-      @json_labels = end_label_list.to_json    
+      build_geometry_json    
     end
   end
 
@@ -49,8 +35,9 @@ class ThemeMapsController < ApplicationController
     base_layers = params[:theme_map][:base_layer_ids]
     @theme_map.update_layers(map_layers, base_layers)
     if @theme_map.save
-      redirect_to(@theme_map, :notice => 'ThemeMap was successfully created.') 
+      redirect_to(@theme_map, :notice => "'#{@theme_map.name}' was successfully created.") 
     else
+      @map_layers = MapLayer.find(:all, :order => 'name')   
       render :action => "new" 
     end
   end
@@ -60,41 +47,28 @@ class ThemeMapsController < ApplicationController
     @theme_map = ThemeMap.find_by_slug(params[:id])
     @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
     @map_layers = MapLayer.find(:all, :order => 'name')
-    @theme_map.make_mapfile
-    
-    if @theme_map.is_interactive
-      # @current_neighbor_id = current_user.neighbor_id  !!!
-      @current_neighbor_id = '44'
-      existing_mapped_lines = MappedLine.find(:all,
-              :conditions => {:owner_id => @current_neighbor_id.to_s, :map_layer_id => @theme_map.name.dashed})
-    # back to erasing and re-filling the database with the lines each time...
-    # sending just the relevant information via JSON,
-    # not the whole mapped_line object which may grow
-      geometry_list  = []
-      end_label_list = []
-      existing_mapped_lines.each do |mapped_line|
-        geometry_list       << mapped_line.geometry.as_wkt()
-        end_label_list      << mapped_line.end_label
-      end
-      @json_geometries = geometry_list.to_json
-      @json_labels = end_label_list.to_json    
-    end      
   end
 
+
+  def send_help
+    @theme_map = ThemeMap.find_by_slug(params[:id])
+    render :js => "alert('#{@theme_map.get_description}');"  
+  end
+
+
+  def revert_geo_db
+    @theme_map = ThemeMap.find_by_slug(params[:id])
+    @current_neighbor_id = '44'
+    build_geometry_json
+    render :js => "exist_geometries = #{@json_geometries}; exist_labels = #{@json_labels}; buildFeatures();"
+  end
+  
+  
   def update_geo_db
-      @theme_map = ThemeMap.find_by_slug((params[:id]).gsub('_','-'))
+      @theme_map = ThemeMap.find_by_slug(params[:id])
       @current_neighbor_id = '44'  # !!!
       geometries = params[:geometries]
       labels = params[:labels]
-    
-      logger.debug "LABELS before: #{labels.inspect}"
-      geometries.gsub!('"[', '[')
-      geometries.gsub!(']"', ']')
-      geometries.gsub!('\\', '')
-      labels.gsub!('"[', '[')
-      labels.gsub!(']"', ']')
-      labels.gsub!('\\', '')
-      logger.debug "LABELS after: #{labels.inspect}"
 
       labels_array = JSON.parse(labels)      
       geometries_array = JSON.parse(geometries)  
@@ -118,7 +92,7 @@ class ThemeMapsController < ApplicationController
       end
     render :text => result
   end
-	
+  
 
 # If you are using Ubuntu 10.04 or Debian and you serve .json files through Apache,
 # you might want to serve the files with the correct content type. I am doing this primarily because
@@ -152,5 +126,22 @@ class ThemeMapsController < ApplicationController
     @theme_map.destroy
     redirect_to(theme_maps_url) 
   end
+ 
+ 
+ 
+  def build_geometry_json  
+      existing_mapped_lines = MappedLine.find(:all,
+            :conditions => {:owner_id => @current_neighbor_id.to_s,
+                            :map_layer_id => @theme_map.name.dashed})
+    geometry_list  = []
+    end_label_list = []
+    existing_mapped_lines.each do |mapped_line|
+      geometry_list       << mapped_line.geometry.as_wkt()
+      end_label_list      << mapped_line.end_label
+    end
+    @json_geometries = geometry_list.to_json
+    @json_labels = end_label_list.to_json
+  end
+  
   
 end

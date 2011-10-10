@@ -2,19 +2,15 @@
 a {
   font-size: small; }
   a:link {
-    color: #666674;
     text-decoration: none;
     font-weight: bold; }
   a:visited {
-    color: #666674;
     text-decoration: none;
     font-weight: bold; }
   a:hover {
-    color: #404055;
     text-decoration: none;
     font-weight: bold; }
   a:active {
-    color: #404055;
     text-decoration: none;
     font-weight: bold; }
 
@@ -45,8 +41,11 @@ a {
   #map img {
     border: none; }
 
-.border_top_thin li {
-  border-top: 1px solid #333344; }
+.map_draw_controls {
+  width: 150px; }
+
+.border_top_thin {
+  border-top: 2px solid #aaaedd; }
 
 #controlToggle li {
   list-style: none;
@@ -54,7 +53,7 @@ a {
   left: -40px;
   font-size: 12px;
   font-weight: bold;
-  border-bottom: 1px solid #333344;
+  border-bottom: 2px solid #aaaedd;
   color: #666674;
   width: 140px; }
   #controlToggle li label {
@@ -68,9 +67,6 @@ a {
 
 img {
   border: 1px solid #333344; }
-
-.map_draw_controls {
-  width: 150px; }
 
 body {
   margin: 0px;
@@ -127,6 +123,18 @@ body {
       color: #404055;
       text-decoration: none;
       font-weight: bold; }
+  .sidebar .alert_text a {
+    color: #ff5544; }
+    .sidebar .alert_text a:link {
+      color: #ff5544; }
+
+.alert_text {
+  color: #ff5544; }
+
+.sidebar .alert_text a {
+  color: #ff5544; }
+  .sidebar .alert_text a:link {
+    color: #ff5544; }
 
 #side_menu {
   padding: 0px;

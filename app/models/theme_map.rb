@@ -52,6 +52,9 @@ class ThemeMap < ActiveRecord::Base
     @map.save(mapfile_name)
   end
   
+  def get_description  # returns first paragraph of @theme_map.description
+    self.description.split("\n")[0]
+  end
   
   def mapfile_url
     APP_CONFIG['MAPSERVER_URL'] + "#{self.name.dashed}.map"
@@ -62,17 +65,7 @@ class ThemeMap < ActiveRecord::Base
     APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.dashed}.map"
   end
   
-  
-  def add_interactive_layer
-    if interactive_layer = ThemeMapLayer.find(:first, :conditions)
-    end
-  end
-  
-  
-  def create_interactive_layer
-    #iLayer = ThemeMapLayer.new(:name =>)
-  end
-  
+
   
   def add_ordered_layers
     @layer_name_list = []

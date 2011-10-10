@@ -1,23 +1,6 @@
 
-  <script defer="defer" type="text/javascript">
-    var map, drawControls;
-    function init() {
-      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
-      <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
-      <%= render :partial => 'open_layers_init' %>
- <% if @theme_map.is_interactive %>
-      <%= render :partial => 'open_layers_interactive_init' %>
-<% end %>
-    }  // end of init()
-
-<% if @theme_map.is_interactive %>
-       <%= render :partial => 'open_layers_interactive_functions' %>
-<% end %>
-  window.onload=init;  
-  </script>
-  
-  <div id="map" class="smallmap"></div>
   <h2 id="title"><%=h @theme_map.name %> </h2>  
+  <p class='alert_text'>(admin page)</p>
   
   <% form_for @theme_map do |f| %>
       <%= f.error_messages %> 
@@ -34,11 +17,10 @@
     </p>  
 
 
-
     <table>
       <tr>
-        <th>Include?</th>
-        <th>Base Layer?</th>
+        <th>Include:</th>
+        <th>Base Layer:</th>
         <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
         <th>Description</th>
@@ -60,6 +42,7 @@
     </p>
     <p>
       <%= f.label :description %><br />
+      <p> Note: First paragraph to be a concise summary, the rest can be verbose and helpful to new user. </p>
       <%= f.text_area :description %>
     </p>
 

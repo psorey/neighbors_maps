@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
       end
       if user.has_role? "admin"
       flash[:notice] = "Logged in successfully"
-       redirect_to "/administrators" and return
+       redirect_to "/welcome" and return
       else
         flash[:notice] = "Logged in successfully"
         redirect_to "/welcome" and return

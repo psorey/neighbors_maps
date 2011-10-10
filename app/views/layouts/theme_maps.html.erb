@@ -7,7 +7,7 @@
       <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
       <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
   <% if current_user && current_user.roles[0].name  == "admin" %>
-        <%= link_to 'Map Layers',                :controller=> 'map_layers'  %><br /><br />
+        <%= link_to ('Map Layers',                map_layers_path, :class => "alert_text")  %><br /><br />
   <% end %>
     </div>
 	  <%= yield "map_draw_controls"%>

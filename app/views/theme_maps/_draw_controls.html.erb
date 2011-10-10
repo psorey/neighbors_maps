@@ -1,23 +1,41 @@
    <!--  begin draw_controls ////////////////////////////////////////////////// -->   
  <script type='text/javascript'>
-
-  function saveChanges(){
-    new Ajax.Request("/theme_maps/<%=@theme_map.name.dashed%>/update_geo_db", {
+  
+  function showHelp(){
+    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/send_help", {
       parameters: {
-        id: '<%=@theme_map.name.dashed%>',
+        id: '<%=@theme_map.slug%>'
+      },
+    });    
+  }
+  
+  function revertSaved(){     // returns javascript to refresh the interactive layers...
+    emptyFeatures();
+    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/revert_geo_db", {
+      parameters: {
+        id: '<%=@theme_map.slug%>'
+      },
+    });
+  }
+  
+  function saveChanges(){       // saves the current state of the interactive layers...
+    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/update_geo_db", {
+      parameters: {
+        id: '<%=@theme_map.slug%>',
         contentType: 'text/javascript',
-        labels: JSON.stringify(geometry_labels),
-        geometries: JSON.stringify(geometries)
+        labels: geometry_labels.toSource(),
+        geometries: geometries.toSource()
       },
       onSuccess: function(){
-        $("indicator").appear({ from: 0.0, to: 1.0});
+        $("indicator").show();
         $("indicator").fade({ duration: 5.0 });
          }
       //onFailure: showError
     });
   }
+
 </script> 
-  
+  <div id='my_notice' ></div>
 
   <% content_for :map_draw_controls do %>
     <div class='map_draw_controls'>  
@@ -42,11 +60,13 @@
           <label for="selectToggle">delete a line</label>
         </li>
       </ul>
-
-      <%= button_to_function "save changes", "saveChanges()", {:style => "margin-left: 5px;"} %>
-      <div style="height: 30px;">
-        <div id="indicator" style="display: none; height= 20px;" >Edits Saved</div>
+      <%= button_to_function "revert", "revertSaved()", {:style => "width: 100px; margin-left: 15px;"} %>
+      <%= button_to_function "save changes", "saveChanges()", {:style => "width: 100px; margin-left: 15px;"} %>
+      <div style="height: 30px; width: 120px;">
+        <div id="indicator" style="display: none; height= 20px; text-align: center;" >Edits Saved</div>
       </div>
+      <%= button_to_function "help", "showHelp()", {:style => "width: 100px; margin-left: 15px;"} %>
+      
     </div>
   <% end %>
   

@@ -5,12 +5,12 @@ $content_bg: #f4f3da; /* #f2fada; */
 
 $thick_border: 1px solid #334; 
 $thin_border: 1px solid #334;
-
+$map_draw_border: 2px solid $body_bg - #222222;
 $banner_text: #def;
 $body_text:   #224;
 $container_bg: $body_bg;
 
-
+$alert_color: #f54;
 
 $sidebar_width: 140px;
 
@@ -20,12 +20,13 @@ $sidebar_font_size: small;
 
 a {
   font-size: $sidebar_font_size;
-  &:link {color: $sidebar_text; text-decoration:none; font-weight:bold;}  
-  &:visited {color: $sidebar_text; text-decoration:none; font-weight:bold;} 
-  &:hover {color: $sidebar_hover; text-decoration:none; font-weight:bold;}  
-  &:active {color: $sidebar_hover; text-decoration:none; font-weight:bold;}   
+  &:link {text-decoration:none; font-weight:bold;}  
+  &:visited { text-decoration:none; font-weight:bold;} 
+  &:hover {text-decoration:none; font-weight:bold;}  
+  &:active { text-decoration:none; font-weight:bold;}   
 }
-  
+
+
 .grid {
   table {
     border-bottom:1px dotted fuchsia;
@@ -59,22 +60,27 @@ a {
   img { border: none;}
 }
 
-.border_top_thin li {
-  border-top: $thin_border;
+.map_draw_controls {
+	width: 150px;
 }
+
+  .border_top_thin {
+    border-top: $map_draw_border;
+  }  
 #controlToggle li {
   list-style: none;
   position:relative;
   left:-40px;
   font-size: 12px;
   font-weight: bold;
-  border-bottom: $thin_border;
+  border-bottom: $map_draw_border;
   color: $sidebar_text;
   width: $sidebar_width;
   label {
     position: relative;
     top: -3px;
   }
+
 }
 
 
@@ -87,10 +93,6 @@ a {
 
 img { border: $thin_border;}
 
-
-.map_draw_controls {
-	width: 150px;
-}
 
 
 body {
@@ -144,8 +146,20 @@ body {
     &:hover {color: $sidebar_hover; text-decoration:none; font-weight:bold;}  
     &:active {color: $sidebar_hover; text-decoration:none; font-weight:bold;}   
   }
+  .alert_text a {
+    color: $alert_color;
+    &:link {color: $alert_color;}    
+  }
 }
 
+.alert_text {
+  color: $alert_color;
+}
+
+.sidebar .alert_text a {
+     color: $alert_color;
+    &:link {color: $alert_color;}
+} 
 
 #side_menu {
 	padding: 0px;

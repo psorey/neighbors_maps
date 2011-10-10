@@ -1,5 +1,8 @@
 
   <script defer="defer" type="text/javascript">
+    var exist_features = [];
+    var exist_geometries = [];
+    var exist_labels = [];
     var map, drawControls, <%=@theme_map.name.dashed%>, <%=@theme_map.name.dashed + '_labels'%>;
     function init() {
       map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
@@ -26,7 +29,8 @@
 
 <div>
 <% if current_user && current_user.roles[0].name  == "admin" %>
-  <%= link_to 'Edit', edit_theme_map_path(@theme_map) %> |
+  <%= #link_to 'Edit', edit_theme_map_path(@theme_map)
+  %> 
 <% end %>
 
 </div>

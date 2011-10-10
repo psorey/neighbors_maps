@@ -1,10 +1,10 @@
       /////// begin open_layers_interactive_init /////////////////////////
       
-      var prompt_title = 'prompt'
-      var prompt_string = 'enter something'
+      var prompt_title = 'enter a nummber'
+      var prompt_string = 'trips per month'
       
-      var exist_geometries = <%= @json_geometries %>;
-      var exist_labels = <%= @json_labels %>;
+      exist_geometries = <%= @json_geometries %>;
+      exist_labels = <%= @json_labels %>;
 
       OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
@@ -95,7 +95,7 @@
           clickout: true
       } );
 
-      /// ----------- add controls for interaction ------------------///
+      /// ----------- add controls for interaction ------------------ ///
       
       drawControls = {
           line: new OpenLayers.Control.DrawFeature(<%= @theme_map.name.dashed %>,
@@ -109,18 +109,9 @@
       };
             
       // now add the geometries and label strings from the database-loaded arrays...
-      var exist_features = []
-      for(i=0; i < exist_geometries.length; i = i + 1)
-      {
-          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
-          feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
-          exist_features[i] = feature;
-      };
-      
-      // this triggers the makeLabeledDots function through
-      // the 'featuresadded' event callback      
-      <%= @theme_map.name.dashed %>.addFeatures(exist_features);
+      buildFeatures(); // using exist_geometries[] and exist_labels[]
 
      // document.getElementById('noneToggle').checked = true;
      
      ///// end open_layers_interactive_init /////////////////////////////////
+     
