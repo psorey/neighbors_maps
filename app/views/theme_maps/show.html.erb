@@ -1,5 +1,5 @@
+<script defer="defer" type="text/javascript">
 
-  <script defer="defer" type="text/javascript">
     var exist_features = [];
     var exist_geometries = [];
     var exist_labels = [];
@@ -16,10 +16,10 @@
 <% if @theme_map.is_interactive %>
       <%= render :partial => 'open_layers_interactive_functions' %>
 <% end %>
+    window.onload=init;
 
-    window.onload=init;  
-    </script>
-    
+</script>
+
     <div id="map" class="smallmap"></div>
     <h2 id="title"><%=h @theme_map.name %> </h2>
   

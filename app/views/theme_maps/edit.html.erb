@@ -5,14 +5,15 @@
   <% form_for @theme_map do |f| %>
       <%= f.error_messages %> 
     <p>
-      <% if @theme_map.is_interactive %>
-      NOTE: Changing title will orphan any existing data rows. <br />
-      <% end %>
+
       <%= f.label 'Map Title' %><br />
       <%= f.text_field :name %>
     </p>
+      <% if @theme_map.is_interactive %>
+      <span class='fineprint'>NOTE: Changing title will orphan any existing data rows. </span><br />
+      <% end %>    
     <p>
-      <%= f.label 'is interactive?' %><br />
+      <%= f.label 'Interactive map?' %><br />
       <%= f.check_box :is_interactive %>
     </p>  
 

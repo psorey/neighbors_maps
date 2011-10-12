@@ -1,3 +1,4 @@
+require 'bluecloth'
 
 class ThemeMapsController < ApplicationController
   
@@ -51,8 +52,8 @@ class ThemeMapsController < ApplicationController
 
 
   def send_help
-    @theme_map = ThemeMap.find_by_slug(params[:id])
-    render :js => "alert('#{@theme_map.get_description}');"  
+    @theme_map = ThemeMap.find_by_slug(params[:name])
+    render :text => BlueCloth.new(@theme_map.description).to_html
   end
 
 
@@ -65,31 +66,31 @@ class ThemeMapsController < ApplicationController
   
   
   def update_geo_db
-      @theme_map = ThemeMap.find_by_slug(params[:id])
-      @current_neighbor_id = '44'  # !!!
-      geometries = params[:geometries]
-      labels = params[:labels]
+    @theme_map = ThemeMap.find_by_slug(params[:id])
+    @current_neighbor_id = '44'  # !!!
+    geometries = params[:geometries]
+    labels = params[:labels]
 
-      labels_array = JSON.parse(labels)      
-      geometries_array = JSON.parse(geometries)  
-      MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => @theme_map.name.dashed)
-      result = 'successfully saved...'
-      for i in 0...geometries_array.length
-        if labels_array[i] == nil
-          #do nothing
-        else
-          mapped_line = MappedLine.new
-          mapped_line.geometry = Geometry.from_ewkt(geometries_array[i])
-          mapped_line.geometry.srid = 4326
-          mapped_line.end_label = labels_array[i]
-          #mapped_line.owner_id = @current_neighbor_id
-          mapped_line.owner_id = '44' # !!!
-          mapped_line.map_layer_id = @theme_map.name.dashed
-          if !mapped_line.save
-            result = 'save failed'
-          end
+    labels_array = JSON.parse(labels)      
+    geometries_array = JSON.parse(geometries)  
+    MappedLine.destroy_all(:owner_id => @current_neighbor_id, :map_layer_id => @theme_map.name.dashed)
+    result = 'successfully saved...'
+    for i in 0...geometries_array.length
+      if labels_array[i] == nil
+        #do nothing
+      else
+        mapped_line = MappedLine.new
+        mapped_line.geometry = Geometry.from_ewkt(geometries_array[i])
+        mapped_line.geometry.srid = 4326
+        mapped_line.end_label = labels_array[i]
+        #mapped_line.owner_id = @current_neighbor_id
+        mapped_line.owner_id = '44' # !!!
+        mapped_line.map_layer_id = @theme_map.name.dashed
+        if !mapped_line.save
+          result = 'save failed'
         end
       end
+    end
     render :text => result
   end
   

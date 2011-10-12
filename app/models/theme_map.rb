@@ -32,7 +32,7 @@ class ThemeMap < ActiveRecord::Base
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
   
   validates_presence_of :name, :layer_ids, :base_layer_ids 
-  validates_uniqueness_of :name, :message => "that name has already been used"
+  validates_uniqueness_of :slug, :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
       :message => "only: alpha-numeric, period, underscore, dash, space"
 
@@ -52,9 +52,11 @@ class ThemeMap < ActiveRecord::Base
     @map.save(mapfile_name)
   end
   
+  
   def get_description  # returns first paragraph of @theme_map.description
     self.description.split("\n")[0]
   end
+  
   
   def mapfile_url
     APP_CONFIG['MAPSERVER_URL'] + "#{self.name.dashed}.map"
@@ -66,7 +68,6 @@ class ThemeMap < ActiveRecord::Base
   end
   
 
-  
   def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
@@ -132,7 +133,7 @@ class ThemeMap < ActiveRecord::Base
         is_base_layer = base_layers.include?(map_layer_id)
         theme_map_layer = self.theme_map_layers.create(:map_layer_id => map_layer_id.to_i,
                         :theme_map_id => self.id, :is_base_layer => is_base_layer)   
-        theme_map_layer.save # mapscript
+        theme_map_layer.save 
       end
     end
   end

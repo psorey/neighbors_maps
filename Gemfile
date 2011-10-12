@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gem "rails", "2.3.12"
 gem "curb", "0.7.15"
-
+gem "bluecloth" , :require => 'bluecloth'
 gem "GeoRuby", "1.3.4"
 gem "spatial_adapter", "1.2.0"
 # gem "json", "1.6.1"
@@ -14,7 +14,6 @@ gem "POpen4", "0.1.4"
 
 gem "proj4rb", "0.3.1", :require => "proj4"
 gem 'rdoc'
-
 gem "rack", "1.1.2"
 
 # for rails 2.3.x:

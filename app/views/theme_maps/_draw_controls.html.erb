@@ -1,14 +1,16 @@
    <!--  begin draw_controls ////////////////////////////////////////////////// -->   
  <script type='text/javascript'>
-  
-  function showHelp(){
-    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/send_help", {
-      parameters: {
-        id: '<%=@theme_map.slug%>'
-      },
-    });    
-  }
-  
+
+
+  function showHelp(){ 
+    win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
+        width:340, height:450, top:70, left:100, zIndex:1500,
+        destroyOnClose: true });
+    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{id: '<%=@theme_map.name %>'});
+    win.show();
+  }     
+
+
   function revertSaved(){     // returns javascript to refresh the interactive layers...
     emptyFeatures();
     new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/revert_geo_db", {
