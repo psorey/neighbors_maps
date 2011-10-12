@@ -1,0 +1,1117 @@
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   Gemfile
+#	modified:   Gemfile.lock
+#	modified:   app/controllers/theme_maps_controller.rb
+#	modified:   app/models/theme_map.rb
+#	modified:   app/views/layouts/_head.html.erb
+#	modified:   app/views/maps/index.html.erb
+#	modified:   app/views/theme_maps/_draw_controls.html.erb
+#	modified:   app/views/theme_maps/_open_layers_init.html.erb
+#	modified:   app/views/theme_maps/edit.html.erb
+#	modified:   app/views/theme_maps/index.html.erb
+#	modified:   app/views/theme_maps/show.html.erb
+#	new file:   db/fix_yaml.rb
+#	new file:   db/half_blocks.sql
+#	new file:   public/javascripts/tooltip.js
+#	new file:   public/javascripts/window.js
+#	new file:   public/javascripts/window_effects.js
+#	new file:   public/javascripts/window_ext.js
+#	new file:   public/javascripts/windows_js_1.3/MIT-LICENSE
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/body-bg.png
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/button-bg.gif
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/dock-bg.gif
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/index.html
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/pwc-os.css
+#	new file:   public/javascripts/windows_js_1.3/PWC-OS/pwc-os.js
+#	new file:   public/javascripts/windows_js_1.3/README
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/body-bg.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/button-bg.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/dock-bg.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/index.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/pwc-os.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/PWC-OS/pwc-os.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/debug.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/documentation.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/info_panel.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/debug.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/effects.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/extended_debug.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/prototype.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/tooltip.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/window.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/window_effects.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/javascripts/window_ext.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/js/application.js
+#	new file:   public/javascripts/windows_js_1.3/documentation/logo.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/pwc.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/pwc_os_thumb.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/samples.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/stylesheets/login.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/stylesheets/style.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes.html
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/bottom.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/bottom_left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/bottom_right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/progress.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/top.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/top_left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert/top_right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alert_lite.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-left-c.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-right-c.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-close-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-max-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-min-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/frame-left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/frame-right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/left-top.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/right-top.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/alphacube/top-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/behavior.htc
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/button-close-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/button-maximize-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/button-minimize-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-mid-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-mid-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/debug.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/bottom_left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/bottom_mid.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/bottom_right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/bottom_right_resize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/center_left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/center_right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/clear.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/close.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/inspect.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/resize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/sizer.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/top_left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/top_mid.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/default/top_right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/iefix/blank.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/iefix/iepngfix.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/iefix/iepngfix.htc
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/background_buttons.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/left-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/pngbehavior.htc
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/right-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/spinner.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-green.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/B.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BL.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BL_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BR.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BR_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/B_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/L.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/L_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/R.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/R_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/T.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TL.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TL_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TR.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TR_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/T_Main.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/close.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/B.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/BL.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/BR.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/L.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/R.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/T.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/TL.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/TR.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/bg.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/close.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_left.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_mid.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_right.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/center_left.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/center_right.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/close.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/minimize.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_left.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_mid.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_right.png
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread.css
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-left-c.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-right-c.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/button-close-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/button-max-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/button-min-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/frame-left.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/frame-right.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/left-top.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/right-top.gif
+#	new file:   public/javascripts/windows_js_1.3/documentation/themes/spread/top-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/helper/prototype_window_class_helper.rb
+#	new file:   public/javascripts/windows_js_1.3/javascripts/debug.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/effects.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/extended_debug.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/prototype.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/tooltip.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/window.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/window_effects.js
+#	new file:   public/javascripts/windows_js_1.3/javascripts/window_ext.js
+#	new file:   public/javascripts/windows_js_1.3/samples/constraint.html
+#	new file:   public/javascripts/windows_js_1.3/samples/dialog.html
+#	new file:   public/javascripts/windows_js_1.3/samples/dialog_ajax.html
+#	new file:   public/javascripts/windows_js_1.3/samples/inframe.html
+#	new file:   public/javascripts/windows_js_1.3/samples/inset.html
+#	new file:   public/javascripts/windows_js_1.3/samples/multi_modal.html
+#	new file:   public/javascripts/windows_js_1.3/samples/oldFirstSampleCode.html
+#	new file:   public/javascripts/windows_js_1.3/samples/openInside.html
+#	new file:   public/javascripts/windows_js_1.3/samples/parent.html
+#	new file:   public/javascripts/windows_js_1.3/samples/popup_open.html
+#	new file:   public/javascripts/windows_js_1.3/samples/rico/index.html
+#	new file:   public/javascripts/windows_js_1.3/samples/rico/properties_1.gif
+#	new file:   public/javascripts/windows_js_1.3/samples/rico/rico.css
+#	new file:   public/javascripts/windows_js_1.3/samples/rico/rico_change.js
+#	new file:   public/javascripts/windows_js_1.3/samples/tooltips/tooltip.html
+#	new file:   public/javascripts/windows_js_1.3/samples/tooltips/tooltip_ajax.html
+#	new file:   public/javascripts/windows_js_1.3/samples/tooltips/tooltip_url.html
+#	new file:   public/javascripts/windows_js_1.3/samples/window_key.html
+#	new file:   public/javascripts/windows_js_1.3/samples/window_key_url_content.html
+#	new file:   public/javascripts/windows_js_1.3/samples/window_store.html
+#	new file:   public/javascripts/windows_js_1.3/themes/alert.css
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/bottom.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/bottom_left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/bottom_right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/progress.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/top.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/top_left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert/top_right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alert_lite.css
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube.css
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/bottom-left-c.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/bottom-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/bottom-right-c.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/button-close-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/button-max-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/button-min-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/frame-left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/frame-right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/left-top.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/right-top.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/alphacube/top-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/behavior.htc
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX.css
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/button-close-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/button-maximize-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/button-minimize-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-mid-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/frame-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/frame-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/titlebar-left-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/titlebar-mid-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/darkX/titlebar-right-focused.png
+#	new file:   public/javascripts/windows_js_1.3/themes/debug.css
+#	new file:   public/javascripts/windows_js_1.3/themes/default.css
+#	new file:   public/javascripts/windows_js_1.3/themes/default/bottom_left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/bottom_mid.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/bottom_right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/bottom_right_resize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/center_left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/center_right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/clear.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/close.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/inspect.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/themes/default/resize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/sizer.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/top_left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/top_mid.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/default/top_right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/iefix/blank.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/iefix/iepngfix.css
+#	new file:   public/javascripts/windows_js_1.3/themes/iefix/iepngfix.htc
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting.css
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/background_buttons.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-left-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-right-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/bottom-right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-close-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-close-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-close-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-close-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-maximize-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-maximize-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-maximize-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-maximize-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-minimize-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-minimize-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-minimize-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/button-minimize-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/left-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/pngbehavior.htc
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/right-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/spinner.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-left-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-left-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-left-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-left-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-middle-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-middle-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-middle-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-middle-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-right-blue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-right-darkblue.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-right-green.png
+#	new file:   public/javascripts/windows_js_1.3/themes/lighting/top-right-grey.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x.css
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/B.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/BL.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/BL_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/BR.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/BR_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/B_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/L.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/L_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/R.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/R_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/T.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/TL.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/TL_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/TR.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/TR_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/T_Main.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/close.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog.css
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/B.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/BL.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/BR.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/L.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/R.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/T.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/TL.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/TR.png
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/bg.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/close.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/maximize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/minimize.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio.css
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/bottom_left.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/bottom_mid.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/bottom_right.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/center_left.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/center_right.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/close.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/minimize.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/overlay.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/top_left.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/top_mid.png
+#	new file:   public/javascripts/windows_js_1.3/themes/nuncio/top_right.png
+#	new file:   public/javascripts/windows_js_1.3/themes/spread.css
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/bottom-left-c.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/bottom-middle.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/bottom-right-c.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/button-close-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/button-max-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/button-min-focus.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/frame-left.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/frame-right.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/left-top.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/right-top.gif
+#	new file:   public/javascripts/windows_js_1.3/themes/spread/top-middle.gif
+#	new file:   public/stylesheets/window/alphacube.css
+#	new file:   public/stylesheets/window/alphacube/bottom-left-c.gif
+#	new file:   public/stylesheets/window/alphacube/bottom-middle.gif
+#	new file:   public/stylesheets/window/alphacube/bottom-right-c.gif
+#	new file:   public/stylesheets/window/alphacube/button-close-focus.gif
+#	new file:   public/stylesheets/window/alphacube/button-max-focus.gif
+#	new file:   public/stylesheets/window/alphacube/button-min-focus.gif
+#	new file:   public/stylesheets/window/alphacube/frame-left.gif
+#	new file:   public/stylesheets/window/alphacube/frame-right.gif
+#	new file:   public/stylesheets/window/alphacube/left-top.gif
+#	new file:   public/stylesheets/window/alphacube/right-top.gif
+#	new file:   public/stylesheets/window/alphacube/top-middle.gif
+#	new file:   public/themes/alert.css
+#	new file:   public/themes/alert/bottom.gif
+#	new file:   public/themes/alert/bottom_left.gif
+#	new file:   public/themes/alert/bottom_right.gif
+#	new file:   public/themes/alert/left.gif
+#	new file:   public/themes/alert/overlay.png
+#	new file:   public/themes/alert/progress.gif
+#	new file:   public/themes/alert/right.gif
+#	new file:   public/themes/alert/top.gif
+#	new file:   public/themes/alert/top_left.gif
+#	new file:   public/themes/alert/top_right.gif
+#	new file:   public/themes/alert_lite.css
+#	new file:   public/themes/alphacube.css
+#	new file:   public/themes/alphacube/bottom-left-c.gif
+#	new file:   public/themes/alphacube/bottom-middle.gif
+#	new file:   public/themes/alphacube/bottom-right-c.gif
+#	new file:   public/themes/alphacube/button-close-focus.gif
+#	new file:   public/themes/alphacube/button-max-focus.gif
+#	new file:   public/themes/alphacube/button-min-focus.gif
+#	new file:   public/themes/alphacube/frame-left.gif
+#	new file:   public/themes/alphacube/frame-right.gif
+#	new file:   public/themes/alphacube/left-top.gif
+#	new file:   public/themes/alphacube/right-top.gif
+#	new file:   public/themes/alphacube/top-middle.gif
+#	new file:   public/themes/behavior.htc
+#	new file:   public/themes/darkX.css
+#	new file:   public/themes/darkX/button-close-focused.png
+#	new file:   public/themes/darkX/button-maximize-focused.png
+#	new file:   public/themes/darkX/button-minimize-focused.png
+#	new file:   public/themes/darkX/frame-bottom-left-focused.png
+#	new file:   public/themes/darkX/frame-bottom-mid-focused.png
+#	new file:   public/themes/darkX/frame-bottom-right-focused.png
+#	new file:   public/themes/darkX/frame-left-focused.png
+#	new file:   public/themes/darkX/frame-right-focused.png
+#	new file:   public/themes/darkX/titlebar-left-focused.png
+#	new file:   public/themes/darkX/titlebar-mid-focused.png
+#	new file:   public/themes/darkX/titlebar-right-focused.png
+#	new file:   public/themes/debug.css
+#	new file:   public/themes/default.css
+#	new file:   public/themes/default/bottom_left.gif
+#	new file:   public/themes/default/bottom_mid.gif
+#	new file:   public/themes/default/bottom_right.gif
+#	new file:   public/themes/default/bottom_right_resize.gif
+#	new file:   public/themes/default/center_left.gif
+#	new file:   public/themes/default/center_right.gif
+#	new file:   public/themes/default/clear.gif
+#	new file:   public/themes/default/close.gif
+#	new file:   public/themes/default/inspect.gif
+#	new file:   public/themes/default/maximize.gif
+#	new file:   public/themes/default/minimize.gif
+#	new file:   public/themes/default/overlay.png
+#	new file:   public/themes/default/resize.gif
+#	new file:   public/themes/default/sizer.gif
+#	new file:   public/themes/default/top_left.gif
+#	new file:   public/themes/default/top_mid.gif
+#	new file:   public/themes/default/top_right.gif
+#	new file:   public/themes/iefix/blank.gif
+#	new file:   public/themes/iefix/iepngfix.css
+#	new file:   public/themes/iefix/iepngfix.htc
+#	new file:   public/themes/lighting.css
+#	new file:   public/themes/lighting/background_buttons.gif
+#	new file:   public/themes/lighting/bottom-left-blue.png
+#	new file:   public/themes/lighting/bottom-left-darkblue.png
+#	new file:   public/themes/lighting/bottom-left-green.png
+#	new file:   public/themes/lighting/bottom-left-grey.png
+#	new file:   public/themes/lighting/bottom-middle-blue.png
+#	new file:   public/themes/lighting/bottom-middle-darkblue.png
+#	new file:   public/themes/lighting/bottom-middle-green.png
+#	new file:   public/themes/lighting/bottom-middle-grey.png
+#	new file:   public/themes/lighting/bottom-right-blue.png
+#	new file:   public/themes/lighting/bottom-right-darkblue.png
+#	new file:   public/themes/lighting/bottom-right-green.png
+#	new file:   public/themes/lighting/bottom-right-grey.png
+#	new file:   public/themes/lighting/button-close-blue.png
+#	new file:   public/themes/lighting/button-close-darkblue.png
+#	new file:   public/themes/lighting/button-close-green.png
+#	new file:   public/themes/lighting/button-close-grey.png
+#	new file:   public/themes/lighting/button-maximize-blue.png
+#	new file:   public/themes/lighting/button-maximize-darkblue.png
+#	new file:   public/themes/lighting/button-maximize-green.png
+#	new file:   public/themes/lighting/button-maximize-grey.png
+#	new file:   public/themes/lighting/button-minimize-blue.png
+#	new file:   public/themes/lighting/button-minimize-darkblue.png
+#	new file:   public/themes/lighting/button-minimize-green.png
+#	new file:   public/themes/lighting/button-minimize-grey.png
+#	new file:   public/themes/lighting/left-blue.png
+#	new file:   public/themes/lighting/left-darkblue.png
+#	new file:   public/themes/lighting/left-green.png
+#	new file:   public/themes/lighting/left-grey.png
+#	new file:   public/themes/lighting/pngbehavior.htc
+#	new file:   public/themes/lighting/right-blue.png
+#	new file:   public/themes/lighting/right-darkblue.png
+#	new file:   public/themes/lighting/right-green.png
+#	new file:   public/themes/lighting/right-grey.png
+#	new file:   public/themes/lighting/spinner.gif
+#	new file:   public/themes/lighting/top-left-blue.png
+#	new file:   public/themes/lighting/top-left-darkblue.png
+#	new file:   public/themes/lighting/top-left-green.png
+#	new file:   public/themes/lighting/top-left-grey.png
+#	new file:   public/themes/lighting/top-middle-blue.png
+#	new file:   public/themes/lighting/top-middle-darkblue.png
+#	new file:   public/themes/lighting/top-middle-green.png
+#	new file:   public/themes/lighting/top-middle-grey.png
+#	new file:   public/themes/lighting/top-right-blue.png
+#	new file:   public/themes/lighting/top-right-darkblue.png
+#	new file:   public/themes/lighting/top-right-green.png
+#	new file:   public/themes/lighting/top-right-grey.png
+#	new file:   public/themes/mac_os_x.css
+#	new file:   public/themes/mac_os_x/B.png
+#	new file:   public/themes/mac_os_x/BL.png
+#	new file:   public/themes/mac_os_x/BL_Main.png
+#	new file:   public/themes/mac_os_x/BR.png
+#	new file:   public/themes/mac_os_x/BR_Main.png
+#	new file:   public/themes/mac_os_x/B_Main.png
+#	new file:   public/themes/mac_os_x/L.png
+#	new file:   public/themes/mac_os_x/L_Main.png
+#	new file:   public/themes/mac_os_x/R.png
+#	new file:   public/themes/mac_os_x/R_Main.png
+#	new file:   public/themes/mac_os_x/T.png
+#	new file:   public/themes/mac_os_x/TL.png
+#	new file:   public/themes/mac_os_x/TL_Main.png
+#	new file:   public/themes/mac_os_x/TR.png
+#	new file:   public/themes/mac_os_x/TR_Main.png
+#	new file:   public/themes/mac_os_x/T_Main.png
+#	new file:   public/themes/mac_os_x/close.gif
+#	new file:   public/themes/mac_os_x/maximize.gif
+#	new file:   public/themes/mac_os_x/minimize.gif
+#	new file:   public/themes/mac_os_x_dialog.css
+#	new file:   public/themes/mac_os_x_dialog/B.png
+#	new file:   public/themes/mac_os_x_dialog/BL.png
+#	new file:   public/themes/mac_os_x_dialog/BR.png
+#	new file:   public/themes/mac_os_x_dialog/L.png
+#	new file:   public/themes/mac_os_x_dialog/R.png
+#	new file:   public/themes/mac_os_x_dialog/T.png
+#	new file:   public/themes/mac_os_x_dialog/TL.png
+#	new file:   public/themes/mac_os_x_dialog/TR.png
+#	new file:   public/themes/mac_os_x_dialog/bg.gif
+#	new file:   public/themes/mac_os_x_dialog/close.gif
+#	new file:   public/themes/mac_os_x_dialog/maximize.gif
+#	new file:   public/themes/mac_os_x_dialog/minimize.gif
+#	new file:   public/themes/nuncio.css
+#	new file:   public/themes/nuncio/bottom_left.png
+#	new file:   public/themes/nuncio/bottom_mid.png
+#	new file:   public/themes/nuncio/bottom_right.png
+#	new file:   public/themes/nuncio/center_left.png
+#	new file:   public/themes/nuncio/center_right.png
+#	new file:   public/themes/nuncio/close.png
+#	new file:   public/themes/nuncio/minimize.png
+#	new file:   public/themes/nuncio/overlay.png
+#	new file:   public/themes/nuncio/top_left.png
+#	new file:   public/themes/nuncio/top_mid.png
+#	new file:   public/themes/nuncio/top_right.png
+#	new file:   public/themes/spread.css
+#	new file:   public/themes/spread/.gif
+#	new file:   public/themes/spread/bottom-left-c.gif
+#	new file:   public/themes/spread/bottom-middle.gif
+#	new file:   public/themes/spread/bottom-right-c.gif
+#	new file:   public/themes/spread/button-close-focus.gif
+#	new file:   public/themes/spread/button-max-focus.gif
+#	new file:   public/themes/spread/button-min-focus.gif
+#	new file:   public/themes/spread/frame-left.gif
+#	new file:   public/themes/spread/frame-right.gif
+#	new file:   public/themes/spread/left-top.gif
+#	new file:   public/themes/spread/right-top.gif
+#	new file:   public/themes/spread/top-middle.gif
+#	modified:   spec/models/theme_map_spec.rb
+#
+# Changed but not updated:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	deleted:    app/controllers/walk_surveys_controller.rb
+#	deleted:    app/models/half_block.rb
+#	deleted:    app/models/walk_survey.rb
+#	deleted:    app/views/projects/edit.html.erb
+#	deleted:    app/views/projects/index.html.erb
+#	deleted:    app/views/projects/new.html.erb
+#	deleted:    app/views/projects/show.html.erb
+#	deleted:    app/views/walk_surveys/edit.html.erb
+#	deleted:    app/views/walk_surveys/index.html.erb
+#	deleted:    app/views/walk_surveys/new.html.erb
+#	deleted:    app/views/walk_surveys/show.html.erb
+#	deleted:    fix_yaml.rb
+#	deleted:    half_blocks.sql
+#	deleted:    public/images/field_day_html_149e66bd.gif
+#	deleted:    public/images/field_day_html_482a49a8.gif
+#	deleted:    public/images/may18th.png
+#	deleted:    public/images/rails.png
+#	deleted:    public/images/testmap.png
+#	deleted:    public/javascripts/windows_js_1.3/MIT-LICENSE
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/body-bg.png
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/button-bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/dock-bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/index.html
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/pwc-os.css
+#	deleted:    public/javascripts/windows_js_1.3/PWC-OS/pwc-os.js
+#	deleted:    public/javascripts/windows_js_1.3/README
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/body-bg.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/button-bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/dock-bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/index.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/pwc-os.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/PWC-OS/pwc-os.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/debug.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/documentation.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/info_panel.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/debug.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/effects.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/extended_debug.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/prototype.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/tooltip.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/window.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/window_effects.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/javascripts/window_ext.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/js/application.js
+#	deleted:    public/javascripts/windows_js_1.3/documentation/logo.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/pwc.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/pwc_os_thumb.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/samples.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/stylesheets/login.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/stylesheets/style.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes.html
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/bottom.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/bottom_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/bottom_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/progress.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/top.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/top_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert/top_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alert_lite.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-left-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/bottom-right-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-close-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-max-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/button-min-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/frame-left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/frame-right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/left-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/right-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/alphacube/top-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/behavior.htc
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/button-close-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/button-maximize-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/button-minimize-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-mid-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-bottom-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/frame-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-mid-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/darkX/titlebar-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/debug.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/bottom_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/bottom_mid.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/bottom_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/bottom_right_resize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/center_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/center_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/clear.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/inspect.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/resize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/sizer.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/top_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/top_mid.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/default/top_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/iefix/blank.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/iefix/iepngfix.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/iefix/iepngfix.htc
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/background_buttons.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-middle-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/bottom-right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-close-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-maximize-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/button-minimize-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/pngbehavior.htc
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/spinner.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-middle-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/lighting/top-right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/B.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BL.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BL_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BR.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/BR_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/B_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/L.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/L_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/R.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/R_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/T.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TL.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TL_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TR.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/TR_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/T_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/B.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/BL.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/BR.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/L.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/R.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/T.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/TL.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/TR.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/mac_os_x_dialog/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_left.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_mid.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/bottom_right.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/center_left.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/center_right.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/close.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/minimize.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_left.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_mid.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/nuncio/top_right.png
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread.css
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-left-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/bottom-right-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/button-close-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/button-max-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/button-min-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/frame-left.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/frame-right.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/left-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/right-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/documentation/themes/spread/top-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/helper/prototype_window_class_helper.rb
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/debug.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/effects.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/extended_debug.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/prototype.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/tooltip.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/window.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/window_effects.js
+#	deleted:    public/javascripts/windows_js_1.3/javascripts/window_ext.js
+#	deleted:    public/javascripts/windows_js_1.3/samples/constraint.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/dialog.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/dialog_ajax.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/inframe.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/inset.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/multi_modal.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/oldFirstSampleCode.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/openInside.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/parent.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/popup_open.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/rico/index.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/rico/properties_1.gif
+#	deleted:    public/javascripts/windows_js_1.3/samples/rico/rico.css
+#	deleted:    public/javascripts/windows_js_1.3/samples/rico/rico_change.js
+#	deleted:    public/javascripts/windows_js_1.3/samples/tooltips/tooltip.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/tooltips/tooltip_ajax.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/tooltips/tooltip_url.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/window_key.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/window_key_url_content.html
+#	deleted:    public/javascripts/windows_js_1.3/samples/window_store.html
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/bottom.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/bottom_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/bottom_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/progress.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/top.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/top_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert/top_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alert_lite.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/bottom-left-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/bottom-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/bottom-right-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/button-close-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/button-max-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/button-min-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/frame-left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/frame-right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/left-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/right-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/alphacube/top-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/behavior.htc
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/button-close-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/button-maximize-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/button-minimize-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-mid-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/frame-bottom-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/frame-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/frame-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/titlebar-left-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/titlebar-mid-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/darkX/titlebar-right-focused.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/debug.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/default.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/bottom_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/bottom_mid.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/bottom_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/bottom_right_resize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/center_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/center_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/clear.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/inspect.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/resize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/sizer.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/top_left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/top_mid.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/default/top_right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/iefix/blank.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/iefix/iepngfix.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/iefix/iepngfix.htc
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/background_buttons.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-middle-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/bottom-right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-close-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-close-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-close-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-close-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-maximize-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-maximize-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-maximize-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-maximize-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-minimize-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-minimize-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-minimize-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/button-minimize-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/pngbehavior.htc
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/spinner.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-left-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-left-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-left-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-left-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-middle-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-middle-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-middle-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-middle-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-right-blue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-right-darkblue.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-right-green.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/lighting/top-right-grey.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/B.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/BL.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/BL_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/BR.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/BR_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/B_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/L.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/L_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/R.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/R_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/T.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/TL.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/TL_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/TR.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/TR_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/T_Main.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/B.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/BL.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/BR.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/L.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/R.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/T.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/TL.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/TR.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/bg.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/close.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/maximize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/mac_os_x_dialog/minimize.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/bottom_left.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/bottom_mid.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/bottom_right.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/center_left.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/center_right.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/close.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/minimize.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/overlay.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/top_left.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/top_mid.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/nuncio/top_right.png
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread.css
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/bottom-left-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/bottom-middle.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/bottom-right-c.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/button-close-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/button-max-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/button-min-focus.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/frame-left.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/frame-right.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/left-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/right-top.gif
+#	deleted:    public/javascripts/windows_js_1.3/themes/spread/top-middle.gif
+#	deleted:    public/tmp/restart.txt
+#	deleted:    public/tmp/temp.rb
+#	deleted:    public/tmp/tmp.show.html
+#	deleted:    schema_NOTES.txt
+#	deleted:    test/fixtures/administrators.yml
+#	deleted:    test/fixtures/forums.yml
+#	deleted:    test/fixtures/half_blocks.yml
+#	deleted:    test/fixtures/households.yml
+#	deleted:    test/fixtures/labeled_lines.yml
+#	deleted:    test/fixtures/map_layers.yml
+#	deleted:    test/fixtures/neighbor_surveys.yml
+#	deleted:    test/fixtures/neighbors.yml
+#	deleted:    test/fixtures/pages.yml
+#	deleted:    test/fixtures/projects.yml
+#	deleted:    test/fixtures/roles.yml
+#	deleted:    test/fixtures/team_members.yml
+#	deleted:    test/fixtures/teams.yml
+#	deleted:    test/fixtures/theme_map_layers.yml
+#	deleted:    test/fixtures/theme_maps.yml
+#	deleted:    test/fixtures/users.yml
+#	deleted:    test/fixtures/views.yml
+#	deleted:    test/fixtures/walk_surveys.yml
+#	deleted:    test/functional/about_controller_test.rb
+#	deleted:    test/functional/administrators_controller_test.rb
+#	deleted:    test/functional/contact_controller_test.rb
+#	deleted:    test/functional/events_controller_test.rb
+#	deleted:    test/functional/faq_controller_test.rb
+#	deleted:    test/functional/forum_controller_test.rb
+#	deleted:    test/functional/forums_controller_test.rb
+#	deleted:    test/functional/guide_controller_test.rb
+#	deleted:    test/functional/half_blocks_controller_test.rb
+#	deleted:    test/functional/households_controller_test.rb
+#	deleted:    test/functional/map_controller_test.rb
+#	deleted:    test/functional/map_layers_controller_test.rb
+#	deleted:    test/functional/neighbor_surveys_controller_test.rb
+#	deleted:    test/functional/neighbors_controller_test.rb
+#	deleted:    test/functional/neighbors_map_controller_test.rb
+#	deleted:    test/functional/overall_map_controller_test.rb
+#	deleted:    test/functional/pages_controller_test.rb
+#	deleted:    test/functional/precompiled_maps_controller_test.rb
+#	deleted:    test/functional/projects_controller_test.rb
+#	deleted:    test/functional/resources_controller_test.rb
+#	deleted:    test/functional/sessions_controller_test.rb
+#	deleted:    test/functional/site_photos_controller_test.rb
+#	deleted:    test/functional/team_members_controller_test.rb
+#	deleted:    test/functional/teams_controller_test.rb
+#	deleted:    test/functional/theme_map_layers_controller_test.rb
+#	deleted:    test/functional/theme_maps_controller_test.rb
+#	deleted:    test/functional/under_construction_controller_test.rb
+#	deleted:    test/functional/users_controller_test.rb
+#	deleted:    test/functional/views_controller_test.rb
+#	deleted:    test/functional/volunteer_controller_test.rb
+#	deleted:    test/functional/walk_surveys_controller_test.rb
+#	deleted:    test/functional/welcome_controller_test.rb
+#	deleted:    test/functional/wiki_controller_test.rb
+#	deleted:    test/performance/browsing_test.rb
+#	deleted:    test/test_helper.rb
+#	deleted:    test/unit/administrator_test.rb
+#	deleted:    test/unit/forum_test.rb
+#	deleted:    test/unit/greenwood_user_test.rb
+#	deleted:    test/unit/half_block_test.rb
+#	deleted:    test/unit/helpers/about_helper_test.rb
+#	deleted:    test/unit/helpers/administrators_helper_test.rb
+#	deleted:    test/unit/helpers/contact_helper_test.rb
+#	deleted:    test/unit/helpers/events_helper_test.rb
+#	deleted:    test/unit/helpers/faq_helper_test.rb
+#	deleted:    test/unit/helpers/forum_helper_test.rb
+#	deleted:    test/unit/helpers/forums_helper_test.rb
+#	deleted:    test/unit/helpers/guide_helper_test.rb
+#	deleted:    test/unit/helpers/half_blocks_helper_test.rb
+#	deleted:    test/unit/helpers/households_helper_test.rb
+#	deleted:    test/unit/helpers/map_helper_test.rb
+#	deleted:    test/unit/helpers/map_layers_helper_test.rb
+#	deleted:    test/unit/helpers/neighbor_surveys_helper_test.rb
+#	deleted:    test/unit/helpers/neighbors_helper_test.rb
+#	deleted:    test/unit/helpers/neighbors_map_helper_test.rb
+#	deleted:    test/unit/helpers/overall_map_helper_test.rb
+#	deleted:    test/unit/helpers/pages_helper_test.rb
+#	deleted:    test/unit/helpers/precompiled_maps_helper_test.rb
+#	deleted:    test/unit/helpers/projects_helper_test.rb
+#	deleted:    test/unit/helpers/resources_helper_test.rb
+#	deleted:    test/unit/helpers/site_photos_helper_test.rb
+#	deleted:    test/unit/helpers/team_members_helper_test.rb
+#	deleted:    test/unit/helpers/teams_helper_test.rb
+#	deleted:    test/unit/helpers/theme_map_layers_helper_test.rb
+#	deleted:    test/unit/helpers/theme_maps_helper_test.rb
+#	deleted:    test/unit/helpers/under_construction_helper_test.rb
+#	deleted:    test/unit/helpers/views_helper_test.rb
+#	deleted:    test/unit/helpers/volunteer_helper_test.rb
+#	deleted:    test/unit/helpers/walk_surveys_helper_test.rb
+#	deleted:    test/unit/helpers/welcome_helper_test.rb
+#	deleted:    test/unit/helpers/wiki_helper_test.rb
+#	deleted:    test/unit/household_test.rb
+#	deleted:    test/unit/labeled_line_test.rb
+#	deleted:    test/unit/map_layer_test.rb
+#	deleted:    test/unit/neighbor_survey_test.rb
+#	deleted:    test/unit/neighbor_test.rb
+#	deleted:    test/unit/page_test.rb
+#	deleted:    test/unit/project_test.rb
+#	deleted:    test/unit/team_member_test.rb
+#	deleted:    test/unit/team_test.rb
+#	deleted:    test/unit/theme_map_layer_test.rb
+#	deleted:    test/unit/theme_map_test.rb
+#	deleted:    test/unit/user_mailer_test.rb
+#	deleted:    test/unit/user_test.rb
+#	deleted:    test/unit/view_test.rb
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	status.txt
