@@ -53,7 +53,7 @@ class ThemeMap < ActiveRecord::Base
   end
   
   
-  def get_description  # returns first paragraph of @theme_map.description
+  def get_summary_description  # returns first paragraph of @theme_map.description
     self.description.split("\n")[0]
   end
   
