@@ -1,0 +1,20 @@
+ <br />
+ <div  class="grid" height="100%"> 
+  <table  width="800" border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><strong>Map Name</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
+  <% maps.each do |theme_map| %>
+    <tr valign="top">
+      <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
+      <td><%=h theme_map.get_summary_description %></td>
+    <% if current_user && current_user.roles[0].name  == "admin" %>
+      <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
+      <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+    </tr>
+  <% end %> 
+  </table>
+ </div>
+  <br /> <br />
