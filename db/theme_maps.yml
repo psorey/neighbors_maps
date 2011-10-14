@@ -12,7 +12,7 @@
 
 - !ruby/object:ThemeMap 
   attributes: 
-    slug: new-map
+    slug: half-block-ids
     name: Half Block IDs
     created_at: 2011-09-29 23:03:39.547127
     updated_at: 2011-09-30 06:44:28.056654
@@ -70,9 +70,10 @@
     slug: walk-survey
     name: walk survey
     created_at: 2011-09-30 23:00:27.926074
-    updated_at: 2011-10-05 02:04:20.776078
+    updated_at: 2011-10-10 12:59:57.975443
     is_interactive: t
     id: "83"
-    description: "Walk Survey: Each Neighbor marks the routes, and frequencies of use per month, to destinations that they walk to. This data will be used in design of several new paved paths from east to west and north to south."
+    description: ""
+
   attributes_cache: {}
 

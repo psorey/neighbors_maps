@@ -2,7 +2,6 @@
 
 class Neighbor < ActiveRecord::Base
   
-  
   belongs_to :users  # foreign_key = neighbor_id
 
   serialize :why_walk, Array

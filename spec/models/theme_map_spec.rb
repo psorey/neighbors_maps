@@ -6,6 +6,7 @@ describe ThemeMap do
   before (:each) do
     @valid_attributes = {:name => 'Great Pubs', :slug => 'great-pubs', :base_layer_ids => [1,2], :layer_ids => [1,2,3]}
   end
+
   it "should not be valid empty" do
     @map = ThemeMap.new()
     @map.should_not be_valid
@@ -32,5 +33,10 @@ describe ThemeMap do
     @map2 = ThemeMap.new(@valid_attributes)
     @map2.should_not be_valid
   end
+
+  it "should produce a map" do
+    
+  end
+
   
 end
