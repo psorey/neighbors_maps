@@ -1,7 +1,7 @@
 #.gitignore for 'green2'
 .redcar/*
 .gitignore
-config/initializers/*
+config/initializers/site_keys.rb
 config/*.yml
 config/environment.rb
 *.kpf

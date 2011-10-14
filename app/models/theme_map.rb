@@ -18,7 +18,7 @@
  
 # TODO:
 # Add 'Export Mapfile' function so a theme_map can be viewed in desktop GIS applications.
-# Add OPACITY and COLOR attributes to theme_map_layer objects that override values set in map_layers.
+# Add OPACITY, WIDTH and COLOR attributes to theme_map_layer objects that override values set in map_layers.
 
 require 'mapscript'
 include Mapscript
@@ -28,13 +28,13 @@ class ThemeMap < ActiveRecord::Base
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   
-  attr_accessor :map   # make the MapObj accessible to methods
+  attr_accessor :map     # make the MapObj accessible to methods
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
   
   validates_presence_of :name, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :slug, :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
-      :message => "only: alpha-numeric, period, underscore, dash, space"
+            :message => "only: alpha-numeric, period, underscore, dash, space"
 
   before_create :create_slug
   
@@ -67,7 +67,7 @@ class ThemeMap < ActiveRecord::Base
     APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.dashed}.map"
   end
   
-
+  
   def add_ordered_layers
     @layer_name_list = []
     # load the layer descriptions into the MapObj
@@ -108,7 +108,7 @@ class ThemeMap < ActiveRecord::Base
       if !map_layers.include?(tml.id.to_s)
         tml.delete
       else
-        current_map_layer_ids << tml.map_layer_id.to_s  # make these strings too
+        current_map_layer_ids << tml.map_layer_id.to_s  
       end
     end
     # looks like we end up instantiating a ThemeMapLayer one way or another...
