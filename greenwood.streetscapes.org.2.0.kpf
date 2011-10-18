@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
 <project id="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384" kpf_version="4" name="greenwood.streetscapes.org.2.0">
-<folder id="69b20967-8d29-4034-bf43-09cb3c631d3d" idref="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384" name="mytools">
-</folder>
 <livefolder id="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384/lib/log" idref="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384/lib" name="log" url="log">
 </livefolder>
-<folder id="92af49db-9dd5-458a-8873-2f7c637014a6" idref="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384/spec" name="models">
-</folder>
 <preference-set idref="4bd74144-c37c-4c0d-bbf7-bd6ef8fe2384">
   <boolean id="import_live">1</boolean>
 </preference-set>

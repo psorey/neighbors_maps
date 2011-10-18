@@ -1,9 +1,14 @@
 require 'bluecloth'
 
 class ThemeMapsController < ApplicationController
+    
+  before_filter :login_required, :except => 'index'
   
   def index
-    @interactive_theme_maps = ThemeMap.find(:all, :conditions => {:is_interactive => true}, :order => :name)
+    if current_user
+      @current_neighbor_id = current_user.neighbor_id
+      @interactive_theme_maps = ThemeMap.find(:all, :conditions => {:is_interactive => true}, :order => :name)
+    end
     @theme_maps = ThemeMap.find(:all, :conditions => {:is_interactive => false})
   end
 
@@ -13,8 +18,8 @@ class ThemeMapsController < ApplicationController
     # build the map_object and write it to a mapfile for Mapserver
     @theme_map.make_mapfile
     if @theme_map.is_interactive
-      # @current_neighbor_id = current_user.neighbor_id  !!!
-      @current_neighbor_id = '44'
+      @current_neighbor_id = current_user.neighbor_id  
+      #@current_neighbor_id = '44'
       build_geometry_json    
     end
   end
@@ -59,7 +64,7 @@ class ThemeMapsController < ApplicationController
 
   def revert_geo_db
     @theme_map = ThemeMap.find_by_slug(params[:id])
-    @current_neighbor_id = '44'
+    @current_neighbor_id = current_user.neighbor_id  
     build_geometry_json
     render :js => "exist_geometries = #{@json_geometries}; exist_labels = #{@json_labels}; buildFeatures();"
   end
@@ -67,7 +72,7 @@ class ThemeMapsController < ApplicationController
   
   def update_geo_db
     @theme_map = ThemeMap.find_by_slug(params[:id])
-    @current_neighbor_id = '44'  # !!!
+    @current_neighbor_id = current_user.neighbor_id  
     geometries = params[:geometries]
     labels = params[:labels]
 
@@ -83,8 +88,8 @@ class ThemeMapsController < ApplicationController
         mapped_line.geometry = Geometry.from_ewkt(geometries_array[i])
         mapped_line.geometry.srid = 4326
         mapped_line.end_label = labels_array[i]
-        #mapped_line.owner_id = @current_neighbor_id
-        mapped_line.owner_id = '44' # !!!
+        #@current_neighbor_id = current_user.neighbor_id  
+        mapped_line.owner_id = current_user.neighbor_id  
         mapped_line.map_layer_id = @theme_map.name.dashed
         if !mapped_line.save
           result = 'save failed'

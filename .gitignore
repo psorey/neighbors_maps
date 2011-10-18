@@ -1,4 +1,4 @@
-#.gitignore for 'green2'
+# .gitignore for 'green2'
 .redcar/*
 .gitignore
 config/initializers/site_keys.rb
