@@ -9,12 +9,12 @@
     <tr valign="top">
       <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
       <td><%=h theme_map.get_summary_description %></td>
-    <% if current_user && current_user.roles[0].name  == "admin" %>
       <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
-      <td><%= link_to 'Destroy', theme_map, :confirm => 'Are you sure?', :method => :delete %></td>
-    <% end %>
+      <td><%= link_to 'Destroy', theme_map, data: { confirm: 'Really?', method: :delete } %></td>
     </tr>
   <% end %> 
   </table>
  </div>
-  <br /> <br />
+ <br /> <br />
+
+

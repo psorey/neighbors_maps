@@ -1,75 +1,35 @@
-   <!--  begin draw_controls ////////////////////////////////////////////////// -->   
- <script type='text/javascript'>
+<!--  begin draw_controls ////////////////////////////////////////////////// -->   
+<div id='my_notice' ></div>
 
-
-  function showHelp(){ 
-    win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
-        width:340, height:450, top:70, left:100, zIndex:1500,
-        destroyOnClose: true });
-    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{id: '<%=@theme_map.name %>'});
-    win.show();
-  }     
-
-
-  function revertSaved(){     // returns javascript to refresh the interactive layers...
-    emptyFeatures();
-    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/revert_geo_db", {
-      parameters: {
-        id: '<%=@theme_map.slug%>'
-      },
-    });
-  }
-  
-  function saveChanges(){       // saves the current state of the interactive layers...
-    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/update_geo_db", {
-      parameters: {
-        id: '<%=@theme_map.slug%>',
-        contentType: 'text/javascript',
-        labels: geometry_labels.toSource(),
-        geometries: geometries.toSource()
-      },
-      onSuccess: function(){
-        $("indicator").show();
-        $("indicator").fade({ duration: 5.0 });
-         }
-      //onFailure: showError
-    });
-  }
-
-</script> 
-  <div id='my_notice' ></div>
-
-  <% content_for :map_draw_controls do %>
-    <div class='map_draw_controls'>  
-      <ul id="controlToggle">
-        <li class='border_top_thin'>
-          <input type="radio" name="type" value="none" id="noneToggle"
-                 onclick="toggleControl(this);" checked="checked" />
-          <label for="noneToggle">navigate</label>
-        </li>
-        <li>
-          <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
-          <label for="lineToggle">draw a line<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: dbl-clck</label>
-        </li>
-        <li>
-          <input type="radio" name="type" value="modify" id="modifyToggle"
-                 onclick="toggleControl(this);" onchange="update();" />
-          <label for="modifyToggle">modify a line</label>
-        </li>
-        <li>
-          <input type="radio" name="type" value="select" id="selectToggle"
-                 onclick="toggleControl(this);" onchange="update();" />
-          <label for="selectToggle">delete a line</label>
-        </li>
-      </ul>
-      <%= button_to_function "revert", "revertSaved()", {:style => "width: 100px; margin-left: 15px;"} %>
-      <%= button_to_function "save changes", "saveChanges()", {:style => "width: 100px; margin-left: 15px;"} %>
-      <div style="height: 30px; width: 120px;">
-        <div id="indicator" style="display: none; height= 20px; text-align: center;" >Edits Saved</div>
-      </div>
-      <%= button_to_function "help", "showHelp()", {:style => "width: 100px; margin-left: 15px;"} %>
-      
+  <div class='map_draw_controls'>  
+    <ul id="controlToggle">
+      <li class='border_top_thin'>
+        <input type="radio" name="type" value="none" id="noneToggle"
+        onclick="toggleControl(this);" checked="checked" />
+        <label for="noneToggle">navigate</label>
+      </li>
+      <li>
+        <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+        <label for="lineToggle">draw a line<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: dbl-clck</label>
+      </li>
+      <li>
+        <input type="radio" name="type" value="modify" id="modifyToggle"
+        onclick="toggleControl(this);" onchange="update();" />
+        <label for="modifyToggle">modify a line</label>
+      </li>
+      <li>
+        <input type="radio" name="type" value="select" id="selectToggle"
+        onclick="toggleControl(this);" onchange="update();" />
+        <label for="selectToggle">delete a line</label>
+      </li>
+    </ul>
+    <%= button_to_function "revert", "revertSaved()", {:style => "width: 100px; margin-left: 15px;"} %>
+    <%= button_to_function "save changes", "saveChanges()", {:style => "width: 100px; margin-left: 15px;"} %>
+    <div style="height: 30px; width: 120px;">
+      <div id="indicator" style="display: none; height: 20px; text-align: center;" >Edits Saved</div>
     </div>
-  <% end %>
-  
+    <%= button_to_function "help", "showHelp()", {:style => "width: 100px; margin-left: 15px;"} %>
+
+  </div>
+
 <!--  end draw_controls ////////////////////////////////////////////////// --> 

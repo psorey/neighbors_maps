@@ -1,8 +1,7 @@
 <h1>Edit <%= @map_layer.name %></h1>
 <p class='alert_text'>(admin page)</p>
 
-<% form_for(@map_layer) do |f| %>
-  <%= f.error_messages %>
+<%= form_for(@map_layer) do |f| %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>

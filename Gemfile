@@ -1,33 +1,96 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rails", "2.3.12"
-gem "curb", "0.7.15"
-gem "bluecloth" , :require => 'bluecloth'
-gem "GeoRuby", "1.3.4"
-gem "spatial_adapter", "1.2.0"
-# gem "json", "1.6.1"
-gem "multi_json", "1.0.3"
-gem "open4", "1.0.1"
-gem "pg", "0.11.0"
-gem "Platform", "0.4.0"
-gem "POpen4", "0.1.4"
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.3'
 
-gem "proj4rb", "0.3.1", :require => "proj4"
-gem 'rdoc'
-gem "rack", "1.1.2"
+# Use postgresql as the database for Active Record
+gem 'pg'
 
-# for rails 2.3.x:
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
+
+gem 'seed_dump'
+gem 'thin'
+gem 'quiet_assets', :group => :development
+gem 'kaminari'
+gem 'devise'
+gem 'execjs'
+gem 'therubyracer'
+gem 'jquery-ui-rails'
+
+
 group :development, :test do
+  gem "rails-erd"
+  gem "rspec-rails", ">= 2.8.1"
+  gem "factory_girl_rails", ">= 1.6.0"
+  gem "guard-rspec"
+end
 
-#  gem "cucumber"          , "1.0.6"
-  gem "rspec-rails"       , '1.3.3'                                      
-  gem "cucumber-rails"     , '0.3.2'
-  gem "webrat"            , '0.7.1'
-  gem 'database_cleaner', '0.5.0'
-  gem 'selenium-client', '1.2.18'
+
+group :test do
+  gem "capybara", ">= 1.1.2"
+end
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+
 
 end
 
-#gem "rake", "0.8.7"
+
+# from rails  2.8 version of app...
+gem "curb"
+gem "bluecloth" , :require => 'bluecloth'
+# !!! gem "GeoRuby"
+# !!! gem "spatial_adapter"
+gem "multi_json"
+gem "open4"
+gem "Platform"
+gem "POpen4"
+# gem "proj4rb", "0.3.1", :require => "proj4"
+
+gem 'proj4rb', '~> 0'
+
+gem 'rgeo'
+gem 'activerecord-postgis-adapter'
+gem 'openlayers-rails'
 
 
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.1.2'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano', group: :development
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]

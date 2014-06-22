@@ -1,36 +1,32 @@
 <script defer="defer" type="text/javascript">
 
-    var exist_features = [];
-    var exist_geometries = [];
-    var exist_labels = [];
-    var map, drawControls, <%=@theme_map.name.dashed%>, <%=@theme_map.name.dashed + '_labels'%>;
-    function init() {
-      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
-      <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
+  var exist_features = [];
+  var exist_geometries = [];
+  var exist_labels = [];
+  var map, drawControls, <%=@theme_map.name.dashed%>, <%=@theme_map.name.dashed + '_labels'%>;
+  function init() {
+    map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
+    <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
       <%= render :partial => 'open_layers_init' %>
-<% if @theme_map.is_interactive %>
-      <%= render :partial => 'open_layers_interactive_init' %>
-<% end %>
-    }  // end of init()
+      <% if @theme_map.is_interactive -%>
+        <%= render :partial => 'open_layers_interactive_init' %>
+      <% end -%>
+      }  // end of init()
 
-<% if @theme_map.is_interactive %>
-      <%= render :partial => 'open_layers_interactive_functions' %>
-<% end %>
-    window.onload=init;
-
+  window.onload=init;
 </script>
 
-    <div id="map" class="smallmap"></div>
-    <h2 id="title"><%=h @theme_map.name %> </h2>
-  
-<% if @theme_map.is_interactive %>
-    <%= render :partial => 'draw_controls' %>
-<% end %>
+<% if @theme_map.is_interactive -%>
+  <%= render :partial => 'open_layers_interactive_functions' %>
+<% end -%>
+
+<div id="map" class="smallmap"></div>
+<h2 id="title"><%=h @theme_map.name %> </h2>
+
+<% if @theme_map.is_interactive -%>
+  <%= render :partial => 'draw_controls' %>
+<% end -%>
 
 <div>
-<% if current_user && current_user.roles[0].name  == "admin" %>
-  <%= #link_to 'Edit', edit_theme_map_path(@theme_map)
-  %> 
-<% end %>
-
+  <%= link_to 'Edit', edit_theme_map_path(@theme_map) %>
 </div>

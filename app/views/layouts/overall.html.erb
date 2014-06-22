@@ -1,37 +1,22 @@
- <%= render :partial => '/layouts/head' %>
+<%= render :partial => '/layouts/head' %>
 <body>
-  <div id="banner">
-     <%= APP_CONFIG['BANNER_TITLE'] %>
+  <div id="banner"> Neighbor Mapping
   </div>
   <div id="container">
     <div class="sidebar">
       <div id="side_menu">
         <%= @greeting %><br /><br />
         <%= link_to 'Home',                             :controller=> 'welcome'   %><br /><br />
-        <%= link_to 'Discussion<br />Forum',            :controller=> 'forums'     %><br /><br />
         <%= link_to 'GIS Data Maps',                    :controller=> 'theme_maps'  %><br /><br />
-        <%= link_to APP_CONFIG['GUIDE_TITLE'],          '/wiki'   %><br /><br />
         <%= link_to 'FAQ',                              { :controller => 'FAQ'},  :rel => "dropmenu1" %><br /><br />
         <%= link_to 'About Us',                         :controller=> 'about'     %><br /><br />
         <%= link_to 'Contact',                          :controller=> 'contact'   %><br /><br /><br /><br />
-        
-        <% if current_user %>
-        <%= link_to 'Update My Info',                    { :controller => 'neighbors', :action => "show" ,
-                :id => current_user.neighbor_id} %><br /><br />
-        <% end %>
-
-        <% if current_user.nil? %>
-          <%= link_to 'Sign Up!',                       '/signup'   %><br /><br />
-          <%= link_to 'Login',                          '/login'   %><br /><br />
-        <% else %>
-          <%= link_to 'Log Out',                        '/logout'   %><br /><br />
-        <% end %>
-
-        <% if @role == "admin" %>
-          <%= link_to 'ADMIN',                          '/administrators'   %><br /><br />
-          <%= link_to 'map layers',                     :controller=> 'map_layers'  %><br /><br />
-
-        <% end %>
-      </div>
+        <%= link_to 'Sign Up!',                       '/signup'   %><br /><br />
+        <%= link_to 'Login',                          '/login'   %><br /><br />
+        <%= link_to 'Log Out',                        '/logout'   %><br /><br />
+        <%= link_to 'ADMIN',                          '/administrators'   %><br /><br />
+        <%= link_to 'map layers',                     :controller=> 'map_layers'  %><br /><br />
+      <% end %>
     </div>
- <%= render :partial => '/layouts/content' %>
+  </div>
+  <%= render :partial => '/layouts/content' %>

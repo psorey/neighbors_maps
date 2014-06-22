@@ -1,17 +1,17 @@
 VERSION_DESCRIPTION: neighbors 2.0 dev
 
-RAILS_VERSION: 2.3.12
+RAILS_VERSION: 4.0.3
 
-NEIGHBORHOOD: 'highland_park'
+NEIGHBORHOOD: 'West Seattle'
 
-BANNER_TITLE: Highland Park Neighbors
+BANNER_TITLE: West Seattle
 GUIDE_TITLE: 'Highland Park<br/>Emergency<br/>Preparedness<br/>Guide'
-SITE_URL: highlandpark.nextdoorneighbors.org
+SITE_URL: neighbors-maps.org 
 
 WIKI_URL: http://wiki.nextdoorneighbors.org
 FORUM_URL: http://greenwood-streetscapes-forum.1046493.n5.nabble.com/
 BLOG_URL: blog.streetscapes.org
-OPEN_LAYERS_VERSION: OpenLayers-2.11  
+# OPEN_LAYERS_VERSION: OpenLayers-2.11  
 # OPEN_LAYERS_VERSION: OpenLayers-2.8  used this until October 1, 2011
 #MAPSERVER_URL: http://mapserver.streetscapes.org/cgi-bin/mapserv?map=/home/paul/mapserver/field_day_maps.map
 MAPSERVER_URL: http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/

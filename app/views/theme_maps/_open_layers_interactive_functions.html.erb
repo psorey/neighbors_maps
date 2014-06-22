@@ -1,6 +1,6 @@
-     
+<script type="text/javascript">     
      ///// begin open_layers_interactive_functions ////////////////////////////////
-      
+    
       function emptyFeatures(){
         <%= @theme_map.name.dashed %>.destroyFeatures();
         <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
@@ -14,7 +14,7 @@
         geometry_labels = [];
         for(i=0; i < exist_geometries.length; i = i + 1)
         {
-          var geom = new OpenLayers.Geometry.fromWKT(exist_geometries[i]);
+          var geom = new OpenLayers.Geometry.fromWKT(unescape(exist_geometries[i]));
           feature = new OpenLayers.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
           exist_features[i] = feature;
         };
@@ -64,4 +64,4 @@
       }
        
      ///// end open_layers_interactive_functions ////////////////////////////////      
-
+   </script>

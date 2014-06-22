@@ -1,11 +1,20 @@
-      /////// begin open_layers_interactive_init /////////////////////////
+
+     /////// begin open_layers_interactive_init /////////////////////////
+
       
       var prompt_title = 'enter a number'
       var prompt_string = 'estimated trips per month'
       
       exist_geometries = <%= @json_geometries %>;
+      for (i=0; i< exist_geometries.length(); i+= 1) {
+        exist_geometries[i] = unescape(exist_geometries[i]);
+      }
       exist_labels = <%= @json_labels %>;
-
+      for (i=0; i< exist_labels.length(); i+= 1) {
+        exist_labels[i] = unescape(exist_labels[i]);
+      }
+      console.log("json geometries:");
+      console.log(@json_geometries);
       OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
@@ -112,6 +121,6 @@
       buildFeatures(); // using exist_geometries[] and exist_labels[]
 
      // document.getElementById('noneToggle').checked = true;
-     
+      
      ///// end open_layers_interactive_init /////////////////////////////////
-     
+

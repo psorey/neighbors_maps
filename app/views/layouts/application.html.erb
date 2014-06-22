@@ -1,0 +1,15 @@
+
+<%= render :partial => '/layouts/head' %>
+<body>
+  <div id="banner"> Neighbor Mapping
+  </div>
+  <div id="container">
+    <div class="sidebar">
+      <div id="side_menu">
+        <%= @greeting %><br /><br />
+        <%= link_to 'Home',                             :controller=> 'welcome'   %><br /><br />
+        <%= link_to 'GIS Data Maps',                    :controller=> 'theme_maps'  %><br /><br />
+        <%= link_to 'map layers',                     :controller=> 'map_layers'  %><br /><br />
+    </div>
+  </div>
+  <%= render :partial => '/layouts/content' %>

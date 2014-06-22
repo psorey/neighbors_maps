@@ -1,23 +1,19 @@
- <%= render :partial => '/layouts/head' %>
- <!-- --- begin /layouts/theme_maps.html.erb --------  -->  
+<%= render :partial => '/layouts/head' %>
+<!-- --- begin /layouts/theme_maps.html.erb --------  -->  
 <body>
-<div id="container">
-  <div class="sidebar">
-    <div id="side_menu">
-      <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
-      <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
-  <% if current_user && current_user.roles[0].name  == "admin" %>
-        <%= link_to ('Map Layers',                map_layers_path, :class => "alert_text")  %><br /><br />
-  <% end %>
+  <div id="container">
+    <div class="sidebar">
+      <div id="side_menu">
+        <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
+        <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
+
+      </div>
     </div>
-	  <%= yield "map_draw_controls"%>
-	</div>
-	
-  <style type="text/css">
-    .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
-  </style>
-  <%= javascript_include_tag "#{APP_CONFIG['OPEN_LAYERS_VERSION']}/OpenLayers" -%>
-	
-  <!-- --- end /layouts/theme_maps.html.erb -------- --> 
- <%= render :partial => '/layouts/content' %>    
+
+    <style type="text/css">
+      .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
+    </style>
+
+    <!-- --- end /layouts/theme_maps.html.erb -------- --> 
+    <%= render :partial => '/layouts/content' %>    
 
