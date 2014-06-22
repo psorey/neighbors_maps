@@ -1,0 +1,8 @@
+pg_dump mydb > db.sql
+
+psql -d zebraaccount_dev -f mydb.sql
+
+
+// fix serial id in database...
+pgsql zebraccount_dev
+SELECT setval('your_table_id_seq', (SELECT MAX(id) FROM your_table));
