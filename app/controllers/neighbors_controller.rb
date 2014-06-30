@@ -1,4 +1,3 @@
-require 'spatial_adapter/postgresql'
 require 'rubygems'
 require 'curl'
 require 'json'

@@ -1,5 +1,5 @@
-    ///// begin map_layers //////////////////////////////////////////////////     
-      
+    ///// begin map_layer //////////////////////////////////////////////////     
+    console.log("begin map_layer");  
       <% name = tml.map_layer.name %>
       var <%= name.dashed %> = new OpenLayers.Layer.WMS('<%= name %>',
       '<%= @theme_map.mapfile_url %>',
@@ -18,5 +18,4 @@
         }
       );
      
-      ///// end map_layers ////////////////////////////////////////////////// 
-
+      ///// end map_layer ////////////////////////////////////////////////// 

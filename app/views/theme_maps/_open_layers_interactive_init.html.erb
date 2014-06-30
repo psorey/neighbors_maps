@@ -1,33 +1,26 @@
-
-     /////// begin open_layers_interactive_init /////////////////////////
-
-      
+     ///////// begin open_layers_interactive_init ////////////////////////
+     console.log("begin open_layers_interactive_init");
       var prompt_title = 'enter a number'
       var prompt_string = 'estimated trips per month'
-      
-      exist_geometries = <%= @json_geometries %>;
-      for (i=0; i< exist_geometries.length(); i+= 1) {
-        exist_geometries[i] = unescape(exist_geometries[i]);
-      }
-      exist_labels = <%= @json_labels %>;
-      for (i=0; i< exist_labels.length(); i+= 1) {
-        exist_labels[i] = unescape(exist_labels[i]);
-      }
-      console.log("json geometries:");
-      console.log(@json_geometries);
+
+     //console.log (<%=raw(@json_geometries)%>);
+     //console.log (<%=raw(@json_labels)%>);
+      exist_geometries = <%=raw(@json_geometries)%>;
+      exist_labels = <%=raw(@json_labels)%>;
+
       OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['temporary']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
       OpenLayers.Feature.Vector.style['temporary']['strokeColor'] = '#ff7777';
       OpenLayers.Feature.Vector.style['select']['strokeWidth'] = '4';
       OpenLayers.Feature.Vector.style['select']['strokeColor'] = '#3300ff';
-      
+
       <%= @theme_map.name.dashed %> = new OpenLayers.Layer.Vector("<%= @theme_map.name %>",
          { projection: new OpenLayers.Projection("epsg:4326"),
            opacity:0.5,
            rendererOptions: {zIndexing: true}
       } );
-      
+
       <%= "#{@theme_map.name.dashed}" + '_labels' %> = new OpenLayers.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
       { projection: new OpenLayers.Projection("epsg:4326"),
         opacity:0.5,
@@ -40,7 +33,6 @@
           pointRadius: 12,
           pointerEvents: "visiblePainted",
           label : "${geometry_feature_attribute}",
-              
           fontColor: "black",
           fontSize: "20px",
           fontFamily: "Courier New, monospace",
@@ -54,73 +46,65 @@
       });
       <%= @theme_map.name.dashed %>.setZIndex(2);
       <%= @theme_map.name.dashed + '_labels' %>.setZIndex(1);
-      
       map.addLayers([<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed + '_labels' %>]);
 
-       
-      /// ----------- callback functions ------------------///
-      
+      /// ----------- register callbacks ----------------///
+
       <%= @theme_map.name.dashed + '_labels' %>.events.register('featureadded', this, function(obj){
-          console.log ("label feature added");
-          if(obj.feature.attributes.geometry_feature_attribute == null)
-          {
+          if(obj.feature.attributes.geometry_feature_attribute == null) {
               obj.feature.destroy;
               obj.feature.state = OpenLayers.State.DELETE;
           }
       });
-      
+
       <%= @theme_map.name.dashed %>.events.register('featuresadded', this, function(obj){
-          for(i = 0; i < obj.features.length; i = i + 1)
-          {
+          for(i = 0; i < obj.features.length; i = i + 1) {
               geometry_feature = obj.features[i];
-              if(geometry_feature.attributes.geometry_feature_attribute == null)
-              {
+              if(geometry_feature.attributes.geometry_feature_attribute == null) {
                   var geometry_feature_attribute = prompt(prompt_title, prompt_string);
                   geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
-                  if (geometry_feature.attributes.geometry_feature_attribute == null)
-                  {
+                  if (geometry_feature.attributes.geometry_feature_attribute == null) {
                       geometry_feature.state = OpenLayers.State.DELETE;
                   }
               }
           };
-          console.log ("featuresadded");
+          // console.log ( obj.features.length, "features added");
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>); 
       } );
-      
+
       // update the label layer after editing the lines...
       <%= @theme_map.name.dashed %>.events.register('afterfeaturemodified', this, function(obj){
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       } );
-    
+
       var deleteFeature = function(feature) {   // SelectFeature callback function
           select.unselectAll();
          <%= @theme_map.name.dashed %>.destroyFeatures(feature);
           <%= @theme_map.name.dashed %>.selectedFeatures = [];
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       };
-       
+
       var select = new OpenLayers.Control.SelectFeature(<%= @theme_map.name.dashed %>, {
           onSelect: deleteFeature,  // calls deleteFeature(selected_feature)
           clickout: true
       } );
 
-      /// ----------- add controls for interaction ------------------ ///
-      
+      // drawInteractiveControls
       drawControls = {
           line: new OpenLayers.Control.DrawFeature(<%= @theme_map.name.dashed %>,
                       OpenLayers.Handler.Path),
           modify: new OpenLayers.Control.ModifyFeature(<%= @theme_map.name.dashed %>),
           select: select  // for deleting lines
       };
-      
+
       for(var key in drawControls) {
           map.addControl(drawControls[key]);
       };
-            
+
       // now add the geometries and label strings from the database-loaded arrays...
       buildFeatures(); // using exist_geometries[] and exist_labels[]
 
      // document.getElementById('noneToggle').checked = true;
-      
+     // console.log("end open_layers_interactive_init");
+ 
      ///// end open_layers_interactive_init /////////////////////////////////
-

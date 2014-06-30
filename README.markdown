@@ -1,3 +1,11 @@
+# mapping:
+
+
+
+
+
+
+
 # Currently re-factoring schema based on 'Enterprise Rails', to make it more scalable.
 
 #Streetscapes.org - Developing Web-Based Tools for Community Planning and Development#

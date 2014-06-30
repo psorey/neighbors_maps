@@ -53,6 +53,7 @@ end
 
 group :test do
   gem "capybara", ">= 1.1.2"
+  gem "log_buddy"
 end
 
 
@@ -73,15 +74,13 @@ gem "multi_json"
 gem "open4"
 gem "Platform"
 gem "POpen4"
-# gem "proj4rb", "0.3.1", :require => "proj4"
 
-gem 'proj4rb', '~> 0'
-
+gem 'proj4rb', '~> 0', :require => "proj4"
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'openlayers-rails'
 
-
+gem 'soda-ruby', :require => 'soda'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -90,7 +89,7 @@ gem 'openlayers-rails'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]

@@ -26,3 +26,7 @@ other map element tables:
   
   
 GeoEntity
+
+
+political entity Watershed analagous to ...
+coffee shop as a heart of a neighborhood

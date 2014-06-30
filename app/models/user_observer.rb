@@ -1,4 +1,6 @@
-class UserObserver < ActiveRecord::Observer
+class UserObserver # < ActiveRecord::Observer
+
+=begin  
   def after_create(user)
     UserMailer.deliver_signup_notification(user)
   end
@@ -6,4 +8,5 @@ class UserObserver < ActiveRecord::Observer
   def after_save(user)
     UserMailer.deliver_activation(user) if user.recently_activated?
   end
+=end
 end

@@ -1,14 +1,16 @@
 require 'bluecloth'
+#require 'log_buddy/init'
 
 class ThemeMapsController < ApplicationController
 
- # before_filter :login_required, except: 'index'
+  # before_filter :login_required, except: 'index'
   before_filter :set_current_user
 
   def set_current_user
-    logger.debug "set current user"
-    @current_neighbor_id = 44 
+    @current_neighbor_id = 44
+    logger.debug "before controller action"
   end
+
 
   def index
     @interactive_theme_maps = ThemeMap.where(is_interactive: true).order("name ASC")
@@ -17,21 +19,25 @@ class ThemeMapsController < ApplicationController
 
 
   def show
-    @theme_map = ThemeMap.where(slug: params[:id]).first
+    @theme_map = ThemeMap.where(slug: params[:slug]).first
     # build the map_object and write it to a mapfile for Mapserver
+    
+    d{@theme_map} 
+    logger.debug "show!!!"
+    logger.debug @theme_map.inspect
     @theme_map.make_mapfile
+    logger.debug "after make mapfile"
     if @theme_map.is_interactive
       build_geometry_json
+      logger.debug "after build geometry"
     end
   end
-
 
 
   def new
     @theme_map = ThemeMap.new
     @map_layers = MapLayer.order('name ASC')
   end
-
 
 
   def create
@@ -52,7 +58,6 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def edit
     @theme_map = ThemeMap.where(slug: params[:id]).first
     @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
@@ -60,12 +65,10 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def send_help
-    @theme_map = ThemeMap.where(slug: params[:name]).first
+    @theme_map = ThemeMap.where(slug: params[:id]).first
     render :text => BlueCloth.new(@theme_map.description).to_html
   end
-
 
 
   def revert_geo_db
@@ -76,43 +79,55 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def update_geo_db
-    @theme_map = ThemeMap.where(slug: params[:id]).first
+    logger.debug "made it to update_geo_db ##############   ###################   ####################"
+    @theme_map = ThemeMap.where(slug: params[:slug]).first
+    logger.debug "update_geo_db:"
+    logger.debug @theme_map.inspect
+    logger.debug "geometries -- convert to array of linestrings"
+    logger.debug params[:geometries]
+    logger.debug params[:labels]
+
     @current_neighbor_id = 44 #current_user.neighbor_id
-    geometries = params[:geometries]
-    labels = params[:labels]
-    labels_array = JSON.parse(labels)
-    geometries_array = JSON.parse(geometries)
-    MappedLine.destroy_all(owner_id: @current_neighbor_id, map_layer_id: @theme_map.name.dashed)
+    geometries = JSON.parse(params[:geometries])
+    labels = JSON.parse(params[:labels])
+
+    ## !!! rst = MappedLine.destroy_all(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
+    #  wkt = RGeo::WKRep::WKTParser.new
+    # mapped_line.geometry = geometries wkt.parse(geometries)
+    #  end
+
+    logger.debug "JSON.parse(geometries)"
+    d {geometries}
+    logger.debug labels
+    logger.debug "HERE"
+    logger.debug geometries.length
+    logger.debug labels.length
+
+
+
     result = 'successfully saved...'
-    for i in 0...geometries_array.length
-      if labels_array[i] == nil
-        #do nothing
-      else
-        mapped_line = MappedLine.new
-        mapped_line.geometry = Geometry.from_ewkt(geometries_array[i])
-        mapped_line.geometry.srid = 4326
-        mapped_line.end_label = labels_array[i]
-        #@current_neighbor_id = current_user.neighbor_id
-        mapped_line.owner_id = 44 #current_user.neighbor_id
-        mapped_line.map_layer_id = @theme_map.name.dashed
-        if !mapped_line.save
-          result = 'save failed'
-        end
+    for i in 0...geometries.length
+      #  if labels[i] == nil
+      #  do nothing
+      #  else
+      mapped_line = MappedLine.new
+      wkt = RGeo::WKRep::WKTParser.new
+      logger.debug "geometries[i]"
+      logger.debug geometries[i]
+      mapped_line.geometry = wkt.parse(geometries[i])
+      mapped_line.geometry = geometries[i]
+      mapped_line.end_label = labels[i]
+     # current_neighbor_id = current_user.neighbor_id
+      mapped_line.owner_id = 44 #current_user.neighbor_id
+      mapped_line.map_layer_id = @theme_map.name.dashed
+      if !mapped_line.save
+        result = 'save failed'
       end
     end
     render :text => result
   end
 
-
-# If you are using Ubuntu 10.04 or Debian and you serve .json files through Apache,
-# you might want to serve the files with the correct content type. I am doing this primarily because
-# I want to use the Firefox extension JSONView
-#
-# The Apache module mod_mime will help to do this easily. However, with Ubuntu you need to edit the
-# file /etc/mime.types and add the line
-# application/json json
 
   def update
     @theme_map = ThemeMap.where(slug: params[:id]).first
@@ -126,7 +141,7 @@ class ThemeMapsController < ApplicationController
     if @theme_map.update_attributes(theme_map_params)
       redirect_to(@theme_map, :notice => 'ThemeMap was successfully updated.')
     else
-       render  "edit"
+      render  "edit"
     end
   end
 
@@ -139,35 +154,37 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def build_geometry_json
+    @json_geometries = []
+    @json_labels = []
     existing_mapped_lines = MappedLine.where(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
-    unless existing_mapped_lines
-      @json_geometries = "none found"
-      @json_labels = "none found"
+    logger.debug "existing mapped lines:"
+    logger.debug existing_mapped_lines
+    unless existing_mapped_lines[0]
+      @json_geometries[0] = "none found"
+      @json_labels[0] = "none found"
+      logger.debug "none found"
       return
     end
     geometry_list  = []
     end_label_list = []
     existing_mapped_lines.each do |mapped_line|
-      wkt = RGeo::WKRep::WKTGenerator.new
-
-      geom = wkt.generate(mapped_line.geometry)
-      logger.debug geom
-      geometry_list       << geom  # mapped_line.geometry.as_wkt()
-      end_label_list      << mapped_line.end_label
+      logger.debug "mapped line geometry:"
+      logger.debug mapped_line.geometry.inspect
+      d{ mapped_line.geometry.as_text}
+      @json_geometries   << mapped_line.geometry.as_text
+      @json_labels  << mapped_line.end_label
     end
-    @json_geometries = geometry_list.to_json
-    @json_labels = end_label_list.to_json
-    logger.debug @json_geometries
-    logger.debug @json_labels
+    d{@json_geometries}
+    d{@json_labels}
   end
-
 
   private
 
   def theme_map_params
-    params.require(:theme_maps).permit(:name, :description, :slug, :is_interactive)
+    params.require(:theme_map).permit(:name, :description, :slug, :is_interactive)
   end
+  
+
 
 end

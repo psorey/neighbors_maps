@@ -1,32 +1,31 @@
 <script defer="defer" type="text/javascript">
-
+  
+  var geometries = [];
+  var geometry_labels = [];
   var exist_features = [];
   var exist_geometries = [];
   var exist_labels = [];
   var map, drawControls, <%=@theme_map.name.dashed%>, <%=@theme_map.name.dashed + '_labels'%>;
-  function init() {
+  
+$(document).ready(function(){
     map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
     <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml  %>
-      <%= render :partial => 'open_layers_init' %>
-      <% if @theme_map.is_interactive -%>
-        <%= render :partial => 'open_layers_interactive_init' %>
-      <% end -%>
-      }  // end of init()
+    <%= render :partial => 'open_layers_init' %>
+    <% if @theme_map.is_interactive -%>
+      <%= render :partial => 'open_layers_interactive_init' %>
+      <%= render :partial => 'open_layers_interactive_functions' %>
+    <% end -%>
+})  // end of document.ready
 
-  window.onload=init;
 </script>
 
-<% if @theme_map.is_interactive -%>
-  <%= render :partial => 'open_layers_interactive_functions' %>
-<% end -%>
+        <div id='rails_error'></div>
+        <% if @theme_map.is_interactive -%>
+        <% end -%>
 
-<div id="map" class="smallmap"></div>
-<h2 id="title"><%=h @theme_map.name %> </h2>
+        <div id="map" class="smallmap"></div>
+        <h2 id="title"><%=h @theme_map.name %> </h2>
 
-<% if @theme_map.is_interactive -%>
-  <%= render :partial => 'draw_controls' %>
-<% end -%>
-
-<div>
-  <%= link_to 'Edit', edit_theme_map_path(@theme_map) %>
-</div>
+        <div>
+          <%= link_to 'Edit', edit_theme_map_path(@theme_map) %>
+        </div>

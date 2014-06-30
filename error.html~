@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Action Controller: Exception caught</title>
+  <style>
+    body {
+      background-color: #FAFAFA;
+      color: #333;
+      margin: 0px;
+    }
+
+    body, p, ol, ul, td {
+      font-family: helvetica, verdana, arial, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      font-size: 11px;
+      white-space: pre-wrap;
+    }
+
+    pre.box {
+      border: 1px solid #EEE;
+      padding: 10px;
+      margin: 0px;
+      width: 958px;
+    }
+
+    header {
+      color: #F0F0F0;
+      background: #C52F24;
+      padding: 0.5em 1.5em;
+    }
+
+    h1 {
+      margin: 0.2em 0;
+      line-height: 1.1em;
+      font-size: 2em;
+    }
+
+    h2 {
+      color: #C52F24;
+      line-height: 25px;
+    }
+
+    .details {
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      margin: 1em 0px;
+      display: block;
+      width: 978px;
+    }
+
+    .summary {
+      padding: 8px 15px;
+      border-bottom: 1px solid #D0D0D0;
+      display: block;
+    }
+
+    .details pre {
+      margin: 5px;
+      border: none;
+    }
+
+    #container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 1.5em;
+    }
+
+    .source * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .source {
+      border: 1px solid #D9D9D9;
+      background: #ECECEC;
+      width: 978px;
+    }
+
+    .source pre {
+      padding: 10px 0px;
+      border: none;
+    }
+
+    .source .data {
+      font-size: 80%;
+      overflow: auto;
+      background-color: #FFF;
+    }
+
+    .info {
+      padding: 0.5em;
+    }
+
+    .source .data .line_numbers {
+      background-color: #ECECEC;
+      color: #AAA;
+      padding: 1em .5em;
+      border-right: 1px solid #DDD;
+      text-align: right;
+    }
+
+    .line {
+      padding-left: 10px;
+    }
+
+    .line:hover {
+      background-color: #F6F6F6;
+    }
+
+    .line.active {
+      background-color: #FFCCCC;
+    }
+
+    a { color: #980905; }
+    a:visited { color: #666; }
+    a:hover { color: #C52F24; }
+
+    
+  </style>
+
+  <script>
+    var toggle = function(id) {
+      var s = document.getElementById(id).style;
+      s.display = s.display == 'none' ? 'block' : 'none';
+      return false;
+    }
+    var show = function(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    var hide = function(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    var toggleTrace = function() {
+      return toggle('blame_trace');
+    }
+    var toggleSessionDump = function() {
+      return toggle('session_dump');
+    }
+    var toggleEnvDump = function() {
+      return toggle('env_dump');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>
+    NameError
+      in ThemeMapsController#update_geo_db
+  </h1>
+</header>
+
+<div id="container">
+  <h2>undefined local variable or method `labels&#39; for #&lt;ThemeMapsController:0x007ff47d413560&gt;</h2>
+
+  <div class="source">
+<div class="info">
+  Extracted source (around line <strong>#96</strong>):
+</div>
+<div class="data">
+  <table cellpadding="0" cellspacing="0" class="lines">
+      <tr>
+        <td>
+          <pre class="line_numbers">
+<span>94</span>
+<span>95</span>
+<span>96</span>
+<span>97</span>
+<span>98</span>
+<span>99</span>
+          </pre>
+        </td>
+<td width="100%">
+<pre>
+<div class="line">    result = &#39;successfully saved...&#39;
+</div><div class="line">    for i in 0...geometries.length
+</div><div class="line active">      if labels[i] == nil
+</div><div class="line">        #do nothing
+</div><div class="line">      else
+</div><div class="line">        mapped_line = MappedLine.new
+</div>
+</pre>
+</td>
+    </tr>
+  </table>
+</div>
+</div>
+
+  
+<p><code>Rails.root: /home/paul/5500-Web-Projects/neighbors_maps</code></p>
+
+<div id="traces">
+    <a href="#" onclick="hide(&#39;Framework-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Application-Trace&#39;);; return false;">Application Trace</a> |
+    <a href="#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Framework-Trace&#39;);; return false;">Framework Trace</a> |
+    <a href="#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full Trace</a> 
+
+    <div id="Application-Trace" style="display: block;">
+      <pre><code>app/controllers/theme_maps_controller.rb:96:in `block in update_geo_db&#39;
+app/controllers/theme_maps_controller.rb:95:in `update_geo_db&#39;</code></pre>
+    </div>
+    <div id="Framework-Trace" style="display: none;">
+      <pre><code>activesupport (4.0.3) lib/active_support/core_ext/range/each.rb:8:in `each&#39;
+activesupport (4.0.3) lib/active_support/core_ext/range/each.rb:8:in `each_with_time_with_zone&#39;
+actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
+actionpack (4.0.3) lib/abstract_controller/base.rb:189:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
+actionpack (4.0.3) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:413:in `_run__3593463894382773911__process_action__callbacks&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.3) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action&#39;
+activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument&#39;
+activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument&#39;
+actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/params_wrapper.rb:245:in `process_action&#39;
+activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action&#39;
+actionpack (4.0.3) lib/abstract_controller/base.rb:136:in `process&#39;
+actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process&#39;
+actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch&#39;
+actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch&#39;
+actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call&#39;
+warden (1.2.3) lib/warden/manager.rb:35:in `block in call&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `catch&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `call&#39;
+rack (1.5.2) lib/rack/etag.rb:23:in `call&#39;
+rack (1.5.2) lib/rack/conditionalget.rb:35:in `call&#39;
+rack (1.5.2) lib/rack/head.rb:11:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call&#39;
+activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call&#39;
+activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
+activerecord (4.0.3) lib/active_record/migration.rb:369:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__570220631756392140__call__callbacks&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:20:in `call&#39;
+quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/runtime.rb:17:in `call&#39;
+activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call&#39;
+rack (1.5.2) lib/rack/lock.rb:17:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call&#39;
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call&#39;
+railties (4.0.3) lib/rails/engine.rb:511:in `call&#39;
+railties (4.0.3) lib/rails/application.rb:97:in `call&#39;
+passenger (4.0.45) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler.rb:448:in `block (3 levels) in start_threads&#39;</code></pre>
+    </div>
+    <div id="Full-Trace" style="display: none;">
+      <pre><code>app/controllers/theme_maps_controller.rb:96:in `block in update_geo_db&#39;
+activesupport (4.0.3) lib/active_support/core_ext/range/each.rb:8:in `each&#39;
+activesupport (4.0.3) lib/active_support/core_ext/range/each.rb:8:in `each_with_time_with_zone&#39;
+app/controllers/theme_maps_controller.rb:95:in `update_geo_db&#39;
+actionpack (4.0.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action&#39;
+actionpack (4.0.3) lib/abstract_controller/base.rb:189:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/rendering.rb:10:in `process_action&#39;
+actionpack (4.0.3) lib/abstract_controller/callbacks.rb:18:in `block in process_action&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:413:in `_run__3593463894382773911__process_action__callbacks&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.3) lib/abstract_controller/callbacks.rb:17:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/rescue.rb:29:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action&#39;
+activesupport (4.0.3) lib/active_support/notifications.rb:159:in `block in instrument&#39;
+activesupport (4.0.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument&#39;
+activesupport (4.0.3) lib/active_support/notifications.rb:159:in `instrument&#39;
+actionpack (4.0.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action&#39;
+actionpack (4.0.3) lib/action_controller/metal/params_wrapper.rb:245:in `process_action&#39;
+activerecord (4.0.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action&#39;
+actionpack (4.0.3) lib/abstract_controller/base.rb:136:in `process&#39;
+actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process&#39;
+actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch&#39;
+actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch&#39;
+actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each&#39;
+actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call&#39;
+warden (1.2.3) lib/warden/manager.rb:35:in `block in call&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `catch&#39;
+warden (1.2.3) lib/warden/manager.rb:34:in `call&#39;
+rack (1.5.2) lib/rack/etag.rb:23:in `call&#39;
+rack (1.5.2) lib/rack/conditionalget.rb:35:in `call&#39;
+rack (1.5.2) lib/rack/head.rb:11:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context&#39;
+rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call&#39;
+activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call&#39;
+activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call&#39;
+activerecord (4.0.3) lib/active_record/migration.rb:369:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__570220631756392140__call__callbacks&#39;
+activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged&#39;
+activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged&#39;
+railties (4.0.3) lib/rails/rack/logger.rb:20:in `call&#39;
+quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/methodoverride.rb:21:in `call&#39;
+rack (1.5.2) lib/rack/runtime.rb:17:in `call&#39;
+activesupport (4.0.3) lib/active_support/cache/strategy/local_cache.rb:83:in `call&#39;
+rack (1.5.2) lib/rack/lock.rb:17:in `call&#39;
+actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call&#39;
+rack (1.5.2) lib/rack/sendfile.rb:112:in `call&#39;
+railties (4.0.3) lib/rails/engine.rb:511:in `call&#39;
+railties (4.0.3) lib/rails/application.rb:97:in `call&#39;
+passenger (4.0.45) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop&#39;
+passenger (4.0.45) lib/phusion_passenger/request_handler.rb:448:in `block (3 levels) in start_threads&#39;</code></pre>
+    </div>
+</div>
+
+  
+
+<h2 style="margin-top: 30px">Request</h2>
+<p><b>Parameters</b>:</p> <pre>{&quot;geometries&quot;=&gt;&quot;[\&quot;LINESTRING(127.98393814009614 90,
+141.94723633001558 90,
+-164.5783757099416 90,
+-153.64227051008493 90,
+-152.05477138003334 90,
+-144.11727565992624 90,
+136.1931008999236 90,
+170.0597492000088 90)\&quot;,
+ \&quot;LINESTRING(112.46172429993749 90,
+95.52840010006912 90,
+-66.00562360999174 90,
+-74.47228569001891 90,
+-2.5056578901130706 90,
+-44.83896836009808 90)\&quot;,
+ \&quot;LINESTRING(127.98393814009614 90,
+129.39504850003868 90,
+-87.00541780004278 90,
+2.061395199969411 90)\&quot;,
+ \&quot;LINESTRING(-118.47009110008366 90,
+28.528468699892983 90)\&quot;,
+ \&quot;LINESTRING(161.5930870999582 90,
+110.79311449988745 90)\&quot;,
+ \&quot;LINESTRING(1263507.9417492 259519.24759405,
+1267320.7715971 258669.75700618,
+1263685.7421048 258314.15629498,
+1267538.0831428 257602.95487258,
+1263784.5200802 255627.3953659,
+1266629.3257698 255370.57263003)\&quot;]&quot;,
+ &quot;labels&quot;=&gt;&quot;[\&quot;5\&quot;,
+ \&quot;3\&quot;,
+ \&quot;7\&quot;,
+ \&quot;20\&quot;,
+ \&quot;6\&quot;,
+ \&quot;1\&quot;]&quot;,
+ &quot;slug&quot;=&gt;&quot;walking-paths-survey&quot;}</pre>
+
+<div class="details">
+  <div class="summary"><a href="#" onclick="return toggleSessionDump()">Toggle session dump</a></div>
+  <div id="session_dump" style="display:none"><pre>_csrf_token: &quot;I1o0ol8aaI5YiGWiVAI3sbwAf7xB/Sae/Sc7vjzfVg4=&quot;
+session_id: &quot;f301f145e929e6465c5cc02ad331789d&quot;</pre></div>
+</div>
+
+<div class="details">
+  <div class="summary"><a href="#" onclick="return toggleEnvDump()">Toggle env dump</a></div>
+  <div id="env_dump" style="display:none"><pre>HTTP_ACCEPT: &quot;*/*&quot;
+HTTP_ACCEPT_ENCODING: &quot;gzip, deflate&quot;
+HTTP_ACCEPT_LANGUAGE: &quot;en-US,en;q=0.5&quot;
+HTTP_CACHE_CONTROL: &quot;no-cache&quot;
+HTTP_PRAGMA: &quot;no-cache&quot;
+REMOTE_ADDR: &quot;127.0.0.1&quot;
+SERVER_NAME: &quot;neighbors-maps.org&quot;
+SERVER_PROTOCOL: &quot;HTTP/1.1&quot;</pre></div>
+</div>
+
+<h2 style="margin-top: 30px">Response</h2>
+<p><b>Headers</b>:</p> <pre>None</pre>
+
+</div>
+
+
+</body>
+</html>
