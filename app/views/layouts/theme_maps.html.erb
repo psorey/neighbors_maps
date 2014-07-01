@@ -1,6 +1,6 @@
-<%= render :partial => '/layouts/head' %>
-
-<body>
+<%= render  '/layouts/head' %>
+<!-- begin /layouts/theme_maps.html - - - - - - - - - - - - - - - -->
+<body  >
   <div id="container">
     <div class="sidebar">
       <div id="side_menu">
@@ -11,12 +11,9 @@
         <% end -%>
       </div>
     </div>
-
-  <style type="text/css">
-    .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
-  </style>
-
-
-  <!-- - - - - - - - - end /layouts/theme_maps.html.erb - - - - - - --> 
-  <%= render :partial => '/layouts/content' %>    
+    <style type="text/css">
+      .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
+    </style>
+  <!-- - - - - - - - - end /layouts/theme_maps.html.erb - - - - - - -->
+  <%= render '/layouts/content' %>
 

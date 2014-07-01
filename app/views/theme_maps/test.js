@@ -1,36 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>NeighborsMaps</title>
-  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" />
-<link href="/assets/neighbors_maps.css?body=1" media="screen" rel="stylesheet" />
-  <script src="/assets/jquery.js?body=1"></script>
-<script src="/assets/jquery_ujs.js?body=1"></script>
-<script src="/assets/openlayers/OpenLayers.js?body=1"></script>
-<script src="/assets/openlayers-rails.js?body=1"></script>
-<script src="/assets/neighbors_maps.js?body=1"></script>
-<script src="/assets/theme_maps.js?body=1"></script>
-<script src="/assets/application.js?body=1"></script>
-  <meta content="authenticity_token" name="csrf-param" />
-<meta content="I1o0ol8aaI5YiGWiVAI3sbwAf7xB/Sae/Sc7vjzfVg4=" name="csrf-token" />
-</head>
-
-<!-- begin /layouts/theme_maps.html - - - - - - - - - - - - - - - -->
-<body  >
-  <div id="container">
-    <div class="sidebar">
-      <div id="side_menu">
-        <a href="/">Home</a><br /><br />
-        <a href="/theme_maps">GIS Data Maps</a><br /><br />
-      </div>
-    </div>
-    <style type="text/css">
-      .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
-    </style>
-  <!-- - - - - - - - - end /layouts/theme_maps.html.erb - - - - - - -->
-      <!-- begin layouts/content - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <div class="content">
-        <script type="text/javascript">
           
         var geometries = [];
         var geometry_labels = [];
@@ -343,28 +310,4 @@
       //// end open_layers_init ////////////////////////////////
 
      });
-        </script>
-
-        <div id='rails_error'></div>
-
-        <div id="map" class="smallmap"></div>
-        <h2 id="title">GS Team Study Areas </h2>
-
-        <div>
-          <a href="/theme_maps/gs-team-study-areas/edit">Edit</a>
-        </div>
-
-      <br />
-      <br />
-      <br />
-    </div>
-    <div id="footer" style="height: 15px; padding-top:6px; font-size: 9px; font-weight: lighter; color: #222;">
-      ...website by <a href="http://paulsorey.com" style="font-size: 9px; font-weight: lighter;">paulsorey.com</a>...
-    </div>
-  </div>
-</body>
-</html>
-
-
-
 

@@ -1,26 +1,21 @@
     <!-- begin layouts/content - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    
     <div class="content">
-      <% flash.each do |key, msg| %>              
-        <%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
+      <% flash.each do |key, msg| -%>
+        <%= content_tag :div, msg, :class => [key, " message"],  :id => "notice_#{key}", 
+            :style => "border: 2px solid green; padding: 1em;margin-bottom: 2em;background-color: #f0f0f0;font: bold smaller sans-serif"%>
         <script type="text/javascript">
           setTimeout("new Effect.Fade('notice_<%= key %>');", 3000);
-        </script>         
-      <% end %>
- 
-      <%= yield %>
+        </script>
+      <% end -%>
+<%= yield %>
       <br />
       <br />
       <br />
     </div>
-
     <div id="footer" style="height: 15px; padding-top:6px; font-size: 9px; font-weight: lighter; color: #222;">
       ...website by <a href="http://paulsorey.com" style="font-size: 9px; font-weight: lighter;">paulsorey.com</a>...
     </div>
-    
-
-   
   </div>
 </body>
 </html>
-<!-- end layouts/content - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  --> 
+
