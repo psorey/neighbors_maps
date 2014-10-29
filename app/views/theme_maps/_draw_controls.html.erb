@@ -11,9 +11,8 @@
               <label for="lineToggle">draw a line<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: dbl-clck</label>
             </li>
             <li>
-              <input type="radio" name="type" value="modify" id="modifyToggle"
-              onclick="toggleControl(this);" onchange="update();" />
-              <label for="modifyToggle">modify a line</label>
+              <input type="radio" name="type" value="modify" id="modifyToggle" onclick="toggleControl(this);"  />
+              <label for="modifyToggle" >modify a line</label>
             </li>
             <li>
               <input type="radio" name="type" value="select" id="selectToggle" onclick="toggleControl(this);" />
@@ -27,4 +26,4 @@
           </div>
           <%= button_to "help", @theme_map, class: "nav_link", id: "help", remote: true %>
         </div>
- <!--  end draw_controls ////////////////////////////////////////////////// --> 
+        <!--  end draw_controls ////////////////////////////////////////////////// -->

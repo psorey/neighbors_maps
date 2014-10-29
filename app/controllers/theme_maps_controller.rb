@@ -2,7 +2,8 @@ require 'bluecloth'
 #require 'log_buddy/init'
 
 class ThemeMapsController < ApplicationController
-
+ 
+  layout "theme_maps_layout", only: :show
   # before_filter :login_required, except: 'index'
   before_filter :set_current_user
 
@@ -19,7 +20,7 @@ class ThemeMapsController < ApplicationController
 
 
   def show
-    @theme_map = ThemeMap.where(slug: params[:slug]).first
+    @theme_map = ThemeMap.where(slug: params[:id]).first
     # build the map_object and write it to a mapfile for Mapserver
     
     d{@theme_map} 
@@ -103,7 +104,6 @@ class ThemeMapsController < ApplicationController
     logger.debug "HERE"
     logger.debug geometries.length
     logger.debug labels.length
-
 
 
     result = 'successfully saved...'

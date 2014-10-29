@@ -2,7 +2,6 @@
      //// begin open_layers_init ////////////////////////////
      console.log("begin open_layers_init");
       map.addLayers([<%= @theme_map.layer_name_list.join(',')%>]);
-
       map.addControl(new OpenLayers.Control.Scale('scale'));
       map.addControl(new OpenLayers.Control.MousePosition());
       var layerSwitch = new OpenLayers.Control.LayerSwitcher();

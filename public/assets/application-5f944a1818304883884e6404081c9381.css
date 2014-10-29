@@ -1,0 +1,429 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the5500-Web-Projects/neighbors_maps/
+▾ app/
+  ▾ assets/
+    ▸ images/
+    ▾ javascripts/
+
+
+▾ app/
+  ▾ assets/
+    ▸ images/
+    ▾ javascripts/
+
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/* #f2fada; */
+/* line 21, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+a {
+  font-size: small;
+}
+/* line 23, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+a:link {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 24, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 25, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 26, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+a:active {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* line 31, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.grid table {
+  border-bottom: 1px dotted fuchsia;
+  border-left: 1px dotted fuchsia;
+}
+/* line 35, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.grid td {
+  padding: 11px 15px 15px 11px;
+  border-top: 1px dotted fuchsia;
+  border-right: 1px dotted fuchsia;
+}
+/* line 40, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.grid ul {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  margin-left: 0;
+  padding-left: 1em;
+}
+/* line 46, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.grid li {
+  margin-bottom: 10px;
+}
+
+/* end grid */
+/* set the size of the map image here... */
+/* line 53, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#map {
+  width: 900px;
+  height: 530px;
+  border-right: 1px solid #333344;
+  border-bottom: 1px solid #333344;
+  border: 1px solid #333344;
+  padding: 5px;
+}
+/* line 60, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#map img {
+  border: none;
+}
+
+/* line 63, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.map_draw_controls {
+  width: 150px;
+}
+
+/* line 67, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.border_top_thin {
+  border-top: 2px solid #aaaedd;
+}
+
+/* line 70, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#controlToggle li {
+  list-style: none;
+  position: relative;
+  left: -40px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #aaaedd;
+  color: #666674;
+  width: 140px;
+}
+/* line 79, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#controlToggle li label {
+  position: relative;
+  top: -3px;
+}
+
+/* line 88, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.main-content {
+  width: 600px;
+}
+/* line 90, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.main-content p, .main-content ul {
+  margin: 5px;
+}
+
+/* line 94, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+img {
+  border: 1px solid #333344;
+}
+
+/* line 98, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  text-align: left;
+  font-family: "Trebuchet MS", Arial,sans-serif;
+  width: 100%;
+  border-style: solid;
+  background-color: #ccd0ff;
+  font-size: 14px;
+  color: #222244;
+  border-left: 1px solid #333344;
+}
+
+/* line 114, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#banner {
+  width: 100%;
+  margin-left: 0px;
+  background: #aaafcc;
+  background-repeat: no-repeat;
+  padding-top: 5px;
+  padding-left: 170px;
+  padding-bottom: 8px;
+  padding-right: 0px;
+  border-bottom: 1px solid #333344;
+  border-top: 1px solid #333344;
+  /*font-variant: small-caps;*/
+  font-family: "Trebuchet MS", Arial, Sans-Serif;
+  font-size: 36px;
+  color: #476;
+  color: #ddeeff;
+  text-align: left;
+}
+
+/* line 136, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar {
+  float: left;
+  height: 100%;
+  padding: 0px;
+  width: 140px;
+  background: transparent;
+}
+/* line 142, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar a {
+  font-size: small;
+}
+/* line 144, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar a:link {
+  color: #666674;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 145, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar a:visited {
+  color: #666674;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 146, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar a:hover {
+  color: #404055;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 147, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar a:active {
+  color: #404055;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 149, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar .alert_text a {
+  color: #ff5544;
+}
+/* line 151, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar .alert_text a:link {
+  color: #ff5544;
+}
+
+/* line 155, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.alert_text {
+  color: #ff5544;
+}
+
+/* line 159, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar .alert_text a {
+  color: #ff5544;
+}
+/* line 161, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.sidebar .alert_text a:link {
+  color: #ff5544;
+}
+
+/* line 164, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#side_menu {
+  padding: 0px;
+  padding-left: 10px;
+  padding-top: 20px;
+  width: 140px;
+  height: 100%;
+  margin: 0px;
+}
+
+/* line 174, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#container {
+  width: 100%;
+  height: 100%;
+  background: #ccd0ff;
+  padding: 0px;
+  margin: 0px;
+  /*
+  border-top: $thick_border;
+
+  */
+}
+
+/* line 187, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.content {
+  border-left: 1px solid #333344;
+  /* border: $thick_border; */
+  margin-left: 140px;
+  padding: 0px;
+  padding-top: 30px;
+  padding-left: 35px;
+  padding-right: 120px;
+  height: 100%;
+  background-color: #f4f3da;
+  /* pale, low intensity yellow */
+  min-height: 700px;
+}
+
+/* line 201, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#footer {
+  clear: both;
+  background: #aaafcc;
+}
+
+/* line 206, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+h1 {
+  color: #6f9f9e;
+  font-weight: normal;
+  font-size: 26px;
+  font-family: Arial,sans-serif;
+  margin: 0px;
+  padding: 2px;
+}
+
+/* line 215, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+h2 {
+  color: #166;
+  margin: 1px;
+  font-family: Arial,sans-serif;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+/* line 223, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+h3 {
+  font-family: Arial,sans-serif;
+  font-size: 16px;
+}
+
+/* line 228, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+h4 {
+  font-family: Arial,sans-serif;
+  font-style: normal;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* line 237, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+input {
+  font-family: Arial,sans-serif;
+  font-weight: bold;
+  color: #666;
+}
+
+/* line 243, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.left_padding {
+  padding-left: 40px;
+}
+
+/* line 247, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.top_padding {
+  padding-top: 40px;
+}
+
+/* line 251, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 255, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.center {
+  text-align: center;
+}
+
+/* line 259, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.grey {
+  color: #777;
+}
+
+/* line 263, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.tiny {
+  font-size: 9px;
+}
+
+/* line 267, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.medium_size {
+  font-size: 12px;
+}
+
+/* line 271, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.list-heading {
+  font-size: 16px;
+  font-weight: bold;
+  color: #162;
+  padding: 20px;
+}
+
+/* line 278, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+form.button-to {
+  font-size: 16px;
+}
+
+/* line 282, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+input.btn {
+  font-size: 16px;
+}
+
+/* END:mainlayout */
+/* The error box */
+/* line 293, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #EEFFEE;
+  display: inline;
+}
+
+/* line 299, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.fieldWithErrors * {
+  background-color: red;
+}
+
+/* line 303, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+/* line 312, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+/* line 322, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+/* line 328, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* START:notice */
+/* line 334, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+#notice {
+  border: 2px solid green;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+/* END:notice */
+/* START:i18n */
+/* line 345, /home/paul/5500-Web-Projects/neighbors_maps/app/assets/stylesheets/neighbors_maps.css.scss */
+.locale {
+  float: right;
+  padding-top: 0.2em;
+}
+
+/* END:i18n */

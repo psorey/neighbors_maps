@@ -1,18 +1,18 @@
-            ///// begin map_layer //////////////////////////////////////////////////     
-            console.log("begin map_layer");  
-              <% name = tml.map_layer.name %>
-              var <%= name.dashed %> = new OpenLayers.Layer.WMS('<%= name %>',
-              '<%= @theme_map.mapfile_url %>',
-                { layers: '<%= name.dashed %>',
-                  format: 'png',
-                  transparent: '<%= !tml.is_base_layer %>'},
-                { 
-                  scales: [100,200,300,400,500,600,800,1000,1200,1500,2000,4000,8000,12000,18000,24000,32000,48000,56000],
-                  units: 'm',
-                  projection:new OpenLayers.Projection("epsg:4326"),
-                  gutter:0,
-                  ratio:1,
-                  isBaselayer:<%= tml.is_base_layer %>,
-                  singleTile:true,
-                }
-              );
+      ///// begin map_layer //////////////////////////////////////////////////     
+      console.log("begin map_layer");  
+      <% name = tml.map_layer.name %>
+      <%= name.dashed %> = new OpenLayers.Layer.WMS('<%= name %>',
+      '<%= @theme_map.mapfile_url %>',
+        { layers: '<%= name.dashed %>',
+          format: 'png',
+          transparent: '<%= !tml.is_base_layer %>'},
+        { 
+          scales: [100, 200, 300, 400, 500, 600, 800, 1000, 1200, 1500, 2000, 4000, 8000, 12000, 18000, 24000, 32000, 48000, 56000],
+          units: 'm',
+          projection:new OpenLayers.Projection("epsg:4326"),
+          gutter:0,
+          ratio:1,
+          isBaselayer:<%= tml.is_base_layer %>,
+          singleTile:true
+        }
+      );

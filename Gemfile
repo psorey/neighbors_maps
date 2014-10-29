@@ -44,6 +44,7 @@ gem 'jquery-ui-rails'
 
 
 group :development, :test do
+  gem "log_buddy"
   gem "rails-erd"
   gem "rspec-rails", ">= 2.8.1"
   gem "factory_girl_rails", ">= 1.6.0"
@@ -53,7 +54,7 @@ end
 
 group :test do
   gem "capybara", ">= 1.1.2"
-  gem "log_buddy"
+
 end
 
 

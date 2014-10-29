@@ -2,10 +2,6 @@
     def dashed
       self.downcase.gsub(/\s+/, '_')
     end
-
-    def remove_quotes
-      
-    end
   end
 
 

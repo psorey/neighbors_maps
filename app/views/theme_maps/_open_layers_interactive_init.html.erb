@@ -1,10 +1,7 @@
-     ///////// begin open_layers_interactive_init ////////////////////////
-     console.log("begin open_layers_interactive_init");
-      var prompt_title = 'enter a number'
-      var prompt_string = 'estimated trips per month'
+  ///////// begin open_layers_interactive_init ////////////////////////
+      var prompt_title = 'enter a number';
+      var prompt_string = 'estimated trips per month';
 
-     //console.log (<%=raw(@json_geometries)%>);
-     //console.log (<%=raw(@json_labels)%>);
       exist_geometries = <%=raw(@json_geometries)%>;
       exist_labels = <%=raw(@json_labels)%>;
 
@@ -26,7 +23,7 @@
         opacity:0.5,
         styleMap: new OpenLayers.StyleMap({'default':{
           strokeColor: "#ff0000",
-          strokeOpacity: .8,
+          strokeOpacity: 0.8,
           strokeWidth: 3,
           fillColor: "#FFeeee",
           fillOpacity: 1,
@@ -105,6 +102,6 @@
       buildFeatures(); // using exist_geometries[] and exist_labels[]
 
      // document.getElementById('noneToggle').checked = true;
-     // console.log("end open_layers_interactive_init");
+     console.log("end open_layers_interactive_init");
  
      ///// end open_layers_interactive_init /////////////////////////////////

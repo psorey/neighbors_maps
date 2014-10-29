@@ -1,7 +1,6 @@
   
-  console.log("begin open_layers_interactive_functions"); ///// begin open_layers_interactive_functions ////////////////////////////////
- 
-
+      console.log("begin open_layers_interactive_functions"); 
+      ///// begin open_layers_interactive_functions ////////////////////////////////
     
       function emptyFeatures(){
         <%= @theme_map.name.dashed %>.destroyFeatures();
@@ -36,10 +35,11 @@
       }
 
       function toggleControl(element) {
-        element.preventDefault();
+       // element.preventDefault();
         for(key in drawControls) {
           var control = drawControls[key];
           if(element.value == key && element.checked) {
+            console.log("key");
             control.activate();
           } else {
             control.deactivate();
