@@ -3,7 +3,7 @@ $body_bg:    #ccd0ff;         $sidebar_bg: transparent;
 $banner_bg:  #aaafcc;
 $content_bg: #f4f3da; /* #f2fada; */
 
-$thick_border: 1px solid #334; 
+$thick_border: 1px solid #334;
 $thin_border: 1px solid #334;
 $map_draw_border: 2px solid $body_bg - #222222;
 $banner_text: #def;
@@ -50,6 +50,21 @@ a {
     
 
 /* set the size of the map image here... */
+
+
+.map {
+  height: 400px;
+  width: 100%;
+}
+.ol-attribution {
+  max-width: calc(100%-3em);
+}
+#tags {
+  display: none;
+}
+
+
+
 #map {
   width: 900px;
   height: 530px;

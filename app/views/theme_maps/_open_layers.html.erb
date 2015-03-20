@@ -2,27 +2,52 @@
 
   <script type="text/javascript">
     var geometries = [];
+    //var layers = [];
     var geometry_labels = [];
     var exist_features = [];
     var exist_geometries = [];
     var exist_labels = [];
     var map, drawControls, walking_paths_survey, walking_paths_survey_labels;
-    var <%= @theme_map.layer_name_list.join(', ')%>;   
+    //var <%= @theme_map.layer_name_list.join(', ')%>;
+
     function init(){
-      map = new OpenLayers.Map('map', {maxExtent: new OpenLayers.Bounds(1259300,253000,1269500,263500)});
-      <%= render :partial => 'map_layers', :collection => @theme_map.theme_map_layers, :as => :tml %>
-        <%= render :partial => 'open_layers_init' %> 
-      <% if @theme_map.is_interactive -%>
-          <%= render :partial => 'open_layers_interactive_init' %>
-      <% end -%>
-    }
-    <% if @theme_map.is_interactive -%>
-      <%= render :partial => 'open_layers_interactive_functions' %>
-    <% end -%>
+      var layers = [ 
+        // new ol.layer.Tile({
+        // source: new ol.source.MapQuest({layer: 'sat'})
+        // }),
+        //  new ol.layer.Tile({
+        //    extent: [-13884991, 2870341, -7455066, 6338219],
+        //    source: new ol.source.TileWMS(/** @type {olx.source.TileWMSOptions} */ ({
+        //      url: 'http://demo.opengeo.org/geoserver/wms',
+        //      params: {'LAYERS': 'topp:states', 'TILED': true},
+        //      serverType: 'geoserver'
+        //    }))
+        //  }),
+        
+        
+ //     var extent = yourlayer.getSource().getExtent();
+ //     map.getView().fitExtent(extent, map.getSize());
+
+      new ol.layer.Tile({
+        extent: [1259300,253000,1269500,263500],
+        source: new ol.source.WMS( ({
+          url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+          params: {'LAYERS': 'parcel_outlines'},
+          serverType: 'mapserver'
+      }))
+    })
+  ];
+
+
+  var map = new ol.Map({
+    layers: layers,
+    target: 'map',
+    view: new ol.View({
+      center: [1259400,258000],
+      zoom: 4
+    })
+  });
+
+  }
+
   </script>
-          
-          
-          
-          
-          
-   

@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script> console.log("head of file"); </script>
+  <title>NeighborsMaps</title>
+ <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" />
+<link href="/assets/neighbors_maps.css?body=1" media="screen" rel="stylesheet" />
+ <script src="/assets/jquery.js?body=1"></script>
+<script src="/assets/jquery_ujs.js?body=1"></script>
+<script src="/assets/neighbors_maps.js?body=1"></script>
+<script src="/assets/ol.js?body=1"></script>
+<script src="/assets/theme_maps.js?body=1"></script>
+<script src="/assets/application.js?body=1"></script>
+ <meta content="authenticity_token" name="csrf-param" />
+<meta content="ZoCUABiiBFDhsKgn1VFKNY8S5UeBdQemdxcRQOhpzwQ=" name="csrf-token" />
+
+<script type="text/javascript">
+
+   var layers = [
+      new ol.layer.Tile({
+        source: new ol.source.MapQuest({layer: 'sat'})
+      }),
+      new ol.layer.Image({
+        extent: [-13884991, 2870341, -7455066, 6338219],
+        source: new ol.source.ImageWMS({
+          url: 'http://demo.opengeo.org/geoserver/wms',
+          params: {'LAYERS': 'topp:states'},
+          serverType: 'geoserver'
+        })
+      }),
+      new ol.layer.Tile({
+        extent: [1259300,253000,1269500,263500],
+        source: new ol.source.WMS({
+          url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+          params: {'LAYERS': 'parcel_outlines'}
+        })
+      })
+    ];
+
+    var map = new ol.Map({
+      layers: layers,
+      target: 'map'
+    });
+
+    </script>
+
+</head>
+
+
+
+<!-- begin /layouts/theme_maps.html - - - - - - - - - - - - - - - -->
+<body onload="init();">
+  <div id="container">
+    <div class="sidebar">
+      <div id="side_menu">
+        <a href="/">Home</a><br /><br />
+        <a href="/theme_maps">GIS Data Maps</a><br /><br />
+      </div>
+    </div>
+    <style type="text/css">
+      .content { padding: 10px; }  /* get rid of extra padding so map can be larger... */
+    </style>
+  <!-- - - - - - - - - end /layouts/theme_maps.html.erb - - - - - - -->
+      <!-- begin layouts/content - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div class="content">
+
+        <div id='rails_error'></div>
+        <script> console.log("beginning of show.html.erb"); </script>
+        <div id="map" class="smallmap"></div>
+        <h2 id="title">GS Team Study Areas </h2>
+
+        <div>
+          <a href="/theme_maps/gs-team-study-areas/edit">Edit</a>
+        </div>
+
+      <br />
+      <br />
+      <br />
+    </div>
+    <div id="footer" style="height: 15px; padding-top:6px; font-size: 9px; font-weight: lighter; color: #222;">
+      ...website by <a href="http://paulsorey.com" style="font-size: 9px; font-weight: lighter;">paulsorey.com</a>...
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+

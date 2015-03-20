@@ -12,5 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require openlayers-rails
 //= require_tree .

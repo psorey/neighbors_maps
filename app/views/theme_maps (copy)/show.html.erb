@@ -1,0 +1,9 @@
+
+        <div id='rails_error'></div>
+        <script> console.log("beginning of show.html.erb"); </script>
+        <div id="map" class="smallmap"></div>
+        <h2 id="title"><%= @theme_map.name %> </h2>
+
+        <div>
+          <%= link_to 'Edit', edit_theme_map_path(@theme_map) %>
+        </div>
