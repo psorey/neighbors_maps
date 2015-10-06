@@ -54,7 +54,7 @@ class ThemeMap < ActiveRecord::Base
     @map.web.metadata.set('wms_title', 'my_title')
     @map.web.metadata.set('wms_online_resource', '')
     add_ordered_layers
-   # @map.save(mapfile_name)
+    @map.save("/home/paul/mapserver/my_recent_map.map")
   end
 
 

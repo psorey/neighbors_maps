@@ -1,7 +1,7 @@
 class MapLayersController < ApplicationController
 
 
-  layout 'theme_maps'
+ # layout 'theme_maps'
 
 
   def index
@@ -9,11 +9,9 @@ class MapLayersController < ApplicationController
   end
 
 
-
   def show
     @map_layer = MapLayer.find(params[:id])
   end
-
 
 
   def new
@@ -21,11 +19,9 @@ class MapLayersController < ApplicationController
   end
 
 
-
   def edit
     @map_layer = MapLayer.find(params[:id])
   end
-
 
 
   def create
@@ -38,7 +34,6 @@ class MapLayersController < ApplicationController
   end
 
 
-
   def update
     @map_layer = MapLayer.find(params[:id])
       if @map_layer.update_attributes(map_layers_params)
@@ -47,8 +42,6 @@ class MapLayersController < ApplicationController
         render "edit"
       end
   end
-
-
 
   def destroy
     @map_layer = MapLayer.find(params[:id])

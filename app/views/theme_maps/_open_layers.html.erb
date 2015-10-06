@@ -28,9 +28,9 @@
  //     var extent = yourlayer.getSource().getExtent();
  //     map.getView().fitExtent(extent, map.getSize());
 
-      new ol.layer.Tile({
+      new ol.layer.Image({
         extent: [1259300,253000,1269500,263500],
-        source: new ol.source.WMS( ({
+        source: new ol.source.ImageWMS( ({
           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
           params: {'LAYERS': 'parcel_outlines'},
           serverType: 'mapserver'
