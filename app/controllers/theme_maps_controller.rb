@@ -45,14 +45,25 @@ class ThemeMapsController < ApplicationController
 
   def create
     @theme_map = ThemeMap.new(theme_map_params)
-    unless @theme_map.save
-      @map_layers = MapLayer.order('name ASC')
-      render "new" and return
+    map_layer_ids = params[:layer_ids]
+    map_layer_ids.each do |map_layer_id|
+      new_layer = ThemeMapLayer.new
+      new_layer.is_base_layer = false
+      new_layer.map_layer_id = map_layer_id
+      @theme_map.theme_map_layers << new_layer
     end
-    map_layers = params[:theme_map][:layer_ids]
-    base_layers = params[:theme_map][:base_layer_ids]
-    @theme_map.update_layers(map_layers, base_layers)
-    if @theme_map.save
+    base_layer_ids = params[:base_layer_ids]
+    base_layer_ids.each do |map_layer_id|
+      new_layer = ThemeMapLayer.new
+      new_layer.is_base_layer = true
+      new_layer.map_layer_id = map_layer_id
+      @theme_map.theme_map_layers << new_layer
+    end
+    @theme_map.theme_map_layers.each do |layer|
+      logger.debug layer.map_layer.name
+    end
+    @theme_map.create_slug
+    if @theme_map.save!
       redirect_to(@theme_map, notice: "'#{@theme_map.name}' was successfully created.")
     else
       @map_layers = MapLayer.order('name ASC')
@@ -85,11 +96,6 @@ class ThemeMapsController < ApplicationController
   def update_geo_db
     logger.debug "made it to update_geo_db ##############   ###################   ####################"
     @theme_map = ThemeMap.where(slug: params[:slug]).first
-    logger.debug "update_geo_db:"
-    logger.debug @theme_map.inspect
-    logger.debug "geometries -- convert to array of linestrings"
-    logger.debug params[:geometries]
-    logger.debug params[:labels]
 
     @current_neighbor_id = 44 #current_user.neighbor_id
     geometries = JSON.parse(params[:geometries])
@@ -100,23 +106,10 @@ class ThemeMapsController < ApplicationController
     # mapped_line.geometry = geometries wkt.parse(geometries)
     #  end
 
-    logger.debug "JSON.parse(geometries)"
-    d {geometries}
-    logger.debug labels
-    logger.debug "HERE"
-    logger.debug geometries.length
-    logger.debug labels.length
-
-
     result = 'successfully saved...'
     for i in 0...geometries.length
-      #  if labels[i] == nil
-      #  do nothing
-      #  else
       mapped_line = MappedLine.new
       wkt = RGeo::WKRep::WKTParser.new
-      logger.debug "geometries[i]"
-      logger.debug geometries[i]
       mapped_line.geometry = wkt.parse(geometries[i])
       mapped_line.geometry = geometries[i]
       mapped_line.end_label = labels[i]
@@ -129,7 +122,6 @@ class ThemeMapsController < ApplicationController
     end
     render :text => result
   end
-
 
   def update
     @theme_map = ThemeMap.where(slug: params[:id]).first
@@ -150,8 +142,12 @@ class ThemeMapsController < ApplicationController
 
   def destroy
     @theme_map = ThemeMap.where(slug: params[:id]).first
-    MappedLine.destroy_all(:map_layer_id => @theme_map.name.dashed)
-    @theme_map.destroy
+    logger.debug @theme_map.inspect
+    @theme_map.theme_map_layers.each do |layer|
+      logger.debug layer.inspect
+    end
+    #MappedLine.destroy_all(:map_layer_id => @theme_map.name.dashed)
+    @theme_map.destroy!
     redirect_to(theme_maps_url)
   end
 
@@ -184,20 +180,7 @@ class ThemeMapsController < ApplicationController
   private
 
   def theme_map_params
-    hash = {}
-    hash.merge! params.require(:theme_map).permit(:name, :description, :slug, :is_interactive)
-    hash.merge! params.permit(:layer_ids, :base_layer_ids)
-    logger.debug hash
-    hash
-    #params.require(:theme_map).permit(:name, :description, :slug, :is_interactive, :layer_ids, :base_layer_ids)
+    params.require(:theme_map).permit(:name, :description, :slug, :is_interactive, :layer_ids=>[], :base_layer_ids=>[])
   end
- #def some_params
- # hash = {}
-#  hash.merge! params.require(:user).slice(:attribute1, :attribute2, :attribute3)
-#  hash.merge! params.slice(:attribute_not_on_user_model1,
-#  attribute_not_on_user_model2)
-#  hash
-# end
-
 
 end

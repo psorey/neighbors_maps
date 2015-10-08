@@ -31,7 +31,7 @@ class ThemeMap < ActiveRecord::Base
   attr_accessor :map     # make the MapObj accessible to methods
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
-  validates_presence_of :name, :layer_ids, :base_layer_ids 
+  #validates_presence_of :name #, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :slug, :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
@@ -40,19 +40,27 @@ class ThemeMap < ActiveRecord::Base
 
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
+
   def make_mapfile
+
+    #set units
+
     # mapscript:
     @map = MapObj.new
+    @map.setExtent( 1262053, 205541, 1285032, 260122 )
     @map.debug = 3
     @map.setConfigOption("MS_ERROR_FILE", "/home/paul/mapserver/error.log")
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
     @map.shapepath = APP_CONFIG['MAPSERVER_DIRECTORY'] + "data"
-   # @map.setExtent(1264053.87242477, 245541.583313177, 1275032.27152446, 260122.634434438)
-    @map.setProjection(APP_CONFIG['MAPSERVER_PROJECTION'])
-    @map.web.metadata.set('wms_enable_request', '*')
-    @map.web.metadata.set('wms_title', 'my_title')
-    @map.web.metadata.set('wms_online_resource', '')
+    @map.setProjection("init=epsg:2926")
+    # @map.setProjection(APP_CONFIG['MAPSERVER_PROJECTION'])
+    @map.web.metadata.set("wms_enable_request", "GetMap GetCapabilities GetFeatureInfo GetLegendGraphic")
+    @map.web.metadata.set("wms_title", "gs_study_areas")
+    @map.web.metadata.set("wms_onlineresource", "localhost/cgi-bin/mapserv?map=gs_team_study_areas.map&")
+    @map.web.metadata.set("wms_srs", "EPSG:4326 EPSG:3857")
+    @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
+    @map.units = MS_FEET
     add_ordered_layers
     @map.save("/home/paul/mapserver/my_recent_map.map")
   end
@@ -74,30 +82,24 @@ class ThemeMap < ActiveRecord::Base
 
 
   def add_ordered_layers
-    @layer_name_list = []
+  #  @layer_name_list = []
     # load the layer descriptions into the MapObj
-    # wait...do we have to load them explicitly or just do self.theme_map_layers.each ???
-    theme_map_layers = ThemeMapLayer.where(theme_map_id: self.id)
-
-    if  theme_map_layers
-     map_layers = []
-      theme_map_layers.each do |tml|
-        map_layers << tml.map_layer
-      end
-      map_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
-      map_layers.each do |map_layer|
-        layer = LayerObj.new(@map)  # mapscript
-        layer.debug = 3
-        layer.updateFromString(map_layer.layer_mapfile_text)  # mapscript
-        mapfile_layer_name = map_layer.name.dashed
-        layer.name = mapfile_layer_name
-        @layer_name_list << mapfile_layer_name
-      end
-    else
-      logger.debug "no layers "
+    temp_layers = []
+    self.map_layers.each do |layer|
+      temp_layers << layer
+    end
+    temp_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
+    temp_layers.each do |map_layer|
+      layer = LayerObj.new(@map)  # mapscript
+      layer.debug = 3
+      layer.updateFromString(map_layer.layer_mapfile_text)  # mapscript
+      mapfile_layer_name = map_layer.name.dashed
+      layer.name = mapfile_layer_name
+ #     @layer_name_list << mapfile_layer_name
     end
   end
 
+  # are we still using this?
   # test: all the different scenarios...
   def update_layers (map_layers, base_layers)
 

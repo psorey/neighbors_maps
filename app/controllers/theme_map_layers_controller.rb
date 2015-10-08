@@ -1,6 +1,6 @@
 class ThemeMapLayersController < ApplicationController
 
-
+  
   def index
     @theme_map_layers = ThemeMapLayer.order('theme_map_id ASC')
   end
@@ -46,5 +46,6 @@ class ThemeMapLayersController < ApplicationController
     @theme_map_layer.destroy
     redirect_to(theme_map_layers_url)
   end
+
 
 end
