@@ -1,4 +1,5 @@
-      ///// begin map_layer //////////////////////////////////////////////////     
+<!--  begin map_layer -->
+<script>  
       console.log("begin map_layer");  
       <% name = tml.map_layer.name %>
       <%= name.dashed %> = new ol.Layer.WMS('<%= name %>',
@@ -15,4 +16,6 @@
           isBaselayer:<%= tml.is_base_layer %>,
           singleTile:true
         }
-      );
+        );
+</script>
+<!--  end map_layer  -->

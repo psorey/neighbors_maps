@@ -3,6 +3,11 @@
 
 <%= form_for(@map_layer) do |f| %>
   <p>
+    <%= f.submit 'Update' %>
+  </p>
+    <%= f.text_area :layer_mapfile_text, cols: "80", rows: "25" %>
+  </p>
+  <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
@@ -14,13 +19,7 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
-  <p>
-    <%= f.label :layer_mapfile_text %><br />
-    <%= f.text_area :layer_mapfile_text %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+
 <% end %>
 
 <%= link_to 'Show', @map_layer %> |

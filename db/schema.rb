@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619045419) do
+ActiveRecord::Schema.define(version: 20151011204838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
-  enable_extension "postgis_topology"
-  enable_extension "adminpack"
+
+  create_table "administrators", force: true do |t|
+    t.string   "admin_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forums", force: true do |t|
+    t.string   "forum_name"
+    t.string   "forum_url"
+    t.string   "forum_permissions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "half_blocks", force: true do |t|
     t.string   "half_block_id"
@@ -32,9 +44,15 @@ ActiveRecord::Schema.define(version: 20140619045419) do
     t.string   "name"
     t.text     "description"
     t.text     "layer_mapfile_text"
-    t.integer  "draw_order",         default: 50
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "draw_order",         default: 50
+    t.string   "srs"
+    t.string   "url_extension"
+    t.string   "template_file"
+    t.string   "projection"
+    t.string   "wkt_extent"
+    t.string   "units"
   end
 
   create_table "mapped_lines", force: true do |t|
@@ -79,6 +97,35 @@ ActiveRecord::Schema.define(version: 20140619045419) do
     t.spatial  "location",           limit: {:srid=>4326, :type=>"point"}
   end
 
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.text     "short_desc"
+    t.string   "forum_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.spatial  "project_boundary", limit: {:srid=>4326, :type=>"polygon"}
+  end
+
+  create_table "projects_users", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+  end
+
+  add_index "projects_users", ["project_id"], :name => "index_projects_users_on_project_id"
+  add_index "projects_users", ["user_id"], :name => "index_projects_users_on_user_id"
+
+  create_table "roles", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
   create_table "theme_map_layers", force: true do |t|
     t.integer  "theme_map_id"
     t.integer  "map_layer_id"
@@ -90,6 +137,7 @@ ActiveRecord::Schema.define(version: 20140619045419) do
     t.integer  "opacity"
     t.integer  "line_width"
     t.boolean  "is_interactive", default: false
+    t.string   "name"
   end
 
   create_table "theme_maps", force: true do |t|
@@ -100,6 +148,23 @@ ActiveRecord::Schema.define(version: 20140619045419) do
     t.string   "slug"
     t.boolean  "is_interactive", default: false
   end
+
+  create_table "users", force: true do |t|
+    t.string   "login",                     limit: 40
+    t.string   "name",                      limit: 100, default: ""
+    t.string   "email",                     limit: 100
+    t.string   "crypted_password",          limit: 40
+    t.string   "salt",                      limit: 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token",            limit: 40
+    t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           limit: 40
+    t.datetime "activated_at"
+    t.integer  "neighbor_id"
+  end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "walk_surveys", force: true do |t|
     t.string   "neighbor_id"

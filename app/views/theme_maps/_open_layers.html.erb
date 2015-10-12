@@ -1,15 +1,8 @@
-
+<!-- open_layers.html.erb -->
 
   <script type="text/javascript">
-    var geometries = [];
-    //var layers = [];
-    var geometry_labels = [];
-    var exist_features = [];
-    var exist_geometries = [];
-    var exist_labels = [];
-    var map, drawControls, walking_paths_survey, walking_paths_survey_labels;
-    function init(){
-      var layers = [ 
+
+   var layers = [
       new ol.layer.Image({
         extent: [-122.5,47.5,-122.2,47.75],
         source: new ol.source.ImageWMS( ({
@@ -31,6 +24,7 @@
     })
   });
 
-  }
 
   </script>
+
+  <!-- end openlayers.html.erb -->

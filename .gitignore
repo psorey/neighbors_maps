@@ -6,7 +6,7 @@ config/*.yml
 config/environment.rb
 *.kpf
 /log/*.log
-
+/tmp/*
 # Gemfile
 # Gemfile.lock
 # /db/schema.rb

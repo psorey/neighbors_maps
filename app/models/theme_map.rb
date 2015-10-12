@@ -43,12 +43,19 @@ class ThemeMap < ActiveRecord::Base
 
   def make_mapfile
 
-    #set units
-
     # mapscript:
     @map = MapObj.new
+
+    @map.selectOutputFormat('PNG')
+    outf = @map.outputformat
+    outf.transparent = MS_TRUE
+    outf.mimetype = "image/png"
+    outf.imagemode = MS_IMAGEMODE_RGBA
+
     @map.setExtent( 1262053, 205541, 1285032, 260122 )
     @map.debug = 3
+
+    @map.transparent = MS_TRUE
     @map.setConfigOption("MS_ERROR_FILE", "/home/paul/mapserver/error.log")
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
@@ -56,8 +63,8 @@ class ThemeMap < ActiveRecord::Base
     @map.setProjection("init=epsg:2926")
     # @map.setProjection(APP_CONFIG['MAPSERVER_PROJECTION'])
     @map.web.metadata.set("wms_enable_request", "GetMap GetCapabilities GetFeatureInfo GetLegendGraphic")
-    @map.web.metadata.set("wms_title", "gs_study_areas")
-    @map.web.metadata.set("wms_onlineresource", "localhost/cgi-bin/mapserv?map=gs_team_study_areas.map&")
+    @map.web.metadata.set("wms_title", "#{self.name.dashed}")
+    @map.web.metadata.set("wms_onlineresource", "localhost/cgi-bin/mapserv?map=#{mapfile_name}&")
     @map.web.metadata.set("wms_srs", "EPSG:4326 EPSG:3857")
     @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
     @map.units = MS_FEET

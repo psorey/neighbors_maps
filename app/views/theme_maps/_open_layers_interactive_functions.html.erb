@@ -1,7 +1,5 @@
-  
-      console.log("begin open_layers_interactive_functions"); 
-      ///// begin open_layers_interactive_functions ////////////////////////////////
-    
+<!--  begin  open_layers_interactive_functions -->
+<script>
       function emptyFeatures(){
         <%= @theme_map.name.dashed %>.destroyFeatures();
         <%= @theme_map.name.dashed  + '_labels' %>.destroyFeatures();
@@ -16,7 +14,7 @@
           console.log(" we must return");
           exist_geometries = []; // it will hold any geometry that we enter via mouse clicks
           exist_labels = [];
-          return; 
+          return;
         }
         geometries = [];
         geometry_labels = [];
@@ -28,7 +26,6 @@
           console.log("geom= ", geom);
           feature = new ol.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
           exist_features[i] = feature;
-         // console.log ("buildFeatures()", feature.geometry.toString());
         }
        // this triggers the makeLabeledDots function through the 'featuresadded' event callback      
         <%= @theme_map.name.dashed %>.addFeatures(exist_features);
@@ -72,4 +69,5 @@
           }
         }
       }
-     ///// end open_layers_interactive_functions ////////////////////////////////
+</script>
+<!-- end open_layers_interactive_functions -->

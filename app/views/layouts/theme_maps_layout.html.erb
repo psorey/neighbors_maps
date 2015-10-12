@@ -1,17 +1,15 @@
-<% content_for :head do %>
-  <%= render "open_layers" %>
-<% end -%>
+
 
 <%= render  '/layouts/head' %>
 
 
 <!-- begin /layouts/theme_maps.html - - - - - - - - - - - - - - - -->
-<body onload='init()' >
+<body>
   <div id="container">
     <div class="sidebar">
       <div id="side_menu">
         <%= link_to 'Home',                        :controller=> 'welcome'   %><br /><br />
-        <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'     %><br /><br />
+        <%= link_to 'GIS Data Maps',               :controller=> 'theme_maps'  %><br /><br />
         <% if @theme_map && @theme_map.is_interactive -%>
           <%=  render "draw_controls" %>
         <% end -%>

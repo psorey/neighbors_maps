@@ -1,4 +1,5 @@
-  ///////// begin open_layers_interactive_init ////////////////////////
+<!--  begin open_layers_interactive_init  -->
+<script>
       var prompt_title = 'enter a number';
       var prompt_string = 'estimated trips per month';
 
@@ -16,7 +17,7 @@
          { projection: new ol.Projection("epsg:4326"),
            opacity:0.5,
            rendererOptions: {zIndexing: true}
-      } );
+      });
 
       <%= "#{@theme_map.name.dashed}" + '_labels' %> = new ol.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
       { projection: new ol.Projection("epsg:4326"),
@@ -65,14 +66,12 @@
                   }
               }
           };
-          // console.log ( obj.features.length, "features added");
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>); 
-      } );
-
+      });
       // update the label layer after editing the lines...
       <%= @theme_map.name.dashed %>.events.register('afterfeaturemodified', this, function(obj){
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
-      } );
+      });
 
       var deleteFeature = function(feature) {   // SelectFeature callback function
           select.unselectAll();
@@ -84,7 +83,7 @@
       var select = new ol.Control.SelectFeature(<%= @theme_map.name.dashed %>, {
           onSelect: deleteFeature,  // calls deleteFeature(selected_feature)
           clickout: true
-      } );
+      });
 
       // drawInteractiveControls
       drawControls = {
@@ -100,8 +99,6 @@
 
       // now add the geometries and label strings from the database-loaded arrays...
       buildFeatures(); // using exist_geometries[] and exist_labels[]
-
      // document.getElementById('noneToggle').checked = true;
-     console.log("end open_layers_interactive_init");
- 
-     ///// end open_layers_interactive_init /////////////////////////////////
+</script>
+<!-- end open_layers_interactive_init -->
