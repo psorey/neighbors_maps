@@ -1,10 +1,14 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "reset-css";
+
 @import "jquery-ui";
+@import "neighbors_maps";
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-offcanvas";
 @import "ol";
 @import "ol3-layerswitcher";
-@import "neighbors_maps";
 // @import "_variables";
 // @import "_bootswatch";
 

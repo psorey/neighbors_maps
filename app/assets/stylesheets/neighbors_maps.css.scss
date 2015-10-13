@@ -1,5 +1,6 @@
 
-$body_bg:    #ccd0ff;         $sidebar_bg: transparent;
+$body_bg:    #ccd0ff;         
+$sidebar_bg: transparent;
 $banner_bg:  #aaafcc;
 $content_bg: #f4f3da; /* #f2fada; */
 
@@ -17,6 +18,12 @@ $sidebar_width: 140px;
 $sidebar_text: #666674;
 $sidebar_hover: #404055;
 $sidebar_font_size: small;
+
+
+@-ms-viewport{
+  width: device-width;
+}
+
 
 a {
   font-size: $sidebar_font_size;

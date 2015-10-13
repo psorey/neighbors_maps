@@ -81,6 +81,7 @@ gem "POpen4"
 gem 'proj4rb', '~> 0', :require => "proj4"
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
+gem 'rgeo-geojson', '~> 0.3.1'
 # gem 'openlayers-rails'
 
 gem 'soda-ruby', :require => 'soda'

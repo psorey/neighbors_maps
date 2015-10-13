@@ -26,13 +26,9 @@ class ThemeMapsController < ApplicationController
     @theme_map = ThemeMap.where(slug: params[:id]).first
     # build the map_object and write it to a mapfile for Mapserver
     d{@theme_map}
-    logger.debug "show!!!"
-    logger.debug @theme_map.inspect
     @theme_map.make_mapfile
-    logger.debug "after make mapfile"
     if @theme_map.is_interactive
       build_geometry_json
-      logger.debug "after build geometry"
     end
   end
 
@@ -58,9 +54,6 @@ class ThemeMapsController < ApplicationController
       new_layer.is_base_layer = true
       new_layer.map_layer_id = map_layer_id
       @theme_map.theme_map_layers << new_layer
-    end
-    @theme_map.theme_map_layers.each do |layer|
-      logger.debug layer.map_layer.name
     end
     @theme_map.create_slug
     if @theme_map.save!
@@ -94,7 +87,6 @@ class ThemeMapsController < ApplicationController
 
 
   def update_geo_db
-    logger.debug "made it to update_geo_db ##############   ###################   ####################"
     @theme_map = ThemeMap.where(slug: params[:slug]).first
 
     @current_neighbor_id = 44 #current_user.neighbor_id
@@ -142,33 +134,23 @@ class ThemeMapsController < ApplicationController
 
   def destroy
     @theme_map = ThemeMap.where(slug: params[:id]).first
-    logger.debug @theme_map.inspect
-    @theme_map.theme_map_layers.each do |layer|
-      logger.debug layer.inspect
-    end
-    #MappedLine.destroy_all(:map_layer_id => @theme_map.name.dashed)
     @theme_map.destroy!
     redirect_to(theme_maps_url)
   end
 
 
-  def build_geometry_json
+  def build_geometry_json     # populate @json_geometries and @json_labels with mapped_lines from selected user(s)
     @json_geometries = []
     @json_labels = []
     existing_mapped_lines = MappedLine.where(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
-    logger.debug "existing mapped lines:"
-    logger.debug existing_mapped_lines
     unless existing_mapped_lines[0]
       @json_geometries[0] = "none found"
       @json_labels[0] = "none found"
-      logger.debug "none found"
       return
     end
-    geometry_list  = []
-    end_label_list = []
+#    geometry_list  = []
+#    end_label_list = []
     existing_mapped_lines.each do |mapped_line|
-      logger.debug "mapped line geometry:"
-      logger.debug mapped_line.geometry.inspect
       d{ mapped_line.geometry.as_text}
       @json_geometries   << mapped_line.geometry.as_text
       @json_labels  << mapped_line.end_label

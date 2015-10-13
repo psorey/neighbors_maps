@@ -7,8 +7,12 @@ NeighborsMaps::Application.routes.draw do
   resources :theme_map_layers
   resources :map_layers
   resources :theme_maps
-  
-  get 'theme_maps/:name/update_geo_db' => 'theme_maps#update_geo_db'
+
+  post   'theme_maps/:id/update_geo_db' => 'theme_maps#update_geo_db'
+
+
+  get 'theme_maps/:id/update_geo_db' => 'theme_maps#update_geo_db'
+  get 'theme_maps/:slug/update_geo_db' => 'theme_maps#update_geo_db'
   #  map.connect 'theme_maps/:name/update_geo_db', :controller => 'theme_maps', :action => 'update_geo_db'
   get 'theme_maps/:name/revert_geo_db' => 'theme_maps#revert_geo_db'
   #  map.connect 'theme_maps/:name/revert_geo_db', :controller => 'theme_maps', :action => 'revert_geo_db'
@@ -17,6 +21,7 @@ NeighborsMaps::Application.routes.draw do
   get 'theme_maps/:name' => 'theme_maps#show'
   #  map.connect 'theme_maps/:name', :controller => 'theme_maps', :action => 'show'
   
+
   # main menu items
   resources :forums
   resources :wiki

@@ -32,20 +32,18 @@ class ThemeMap < ActiveRecord::Base
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
   #validates_presence_of :name #, :layer_ids, :base_layer_ids 
-  validates_uniqueness_of :slug, :name, :message => "that name has already been used"
+  validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
 
-  before_create :create_slug
-
+  
+  
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
 
   def make_mapfile
-
     # mapscript:
     @map = MapObj.new
-
     @map.selectOutputFormat('PNG')
     outf = @map.outputformat
     outf.transparent = MS_TRUE
@@ -171,14 +169,12 @@ class ThemeMap < ActiveRecord::Base
   end
 
 
+
   def to_param
-    slug
+    self.name.parameterize
+    # slug
   end
 
-
-  def create_slug
-    self.slug = self.name.parameterize
-  end
 
 
 end

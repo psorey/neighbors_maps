@@ -57,6 +57,117 @@ var osm =  new ol.layer.Tile({
   });
 
 
+
+//addInteraction();
+
+var layerSwitcher = new ol.control.LayerSwitcher({
+        tipLabel: 'Layer Controls' // Optional label for button
+    });
+map.addControl(layerSwitcher);
+console.log("added layer switcher");
+layerSwitcher.render();
+
+*/
+
+var overlayLayers = [];
+var baseLayers = [];
+
+var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Group({
+                'title': 'Base maps',
+                layers: [
+                    new ol.layer.Tile({
+                        title: 'Watercolor',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.Stamen({ layer: 'watercolor' })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'OpenStreetMap',
+                        type: 'base',
+                        visible: true,
+                        source: new ol.source.OSM()
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Satellite',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.MapQuest({layer: 'sat'})
+                        }),
+                    new ol.layer.Image({
+                        title: 'Greenwood Aerial',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })})
+                ]
+            }),
+            new ol.layer.Group({
+                title: 'Overlays',
+                layers: [
+                    new ol.layer.Image({
+                        title: 'study blocks',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                    new ol.layer.Image({
+                        title: 'study character',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                    new ol.layer.Image({
+                        title: 'study corridors',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                    new ol.layer.Image({
+                        title: 'neighbors',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                   new ol.layer.Image({
+                        title: 'project boundary',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+
+                   new ol.layer.Image({
+                        title: 'p-patches',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })})
+                ]
+            })
+        ],
+        view: new ol.View({
+            // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
+            center: [-13620870.52201, 6056409.356303 ],
+            zoom: 15
+        })
+    });
+
+    var layerSwitcher = new ol.control.LayerSwitcher({
+        tipLabel: 'Layer Controls' // Optional label for button
+    });
+map.addControl(layerSwitcher);
+  
 var features = new ol.Collection();
 var featureSource = new ol.source.Vector({features:features});
 var featureOverlay = new ol.layer.Vector({
@@ -81,6 +192,7 @@ var featureOverlay = new ol.layer.Vector({
 featureSource.on('addfeature', function(event) {
     console.log("addfeature");
 });
+
 featureOverlay.setMap(map);
 
 var modify = new ol.interaction.Modify({
@@ -107,129 +219,10 @@ function addInteraction() {
 
 var typeSelect = document.getElementById('type');
 
-
 typeSelect.onchange = function(e) {
   map.removeInteraction(draw);
   addInteraction();
 };
-
-//addInteraction();
-
-var layerSwitcher = new ol.control.LayerSwitcher({
-        tipLabel: 'Layer Controls' // Optional label for button
-    });
-map.addControl(layerSwitcher);
-console.log("added layer switcher");
-layerSwitcher.render();
-
-*/
-
-var overlayLayers = [];
-var baseLayers = [];
-
-//for i in 
-
-
-     var map = new ol.Map({
-        target: 'map',
-        layers: [
-            new ol.layer.Group({
-                'title': 'Base maps',
-                layers: [
-                    new ol.layer.Tile({
-                        title: 'Water color',
-                        type: 'base',
-                        visible: false,
-                        source: new ol.source.Stamen({
-                            layer: 'watercolor'
-                        })
-                    }),
-                    new ol.layer.Tile({
-                        title: 'OSM',
-                        type: 'base',
-                        visible: true,
-                        source: new ol.source.OSM()
-                    }),
-                    new ol.layer.Tile({
-                        title: 'Satellite',
-                        type: 'base',
-                        visible: false,
-                        source: new ol.source.MapQuest({layer: 'sat'})
-                        }),
-                    new ol.layer.Image({
-                        title: 'Greenwood Aerial',
-                        type: 'base',
-                        visible: false,
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })})
- 
-                ]
-            }),
-            new ol.layer.Group({
-                title: 'Overlays',
-                layers: [
-                    new ol.layer.Image({
-                        title: 'study blocks',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'study_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })}),
-                    new ol.layer.Image({
-                        title: 'study character',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })}),
-                    new ol.layer.Image({
-                        title: 'study corridors',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })}),
-                    new ol.layer.Image({
-                        title: 'neighbors',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })}),
-                   new ol.layer.Image({
-                        title: 'project boundary',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })}),
-
-                   new ol.layer.Image({
-                        title: 'p-patches',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                        serverType: 'mapserver'
-                        })})
-
-  
-                ]
-            })
-        ],
-        view: new ol.View({
-            // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
-            center: [-13620870.52201, 6056409.356303 ],
-            zoom: 15
-        })
-    });
-
-    var layerSwitcher = new ol.control.LayerSwitcher({
-        tipLabel: 'Layer Controls' // Optional label for button
-    });
-    map.addControl(layerSwitcher);
 
 </script>
 
