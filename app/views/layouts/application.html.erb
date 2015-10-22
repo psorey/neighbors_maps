@@ -1,15 +1,26 @@
 
 <%= render :partial => '/layouts/head' %>
 <body>
-  <div id="banner"> Neighbor Mapping
-  </div>
-  <div id="container">
-    <div class="sidebar">
-      <div id="side_menu">
-        <%= @greeting %><br /><br />
-        <%= link_to 'Home',                             :controller=> 'welcome'   %><br /><br />
-        <%= link_to 'GIS Data Maps',                    :controller=> 'theme_maps'  %><br /><br />
-        <%= link_to 'map layers',                     :controller=> 'map_layers'  %><br /><br />
-    </div>
-  </div>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">streetscapes.org</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="<%=params[:controller] == 'welcome'? "active":"" %>"><%=link_to 'home', controller: 'welcome' %></li>
+            <li class="<%=params[:controller] == 'theme_maps'? "active":"" %>"><%=link_to 'gis data maps', controller: 'theme_maps' %></li>
+            <li class="<%=params[:controller] == 'map_layers'? "active":"" %>"><%= link_to 'map layers', :controller=> 'map_layers'  %></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+
   <%= render :partial => '/layouts/content' %>

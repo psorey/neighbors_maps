@@ -1,20 +1,19 @@
  <br />
+
+
+
  <div  class="grid" height="100%"> 
-  <table  width="800" border="0" cellspacing="0" cellpadding="0">
-    <tr valign="top">
-      <td><strong>Map Name</strong></td>
-      <td><strong>Description</strong></td>
-    </tr>
   <% maps.each do |theme_map| %>
-    <tr valign="top">
-      <td><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></td>
-      <td><%=h theme_map.get_summary_description %></td>
-      <td><%= link_to 'Edit', edit_theme_map_path(theme_map) %></td>
-      <td><%= link_to 'Destroy', theme_map, data: { confirm: 'Really?', method: :delete } %></td>
-    </tr>
+      <div class="row">
+        <div class="col-md-3"><%=h link_to theme_map.name, "theme_maps/#{theme_map.slug}" %></div>
+        <div class="col-md-2"> <%=image_tag theme_map.thumbnail_url, class: "img-responsive imageClip" %></div>
+        <div class="col-md-5"><%=h theme_map.get_summary_description %></div>
+        <div class="col-md-1"><%= link_to 'Edit', edit_theme_map_path(theme_map) %></div>       
+        <div class="col-md-1"><%= link_to 'Destroy', theme_map, data: { confirm: 'Really?', method: :delete } %></div>
+      </div>
   <% end %> 
-  </table>
+
  </div>
- <br /> <br />
 
 
+ 

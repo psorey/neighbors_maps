@@ -3,24 +3,17 @@ NeighborsMaps::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'theme_maps#index'
   resources :theme_map_layers
   resources :map_layers
-  resources :theme_maps
-
-  post   'theme_maps/:id/update_geo_db' => 'theme_maps#update_geo_db'
-
-
-  get 'theme_maps/:id/update_geo_db' => 'theme_maps#update_geo_db'
-  get 'theme_maps/:slug/update_geo_db' => 'theme_maps#update_geo_db'
-  #  map.connect 'theme_maps/:name/update_geo_db', :controller => 'theme_maps', :action => 'update_geo_db'
-  get 'theme_maps/:name/revert_geo_db' => 'theme_maps#revert_geo_db'
-  #  map.connect 'theme_maps/:name/revert_geo_db', :controller => 'theme_maps', :action => 'revert_geo_db'
-  get 'theme_maps/:name/send_help' => 'theme_maps#send_help'
-  #  map.connect 'theme_maps/:name/send_help', :controller => 'theme_maps', :action => 'send_help'
-  get 'theme_maps/:name' => 'theme_maps#show'
-  #  map.connect 'theme_maps/:name', :controller => 'theme_maps', :action => 'show'
   
+  resources :theme_maps do
+    post 'revert_geo_db', on: :member
+    post 'update_geo_db', on: :member
+  end
+
+  resources :theme_maps
+  get 'theme_maps/:name' => 'theme_maps#show'
 
   # main menu items
   resources :forums
@@ -51,6 +44,7 @@ NeighborsMaps::Application.routes.draw do
   get '/register'=> 'users#create'
   get '/signup' => 'users#new'
   get '/activate/:activation_code' =>  'users#activate', :activation_code => nil
+
   resources :users
   resource :session
   resources :passwords

@@ -1,27 +1,37 @@
 <!--  begin open_layers_interactive_init  -->
 <script>
-      var prompt_title = 'enter a number';
-      var prompt_string = 'estimated trips per month';
+  var prompt_title = 'enter a number';
+  var prompt_string = 'estimated trips per month';
+  var exist_geometries[];
+  var exist_labels[];
+  exist_geometries = <%=raw(@json_geometries)%>;
+  exist_labels = <%=raw(@json_labels)%>;
 
-      exist_geometries = <%=raw(@json_geometries)%>;
-      exist_labels = <%=raw(@json_labels)%>;
+  var styles = {
+    'Dot': [new ol.style.Circle({
+      radius: 5,
+      fill: null,
+      stroke: new ol.style.Stroke({color 'red', width: 2})
+    })],
+    'LineString': [new ol.style.Style({
+      stroke: new ol.style.Stroke({ color: 'red',width: 4 })
+    })],
+    'MultiLineString': [new ol.style.Style({
+      stroke: new ol.style.Stroke({ color: 'green', width: 1 })
+    })]
+  };
 
-      ol.Feature.Vector.style['default']['strokeWidth'] = '4';
-      ol.Feature.Vector.style['temporary']['strokeWidth'] = '4';
-      ol.Feature.Vector.style['default']['strokeColor'] = '#ff0000';
-      ol.Feature.Vector.style['temporary']['strokeColor'] = '#ff7777';
-      ol.Feature.Vector.style['select']['strokeWidth'] = '4';
-      ol.Feature.Vector.style['select']['strokeColor'] = '#3300ff';
 
-      <%= @theme_map.name.dashed %> = new ol.Layer.Vector("<%= @theme_map.name %>",
-         { projection: new ol.Projection("epsg:4326"),
-           opacity:0.5,
-           rendererOptions: {zIndexing: true}
-      });
+  var <%= @theme_map.name.dashed %> = new ol.Layer.Vector("<%= @theme_map.name %>",{ 
+    projection: new ol.Projection("epsg:3857"),
+    opacity:0.5,
+    rendererOptions: {zIndexing: true}
+  });
 
-      <%= "#{@theme_map.name.dashed}" + '_labels' %> = new ol.Layer.Vector("<%= @theme_map.name + ' Labels' %>",
-      { projection: new ol.Projection("epsg:4326"),
-        opacity:0.5,
+
+  var <%= "#{@theme_map.name.dashed}" + '_labels' %> = new ol.Layer.Vector("<%= @theme_map.name + ' Labels' %>",{ 
+    projection: new ol.Projection("epsg:3857"),
+    opacity:0.5,
         styleMap: new ol.StyleMap({'default':{
           strokeColor: "#ff0000",
           strokeOpacity: 0.8,
@@ -46,7 +56,7 @@
       <%= @theme_map.name.dashed + '_labels' %>.setZIndex(1);
       map.addLayers([<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed + '_labels' %>]);
 
-      /// ----------- register callbacks ----------------///
+      /// ----------- register callbacks ---------------- ///
 
       <%= @theme_map.name.dashed + '_labels' %>.events.register('featureadded', this, function(obj){
           if(obj.feature.attributes.geometry_feature_attribute == null) {
@@ -54,6 +64,7 @@
               obj.feature.state = ol.State.DELETE;
           }
       });
+
 
       <%= @theme_map.name.dashed %>.events.register('featuresadded', this, function(obj){
           for(i = 0; i < obj.features.length; i = i + 1) {
@@ -67,11 +78,13 @@
               }
           };
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>); 
-      });
+          });
+
       // update the label layer after editing the lines...
       <%= @theme_map.name.dashed %>.events.register('afterfeaturemodified', this, function(obj){
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       });
+
 
       var deleteFeature = function(feature) {   // SelectFeature callback function
           select.unselectAll();
@@ -80,10 +93,12 @@
           makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
       };
 
+
       var select = new ol.Control.SelectFeature(<%= @theme_map.name.dashed %>, {
           onSelect: deleteFeature,  // calls deleteFeature(selected_feature)
           clickout: true
       });
+
 
       // drawInteractiveControls
       drawControls = {
@@ -97,7 +112,7 @@
           map.addControl(drawControls[key]);
       };
 
-      // now add the geometries and label strings from the database-loaded arrays...
+      // now add the geometries and label strings from the database-loaded arrays... 
       buildFeatures(); // using exist_geometries[] and exist_labels[]
      // document.getElementById('noneToggle').checked = true;
 </script>

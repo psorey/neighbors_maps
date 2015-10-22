@@ -35,7 +35,6 @@ class ThemeMap < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
-
   
   
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
@@ -87,7 +86,6 @@ class ThemeMap < ActiveRecord::Base
 
 
   def add_ordered_layers
-  #  @layer_name_list = []
     # load the layer descriptions into the MapObj
     temp_layers = []
     self.map_layers.each do |layer|
@@ -100,10 +98,35 @@ class ThemeMap < ActiveRecord::Base
       layer.updateFromString(map_layer.layer_mapfile_text)  # mapscript
       mapfile_layer_name = map_layer.name.dashed
       layer.name = mapfile_layer_name
- #     @layer_name_list << mapfile_layer_name
     end
   end
 
+
+  # test: get_theme_layers should return an array of map_layer id's  !!!
+  #       corresponding to the theme_map_layers !!!
+  def get_theme_layers
+    layer_id_list = []
+    base_id_list = []
+    self.theme_map_layers.each do |tml|
+      logger.debug "Theme_map.get_theme_layers: are we loading from db?"
+      layer_id_list << tml.map_layer_id
+      if tml.is_base_layer
+        base_id_list << tml.map_layer_id
+      end
+    end
+    return layer_id_list, base_id_list
+  end
+
+
+
+  def to_param
+    
+    self.slug = self.name.parameterize
+  end
+
+
+
+=begin
   # are we still using this?
   # test: all the different scenarios...
   def update_layers (map_layers, base_layers)
@@ -151,30 +174,6 @@ class ThemeMap < ActiveRecord::Base
       end
     end
   end
-
-
-  # test: get_theme_layers should return an array of map_layer id's  !!!
-  #       corresponding to the theme_map_layers !!!
-  def get_theme_layers
-    layer_id_list = []
-    base_id_list = []
-    self.theme_map_layers.each do |tml|
-      logger.debug "Theme_map.get_theme_layers: are we loading from db?"
-      layer_id_list << tml.map_layer_id
-      if tml.is_base_layer
-        base_id_list << tml.map_layer_id
-      end
-    end
-    return layer_id_list, base_id_list
-  end
-
-
-
-  def to_param
-    self.name.parameterize
-    # slug
-  end
-
-
+=end
 
 end

@@ -79,7 +79,9 @@ class ThemeMapsController < ApplicationController
 
 
   def revert_geo_db
-    @theme_map = ThemeMap.where(slug: params[:id]).first
+    logger.debug "revert_geo_db"
+    logger.debug params.inspect
+    @theme_map = ThemeMap.where(:slug => params[:id]).first
     @current_neighbor_id = 44 # current_user.neighbor_id
     build_geometry_json
     render :js => "exist_geometries = #{@json_geometries}; exist_labels = #{@json_labels}; buildFeatures();"
@@ -88,7 +90,6 @@ class ThemeMapsController < ApplicationController
 
   def update_geo_db
     @theme_map = ThemeMap.where(slug: params[:slug]).first
-
     @current_neighbor_id = 44 #current_user.neighbor_id
     geometries = JSON.parse(params[:geometries])
     labels = JSON.parse(params[:labels])
@@ -115,6 +116,7 @@ class ThemeMapsController < ApplicationController
     render :text => result
   end
 
+
   def update
     @theme_map = ThemeMap.where(slug: params[:id]).first
     map_layers = params[:theme_map][:layer_ids]
@@ -139,7 +141,7 @@ class ThemeMapsController < ApplicationController
   end
 
 
-  def build_geometry_json     # populate @json_geometries and @json_labels with mapped_lines from selected user(s)
+  def build_geometry_json
     @json_geometries = []
     @json_labels = []
     existing_mapped_lines = MappedLine.where(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
@@ -162,7 +164,7 @@ class ThemeMapsController < ApplicationController
   private
 
   def theme_map_params
-    params.require(:theme_map).permit(:name, :description, :slug, :is_interactive, :layer_ids=>[], :base_layer_ids=>[])
+    params.require(:theme_map).permit(:name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[])
   end
 
 end
