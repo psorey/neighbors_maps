@@ -1,12 +1,13 @@
 # .gitignore for 'green2'
 .redcar/*
-.gitignore
+# .gitignore
 config/initializers/site_keys.rb
 config/*.yml
 config/environment.rb
 *.kpf
 /log/*.log
 /tmp/*
+/
 # Gemfile
 # Gemfile.lock
 # /db/schema.rb

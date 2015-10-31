@@ -1,0 +1,28 @@
+<h1>Editing theme_map_layer</h1>
+
+<% form_for(@theme_map_layer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :theme_maps_id %><br />
+    <%= f.text_field :theme_maps_id %>
+  </p>
+  <p>
+    <%= f.label :map_layer_id %><br />
+    <%= f.text_field :map_layer_id %>
+  </p>
+  <p>
+    <%= f.label :line_color %><br />
+    <%= f.text_field :line_color %>
+  </p>
+  <p>
+    <%= f.label :fill_color %><br />
+    <%= f.text_field :fill_color %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @theme_map_layer %> |
+<%= link_to 'Back', theme_map_layers_path %>

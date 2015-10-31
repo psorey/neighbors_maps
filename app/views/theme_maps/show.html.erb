@@ -1,4 +1,5 @@
 <!---   show.html.erb -->
+
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
@@ -8,7 +9,7 @@
             <tr>
               <td><label>geometry type &nbsp;</label>
                 <select id="type">
-                  <option value="None">none</option>
+                  <option value="None" selected >none</option>
                   <option value="Point">point</option>
                   <option value="LineString">line</option>
                   <option value="Polygon">polygon</option>
@@ -35,26 +36,67 @@
 
 <script>
 
+
+
+$( document ).ready(function() {
+    $("#type").selectedIndex = 0;
+    //console.log("select should be none");
+    $("#type").css( "border", "1px solid red" );
+});
+
 var overlayLayers = [];
 var baseLayers = [];
 
+// if interactive
+// begin setup of overlay drawing and editing...
+   var features = new ol.Collection();
+   var featureSource = new ol.source.Vector({features:features});
+   var labels = new ol.Collection();
+   var labelsSource = new ol.source.Vector({features:labels});
+
+var <%= @theme_map.name.dashed %>;
+var <%= @theme_map.name.dashed + '_labels'%>;
+
+
+
+var fill = new ol.style.Fill({
+  color: 'rgba(0,0,0,0.2)'
+});
+
+var stroke = new ol.style.Stroke({
+  color: 'rgba(0,0,0,0.6)',
+  width: 1
+});
+
+var circle = new ol.style.Circle({
+  radius: 6,
+  fill: fill,
+  stroke: stroke
+  });
+
+var vectorStyle = new ol.style.Style({
+  fill: fill,
+  stroke: stroke,
+  image: circle
+});
+
 var map = new ol.Map({
         target: 'map',
-        layers: [
+        layers: [  /*
             new ol.layer.Group({
                 'title': 'base maps',
                 layers: [
                     new ol.layer.Tile({
                         title: 'watercolor',
                         type: 'base',
-                        visible: false,
+                        visible: true,
                         opacity: .4,
                         source: new ol.source.Stamen({ layer: 'watercolor' })
                     }),
                     new ol.layer.Tile({
                         title: 'openStreetMap',
                         type: 'base',
-                        visible: true,
+                        visible: false,
                         source: new ol.source.OSM()
                     }),
                     new ol.layer.Tile({
@@ -71,9 +113,11 @@ var map = new ol.Map({
                            url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                            params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
                            serverType: 'mapserver'
-                        })})
+                        })})  
                 ]
-            }),
+            }),  */
+
+
             new ol.layer.Group({
                 title: 'overlays',
                 layers: [
@@ -98,13 +142,13 @@ var map = new ol.Map({
                            params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
                            serverType: 'mapserver'
                         })}),
-                    new ol.layer.Image({
-                        title: 'neighbors',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                           params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                           serverType: 'mapserver'
-                        })}),
+                  new ol.layer.Image({
+                      title: 'neighbors',
+                      source: new ol.source.ImageWMS({
+                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                         params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                         serverType: 'mapserver'
+                      })}),
                    new ol.layer.Image({
                         title: 'project boundary',
                         source: new ol.source.ImageWMS({
@@ -112,23 +156,38 @@ var map = new ol.Map({
                            params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
                            serverType: 'mapserver'
                         })}),
-                   new ol.layer.Image({
-                        title: 'half-blocks',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                           params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                           serverType: 'mapserver'
-                        })}),
-                   new ol.layer.Image({
-                        title: 'p-patches',
-                        source: new ol.source.ImageWMS({
-                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                           params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
-                           serverType: 'mapserver'
-                        })})
+  //                 new ol.layer.Image({
+  //                      title: 'half-blocks',
+  //                      source: new ol.source.ImageWMS({
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+  //                         params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+  //                         serverType: 'mapserver'
+  //                      })}),
+  //                 new ol.layer.Image({
+  //                      title: 'p-patches',
+  //                      source: new ol.source.ImageWMS({
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+  //                         params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+  //                         serverType: 'mapserver'
+  //                         })}),
+
+
+                  // begin setup of overlay drawing and editing...
+
+                  <%= @theme_map.name.dashed %> = new ol.layer.Vector({
+                      title: "<%= @theme_map.name %>",  // /var featureOverlay = new ol.layer.Vector({
+                      source: featureSource,
+                      style: vectorStyle
+                  }),
+
+                  <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
+                      title: "<%= @theme_map.name + 'Labels' %>",  // /var featureOverlay = new ol.layer.Vector({
+                      source: labelsSource,
+                      style: vectorStyle
+                  })
                 ]
             })
-        ],
+                  ],
         view: new ol.View({
             // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
             center: [-13620870.52201, 6056409.356303 ],
@@ -140,202 +199,125 @@ var map = new ol.Map({
         tipLabel: 'layer controls'   // Optional label for button
     });
 
-map.addControl(layerSwitcher);
+    map.addControl(layerSwitcher);
+    var scaleControl = new ol.control.ScaleLine();
+    map.addControl(scaleControl);
+
+    /////////////////////////////////////////  interactive ///////////////////////////////
 
 
-/////////////////////////////////////////  interactive ///////////////////////////////
+    var prompt_title = 'enter a number';               // @theme_map.prompt_title
+    var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
+    var exist_geometries=[];
+    var exist_labels=[];
+
+    //  exist_geometries = <%=raw(@json_geometries)%>;
+    //  exist_labels = <%=raw(@json_labels)%>;
+
+    // exist_geometries =  ["LINESTRING(45.554194 -122.686101, 45.433001 -122.762632)",
+    //                   "LINESTRING(45.432505 -122.598327, 45.423743 -122.592932)"];
+
+    // exist_labels = ["1","2"];
 
 
-  var prompt_title = 'enter a number';               // @theme_map.prompt_title
-  var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
-  var exist_geometries=[];
-  var exist_labels=[];
+   featureSource.on('addfeature', function(event) {
+      console.log("add feature");
+      my_features = this.getFeatures();
+      // my_collection = this.getFeaturesCollection();
+      for(i = 0; i < my_features.length; i++) {
+          geometry_feature = my_features[i];
+          console.log(gjFormat.writeFeature(geometry_feature));
+/*        if(geometry_feature.get("data") == "") {
+             var property = prompt(prompt_title, prompt_string);
+             console.log(property);
+             geometry_feature.set("data", property);
+             if (geometry_feature.get("data") == null) {
+                 geometry_feature.state = ol.State.DELETE;
+                 } }
+ */
+      }
+       makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
+   });
 
-  exist_geometries =  ["LINESTRING(45.554194 -122.686101, 45.433001 -122.762632)", "LINESTRING(45.432505 -122.598327, 45.423743 -122.592932)"];
-  exist_labels = ["1","2"];      // <%=raw(@json_labels)%>;             // array of strings
+//   featureSource.on('change', function() {
+//       console.log("change feature");
+//   });
+//   featureSource.on('changefeature', function() {
+//       console.log("modify feature");
+//   });
 
-  var styles = {
-    'Dot': [new ol.style.Circle({
-      radius: 5,
-      fill: null,
-      stroke: new ol.style.Stroke({color: 'red', width: 2})
-    })],
-    'LineString': [new ol.style.Style({
-      stroke: new ol.style.Stroke({ color: 'red',width: 4 })
-    })],
-    'MultiLineString': [new ol.style.Style({
-      stroke: new ol.style.Stroke({ color: 'green', width: 1 })
-    })]
-  };
+/*
+    var format = new ol.format.WKT();
+    var my_feature = format.readFeature( "LINESTRING( -122.36108779907  47.683753967286, -122.362632   47.683001 , 
+                                          -122.342632 47.688888888)" );
+    var my_label = format.readFeature("POINT(-122.342632 47.6888888)");
+    my_feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+    features.push(my_feature);
+    my_label = format.readFeature("POINT( -122.342632 47.688888888)");
+    my_label.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+    labels.push(my_label);
+*/
 
+    // switching to geoJSON for objects
+    var gjFormat = new ol.format.GeoJSON();
 
+    featureSource.addFeatures(gjFormat.readFeatures({
+      "type": "FeatureCollection",
+        "features": [{
+           "type": "Feature",
+           "geometry": { "type": "LineString",
+             "coordinates": [[ -122.3610877, 47.68375396 ], [-122.3626, 47.683001],[-122.342632, 47.688888888]]
+           },
+           "properties": {
+             "name": "my_path_1",
+             "content": "This is where I like to go when I take a walk.",
+             "times_per_month":"5"
+           }
+         },
+         {
+           "type": "Feature",
+           "geometry": { "type": "Point", "coordinates": [-122.342632, 47.688888888] }
+        }]
+      }
+    ));
+    var my_features = featureSource.getFeatures();
+    for(i=0; i<my_features.length; i++) {
+      console.log(my_features[i]);
+      my_features[i].getGeometry().transform("EPSG:4326","EPSG:3857");
+    }
 
-// begin setup of overlay drawing and editing...
-
-var features = new ol.Collection();
-var featureSource = new ol.source.Vector({features:features});
-var <%= @theme_map.name.dashed %> = new ol.layer.Vector({
-  title: "<%= @theme_map.name %>",  // /var featureOverlay = new ol.layer.Vector({
-  source: featureSource,
-  style: new ol.style.Style({
-    fill: new ol.style.Fill({
-      color: 'rgba(255, 255, 255, 0.2)'
-    }),
-    stroke: new ol.style.Stroke({
-      color: '#ff1111',
-      width: 3
-    }),
-    image: new ol.style.Circle({
-      radius: 7,
-      fill: new ol.style.Fill({
-        color: '#ffcc33'
-      })
-    })
-  })
- });
-
-
-
-featureSource.on('addfeature', function(event) {
-          my_features = event.getFeatures();
-          console.log(my_features[0]);
-          for(i = 0; i < event.features.length; i = i + 1) {
-              geometry_feature = event.features[i];
-              if(geometry_feature.attributes.geometry_feature_attribute == null) {
-                  var geometry_feature_attribute = prompt(prompt_title, prompt_string);
-                  geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
-                  if (geometry_feature.attributes.geometry_feature_attribute == null) {
-                      geometry_feature.state = ol.State.DELETE;
-                  }
-              }
-          };
-          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
-
-      console.log("addfeature");
-});
-
-
-
- <%= @theme_map.name.dashed %>.setMap(map);
-
-
-
-var modify = new ol.interaction.Modify({
-  features: features,
-  // the SHIFT key must be pressed to delete vertices, so
-  // that new vertices can be drawn at the same position
-  // of existing vertices
-  deleteCondition: function(event) {
-    return ol.events.condition.shiftKeyOnly(event) &&
-        ol.events.condition.singleClick(event);
-  }
-});
-
-
-
-map.addInteraction(modify);
-
-
-
-var draw; // global so we can remove it later
-
-function addInteraction() {
-  draw = new ol.interaction.Draw({
-    features: features,
-    type: (typeSelect.value)
-  });
-  map.addInteraction(draw);
-}
-
-
-
-var typeSelect = document.getElementById('type');
-
-
-
-typeSelect.onchange = function(e) {
-  map.removeInteraction(draw);
-  addInteraction();
-};
-
-
-// interactive from OL2 implementation... ////////////////////////////////////////////////////////////////////////////////
-
-// import any vector features from database
-// begin interactive_init
-  /*
-
-  var <%= @theme_map.name.dashed %> = new ol.layer.Vector("<%= @theme_map.name %>", {
-    projection: new ol.proj.Projection({code:"EPSG:3857"}),
-    opacity:0.5,
-    rendererOptions: {zIndexing: true}
-  });
-  map.addLayer(<%= @theme_map.name.dashed %>);
-  <%= @theme_map.name.dashed %>.setZIndex(2);
-
-  var <%= "#{@theme_map.name.dashed}" + '_labels' %> = new ol.layer.Vector("<%= @theme_map.name + ' Labels' %>",{ 
-    projection: new ol.proj.Projection({code:"EPSG:3857"}),   // interactive_layer.srs
-    opacity:0.5,                                  // interactive_layer.opacity
-        styleMap: new ol.style.Style({'default':{
-          strokeColor: "#ff0000",                 // intearactive_layer.stroke_color
-          strokeOpacity: 0.8,                     // stroke_opacity
-          strokeWidth: 3,                         // stroke_width
-          fillColor: "#FFeeee",                   // fill_color
-          fillOpacity: 1,                         // fill_opacity
-          pointRadius: 12,
-          pointerEvents: "visiblePainted",
-          label : "${geometry_feature_attribute}",
-          fontColor: "black",
-          fontSize: "20px",
-          fontFamily: "Courier New, monospace",
-          fontWeight: "bold",
-          labelAlign: "cm",
-          graphicZIndex: 100,
-          labelXOffset: "0",
-          labelYOffset: "0"
-        }}),
-        rendererOptions: {zIndexing: true}
+    
+    var modify = new ol.interaction.Modify({
+      features: features,
+      // the SHIFT key must be pressed to delete vertices, so
+      // that new vertices can be drawn at the same position
+      // of existing vertices
+      deleteCondition: function(event) {
+        return ol.events.condition.shiftKeyOnly(event) &&
+          ol.events.condition.singleClick(event);
+        }
       });
-      <%= @theme_map.name.dashed + '_labels' %>.setZIndex(1);
-      map.addLayer(<%= @theme_map.name.dashed + '_labels'%>);
-
-    */
-      /// ----------- register callbacks ---------------- ///
-    /*
-      <%= @theme_map.name.dashed + '_labels' %>.events.register('featureadded', this, function(obj){
-          if(obj.feature.attributes.geometry_feature_attribute == null) {
-              obj.feature.destroy;
-              obj.feature.state = ol.State.DELETE;
-          }
-      });
-   
-      <%= @theme_map.name.dashed %>.events.register('featuresadded', this, function(obj){
-          for(i = 0; i < obj.features.length; i = i + 1) {
-              geometry_feature = obj.features[i];
-              if(geometry_feature.attributes.geometry_feature_attribute == null) {
-                  var geometry_feature_attribute = prompt(prompt_title, prompt_string);
-                  geometry_feature.attributes.geometry_feature_attribute = geometry_feature_attribute;
-                  if (geometry_feature.attributes.geometry_feature_attribute == null) {
-                      geometry_feature.state = ol.State.DELETE;
-                  }
-              }
-          };
-          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>); 
-          });
+      map.addInteraction(modify);
 
 
-      // update the label layer after editing the lines...
-      <%= @theme_map.name.dashed %>.events.register('afterfeaturemodified', this, function(obj){
-          makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
-      });
-  */
-// end interactive_init
+      var draw;
+      function addInteraction() {
+        draw = new ol.interaction.Draw({
+          features: features,
+          type: (typeSelect.value)
+       });
+       map.addInteraction(draw);
+     }
 
-// <!--  begin  open_layers_interactive_functions -->
+      var typeSelect = document.getElementById('type');
+        typeSelect.onchange = function(e) {
+          map.removeInteraction(draw);
+       addInteraction();
+    };
 
 
-      function emptyFeatures(){
-        <%= @theme_map.name.dashed %>.source.clear();  //destroyFeatures();
+  function emptyFeatures(){
+        <%= @theme_map.name.dashed %>.source.clear();
         <%= @theme_map.name.dashed  + '_labels' %>.source.clear();
         exist_geometries = [];
         exist_labels = [];
@@ -346,59 +328,54 @@ typeSelect.onchange = function(e) {
       function buildFeatures(){
         console.log("buildfeatures() exist_geometries = ", exist_geometries);
         if (exist_geometries[0] == 'none found' || exist_geometries == 'none found') {
-          console.log(" we must return");
-          exist_geometries = []; // it will hold any geometry that we enter via mouse clicks
-          exist_labels = [];
-          return;
+            console.log(" we must return");
+            exist_geometries = []; // it will hold any geometry that we enter via mouse clicks
+            exist_labels = [];
+            return;
         }
         geometries = [];
         geometry_labels = [];
-        console.log(exist_geometries[0]);
-        console.log(exist_geometries[1]);
-        console.log(exist_geometries.length);
-        for(i=0; i < exist_geometries.length; i++) { // !!! !!! !!!
-          //new ol.format.WKT.readFeatures(
+        for(i=0; i < exist_geometries.length; i++) {
+          // var geom = new ol.format.WKT.readFeatures(unescape(exist_geometries[i]));
           var geom = new ol.Geometry.fromWKT(unescape(exist_geometries[i]));
           console.log("geom= ", geom);
           feature = new ol.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
           exist_features[i] = feature;
         }
-       // this triggers the makeLabeledDots function through the 'featuresadded' event callback
+        // triggers the makeLabeledDots function through the 'featuresadded' event callback
         <%= @theme_map.name.dashed %>.addFeatures(exist_features);
       }
 
-
       // create array of geometries and labels
       function makeLabeledDots(geom_layer, label_layer) {
-        var lineFeatures = geom_layer.source.getFeatures(); //returns: {Array.<ol.Feature>} ///// working down from here.......
-        //console.log("make labeled dots: lineFeatures--> length =", lineFeatures.length(), lineFeatures );
-        label_layer.destroyFeatures();
-
+        console.log ('dots!');
+        my_source = geom_layer.getSource();
+        lineFeatures = my_source.getFeatures(); 
+        label_source = label_layer.getSource();
+        label_source.clear();
         geometries = [];
         geometry_labels = [];
-
         for (var i = 0; i < lineFeatures.length; i = i+1) {
           if (lineFeatures[i] != null) {
-            var geometry = lineFeatures[i].geometry;
-            var nodes = lineFeatures[i].geometry.getVertices();
-            var lastNode = nodes[nodes.length -1];
-            var pointFeature = new ol.Feature.Vector(lastNode);
-            var count = i + '';
-            pointFeature.attributes = {
-                    geometry_feature_attribute: lineFeatures[i].attributes.geometry_feature_attribute,
-                    whichLine: count};
-            label_layer.addFeatures(pointFeature);
-            var wktwriter=new ol.Format.WKT();
-            var wkt=wktwriter.write(lineFeatures[i]);
-            geometries.push(wkt);
-            geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
+            var geometry = lineFeatures[i].getGeometry();
+            coords = geometry.flatCoordinates;
+            console.log(coords);
+            // var nodes = geometry.getVertices();
+            //var pointFeature = new ol.Feature.Vector(lastNode);
+            //  var count = i;
+   //         pointFeature.set() = {
+   //                 geometry_feature_attribute: features[i].attributes.geometry_feature_attribute,
+   //                 whichLine: count};
+   //         label_layer.addFeatures(pointFeature);
+   //         var wktwriter=new ol.Format.WKT();
+   //         var wkt=wktwriter.write(lineFeatures[i]);
+   //         geometries.push(wkt);
+   //         geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
           }
         }
       }
 
 // <!-- end open_layers_interactive_functions -->
-
-
 
 </script>
 
