@@ -281,35 +281,7 @@ var map = new ol.Map({
 
     var prompt_title = 'enter a number';               // @theme_map.prompt_title
     var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
-    var exist_geometries=[];
-    var exist_labels=[];
 
-    //  exist_geometries = <%=raw(@json_geometries)%>;
-    //  exist_labels = <%=raw(@json_labels)%>;
-
-    // exist_geometries =  ["LINESTRING(45.554194 -122.686101, 45.433001 -122.762632)",
-    //                   "LINESTRING(45.432505 -122.598327, 45.423743 -122.592932)"];
-
-    // exist_labels = ["1","2"];
-
-/*
-   featureSource.on('addfeature', function(event) {
-      console.log("add feature");
-      my_features = this.getFeatures();
-      for(i = 0; i < my_features.length; i++) {
-          geometry_feature = my_features[i];
-          // console.log(gjFormat.writeFeature(geometry_feature));
-       if(geometry_feature.get("data") == "") {
-             var property = prompt(prompt_title, prompt_string);
-             console.log(property);
-             geometry_feature.set("data", property);
-             if (geometry_feature.get("data") == null) {
-                 geometry_feature.state = ol.State.DELETE;
-                 } }
-      }
-       makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
-   });
- */
 
 
    featureSource.on('change', function() {
@@ -319,6 +291,7 @@ var map = new ol.Map({
 
 
    var gjFormat = new ol.format.GeoJSON();
+
 
     // store all data in LineString feature; data generates labeled dot on separate 'label' layer
     featureSource.addFeatures(gjFormat.readFeatures({
@@ -348,12 +321,13 @@ var map = new ol.Map({
         ]}
     ));
 
+
     var my_features = featureSource.getFeatures();
     for(i=0; i<my_features.length; i++) {
       my_features[i].getGeometry().transform("EPSG:4326","EPSG:3857");
     }
 
-    
+
     var modify = new ol.interaction.Modify({
       features: features,
       // the SHIFT key must be pressed to delete vertices, so
@@ -376,6 +350,7 @@ var map = new ol.Map({
        map.addInteraction(draw);
      }
 
+
       var typeSelect = document.getElementById('type');
         typeSelect.onchange = function(e) {
           map.removeInteraction(draw);
@@ -383,6 +358,42 @@ var map = new ol.Map({
     };
 
 
+    // create array of geometries and labels
+    function makeLabeledDots(geom_layer, label_layer) {
+        console.log ('dots!');
+        my_source = geom_layer.getSource();
+        lineFeatures = my_source.getFeatures();
+        label_source = label_layer.getSource();
+        label_source.clear();
+        geometries = [];
+        geometry_labels = [];
+        for (var i = 0; i < lineFeatures.length; i = i+1) {
+          if (lineFeatures[i] != null) {
+            var geometry = lineFeatures[i].getGeometry();
+            coords = geometry.flatCoordinates;
+            console.log(coords);
+            len = coords.length;
+            lastCoord = coords[len-1];
+            console.log(lastCoord);
+            pointCoords = [coords[len-2], coords[len-1]];
+            pointFeature = new ol.Feature({
+               geometry: new ol.geom.Point(pointCoords),
+            });
+            pointFeature.getGeometry().transform("EPSG:4326","EPSG:3857");
+
+            labelSource.addFeature(pointFeature);
+          }
+        }
+      }
+
+
+
+
+
+
+    /*
+
+       
   function emptyFeatures(){
         <%= @theme_map.name.dashed %>.source.clear();
         <%= @theme_map.name.dashed  + '_labels' %>.source.clear();
@@ -412,49 +423,7 @@ var map = new ol.Map({
         // triggers the makeLabeledDots function through the 'featuresadded' event callback
         <%= @theme_map.name.dashed %>.addFeatures(exist_features);
       }
-
-      // create array of geometries and labels
-      function makeLabeledDots(geom_layer, label_layer) {
-        console.log ('dots!');
-        my_source = geom_layer.getSource();
-        lineFeatures = my_source.getFeatures();
-        label_source = label_layer.getSource();
-        label_source.clear();
-        geometries = [];
-        geometry_labels = [];
-        for (var i = 0; i < lineFeatures.length; i = i+1) {
-          if (lineFeatures[i] != null) {
-            var geometry = lineFeatures[i].getGeometry();
-            coords = geometry.flatCoordinates;
-            console.log(coords);
-            len = coords.length;
-            lastCoord = coords[len-1];
-            console.log(lastCoord);
-            pointCoords = [coords[len-2], coords[len-1]];
-            //console.log(pointCoords);
-            //pointFeature = new ol.geom.Point(pointCoords);
-            //console.log(pointFeature);
-            pointFeature = new ol.Feature({
-               geometry: new ol.geom.Point(pointCoords),
-            });
-            pointFeature.getGeometry().transform("EPSG:4326","EPSG:3857");
-
-            labelSource.addFeature(pointFeature);
-            // console.log(coords);
-            // var nodes = geometry.getVertices();
-            //var pointFeature = new ol.Feature.Vector(lastNode);
-            //  var count = i;
-   //         pointFeature.set() = {
-   //                 geometry_feature_attribute: features[i].attributes.geometry_feature_attribute,
-   //                 whichLine: count};
-   //         label_layer.addFeatures(pointFeature);
-   //         var wktwriter=new ol.Format.WKT();
-   //         var wkt=wktwriter.write(lineFeatures[i]);
-   //         geometries.push(wkt);
-   //         geometry_labels.push(lineFeatures[i].attributes.geometry_feature_attribute);
-          }
-        }
-      }
+*/
 
 // <!-- end open_layers_interactive_functions -->
 
