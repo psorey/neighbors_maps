@@ -34,9 +34,10 @@
   <%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %>
 </div>
 
+
+
+
 <script>
-
-
 
 $( document ).ready(function() {
     $("#type").selectedIndex = 0;
@@ -52,33 +53,105 @@ var baseLayers = [];
    var features = new ol.Collection();
    var featureSource = new ol.source.Vector({features:features});
    var labels = new ol.Collection();
-   var labelsSource = new ol.source.Vector({features:labels});
+   var labelSource = new ol.source.Vector({features:labels});
 
 var <%= @theme_map.name.dashed %>;
 var <%= @theme_map.name.dashed + '_labels'%>;
-
 
 
 var fill = new ol.style.Fill({
   color: 'rgba(0,0,0,0.2)'
 });
 
+
 var stroke = new ol.style.Stroke({
   color: 'rgba(0,0,0,0.6)',
-  width: 1
+  width: 2
+  });
+
+
+var getText = function(feature /*, resolution*/) {
+  var maxResolution = 10000000;
+  var text = feature.get('times_per_month');
+  if (resolution > maxResolution) {
+    text = '';
+  }
+  return text;
+};
+
+var createTextStyle = function(feature /*, resolution */) {
+  return new ol.style.Text({
+    textAlign: "Start",
+    textBaseline: "Middle",
+    font: 'Normal 12px Arial',
+    text: getText(),
+    fill: new ol.style.Fill({
+      color: '#222222'
+    }),
+    stroke: new ol.style.Stroke({
+      color: '#000000',
+      width: 1
+    }),
+    offsetX: -3,
+    offsetY: 5,
+    rotation: 0
+  });
+};
+
+
+
+// circles
+var createCircleStyle = function() {
+  return function(feature, resolution) {
+    var style = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'blue',
+        width: 1
+      }),
+      fill: new ol.style.Fill({
+        color: 'rgba(0, 0, 255, 0.1)'
+      }),
+      text: createTextStyle(feature /*, resolution */)
+    });
+    return [style];
+  };
+};
+
+
+var circleText =  new ol.style.Text({
+  textAlign: "Start",
+  textBaseline: "Middle",
+  font: 'Normal 12px Arial',
+  text: "8",
+  fill: new ol.style.Fill({
+    color: '#222222'
+  }),
+  stroke: new ol.style.Stroke({
+    color: '#000000',
+    width: 1
+  }),
+  offsetX: -3,
+  offsetY: 5,
+  rotation: 0
 });
 
-var circle = new ol.style.Circle({
-  radius: 6,
+
+var circleStyle = new ol.style.Circle({
+  radius: 8,
   fill: fill,
-  stroke: stroke
-  });
+  stroke: stroke,
+  text: circleText
+});
+
+
 
 var vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: stroke,
-  image: circle
+  // image: circle,
+  //text: circleText
 });
+
 
 var map = new ol.Map({
         target: 'map',
@@ -182,12 +255,12 @@ var map = new ol.Map({
 
                   <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
                       title: "<%= @theme_map.name + 'Labels' %>",  // /var featureOverlay = new ol.layer.Vector({
-                      source: labelsSource,
-                      style: vectorStyle
+                      source: labelSource,
+                      style: circleStyle //createCircleStyle
                   })
                 ]
             })
-                  ],
+        ],
         view: new ol.View({
             // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
             center: [-13620870.52201, 6056409.356303 ],
@@ -219,48 +292,35 @@ var map = new ol.Map({
 
     // exist_labels = ["1","2"];
 
-
+/*
    featureSource.on('addfeature', function(event) {
       console.log("add feature");
       my_features = this.getFeatures();
-      // my_collection = this.getFeaturesCollection();
       for(i = 0; i < my_features.length; i++) {
           geometry_feature = my_features[i];
-          console.log(gjFormat.writeFeature(geometry_feature));
-/*        if(geometry_feature.get("data") == "") {
+          // console.log(gjFormat.writeFeature(geometry_feature));
+       if(geometry_feature.get("data") == "") {
              var property = prompt(prompt_title, prompt_string);
              console.log(property);
              geometry_feature.set("data", property);
              if (geometry_feature.get("data") == null) {
                  geometry_feature.state = ol.State.DELETE;
                  } }
- */
       }
        makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
    });
+ */
 
-//   featureSource.on('change', function() {
-//       console.log("change feature");
-//   });
-//   featureSource.on('changefeature', function() {
-//       console.log("modify feature");
-//   });
 
-/*
-    var format = new ol.format.WKT();
-    var my_feature = format.readFeature( "LINESTRING( -122.36108779907  47.683753967286, -122.362632   47.683001 , 
-                                          -122.342632 47.688888888)" );
-    var my_label = format.readFeature("POINT(-122.342632 47.6888888)");
-    my_feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
-    features.push(my_feature);
-    my_label = format.readFeature("POINT( -122.342632 47.688888888)");
-    my_label.getGeometry().transform('EPSG:4326', 'EPSG:3857');
-    labels.push(my_label);
-*/
+   featureSource.on('change', function() {
+       makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
+       console.log("change feature");
+    });
 
-    // switching to geoJSON for objects
-    var gjFormat = new ol.format.GeoJSON();
 
+   var gjFormat = new ol.format.GeoJSON();
+
+    // store all data in LineString feature; data generates labeled dot on separate 'label' layer
     featureSource.addFeatures(gjFormat.readFeatures({
       "type": "FeatureCollection",
         "features": [{
@@ -276,13 +336,20 @@ var map = new ol.Map({
          },
          {
            "type": "Feature",
-           "geometry": { "type": "Point", "coordinates": [-122.342632, 47.688888888] }
-        }]
-      }
+             "geometry": { "type": "LineString",
+             "coordinates": [[ -122.3630877, 47.68475396 ], [-122.3626, 47.684001],[-122.342632, 47.689888888]]
+           },
+           "properties": {
+             "name": "my_path_2",
+             "content": "walking to grocery store",
+             "times_per_month":"2"
+           }
+         }
+        ]}
     ));
+
     var my_features = featureSource.getFeatures();
     for(i=0; i<my_features.length; i++) {
-      console.log(my_features[i]);
       my_features[i].getGeometry().transform("EPSG:4326","EPSG:3857");
     }
 
@@ -328,7 +395,7 @@ var map = new ol.Map({
       function buildFeatures(){
         console.log("buildfeatures() exist_geometries = ", exist_geometries);
         if (exist_geometries[0] == 'none found' || exist_geometries == 'none found') {
-            console.log(" we must return");
+            console.log("no features found");
             exist_geometries = []; // it will hold any geometry that we enter via mouse clicks
             exist_labels = [];
             return;
@@ -350,7 +417,7 @@ var map = new ol.Map({
       function makeLabeledDots(geom_layer, label_layer) {
         console.log ('dots!');
         my_source = geom_layer.getSource();
-        lineFeatures = my_source.getFeatures(); 
+        lineFeatures = my_source.getFeatures();
         label_source = label_layer.getSource();
         label_source.clear();
         geometries = [];
@@ -360,6 +427,20 @@ var map = new ol.Map({
             var geometry = lineFeatures[i].getGeometry();
             coords = geometry.flatCoordinates;
             console.log(coords);
+            len = coords.length;
+            lastCoord = coords[len-1];
+            console.log(lastCoord);
+            pointCoords = [coords[len-2], coords[len-1]];
+            //console.log(pointCoords);
+            //pointFeature = new ol.geom.Point(pointCoords);
+            //console.log(pointFeature);
+            pointFeature = new ol.Feature({
+               geometry: new ol.geom.Point(pointCoords),
+            });
+            pointFeature.getGeometry().transform("EPSG:4326","EPSG:3857");
+
+            labelSource.addFeature(pointFeature);
+            // console.log(coords);
             // var nodes = geometry.getVertices();
             //var pointFeature = new ol.Feature.Vector(lastNode);
             //  var count = i;
