@@ -16,13 +16,13 @@
                 </select>
               </td>
             </form>
-              <td><%= button_to "revert", revert_geo_db_theme_map_path, id: @theme_map.slug, method: "post"  %></td>
-              <td><%= button_to "save", update_geo_db_theme_map_path, id: @theme_map.slug, method: "post"  %></td>
-              <td><%= button_to "help", @theme_map, class: "nav_link", id: "help"  %></td>
+              <td><%= link_to "revert", revert_geo_db_theme_map_path, method: "post", remote: true, id:"revert_geo_db"  %></td>
+              <td><%= link_to "save", '', type: 'text/javascript', data:{update_geo_db: "none"}, id: "update_geo_db" %></td>
+              <td><%= link_to "help", @theme_map, class: "nav_link", id: "help"  %></td>
               <td><%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
           </table>
-          <div style="height: 30px; width: 90px;">}
+          <div style="height: 30px; width: 90px;">
             <div id="indicator" style="display: none; height: 20px; text-align: center;" >edits saved</div>
           </div>
         <div id="tags">draw, edit, modify, vector, featureoverlay</div>
@@ -30,18 +30,14 @@
     </div>
   </div>
 <div>
-  <%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %>
 </div>
-
-
 
 
 <script>
 
+
 $( document ).ready(function() {
-    $("#type").selectedIndex = 0;
-    //console.log("select should be none");
-    $("#type").css( "border", "1px solid red" );
+     $("select").each(function() { this.selectedIndex = 0 });
 });
 
 var overlayLayers = [];
@@ -49,31 +45,34 @@ var baseLayers = [];
 
 // if interactive
 // begin setup of overlay drawing and editing...
-   var features = new ol.Collection();
-   var featureSource = new ol.source.Vector({features:features});
-   var labels = new ol.Collection();
-   var labelSource = new ol.source.Vector({features:labels});
+var features = new ol.Collection();
+var featureSource = new ol.source.Vector({features:features});
+var labels = new ol.Collection();
+var labelSource = new ol.source.Vector({features:labels});
 
 var <%= @theme_map.name.dashed %>;
 var <%= @theme_map.name.dashed + '_labels'%>;
 
-
+// why is circle black?
 var fill = new ol.style.Fill({
-  color: 'rgba(0,0,0,0.2)'
+  color: 'rgba(.9,.9,.1,.9)'
 });
 
 
 var stroke = new ol.style.Stroke({
   color: 'rgba(0,0,0,0.6)',
   width: 2
-  });
+});
 
-
+var lightStroke = new ol.style.Stroke({
+  color: 'rgba(1,1,1,0.6)',
+  width: 2
+});
 
 var styleCache = {};
 
 // the style function returns an array
-function styleFunction(feature, resolution) {
+function labelStyleFunction(feature, resolution) {
   myStyle = new ol.style.Style({
     fill: fill,
     stroke: stroke,
@@ -84,7 +83,7 @@ function styleFunction(feature, resolution) {
       font: 'Normal 12px Arial',
       text: feature.get('times_per_month'),
       fill: fill,
-      stroke: stroke,
+      stroke: lightStroke,
       offsetX: -3,
       offsetY: 5,
       rotation: 0
@@ -93,7 +92,7 @@ function styleFunction(feature, resolution) {
   return[myStyle];
 };
 
-
+// todo: dot needs to hide line
 var circleStyle = new ol.style.Circle({
   radius: 8,
   fill: fill,
@@ -101,11 +100,10 @@ var circleStyle = new ol.style.Circle({
 });
 
 
-
 var vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: stroke,
-   image: circleStyle
+  image: circleStyle
 });
 
 
@@ -113,13 +111,15 @@ var baseLayers;   // need JSON objects:  {"type":"Tile", "title":"watercolor", "
 var overlayLayers;
 var interactiveLayers;
 
-var numBaseLayers = 3;
+var numBaseLayers = 3;  // numBaseLayers = 
 
 for(i=0; i < numBaseLayers; i++) {
  // lay = new ol.layer.
 }
 
 
+// todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
+// todo: property from theme_map [overrides theme_map_layer?] overrides map_layer properties
 
 var map = new ol.Map({
         target: 'map',
@@ -224,7 +224,7 @@ var map = new ol.Map({
                   <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
                       title: "user labels",
                       source: labelSource,
-                      style: styleFunction // dotStyle
+                      style: labelStyleFunction // dotStyle
                   })
                 ]
             })
@@ -257,7 +257,7 @@ var map = new ol.Map({
     });
 
 
-   var gjFormat = new ol.format.GeoJSON();
+    var gjFormat = new ol.format.GeoJSON();
 
 
     // store all data in LineString feature; data generates labeled dot on separate 'label' layer
@@ -297,9 +297,7 @@ var map = new ol.Map({
 
     var modify = new ol.interaction.Modify({
       features: features,
-      // the SHIFT key must be pressed to delete vertices, so
-      // that new vertices can be drawn at the same position
-      // of existing vertices
+      // the SHIFT key must be pressed to delete vertices
       deleteCondition: function(event) {
         return ol.events.condition.shiftKeyOnly(event) &&
           ol.events.condition.singleClick(event);
@@ -322,17 +320,15 @@ var map = new ol.Map({
         typeSelect.onchange = function(e) {
           map.removeInteraction(draw);
        addInteraction();
-    };
+      };
 
 
-    // create array of geometries and labels
+    // create array of circles and labels
     function makeLabeledDots(geom_layer, label_layer) {
         my_source = geom_layer.getSource();
         lineFeatures = my_source.getFeatures();
         label_source = label_layer.getSource();
         label_source.clear();
-        geometries = [];
-        geometry_labels = [];
         for (var i = 0; i < lineFeatures.length; i++) {
           if (lineFeatures[i] != null) {
             var geometry = lineFeatures[i].getGeometry();
@@ -346,17 +342,99 @@ var map = new ol.Map({
             labelSource.addFeature(pointFeature);
           }
         }
-        
         myFeatures = featureSource.getFeatures();
         console.log(gjFormat.writeFeatures(myFeatures));
-
-}
-
+    }
 
 
-    /*
 
-       
+  function getFeaturesJSON(){
+    return gjFormat.writeFeatures(featureSource.getFeatures());
+  }
+
+
+  function showHelp(){
+    win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
+        width:340, height:450, top:70, left:100, zIndex:1500,
+        destroyOnClose: true });
+    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{id: '<%=@theme_map.name %>'});
+    win.show();
+  }
+
+
+  function revertSaved(){ // returns javascript to refresh the interactive layers...
+    console.log("revert saved");
+    emptyFeatures();
+    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/revert_geo_db", {
+      parameters: {
+        id: '<%=@theme_map.slug%>'
+      },
+    });
+  }
+
+ $('a[data-update-geo-db]').click(function(){
+   console.log("clicked");
+   var json = getFeaturesJSON();
+   console.log(JSON.parse(json));
+  $.ajax({
+    url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
+    type: "POST",
+    // processData: false,
+    data: {
+      contentType: 'text/javascript',
+      features: unescape(json)     }
+  })
+   } );
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+console.log("document ready");
+
+$('#update_geo_db').on('click', 'a', function() {
+  console.log("update_geo_db_ajax");
+  $.ajax({
+    url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
+    parameters: {
+      contentType: 'text/javascript',
+      features: getFeaturesJSON()
+    }
+  }).done(function() {
+    $( this ).addClass( "done" );
+  });
+})
+
+});
+
+/*
+  // Handler for .ready() called.
+  $(#update_geo_db).
+  function saveChanges(){ // saves the current state of the interactive layers...
+    console.log("saveChanges");
+    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/update_geo_db", {
+      parameters: {
+        id: '<%= @theme_map.slug %>',
+        contentType: 'text/javascript',
+        features: gjFormat.writeFeatures(featureSource.getFeatures())
+      },
+      onSuccess: function(){
+        $("indicator").show();
+        $("indicator").fade({ duration: 5.0 });
+      }
+      //onFailure: showError
+    });
+  }
+
+});
+
+
+
+
   function emptyFeatures(){
         <%= @theme_map.name.dashed %>.source.clear();
         <%= @theme_map.name.dashed  + '_labels' %>.source.clear();

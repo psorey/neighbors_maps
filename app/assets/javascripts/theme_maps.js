@@ -1,4 +1,4 @@
-
+/*
   function showHelp(){
     win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
         width:340, height:450, top:70, left:100, zIndex:1500,
@@ -33,8 +33,4 @@
     });
   }
 
-
-// how do we get ruby vars here? 
-// or put it back in draw_map_controls.html.erb? 
-
-
+*/

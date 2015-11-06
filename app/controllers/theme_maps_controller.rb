@@ -72,6 +72,25 @@ class ThemeMapsController < ApplicationController
   end
 
 
+  def build_geometry_json
+    @json_geometries = []
+    @json_labels = []
+    existing_mapped_lines = MappedLine.where(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
+    unless existing_mapped_lines[0]
+      @json_geometries[0] = "none found"
+      @json_labels[0] = "none found"
+      return
+    end
+#    geometry_list  = []
+#    end_label_list = []
+    existing_mapped_lines.each do |mapped_line|
+      d{ mapped_line.geometry.as_text}
+      @json_geometries   << mapped_line.geometry.as_text
+      @json_labels  << mapped_line.end_label
+    end
+    d{@json_geometries}
+    d{@json_labels}
+  end
   def send_help
     @theme_map = ThemeMap.where(slug: params[:id]).first
     render :text => BlueCloth.new(@theme_map.description).to_html
@@ -89,31 +108,20 @@ class ThemeMapsController < ApplicationController
 
 
   def update_geo_db
+    logger.debug('update_geo_db')
+    json = JSON.parse params[:features]
+    #logger.debug(json)
+    gjson = RGeo::GeoJSON.decode( json, json_parser: :json)
+    logger.debug(gjson)
+    gjson.each do |f|
+      logger.debug(f.inspect)
+      logger.debug(f.properties.inspect)
+    end
+    return
     @theme_map = ThemeMap.where(slug: params[:slug]).first
     @current_neighbor_id = 44 #current_user.neighbor_id
-    geometries = JSON.parse(params[:geometries])
-    labels = JSON.parse(params[:labels])
-
-    ## !!! rst = MappedLine.destroy_all(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
-    #  wkt = RGeo::WKRep::WKTParser.new
-    # mapped_line.geometry = geometries wkt.parse(geometries)
-    #  end
-
-    result = 'successfully saved...'
-    for i in 0...geometries.length
-      mapped_line = MappedLine.new
-      wkt = RGeo::WKRep::WKTParser.new
-      mapped_line.geometry = wkt.parse(geometries[i])
-      mapped_line.geometry = geometries[i]
-      mapped_line.end_label = labels[i]
-     # current_neighbor_id = current_user.neighbor_id
-      mapped_line.owner_id = 44 #current_user.neighbor_id
-      mapped_line.map_layer_id = @theme_map.name.dashed
-      if !mapped_line.save
-        result = 'save failed'
-      end
-    end
-    render :text => result
+  #  logger.debug @theme_map.inspect
+  #  render :js => "from update_geo_db"
   end
 
 
@@ -141,25 +149,6 @@ class ThemeMapsController < ApplicationController
   end
 
 
-  def build_geometry_json
-    @json_geometries = []
-    @json_labels = []
-    existing_mapped_lines = MappedLine.where(owner_id: @current_neighbor_id.to_s, map_layer_id: @theme_map.name.dashed)
-    unless existing_mapped_lines[0]
-      @json_geometries[0] = "none found"
-      @json_labels[0] = "none found"
-      return
-    end
-#    geometry_list  = []
-#    end_label_list = []
-    existing_mapped_lines.each do |mapped_line|
-      d{ mapped_line.geometry.as_text}
-      @json_geometries   << mapped_line.geometry.as_text
-      @json_labels  << mapped_line.end_label
-    end
-    d{@json_geometries}
-    d{@json_labels}
-  end
 
   private
 
