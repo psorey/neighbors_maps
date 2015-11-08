@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015164759) do
+ActiveRecord::Schema.define(version: 20151107212305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,16 +53,6 @@ ActiveRecord::Schema.define(version: 20151015164759) do
     t.string   "projection"
     t.string   "wkt_extent"
     t.string   "units"
-  end
-
-  create_table "mapped_lines", force: true do |t|
-    t.string   "end_label"
-    t.string   "data"
-    t.string   "owner_id"
-    t.string   "map_layer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.spatial  "geometry",     limit: {:srid=>4326, :type=>"line_string"}
   end
 
   create_table "neighbors", force: true do |t|
@@ -148,6 +138,13 @@ ActiveRecord::Schema.define(version: 20151015164759) do
     t.boolean  "is_interactive", default: false
     t.string   "thumbnail_url"
     t.string   "slug"
+  end
+
+  create_table "user_lines", force: true do |t|
+    t.string  "properties"
+    t.integer "map_layer_id"
+    t.integer "user_id"
+    t.spatial "geometry",     limit: {:srid=>3857, :type=>"line_string"}
   end
 
   create_table "users", force: true do |t|

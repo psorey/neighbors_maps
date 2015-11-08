@@ -35,8 +35,8 @@ class ThemeMap < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
-  
-  
+
+
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
 
@@ -122,67 +122,74 @@ class ThemeMap < ActiveRecord::Base
     self.slug = self.name.parameterize
   end
 
+=begin
+INSERT INTO "mapped_lines"("")
 
-  def test
-query = <<-SQL
-       WITH data AS (SELECT #{geo_json_sample}::json AS fc)
-       INSERT INTO user_lines (id, geometry, properties) SELECT
-         (feat->>'id')::int AS id,
-         ST_SetSRID(ST_GeomFromGeoJSON(feat->>'geometry'),3857) AS geometry,
-         feat->'properties' AS properties
-         FROM (
-         SELECT json_array_elements(fc->'features') AS feat
-         FROM data ) AS f;
-SQL
-     result = ActiveRecord::Base.connection.execute(query)
-     result.each do |r|
-       logger.debug "result:"
-       logger.debug r.inspect
-     end
-     result
-  end
+INSERT INTO "Parcels"("Name", the_geom)
+    VALUES ('Corrected_Shape', 
+    ST_TRANSFORM(ST_GeomFromGeoJSON('{
+    "type":"Polygon",
+    "coordinates":[[
+        [-91.23046875,45.460130637921],
+        [-79.8046875,49.837982453085],
+        [-69.08203125,43.452918893555],
+        [-88.2421875,32.694865977875],
+        [-91.23046875,45.460130637921]
+    ]],
+    "crs":{"type":"name","properties":{"name":"EPSG:4326"}}
+}'),3857));
 
 
 
- def geo_json_sample
-   json = <<-FEATURES
-    '{
-      "type": "FeatureCollection",
-        "features": [{
-           "type": "Feature",
-           "id" : 333,
-           "geometry": { "type": "LineString",
-             "coordinates": [[-13621522.730645318, 6055608.910350661],[ -13621083.217732677, 6055284.052980449], \
-               [ -13620165.973393254, 6055312.7168660555], [-13619841.116023043, 6055112.069666808], \
-               [ -13619119.496548858, 6055252.217636055]]
-           },
-           "properties": {
-             "name": "my_path_1",
-             "content": "This is where I like to go when I take a walk.",
-             "qty":"5"
-           }
+WITH data AS (SELECT '{ "type": "FeatureCollection",
+    "features": [
+      { "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
+        "properties": {"prop0": "value0"}
+        },
+      { "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
+            ]
+          },
+        "properties": {
+          "prop0": "value0",
+          "prop1": 0.0
+          }
+        },
+      { "type": "Feature",
+         "geometry": {
+           "type": "Polygon",
+           "coordinates": [
+             [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
+               [100.0, 1.0], [100.0, 0.0] ]
+             ]
          },
-         {
-           "type": "Feature",
-           "id": 747,
-             "geometry": { "type": "LineString",
-                           "coordinates": [[-13621589.613045067, 6056440.163033262],[ -13621446.29361703, 6056745.911146402], \
-               [ -13619602.250309652, 6056487.936175941],[ -13619153.182768477, 6056573.927832761]]
-           },
-           "properties": {
-             "name": "my_path_2",
-             "content": "walking to grocery store",
-             "qty":"2"
+         "properties": {
+           "prop0": "value0",
+           "prop1": {"this": "that"}
            }
          }
-        ]}'
-     FEATURES
-   json
- end
+       ]
+     }'::json AS fc)
+
+SELECT
+  row_number() OVER () AS gid,
+  ST_AsText(ST_GeomFromGeoJSON(feat->>'geometry')) AS geom,
+  feat->'properties' AS properties
+FROM (
+  SELECT json_array_elements(fc->'features') AS feat
+  FROM data
+) AS f;
+
+
+=end
+
+
+
+
+
 
 end
-
-
-
-
-
