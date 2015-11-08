@@ -35,8 +35,7 @@ class ThemeMap < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
-  
-  
+
   # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
 
@@ -122,63 +121,6 @@ class ThemeMap < ActiveRecord::Base
     self.slug = self.name.parameterize
   end
 
-
-  def test
-query = <<-SQL
-       WITH data AS (SELECT #{geo_json_sample}::json AS fc)
-       INSERT INTO user_lines (id, geometry, properties) SELECT
-         (feat->>'id')::int AS id,
-         ST_SetSRID(ST_GeomFromGeoJSON(feat->>'geometry'),3857) AS geometry,
-         feat->'properties' AS properties
-         FROM (
-         SELECT json_array_elements(fc->'features') AS feat
-         FROM data ) AS f;
-SQL
-     result = ActiveRecord::Base.connection.execute(query)
-     result.each do |r|
-       logger.debug "result:"
-       logger.debug r.inspect
-     end
-     result
-  end
-
-
-
- def geo_json_sample
-   json = <<-FEATURES
-    '{
-      "type": "FeatureCollection",
-        "features": [{
-           "type": "Feature",
-           "id" : 333,
-           "geometry": { "type": "LineString",
-             "coordinates": [[-13621522.730645318, 6055608.910350661],[ -13621083.217732677, 6055284.052980449], \
-               [ -13620165.973393254, 6055312.7168660555], [-13619841.116023043, 6055112.069666808], \
-               [ -13619119.496548858, 6055252.217636055]]
-           },
-           "properties": {
-             "name": "my_path_1",
-             "content": "This is where I like to go when I take a walk.",
-             "qty":"5"
-           }
-         },
-         {
-           "type": "Feature",
-           "id": 747,
-             "geometry": { "type": "LineString",
-                           "coordinates": [[-13621589.613045067, 6056440.163033262],[ -13621446.29361703, 6056745.911146402], \
-               [ -13619602.250309652, 6056487.936175941],[ -13619153.182768477, 6056573.927832761]]
-           },
-           "properties": {
-             "name": "my_path_2",
-             "content": "walking to grocery store",
-             "qty":"2"
-           }
-         }
-        ]}'
-     FEATURES
-   json
- end
 
 end
 
