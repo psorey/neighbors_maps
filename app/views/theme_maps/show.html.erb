@@ -17,7 +17,7 @@
               </td>
             </form>
               <td><%= link_to "revert", revert_geo_db_theme_map_path, method: "post", remote: true, id:"revert_geo_db"  %></td>
-              <td><%= link_to "save", '', type: 'text/javascript', data:{update_geo_db: "none"}, id: "update_geo_db" %></td>
+              <td><%= link_to "save", @theme_map, type: 'text/javascript', data:{update_geo_db: "none"}, id: "update_geo_db" %></td>
               <td><%= link_to "help", @theme_map, class: "nav_link", id: "help"  %></td>
               <td><%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
@@ -40,6 +40,7 @@ $( document ).ready(function() {
      $("select").each(function() { this.selectedIndex = 0 });
 });
 
+console.log("starting open layers");
 var overlayLayers = [];
 var baseLayers = [];
 
@@ -96,7 +97,7 @@ function labelStyleFunction(feature, resolution) {
 var circleStyle = new ol.style.Circle({
   radius: 8,
   fill: fill,
-  stroke: stroke,
+  stroke: stroke
 });
 
 
@@ -175,7 +176,8 @@ var map = new ol.Map({
                            url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                            params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
                            serverType: 'mapserver'
-                        })}),
+                           })}),
+
                     new ol.layer.Image({
                         title: 'study corridors',
                         source: new ol.source.ImageWMS({
@@ -228,7 +230,8 @@ var map = new ol.Map({
                   })
                 ]
             })
-        ],
+            ],
+
         view: new ol.View({
             // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
             center: [-13620870.52201, 6056409.356303 ],
@@ -244,56 +247,24 @@ var map = new ol.Map({
     var scaleControl = new ol.control.ScaleLine();
     map.addControl(scaleControl);
 
-    /////////////////////////////////////////  interactive ///////////////////////////////
 
+    /////////////////////////////////////////  interactive ///////////////////////////////
 
     var prompt_title = 'enter a number';               // @theme_map.prompt_title
     var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
-
 
    featureSource.on('change', function() {
        makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
        console.log("change feature");
     });
 
+   var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
 
-    var gjFormat = new ol.format.GeoJSON();
+   // store all data in LineString feature; data generates labeled dot on separate 'label' layer
 
-
-    // store all data in LineString feature; data generates labeled dot on separate 'label' layer
-    featureSource.addFeatures(gjFormat.readFeatures({
-      "type": "FeatureCollection",
-        "features": [{
-           "type": "Feature",
-           "geometry": { "type": "LineString",
-             "coordinates": [[-13621522.730645318, 6055608.910350661],[ -13621083.217732677, 6055284.052980449],[ -13620165.973393254, 6055312.7168660555], [-13619841.116023043, 6055112.069666808],[ -13619119.496548858, 6055252.217636055]]
-           },
-           "properties": {
-             "name": "my_path_1",
-             "content": "This is where I like to go when I take a walk.",
-             "times_per_month":"5"
-           }
-         },
-         {
-           "type": "Feature",
-             "geometry": { "type": "LineString",
-             "coordinates": [[-13621589.613045067, 6056440.163033262],[ -13621446.29361703, 6056745.911146402], [ -13619602.250309652, 6056487.936175941],[ -13619153.182768477, 6056573.927832761]]
-           },
-           "properties": {
-             "name": "my_path_2",
-             "content": "walking to grocery store",
-             "times_per_month":"2"
-           }
-         }
-        ]}
-    ));
-
-
-    var my_features = featureSource.getFeatures();
-//    for(i=0; i<my_features.length; i++) {
-//      my_features[i].getGeometry().transform("EPSG:4326","EPSG:3857");
-//    }
-
+   var geoJson = <%= raw @geo_json %>;
+   console.log( geoJson );
+   featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: "EPSG:3857"}));
 
     var modify = new ol.interaction.Modify({
       features: features,
@@ -347,7 +318,6 @@ var map = new ol.Map({
     }
 
 
-
   function getFeaturesJSON(){
     return gjFormat.writeFeatures(featureSource.getFeatures());
   }
@@ -359,8 +329,7 @@ var map = new ol.Map({
         destroyOnClose: true });
     win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{id: '<%=@theme_map.name %>'});
     win.show();
-  }
-
+  } 
 
   function revertSaved(){ // returns javascript to refresh the interactive layers...
     console.log("revert saved");
@@ -372,44 +341,20 @@ var map = new ol.Map({
     });
   }
 
+
  $('a[data-update-geo-db]').click(function(){
-   console.log("clicked");
    var json = getFeaturesJSON();
-   console.log(JSON.parse(json));
-  $.ajax({
-    url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
-    type: "POST",
-    // processData: false,
-    data: {
-      contentType: 'text/javascript',
-      features: unescape(json)     }
-  })
-   } );
+   //console.log(<%=(raw params).gsub(/=>/,":") %>); 
+   $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
+     method: "POST",
+     data: {
+       theme_map: { "id":<%=@theme_map.id%> },
+       contentType: 'text/javascript',
+       features: unescape(json)}
+     })
+ });
 
 
-
-
-
-
-
-$(document).ready(function(){
-
-console.log("document ready");
-
-$('#update_geo_db').on('click', 'a', function() {
-  console.log("update_geo_db_ajax");
-  $.ajax({
-    url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
-    parameters: {
-      contentType: 'text/javascript',
-      features: getFeaturesJSON()
-    }
-  }).done(function() {
-    $( this ).addClass( "done" );
-  });
-})
-
-});
 
 /*
   // Handler for .ready() called.
@@ -431,8 +376,6 @@ $('#update_geo_db').on('click', 'a', function() {
   }
 
 });
-
-
 
 
   function emptyFeatures(){

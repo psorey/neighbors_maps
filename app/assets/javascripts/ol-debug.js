@@ -88670,6 +88670,7 @@ ol.format.GeoJSON.readGeometry_ = function(object, opt_options) {
   if (!object) {
     return null;
   }
+  console.log(object.type);
   var geometryReader = ol.format.GeoJSON.GEOMETRY_READERS_[object.type];
   goog.asserts.assert(geometryReader, 'geometryReader should be defined');
   return /** @type {ol.geom.Geometry} */ (

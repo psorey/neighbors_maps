@@ -9,7 +9,7 @@
 # There may be an alternative using the Mapscript version of Mapserver
 # to send layers to the OpenLayers interface directly from the MapObj.
 #
-# In practice, the easiest path to great looking on-line maps is to design their 'look and feel'
+# In practice, the easiest path to great-looking on-line maps is to design their 'look and feel'
 # in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
 # individual layers from the mapfile, then use the snippets to create 'map_layers'
 # in this web application, where they can be further tweaked and used in many different maps.
@@ -19,6 +19,8 @@
 # TODO:
 # Add 'Export Mapfile' function so a theme_map can be viewed in desktop GIS applications.
 # Add OPACITY, WIDTH and COLOR attributes to theme_map_layer objects that override values set in map_layers.
+#
+
 
 require 'mapscript'
 include Mapscript
@@ -27,18 +29,17 @@ class ThemeMap < ActiveRecord::Base
 
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
+  has_many :user_lines, :through => :map_layers
 
-  attr_accessor :map     # make the MapObj accessible to methods
-  attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
   #validates_presence_of :name #, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
 
-  # test: make_mapfile should create a Mapfile in the mapserver directory  !!!
-  # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored !!!
-
+  # test: make_mapfile should create a Mapfile in the mapserver directory  
+  # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored 
+  # TODO: factor out to mapfile.rb
   def make_mapfile
     # mapscript:
     @map = MapObj.new
@@ -101,8 +102,8 @@ class ThemeMap < ActiveRecord::Base
   end
 
 
-  # test: get_theme_layers should return an array of map_layer id's  !!!
-  #       corresponding to the theme_map_layers !!!
+  # test: get_theme_layers should return an array of map_layer id's  
+  #       corresponding to the theme_map_layers 
   def get_theme_layers
     layer_id_list = []
     base_id_list = []

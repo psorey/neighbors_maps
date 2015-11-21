@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '4.2.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -40,7 +40,7 @@ gem 'seed_dump'
 gem 'quiet_assets', :group => :development
 gem 'kaminari'
 gem 'devise'
-gem 'execjs'
+gem 'execjs', '1.4'
 gem 'therubyracer'
 gem 'jquery-ui-rails'
 
