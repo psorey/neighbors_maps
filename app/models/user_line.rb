@@ -1,9 +1,10 @@
 require 'rgeo/geo_json'
+
 class UserLine < ActiveRecord::Base
-include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::OutputSafetyHelper
 
 
-  belongs_to :map_layers
+  belongs_to :map_layer
 
 
   def save_geo_json
@@ -21,22 +22,20 @@ include ActionView::Helpers::OutputSafetyHelper
   end
 
 
-  def self.load_geo_json # for properties in separate columns
+  def self.load_geo_json(map_layer_id)  #TODO pass in user_id and map_layer_id
     query = <<-SQL
       SELECT row_to_json(fc)
         FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
-        FROM (SELECT 'Feature' As type
+        FROM ( SELECT 'Feature' As type
       , ST_AsGeoJSON(lg.geometry)::json As geometry
       , lg.id AS id
       , row_to_json((SELECT l FROM (SELECT id, name, text, number, amount) As l
         )) As properties
-        FROM user_lines As lg ) As f )  As fc;
+        FROM ( SELECT * FROM user_lines
+        WHERE  user_id = 44 AND map_layer_id = 100) As lg ) As f ) As fc;
     SQL
      result = ActiveRecord::Base.connection.execute(query)
-     temp = result[0]["row_to_json"]
-     logger.debug "temp"
-     logger.debug temp.inspect
-    temp
+     return result[0]["row_to_json"]
   end
 
 
@@ -47,7 +46,6 @@ include ActionView::Helpers::OutputSafetyHelper
 FEATURES
 
     json
-
   end
 
 end

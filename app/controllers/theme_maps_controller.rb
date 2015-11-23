@@ -1,14 +1,12 @@
 require 'bluecloth'
 #require 'log_buddy/init'
 
-
 class ThemeMapsController < ApplicationController
 
 
   layout "theme_maps_layout", only: :show
-  before_filter :login_required, except: 'index'
- # before_filter :set_current_user
-
+  # before_filter :login_required, except: 'index'
+  before_filter :set_current_user
 
 
   def set_current_user
@@ -17,6 +15,10 @@ class ThemeMapsController < ApplicationController
   end
 
 
+  def get_current_user
+    return 44
+  end
+
 
   def index
     @interactive_theme_maps = ThemeMap.where(is_interactive: true).order("name ASC")
@@ -24,25 +26,23 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).first
-    @geo_json =  UserLine.load_geo_json
-   # @geo_json =  UserLine.test_load
-
+    @geo_json = nil
     @theme_map.make_mapfile
-    if @theme_map.is_interactive
-      #build_geometry_json
-    end
+    @geo_json = UserLine.load_geo_json(100) # id of interactive layer
+    # map_layer_id = @theme_map.interactive_map_layer_id
+    # logger.debug map_layer_id
+    # if map_layer_id
+     # @geo_json =  UserLine.load_geo_json(map_layer_id) # loads all current_user's lines for map_layer
+    # end
   end
-
 
 
   def new
     @theme_map = ThemeMap.new
     @map_layers = MapLayer.order('name ASC')
   end
-
 
 
   def create
@@ -82,45 +82,46 @@ class ThemeMapsController < ApplicationController
 
   def revert_geo_db
     logger.debug "revert_geo_db"
-    logger.debug params.inspect
     @theme_map = ThemeMap.where(:slug => params[:id]).first
     @current_neighbor_id = 44    # current_user.neighbor_id
-    build_geometry_json
-    render :js => "exist_geometries = #{@json_geometries}; exist_labels = #{@json_labels}; buildFeatures();"
+    @geo_json = UserLine.load_geo_json(100) # id of interactive layer
+    render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: 'EPSG:3857'}));"
   end
+
 
 
   # update_geo_db should load existing lines or
   # should create new lines and give them id's
-  # should delete user-deleted lines (no longer sent via json)
+  # should delete user-deleted lines (absent from json, or empty json geometry?)
   # TODO implement properties: changed, deleted, only update user_lines that change
-  # TODO decide if user_feature (point, line or polygon) can replace user_line
+  # TODO decide if user_features (point, line or polygon) can replace user_lines
+
+
 
   def update_geo_db
     json = JSON.parse params[:features]
+    @theme_map = ThemeMap.find(params[:theme_map][:id])
     gjson = RGeo::GeoJSON.decode( json, json_parser: :json )
     gjson.each do |feature|
+      logger.debug "feature!"
       line = nil
       f_id = feature.properties["id"]
       if f_id != nil
-        line = UserLine.find(f_id )
+        line = UserLine.find(f_id)
         line.text   = feature.properties["text"]
         line.number = feature.properties["number"]
         # line.amount = feature.properties["amount"]
         # line.name   = feature.properties["name"]
       else
         line = UserLine.new
-        line.save
+        line.save # get an id
       end
       wkt_string = feature.geometry.as_text
       g_factory = RGeo::Cartesian::Factory.new(srid: 3857)
       line.geometry = g_factory.parse_wkt(wkt_string)
-      line.update_attributes(theme_map_params)
+      line.save  # update_attributes(user_line_params)
     end
-    return
-    @theme_map = ThemeMap.where(slug: params[:slug]).first
-    @current_neighbor_id = 44 #current_user.neighbor_id
-  #  render :js => "from update_geo_db"
+    render :js => 'alert("update geo db from controller");' 
   end
 
 
@@ -152,7 +153,10 @@ class ThemeMapsController < ApplicationController
   private
 
   def theme_map_params
-    params.require(:theme_map).permit(:name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
+    params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
   end
 
+  def user_line_params
+    params.require(:user_line).permit(:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id)
+  end
 end

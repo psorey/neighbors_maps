@@ -37,6 +37,20 @@ class ThemeMap < ActiveRecord::Base
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
 
+
+  def interactive_map_layer_id
+    self.theme_map_layers.each do |layer|
+      logger.debug layer.inspect
+      if layer.is_interactive
+        return layer.map_layer_id
+      end
+    end
+    return nil
+  end
+
+  
+
+
   # test: make_mapfile should create a Mapfile in the mapserver directory  
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored 
   # TODO: factor out to mapfile.rb

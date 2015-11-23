@@ -10,7 +10,7 @@ NeighborsMaps::Application.routes.draw do
   resources :map_layers
   
   resources :theme_maps do
-    post 'revert_geo_db', on: :member
+    get 'revert_geo_db', on: :member
     post 'update_geo_db', on: :member
   end
 

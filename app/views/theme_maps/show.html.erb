@@ -16,14 +16,14 @@
                 </select>
               </td>
             </form>
-              <td><%= link_to "revert", revert_geo_db_theme_map_path, method: "post", remote: true, id:"revert_geo_db"  %></td>
-              <td><%= link_to "save", @theme_map, type: 'text/javascript', data:{update_geo_db: "none"}, id: "update_geo_db" %></td>
-              <td><%= link_to "help", @theme_map, class: "nav_link", id: "help"  %></td>
+              <td><%= link_to "revert", @theme_map, data:{revert_geo_db: "none"}  %></td>
+              <td><%= link_to "save",   @theme_map, data:{update_geo_db: "none"} %></td>
+              <td><%= link_to "help",   @theme_map, class: "nav_link", id: "help"  %></td>
               <td><%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
           </table>
           <div style="height: 30px; width: 90px;">
-            <div id="indicator" style="display: none; height: 20px; text-align: center;" >edits saved</div>
+            <div id="indicator" style="display: none; height: 20px; text-align: center;">edits saved</div>
           </div>
         <div id="tags">draw, edit, modify, vector, featureoverlay</div>
       </div>
@@ -40,7 +40,6 @@ $( document ).ready(function() {
      $("select").each(function() { this.selectedIndex = 0 });
 });
 
-console.log("starting open layers");
 var overlayLayers = [];
 var baseLayers = [];
 
@@ -54,35 +53,53 @@ var labelSource = new ol.source.Vector({features:labels});
 var <%= @theme_map.name.dashed %>;
 var <%= @theme_map.name.dashed + '_labels'%>;
 
+var userId = <%=@current_neighbor_id %>;
+
 // why is circle black?
 var fill = new ol.style.Fill({
-  color: 'rgba(.9,.9,.1,.9)'
+  color: 'rgba(0,1,1,0)'
+});
+
+var circleFill = new ol.style.Fill({
+  color: 'rgb(1,1,1)'
 });
 
 
 var stroke = new ol.style.Stroke({
-  color: 'rgba(0,0,0,0.6)',
-  width: 2
+  color: 'rgba(0,0,0,1)',
+  width: 1
 });
+
 
 var lightStroke = new ol.style.Stroke({
-  color: 'rgba(1,1,1,0.6)',
-  width: 2
+  color: 'rgba(1,1,1,1)',
+  width: 1
 });
 
+
 var styleCache = {};
+
 
 // the style function returns an array
 function labelStyleFunction(feature, resolution) {
   myStyle = new ol.style.Style({
     fill: fill,
     stroke: stroke,
-    image: circleStyle,
+    image: new ol.style.Circle({
+              radius: 8,
+              fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 150, 1)'
+              }),
+              stroke: new ol.style.Stroke({
+                color: 'rgba(255, 204, 0, 0.2)',
+                width: 1
+              })
+          }),
     text: new ol.style.Text({
       textAlign: "Start",
       textBaseline: "Middle",
       font: 'Normal 12px Arial',
-      text: feature.get('times_per_month'),
+      text: feature.get("number").toString(),
       fill: fill,
       stroke: lightStroke,
       offsetX: -3,
@@ -93,30 +110,26 @@ function labelStyleFunction(feature, resolution) {
   return[myStyle];
 };
 
-// todo: dot needs to hide line
-var circleStyle = new ol.style.Circle({
-  radius: 8,
-  fill: fill,
-  stroke: stroke
-});
+console.log("starting open layers2");
 
 
 var vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: stroke,
-  image: circleStyle
+  //image: circleStyle
 });
+
 
 
 var baseLayers;   // need JSON objects:  {"type":"Tile", "title":"watercolor", "base":true, "opacity": .4, "sourceType":"Stamen", "sourceLayer":"watercolor","visible":true, "sourceUrl":"", 
 var overlayLayers;
 var interactiveLayers;
 
-var numBaseLayers = 3;  // numBaseLayers = 
+var numBaseLayers = 3;  // numBaseLayers =
 
-for(i=0; i < numBaseLayers; i++) {
- // lay = new ol.layer.
-}
+// for(i=0; i < numBaseLayers; i++) {
+ //  lay = new ol.layer.
+// }
 
 
 // todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
@@ -232,7 +245,7 @@ var map = new ol.Map({
             })
             ],
 
-        view: new ol.View({
+          view: new ol.View({
             // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
             center: [-13620870.52201, 6056409.356303 ],
             zoom: 14
@@ -247,38 +260,47 @@ var map = new ol.Map({
     var scaleControl = new ol.control.ScaleLine();
     map.addControl(scaleControl);
 
-
     /////////////////////////////////////////  interactive ///////////////////////////////
 
     var prompt_title = 'enter a number';               // @theme_map.prompt_title
     var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
 
    featureSource.on('change', function() {
-       makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
-       console.log("change feature");
+     makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
     });
 
-   var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
+   featureSource.on('addfeature', function(event) {
+     console.log("added a feature");
+     console.log(event.feature);
+     if(event.feature.get("number") == undefined ) {
+       event.feature.set("number", 0);
+     }
+   });
+
+   featureSource.on('removefeature', function() {
+     console.log("removed a feature");
+   });
 
    // store all data in LineString feature; data generates labeled dot on separate 'label' layer
-
+   // load data from server into featureSource:
+   var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
    var geoJson = <%= raw @geo_json %>;
-   console.log( geoJson );
    featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: "EPSG:3857"}));
 
-    var modify = new ol.interaction.Modify({
+   // set up map drawing functions:
+   var modify = new ol.interaction.Modify({
       features: features,
       // the SHIFT key must be pressed to delete vertices
       deleteCondition: function(event) {
         return ol.events.condition.shiftKeyOnly(event) &&
           ol.events.condition.singleClick(event);
-        }
-      });
-      map.addInteraction(modify);
+      }
+    });
+    map.addInteraction(modify);
 
+    var draw;
 
-      var draw;
-      function addInteraction() {
+    function addInteraction() {
         draw = new ol.interaction.Draw({
           features: features,
           type: (typeSelect.value)
@@ -286,36 +308,34 @@ var map = new ol.Map({
        map.addInteraction(draw);
      }
 
-
-      var typeSelect = document.getElementById('type');
+     var typeSelect = document.getElementById('type');
         typeSelect.onchange = function(e) {
           map.removeInteraction(draw);
        addInteraction();
-      };
+     };
 
 
     // create array of circles and labels
     function makeLabeledDots(geom_layer, label_layer) {
-        my_source = geom_layer.getSource();
-        lineFeatures = my_source.getFeatures();
-        label_source = label_layer.getSource();
-        label_source.clear();
-        for (var i = 0; i < lineFeatures.length; i++) {
-          if (lineFeatures[i] != null) {
-            var geometry = lineFeatures[i].getGeometry();
-            coords = geometry.flatCoordinates;
-            len = coords.length;
-            pointCoords = [coords[len-2], coords[len-1]];
-            pointFeature = new ol.Feature({
-               geometry: new ol.geom.Point(pointCoords)
-            });
-            pointFeature.set("times_per_month", lineFeatures[i].get("times_per_month"));
-            labelSource.addFeature(pointFeature);
-          }
+      my_source = geom_layer.getSource();
+      lineFeatures = my_source.getFeatures();
+      label_source = label_layer.getSource();
+      label_source.clear();
+      for (var i = 0; i < lineFeatures.length; i++) {
+        if (lineFeatures[i] != null) {
+          var geometry = lineFeatures[i].getGeometry();
+          coords = geometry.flatCoordinates;
+          len = coords.length;
+          pointCoords = [coords[len-2], coords[len-1]];
+          pointFeature = new ol.Feature({
+             geometry: new ol.geom.Point(pointCoords)
+          });
+          pointFeature.set("number", lineFeatures[i].get("number"));
+          labelSource.addFeature(pointFeature);
         }
-        myFeatures = featureSource.getFeatures();
-        console.log(gjFormat.writeFeatures(myFeatures));
-    }
+     }
+     myFeatures = featureSource.getFeatures();
+  }
 
 
   function getFeaturesJSON(){
@@ -323,93 +343,58 @@ var map = new ol.Map({
   }
 
 
+  function emptyFeatures(){
+    // features.clear();
+  }
+
+
   function showHelp(){
     win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
         width:340, height:450, top:70, left:100, zIndex:1500,
         destroyOnClose: true });
-    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{id: '<%=@theme_map.name %>'});
+    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{ id: '<%=@theme_map.name %>'});
     win.show();
-  } 
-
-  function revertSaved(){ // returns javascript to refresh the interactive layers...
-    console.log("revert saved");
-    emptyFeatures();
-    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/revert_geo_db", {
-      parameters: {
-        id: '<%=@theme_map.slug%>'
-      },
-    });
   }
 
 
- $('a[data-update-geo-db]').click(function(){
-   var json = getFeaturesJSON();
-   //console.log(<%=(raw params).gsub(/=>/,":") %>); 
-   $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
-     method: "POST",
-     data: {
-       theme_map: { "id":<%=@theme_map.id%> },
-       contentType: 'text/javascript',
-       features: unescape(json)}
-     })
+ $('a[data-revert-geo-db]').click(function(event){
+   event.preventDefault();
+    console.log("revert saved");
+    emptyFeatures();
+    $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/revert_geo_db",
+      method: "GET",
+      dataType: 'script',
+      data: {
+        id: '<%=@theme_map.slug%>'
+      },
+    })
+    .fail(function (jqXHr, textStatus, errorThrown) {
+      alert(errorThrown);
+   })
  });
 
 
-
-/*
-  // Handler for .ready() called.
-  $(#update_geo_db).
-  function saveChanges(){ // saves the current state of the interactive layers...
-    console.log("saveChanges");
-    new Ajax.Request("/theme_maps/<%=@theme_map.slug%>/update_geo_db", {
-      parameters: {
-        id: '<%= @theme_map.slug %>',
-        contentType: 'text/javascript',
-        features: gjFormat.writeFeatures(featureSource.getFeatures())
-      },
-      onSuccess: function(){
-        $("indicator").show();
-        $("indicator").fade({ duration: 5.0 });
-      }
-      //onFailure: showError
-    });
-  }
-
-});
-
-
-  function emptyFeatures(){
-        <%= @theme_map.name.dashed %>.source.clear();
-        <%= @theme_map.name.dashed  + '_labels' %>.source.clear();
-        exist_geometries = [];
-        exist_labels = [];
-        exist_features = [];
-      }
-
-
-      function buildFeatures(){
-        console.log("buildfeatures() exist_geometries = ", exist_geometries);
-        if (exist_geometries[0] == 'none found' || exist_geometries == 'none found') {
-            console.log("no features found");
-            exist_geometries = []; // it will hold any geometry that we enter via mouse clicks
-            exist_labels = [];
-            return;
-        }
-        geometries = [];
-        geometry_labels = [];
-        for(i=0; i < exist_geometries.length; i++) {
-          // var geom = new ol.format.WKT.readFeatures(unescape(exist_geometries[i]));
-          var geom = new ol.Geometry.fromWKT(unescape(exist_geometries[i]));
-          console.log("geom= ", geom);
-          feature = new ol.Feature.Vector(geom, {geometry_feature_attribute: exist_labels[i]});
-          exist_features[i] = feature;
-        }
-        // triggers the makeLabeledDots function through the 'featuresadded' event callback
-        <%= @theme_map.name.dashed %>.addFeatures(exist_features);
-      }
-*/
+ $('a[data-update-geo-db]').click(function(event){
+   event.preventDefault();
+   var json = getFeaturesJSON();
+   console.log("ajax:update_geo_db in console");
+   $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
+     method: "POST",
+     dataType: 'script',
+     data: {
+       theme_map: {"id":<%=@theme_map.id%> },
+       contentType: 'text/javascript',
+       features: unescape(json)}
+     })
+  .done(function(data) {
+  })
+  .fail(function (jqXHr, textStatus, errorThrown) {
+     alert(errorThrown);
+  })
+ });
 
 // <!-- end open_layers_interactive_functions -->
+
 
 </script>
 

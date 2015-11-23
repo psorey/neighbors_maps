@@ -2,28 +2,16 @@ require 'mapscript'
 include Mapscript
 
 class MapLayer < ActiveRecord::Base
-  
+
   has_many :theme_map_layers
   has_many :theme_maps, :through => :theme_map_layers
   has_many :user_lines
-  
+
   validates_numericality_of :draw_order, :only_integer => true, :allow_nil => false, :message => 'must be an integer between 0 and 100'
   validates_inclusion_of :draw_order, :in => 0..100, :message => "can only be between 0 and 100.", :allow_nil => false
   validates_uniqueness_of :draw_order, :message => 'must be unique'
-  
-
-
-
-
-
-
-
-
-
-
 
 end
-
 
 #bandsitem : string
 #classitem : string
