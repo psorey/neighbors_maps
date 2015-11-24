@@ -7,19 +7,20 @@
         <form class="form-inline">
           <table class='my-map-controls'>
             <tr>
-              <td><label>geometry type &nbsp;</label>
+              <td><label>your map tasks: &nbsp;</label>
                 <select id="type">
-                  <option value="None" selected >none</option>
-                  <option value="Point">point</option>
-                  <option value="LineString">line</option>
-                  <option value="Polygon">polygon</option>
+                  <option value="None" selected >--select--</option>
+                  <option value="Point">describe destinations</option>
+                  <option value="LineString">draw walking paths</option>
+                  <option value="Polygon">identify safety issues</option>
                 </select>
               </td>
             </form>
               <td><%= link_to "revert", @theme_map, data:{revert_geo_db: "none"}  %></td>
               <td><%= link_to "save",   @theme_map, data:{update_geo_db: "none"} %></td>
+              <td><%= link_to "delete",   @theme_map, class: "nav_link", id: "help"  %></td>
               <td><%= link_to "help",   @theme_map, class: "nav_link", id: "help"  %></td>
-              <td><%= link_to 'Edit theme map', edit_theme_map_path(@theme_map) %></td>
+              <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
           </table>
           <div style="height: 30px; width: 90px;">
@@ -53,9 +54,9 @@ var labelSource = new ol.source.Vector({features:labels});
 var <%= @theme_map.name.dashed %>;
 var <%= @theme_map.name.dashed + '_labels'%>;
 
-var userId = <%=@current_neighbor_id %>;
+var userId = <%=@current_user_id %>;
 
-// why is circle black?
+// why is circle black if this is used for text style ???
 var fill = new ol.style.Fill({
   color: 'rgba(0,1,1,0)'
 });
@@ -271,9 +272,8 @@ var map = new ol.Map({
 
    featureSource.on('addfeature', function(event) {
      console.log("added a feature");
-     console.log(event.feature);
      if(event.feature.get("number") == undefined ) {
-       event.feature.set("number", 0);
+       event.feature.set("number", 0); // todo get number from user input
      }
    });
 
@@ -343,11 +343,6 @@ var map = new ol.Map({
   }
 
 
-  function emptyFeatures(){
-    // features.clear();
-  }
-
-
   function showHelp(){
     win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
         width:340, height:450, top:70, left:100, zIndex:1500,
@@ -360,13 +355,11 @@ var map = new ol.Map({
  $('a[data-revert-geo-db]').click(function(event){
    event.preventDefault();
     console.log("revert saved");
-    emptyFeatures();
+    // functionemptyFeatures();
     $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/revert_geo_db",
       method: "GET",
       dataType: 'script',
-      data: {
-        id: '<%=@theme_map.slug%>'
-      },
+      data: { id: '<%=@theme_map.slug%>' },
     })
     .fail(function (jqXHr, textStatus, errorThrown) {
       alert(errorThrown);

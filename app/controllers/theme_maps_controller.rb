@@ -10,13 +10,7 @@ class ThemeMapsController < ApplicationController
 
 
   def set_current_user
-    @current_neighbor_id = 44
-    logger.debug "set current user"
-  end
-
-
-  def get_current_user
-    return 44
+    @current_user_id = 44  # for testing only...
   end
 
 
@@ -71,7 +65,6 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def edit
     @theme_map = ThemeMap.where(slug: params[:id]).first
     @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
@@ -79,15 +72,12 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def revert_geo_db
-    logger.debug "revert_geo_db"
     @theme_map = ThemeMap.where(:slug => params[:id]).first
     @current_neighbor_id = 44    # current_user.neighbor_id
     @geo_json = UserLine.load_geo_json(100) # id of interactive layer
-    render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: 'EPSG:3857'}));"
+    render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: 'EPSG:3857'})); alert('reverted');"
   end
-
 
 
   # update_geo_db should load existing lines or
@@ -97,31 +87,31 @@ class ThemeMapsController < ApplicationController
   # TODO decide if user_features (point, line or polygon) can replace user_lines
 
 
-
   def update_geo_db
     json = JSON.parse params[:features]
     @theme_map = ThemeMap.find(params[:theme_map][:id])
     gjson = RGeo::GeoJSON.decode( json, json_parser: :json )
     gjson.each do |feature|
-      logger.debug "feature!"
       line = nil
       f_id = feature.properties["id"]
       if f_id != nil
         line = UserLine.find(f_id)
-        line.text   = feature.properties["text"]
-        line.number = feature.properties["number"]
-        # line.amount = feature.properties["amount"]
-        # line.name   = feature.properties["name"]
       else
         line = UserLine.new
         line.save # get an id
       end
-      wkt_string = feature.geometry.as_text
+      line.text   = feature.properties["text"]
+      line.number = feature.properties["number"]
+      line.amount = feature.properties["amount"]
+      line.name   = feature.properties["name"]
+      line.user_id = @current_user_id
+      line.map_layer_id = 100 # @theme_map.interactive_layer_id
+      wkt_string  = feature.geometry.as_text
       g_factory = RGeo::Cartesian::Factory.new(srid: 3857)
       line.geometry = g_factory.parse_wkt(wkt_string)
       line.save  # update_attributes(user_line_params)
     end
-    render :js => 'alert("update geo db from controller");' 
+    render :js => 'alert("saved");'
   end
 
 
@@ -152,11 +142,14 @@ class ThemeMapsController < ApplicationController
 
   private
 
+
   def theme_map_params
     params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
   end
 
+  # maybe don't need this:
   def user_line_params
     params.require(:user_line).permit(:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id)
   end
+
 end
