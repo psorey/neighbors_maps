@@ -263,6 +263,8 @@ var map = new ol.Map({
    var scaleControl = new ol.control.ScaleLine();
    map.addControl(scaleControl);
 
+
+
   /////////////////////////////////////////  interactive ///////////////////////////////
 
   // DELETE_MODE:
@@ -287,7 +289,7 @@ var map = new ol.Map({
         feature_id: parseInt(feature.get("id")) }
     })
     .done(function(data) {
-      endDelete(feature);
+      endDelete(feature);  //deleteFeature(e);
     })
     .fail(function (jqXHr, textStatus, errorThrown) {
       alert(errorThrown);
@@ -296,8 +298,10 @@ var map = new ol.Map({
 
   function endDelete(feature){
     featureSource.removeFeature(feature);
+    // leaves an artifact on the unmanaged temp layer -- need to unselect before deleting?
     editMode(); // reset interaction to normal edit mode
   }
+
 
   function editMode(){
     $('a[data-delete-feature]').css({ "color": savedColor });
@@ -305,6 +309,7 @@ var map = new ol.Map({
     map.addInteraction(modify);
     map.removeInteraction(select);
   }
+
    // select with "click"
    var select = new ol.interaction.Select({
       condition: ol.events.condition.click,
@@ -317,9 +322,8 @@ var map = new ol.Map({
    });
 
 
-   // selectElement.onchange = changeInteraction;
-   // changeInteraction();
-   // vectorLayer.getSource().removeFeature(SelectedFeature);
+
+
 
    var prompt_title = 'enter a number';               // @theme_map.prompt_title
    var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
