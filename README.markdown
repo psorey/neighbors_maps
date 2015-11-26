@@ -9,11 +9,17 @@ This interactive mapping tool was originally designed for a Seattle neighborhood
 * problem areas, safety issues
 * opportunity zones
 
+###Description of Mapping Tools
+Web and database technologies include PostGIS, Mapserver, OpenLayers3, Ruby Mapscript, Ruby on Rails.
+
+Shapefiles, high-resolution aerial photographs, and non-interactive database features are styled and served as WMS layers by Mapserver via CGI commands. A 'mapfile' containing specifications for a graphical map and data for display, used by Mapserver to retrieve and style layer images, is created on-the-fly at the server.  
+
+WMS layers from remote servers such as openstreetmaps.org are also imported as base layer options.
+
+Map features on **interactive layers** are served directly, via geoJSON, to an OpenLayers overlay with interactive drawing and editing tools.
 
 
-
-
+###Project Background
 I was web communications consultant and member of the design team, funded by a Seattle Department of Neighborhoods Large Grant to study the area and plan an approach to understanding existing conditions and designing improvements to streets and paths. 
 
-The other design team members were a landscape architect, a civil engineer, a social outreach specialist, and a finance specialist to research possible funding sources. 
-
+The other design team members were a landscape architect, a civil engineer, a community outreach specialist, and a finance specialist to research possible funding sources. 
