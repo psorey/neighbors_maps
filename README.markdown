@@ -18,7 +18,7 @@ WMS layers from remote servers such as openstreetmaps.org are also imported as b
 
 Map features on **interactive layers** are served directly, via geoJSON, to an OpenLayers overlay with interactive drawing and editing tools.
 
-And administrative user can create new theme maps, assembling any number of layers and styling them for a particular theme map.
+An administrative user can edit and create new theme maps, assembling any number of layers and styling them for a particular purpose.
 
 
 
