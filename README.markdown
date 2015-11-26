@@ -18,8 +18,31 @@ WMS layers from remote servers such as openstreetmaps.org are also imported as b
 
 Map features on **interactive layers** are served directly, via geoJSON, to an OpenLayers overlay with interactive drawing and editing tools.
 
+And administrative user can create new theme maps, assembling any number of layers and styling them for a particular theme map.
+
+
+
+###More Detail on Mapping
+
+Notes on how we create maps in this web application:
+
+Currently using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
+then we save the map_object as a mapfile ('theme_map_name.map') to be
+served as WMS layers through the CGI version of Mapserver, so we can take advantage
+of the OpenLayers WMS layer functions. This does seem a round-about approach;
+the main goal, however, is to simplify the on-line creation and modification of theme
+maps, and the present method does that well.
+
+
+In practice, the easiest path to great-looking online maps is to design their appearance
+in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
+individual layers from the mapfile, then use the snippets to create 'map_layers'
+in this web application, where they can be further tweaked and used in many different maps.
+
+Am migrating away from using mapfile text snippets stored in database, toward creating layers via parameters. One reason is to make the parameters easily editable. 
 
 ###Project Background
 I was web communications consultant and member of the design team, funded by a Seattle Department of Neighborhoods Large Grant to study the area and plan an approach to understanding existing conditions and designing improvements to streets and paths. 
 
 The other design team members were a landscape architect, a civil engineer, a community outreach specialist, and a finance specialist to research possible funding sources. 
+
