@@ -12,6 +12,7 @@ NeighborsMaps::Application.routes.draw do
   resources :theme_maps do
     get 'revert_geo_db', on: :member
     post 'update_geo_db', on: :member
+    post 'delete_feature', on: :member
   end
 
   resources :theme_maps

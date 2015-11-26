@@ -9,9 +9,11 @@ class ThemeMapsController < ApplicationController
   before_filter :set_current_user
 
 
+
   def set_current_user
     @current_user_id = 44  # for testing only...
   end
+
 
 
   def index
@@ -20,11 +22,18 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).first
     @geo_json = nil
     @theme_map.make_mapfile
     @geo_json = UserLine.load_geo_json(100) # id of interactive layer
+    logger.debug "geojson" 
+    logger.debug @geo_json 
+    jp = JSON.parse(@geo_json)
+    if jp["features"] == nil 
+      @geo_json = "'none'"
+    end
     # map_layer_id = @theme_map.interactive_map_layer_id
     # logger.debug map_layer_id
     # if map_layer_id
@@ -33,10 +42,12 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def new
     @theme_map = ThemeMap.new
     @map_layers = MapLayer.order('name ASC')
   end
+
 
 
   def create
@@ -65,11 +76,13 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def edit
     @theme_map = ThemeMap.where(slug: params[:id]).first
     @theme_layer_ids, @base_layer_ids = @theme_map.get_theme_layers
     @map_layers = MapLayer.order('name ASC')
   end
+
 
 
   def revert_geo_db
@@ -80,12 +93,20 @@ class ThemeMapsController < ApplicationController
   end
 
 
+  def delete_feature
+    id = params[:feature_id].to_i
+    feature = UserLine.find(id)
+    feature.destroy
+    render :js => ';'
+  end
+
+
+
   # update_geo_db should load existing lines or
   # should create new lines and give them id's
   # should delete user-deleted lines (absent from json, or empty json geometry?)
   # TODO implement properties: changed, deleted, only update user_lines that change
   # TODO decide if user_features (point, line or polygon) can replace user_lines
-
 
   def update_geo_db
     json = JSON.parse params[:features]
@@ -98,18 +119,17 @@ class ThemeMapsController < ApplicationController
         line = UserLine.find(f_id)
       else
         line = UserLine.new
-        line.save # get an id
       end
-      line.text   = feature.properties["text"]
-      line.number = feature.properties["number"]
-      line.amount = feature.properties["amount"]
-      line.name   = feature.properties["name"]
-      line.user_id = @current_user_id
-      line.map_layer_id = 100 # @theme_map.interactive_layer_id
+      line.text        = feature.properties["text"]
+      line.number      = feature.properties["number"]
+      line.amount      = feature.properties["amount"]
+      line.name        = feature.properties["name"]
+      line.user_id     = @current_user_id
+      line.map_layer_id = 100    # @theme_map.interactive_layer_id
       wkt_string  = feature.geometry.as_text
       g_factory = RGeo::Cartesian::Factory.new(srid: 3857)
       line.geometry = g_factory.parse_wkt(wkt_string)
-      line.save  # update_attributes(user_line_params)
+      line.save                  # update_attributes(user_line_params)
     end
     render :js => 'alert("saved");'
   end
@@ -132,6 +152,7 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def destroy
     @theme_map = ThemeMap.where(slug: params[:id]).first
     @theme_map.destroy!
@@ -146,6 +167,7 @@ class ThemeMapsController < ApplicationController
   def theme_map_params
     params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
   end
+
 
   # maybe don't need this:
   def user_line_params
