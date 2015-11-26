@@ -26,14 +26,6 @@ And administrative user can create new theme maps, assembling any number of laye
 
 Notes on how we create maps in this web application:
 
-Currently using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
-then we save the map_object as a mapfile ('theme_map_name.map') to be
-served as WMS layers through the CGI version of Mapserver, so we can take advantage
-of the OpenLayers WMS layer functions. This does seem a round-about approach;
-the main goal, however, is to simplify the on-line creation and modification of theme
-maps, and the present method does that well.
-
-
 In practice, the easiest path to great-looking online maps is to design their appearance
 in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
 individual layers from the mapfile, then use the snippets to create 'map_layers'

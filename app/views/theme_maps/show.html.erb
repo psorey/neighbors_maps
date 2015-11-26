@@ -265,20 +265,17 @@ var map = new ol.Map({
 
   /////////////////////////////////////////  interactive ///////////////////////////////
 
+  // DELETE_MODE:
+  // selection interaction for deleting exactly one feature
 
-  // selection interaction for deleting feature
   var select = null;  // ref to currently selected interaction
-  var selectedFeatures = new ol.Collection
-    
-  // listen for a feature added to selectedFeatures...to be deleted
-  selectedFeatures.on('add', function(e){
-    var feature = selectedFeatures.item(0);  // should be only one
+  var toBeDeletedFeatures = new ol.Collection
+
+  // listen for a feature added to toBeDeletedFeatures...to be deleted
+  toBeDeletedFeatures.on('add', function(e){
+    var feature = toBeDeletedFeatures.item(0);  // should be only one
     if(feature.get("id") == undefined){      // hasn't been saved yet
-      featureSource.removeFeature(feature);
-      $('a[data-delete-feature]').css({ "color": savedColor });
-      map.addInteraction(draw);
-      map.addInteraction(modify);
-      map.removeInteraction(select);
+      endDelete(feature);
       return;
     }
     $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/delete_feature",
@@ -290,23 +287,28 @@ var map = new ol.Map({
         feature_id: parseInt(feature.get("id")) }
     })
     .done(function(data) {
-      featureSource.removeFeature(feature);
-      // reset to normal edit mode
-      $('a[data-delete-feature]').css({ "color": savedColor });
-      map.addInteraction(draw);
-      map.addInteraction(modify);
-      map.removeInteraction(select);
+      endDelete(feature);
     })
     .fail(function (jqXHr, textStatus, errorThrown) {
       alert(errorThrown);
     })
   });
 
+  function endDelete(feature){
+    featureSource.removeFeature(feature);
+    editMode(); // reset interaction to normal edit mode
+  }
 
-   // select interaction working on "click"
+  function editMode(){
+    $('a[data-delete-feature]').css({ "color": savedColor });
+    map.addInteraction(draw);
+    map.addInteraction(modify);
+    map.removeInteraction(select);
+  }
+   // select with "click"
    var select = new ol.interaction.Select({
       condition: ol.events.condition.click,
-      features: selectedFeatures
+      features: toBeDeletedFeatures
    });
 
    select.on('select', function(e) {
