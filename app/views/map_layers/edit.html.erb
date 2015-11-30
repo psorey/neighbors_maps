@@ -1,26 +1,7 @@
 <h1>Edit <%= @map_layer.name %></h1>
 <p class='alert_text'>(admin page)</p>
 
-<%= form_for(@map_layer) do |f| %>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-    <%= f.text_area :layer_mapfile_text, cols: "80", rows: "25" %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :draw_order %><br />
-    <%= f.text_field :draw_order %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Show', @map_layer %> |
 <%= link_to 'Back', map_layers_path %>

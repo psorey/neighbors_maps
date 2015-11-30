@@ -24,6 +24,7 @@ class MapLayersController < ApplicationController
   end
 
 
+
   def create
     @map_layer = MapLayer.new(map_layers_params)
       if @map_layer.save
@@ -34,14 +35,17 @@ class MapLayersController < ApplicationController
   end
 
 
+
   def update
     @map_layer = MapLayer.find(params[:id])
       if @map_layer.update_attributes(map_layers_params)
-        redirect_to(@map_layer, notice: 'MapLayer was successfully updated.')
+        redirect_to( map_layers_path, notice: 'MapLayer was successfully updated.')
       else
         render "edit"
       end
   end
+
+
 
   def destroy
     @map_layer = MapLayer.find(params[:id])
@@ -54,7 +58,7 @@ class MapLayersController < ApplicationController
 
 
   def map_layers_params
-    params.require(:map_layer).permit(:name, :description, :layer_mapfile_text, :draw_order)
+    params.require(:map_layer).permit(:name, :description, :mapserver, :layer_mapfile_text, :source, :srs, :geometry_type, :data_mapfile, :units, :url_extension )
   end
 
 

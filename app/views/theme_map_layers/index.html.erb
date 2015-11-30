@@ -1,0 +1,44 @@
+<h1>Listing theme_map_layers</h1>
+
+<table class='grid'>
+  <tr>
+    <th>Theme Map Name</th>
+    <th>Layer Name</th>
+
+    <th>Base</th>
+    <th>Interactive</th>
+    <th>Draw Order</th>
+
+
+    <th>Line Color</th>
+    <th>Line Width</th>
+    <th>Fill Color</th>
+    <th>Layer Type</th>
+    <th>Opacity</th>
+  </tr>
+
+<% @theme_map_layers.each do |theme_map_layer| %>
+  <tr>
+    <td><%=h theme_map_layer.theme_map.name %></td>
+    <td><%=h theme_map_layer.map_layer.name %></td>
+    <td><%=h theme_map_layer.is_base_layer ? "*":"" %></td>
+    <td><%=h theme_map_layer.is_interactive ? "*":"" %></td>
+
+
+    <td><%=h theme_map_layer.draw_order %></td>
+    <td><%=h theme_map_layer.line_color %></td>
+    <td><%=h theme_map_layer.line_width %></td>
+    <td><%=h theme_map_layer.fill_color %></td>
+    <td><%=h theme_map_layer.layer_type %></td>
+    <td><%=h theme_map_layer.opacity %></td>
+
+    <td><%= link_to 'Show', theme_map_layer %></td>
+    <td><%= link_to 'Edit', edit_theme_map_layer_path(theme_map_layer) %></td>
+    <td><%= link_to 'Destroy', theme_map_layer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<p><%= link_to 'New theme_map_layer', new_theme_map_layer_path %></p>

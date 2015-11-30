@@ -4,10 +4,7 @@ require 'bluecloth'
 class ThemeMapsController < ApplicationController
 
 
-  layout "theme_maps_layout", only: :show
-  # before_filter :login_required, except: 'index'
   before_filter :set_current_user
-
 
 
   def set_current_user
@@ -25,20 +22,30 @@ class ThemeMapsController < ApplicationController
 
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).first
+    base_layers = []
+    overlay_layers = []
+    @theme_map.theme_map_layers.each do |tml|
+      if tml.is_base_layer
+        base_layers << tml
+      else
+        overlay_layers << tml
+      end
+    end
+
+    @base_layers_json = base_layers.to_json
+    logger.debug @base_layers_json
+    @overlay_layers_json = overlay_layers.to_json
+    logger.debug @overlay_layers_json
+
     @geo_json = nil
     @theme_map.make_mapfile
-    @geo_json = UserLine.load_geo_json(100) # id of interactive layer
-    logger.debug "geojson" 
-    logger.debug @geo_json 
-    jp = JSON.parse(@geo_json)
-    if jp["features"] == nil 
-      @geo_json = "'none'"
+    if @theme_map.is_interactive
+      @geo_json = UserLine.load_geo_json(100) # id of interactive layer
+      jp = JSON.parse(@geo_json)
+      if jp["features"] == nil
+        @geo_json = "'none'"
+      end
     end
-    # map_layer_id = @theme_map.interactive_map_layer_id
-    # logger.debug map_layer_id
-    # if map_layer_id
-     # @geo_json =  UserLine.load_geo_json(map_layer_id) # loads all current_user's lines for map_layer
-    # end
   end
 
 
@@ -93,11 +100,12 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def delete_feature
     id = params[:feature_id].to_i
     feature = UserLine.find(id)
     feature.destroy
-    render :js => ';'
+    render :js => 'console.log("feature deleted");'
   end
 
 
@@ -139,7 +147,7 @@ class ThemeMapsController < ApplicationController
     @theme_map = ThemeMap.where(slug: params[:id]).first
     map_layers = params[:theme_map][:layer_ids]
     base_layers = params[:theme_map][:base_layer_ids]
-    @theme_map.update_layers(map_layers, base_layers)
+    # @theme_map.update_layers(map_layers, base_layers)
     @theme_map.save
     if @theme_map.is_interactive
 
@@ -168,10 +176,5 @@ class ThemeMapsController < ApplicationController
     params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
   end
 
-
-  # maybe don't need this:
-  def user_line_params
-    params.require(:user_line).permit(:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id)
-  end
 
 end
