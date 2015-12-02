@@ -53,21 +53,26 @@ var fill = new ol.style.Fill({
   color: 'rgba(0,1,1,0)'
 });
 
+
 var circleFill = new ol.style.Fill({
   color: 'rgb(1,1,1)'
 });
+
 
 var stroke = new ol.style.Stroke({
   color: 'rgba(0,0,0,1)',
   width: 1
 });
 
+
 var lightStroke = new ol.style.Stroke({
   color: 'rgba(1,1,1,1)',
   width: 1
 });
 
+
 var styleCache = {};
+
 
 // the style function returns an array
 function labelStyleFunction(feature, resolution) {
@@ -112,7 +117,6 @@ overlayLayers.setLayers(o_layers);
 
 var baseLayers = new ol.layer.Group();
 baseLayers.setLayers(b_layers);
-
 
 /*
 
@@ -288,6 +292,8 @@ var map = new ol.Map({
     })
   });
 
+
+
   function endDelete(feature){
     featureSource.removeFeature(feature);
     // leaves an artifact on the unmanaged temp layer -- need to unselect before deleting?
@@ -302,17 +308,20 @@ var map = new ol.Map({
     map.removeInteraction(select);
   }
 
+
    // select with "click"
    var select = new ol.interaction.Select({
       condition: ol.events.condition.click,
       features: toBeDeletedFeatures
    });
 
+
    select.on('select', function(e) {
      // instead of this plus a filter, we are listening
      // for a feature to be added to selectedFeatures collection
    });
    // end DELETE function
+
 
    var prompt_title = 'enter a number';               // @theme_map.prompt_title
    var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
