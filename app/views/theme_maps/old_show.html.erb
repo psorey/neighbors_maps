@@ -1,0 +1,469 @@
+<!---   show.html.erb -->
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div id="map" class="map"></div>
+        <form class="form-inline">
+          <table class='my-map-controls'>
+            <tr>
+              <td><label>mapping tasks: &nbsp;</label>
+                <select id="type">
+                  <option value="None" selected >--select--</option>
+                  <option value="Point">describe destinations</option>
+                  <option value="LineString">draw walking paths</option>
+                  <option value="Polygon">identify safety issues</option>
+                </select>
+              </td>
+            </form>
+              <td><%= link_to "revert", @theme_map, data:{"revert-geo-db": "none"}  %></td>
+              <td><%= link_to "save",   @theme_map, data:{"update-geo-db": "none"} %></td>
+              <td><%= link_to "delete feature",   @theme_map, data:{"delete-feature": "none"}  %></td>
+              <td><%= link_to "help",   @theme_map, data:{"show-help": "none"}  %></td>
+              <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>
+            </tr>
+          </table>
+          <div style="height: 30px; width: 90px;">
+            <div id="indicator" style="display: none; height: 20px; text-align: center;">edits saved</div>
+          </div>
+          <div id="status"></div>
+        <div id="tags">draw, edit, modify, vector, featureoverlay</div>
+      </div>
+    </div>
+  </div>
+<div>
+</div>
+
+
+<script>
+
+
+$( document ).ready(function() {
+     $("select").each(function() { this.selectedIndex = 0 });
+});
+
+var overlayLayers = [];
+var baseLayers = [];
+
+// if interactive
+// begin setup of overlay drawing and editing...
+var features = new ol.Collection();
+var featureSource = new ol.source.Vector({features:features});
+var labels = new ol.Collection();
+var labelSource = new ol.source.Vector({features:labels});
+
+var <%= @theme_map.name.dashed %>;
+var <%= @theme_map.name.dashed + '_labels'%>;
+
+var userId = <%=@current_user_id %>;
+
+// why is circle black if this is used for text style ???
+var fill = new ol.style.Fill({
+  color: 'rgba(0,1,1,0)'
+});
+
+var circleFill = new ol.style.Fill({
+  color: 'rgb(1,1,1)'
+});
+
+
+var stroke = new ol.style.Stroke({
+  color: 'rgba(0,0,0,1)',
+  width: 1
+});
+
+
+var lightStroke = new ol.style.Stroke({
+  color: 'rgba(1,1,1,1)',
+  width: 1
+});
+
+
+var styleCache = {};
+
+
+// the style function returns an array
+function labelStyleFunction(feature, resolution) {
+  myStyle = new ol.style.Style({
+    fill: fill,
+    stroke: stroke,
+    image: new ol.style.Circle({
+              radius: 8,
+              fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 150, 1)'
+              }),
+              stroke: new ol.style.Stroke({
+                color: 'rgba(255, 204, 0, 0.2)',
+                width: 1
+              })
+          }),
+    text: new ol.style.Text({
+      textAlign: "Start",
+      textBaseline: "Middle",
+      font: 'Normal 12px Arial',
+      text: feature.get("number").toString(),
+      fill: fill,
+      stroke: lightStroke,
+      offsetX: -3,
+      offsetY: 5,
+      rotation: 0
+      })
+    })
+  return[myStyle];
+};
+
+
+var vectorStyle = new ol.style.Style({
+  fill: fill,
+  stroke: stroke,
+  //image: circleStyle
+});
+
+
+
+var baseLayers;   // need JSON objects:  {"type":"Tile", "title":"watercolor", "base":true, "opacity": .4, "sourceType":"Stamen", "sourceLayer":"watercolor","visible":true, "sourceUrl":"", 
+var overlayLayers;
+var interactiveLayers;
+
+var numBaseLayers = 3;  // numBaseLayers =
+
+
+
+// for(i=0; i < numBaseLayers; i++) {
+ //  lay = new ol.layer.
+// }
+
+
+// todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
+// todo: property from theme_map [overrides theme_map_layer?] overrides map_layer properties
+
+
+var map = new ol.Map({
+        target: 'map',
+        layers: [  /*
+            new ol.layer.Group({
+                'title': 'base maps',
+                layers: [
+                    new ol.layer.Tile({
+                        title: 'watercolor',
+                        type: 'base',
+                        visible: true,
+                        opacity: .4,
+                        source: new ol.source.Stamen({ layer: 'watercolor' })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'openStreetMap',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.OSM()
+                    }),
+                    new ol.layer.Tile({
+                        title: 'satellite',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.MapQuest({layer: 'sat'})
+                        }),
+                    new ol.layer.Image({
+                        title: 'greenwood aerial',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })})  
+                ]
+            }),  */
+
+
+            new ol.layer.Group({
+                title: 'overlays',
+                layers: [
+                    new ol.layer.Image({
+                        title: 'study blocks',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                    new ol.layer.Image({
+                        title: 'study character',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                           })}),
+
+                    new ol.layer.Image({
+                        title: 'study corridors',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+                  new ol.layer.Image({
+                      title: 'neighbors',
+                      source: new ol.source.ImageWMS({
+                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                         params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                         serverType: 'mapserver'
+                      })}),
+                   new ol.layer.Image({
+                        title: 'project boundary',
+                        source: new ol.source.ImageWMS({
+                           url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                           params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+                           serverType: 'mapserver'
+                        })}),
+  //                 new ol.layer.Image({
+  //                      title: 'half-blocks',
+  //                      source: new ol.source.ImageWMS({
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+  //                         params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+  //                         serverType: 'mapserver'
+  //                      })}),
+  //                 new ol.layer.Image({
+  //                      title: 'p-patches',
+  //                      source: new ol.source.ImageWMS({
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+  //                         params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3875' },
+  //                         serverType: 'mapserver'
+  //                         })}),
+
+
+                  // begin setup of overlay drawing and editing...
+
+                  <%= @theme_map.name.dashed %> = new ol.layer.Vector({
+                      title: "user-drawn lines",  // /var featureOverlay = new ol.layer.Vector({
+                      source: featureSource,
+                      style: vectorStyle
+                  }),
+
+                  <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
+                      title: "user labels",
+                      source: labelSource,
+                      style: labelStyleFunction // dotStyle
+                  })
+                ]
+            })
+            ],
+
+          view: new ol.View({
+           // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
+            center: [-13620870.52201, 6056409.356303 ],
+           zoom: 14
+       })
+   });
+
+   var layerSwitcher = new ol.control.LayerSwitcher({
+       tipLabel: 'layer controls'   // Optional label for button
+   });
+
+   map.addControl(layerSwitcher);
+   var scaleControl = new ol.control.ScaleLine();
+   map.addControl(scaleControl);
+
+
+
+  /////////////////////////////////////////  interactive ///////////////////////////////
+
+  // DELETE_MODE:
+  // selection interaction for deleting exactly one feature
+
+  var select = null;  // ref to currently selected interaction
+  var toBeDeletedFeatures = new ol.Collection
+
+  // listen for a feature added to toBeDeletedFeatures...to be deleted
+  toBeDeletedFeatures.on('add', function(e){
+    var feature = toBeDeletedFeatures.item(0);  // should be only one
+    if(feature.get("id") == undefined){      // hasn't been saved yet
+      endDelete(feature);
+      return;
+    }
+    $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/delete_feature",
+      method: "POST",
+      dataType: 'script',
+      data: {
+        theme_map: {"id":<%=@theme_map.id%> },
+        contentType: 'text/javascript',
+        feature_id: parseInt(feature.get("id")) }
+    })
+    .done(function(data) {
+      endDelete(feature);  //deleteFeature(e);
+    })
+    .fail(function (jqXHr, textStatus, errorThrown) {
+      alert(errorThrown);
+    })
+  });
+
+  function endDelete(feature){
+    featureSource.removeFeature(feature);
+    // leaves an artifact on the unmanaged temp layer -- need to unselect before deleting?
+    editMode(); // reset interaction to normal edit mode
+  }
+
+
+  function editMode(){
+    $('a[data-delete-feature]').css({ "color": savedColor });
+    map.addInteraction(draw);
+    map.addInteraction(modify);
+    map.removeInteraction(select);
+  }
+
+   // select with "click"
+   var select = new ol.interaction.Select({
+      condition: ol.events.condition.click,
+      features: toBeDeletedFeatures
+   });
+
+   select.on('select', function(e) {
+       // instead of this plus a filter, we are listening
+       // for a feature to be added to selectedFeatures collection
+   });
+
+
+
+
+
+   var prompt_title = 'enter a number';               // @theme_map.prompt_title
+   var prompt_string = 'estimated trips per month';   // @theme_map.prompt_string
+
+   featureSource.on('change', function() {
+     makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
+   });
+
+   featureSource.on('addfeature', function(event) {
+     console.log("added a feature");
+     if(event.feature.get("number") == undefined ) {
+       event.feature.set("number", 0); // todo get number from user input
+     }
+   });
+
+   featureSource.on('removefeature', function() {
+     console.log("removed a feature");
+   });
+
+
+   // store all data in LineString feature; data generates labeled dot on separate 'label' layer
+   // load data from server into featureSource:
+   var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
+   var geoJson = <%= raw @geo_json %>;
+   if(geoJson != 'none') {
+     featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: "EPSG:3857"}));
+   }
+   // set up map drawing functions:
+   var modify = new ol.interaction.Modify({
+     features: features,
+     // the SHIFT key must be pressed to delete vertices
+     deleteCondition: function(event) {
+       return ol.events.condition.shiftKeyOnly(event) &&
+          ol.events.condition.singleClick(event);
+      }
+    });
+    map.addInteraction(modify);
+
+    var draw;
+
+    function addInteraction() {
+        draw = new ol.interaction.Draw({
+          features: features,
+          type: (typeSelect.value)
+       });
+       map.addInteraction(draw);
+     }
+
+     var typeSelect = document.getElementById('type');
+        typeSelect.onchange = function(e) {
+          map.removeInteraction(draw);
+       addInteraction();
+     };
+
+
+    // create array of circles and labels
+    function makeLabeledDots(geom_layer, label_layer) {
+      my_source = geom_layer.getSource();
+      lineFeatures = my_source.getFeatures();
+      label_source = label_layer.getSource();
+      label_source.clear();
+      for (var i = 0; i < lineFeatures.length; i++) {
+        if (lineFeatures[i] != null) {
+          var geometry = lineFeatures[i].getGeometry();
+          coords = geometry.flatCoordinates;
+          len = coords.length;
+          pointCoords = [coords[len-2], coords[len-1]];
+          pointFeature = new ol.Feature({
+             geometry: new ol.geom.Point(pointCoords)
+          });
+          pointFeature.set("number", lineFeatures[i].get("number"));
+          labelSource.addFeature(pointFeature);
+        }
+      }
+      myFeatures = featureSource.getFeatures();
+    }
+
+
+  function getFeaturesJSON(){
+    return gjFormat.writeFeatures(featureSource.getFeatures());
+  }
+
+
+  function showHelp(){
+    win = new Window('1', {className: "alphacube", title: '<%=@theme_map.name %>',
+        width:340, height:450, top:70, left:100, zIndex:1500,
+        destroyOnClose: true });
+    win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{ id: '<%=@theme_map.name %>'});
+    win.show();
+  }
+
+  var savedColor = $('a[data-delete-feature]').css("color");
+
+  $('a[data-delete-feature]').click(function(event){
+   event.preventDefault();
+   console.log("delete feature");
+   $('a[data-delete-feature]').css({ "color": "#113" });
+   map.removeInteraction(draw);
+   map.removeInteraction(modify);
+   map.addInteraction(select);
+  });
+
+
+
+ $('a[data-revert-geo-db]').click(function(event){
+   event.preventDefault();
+    console.log("revert saved");
+    $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/revert_geo_db",
+      method: "GET",
+      dataType: 'script',
+      data: { id: '<%=@theme_map.slug%>' },
+    })
+    .fail(function (jqXHr, textStatus, errorThrown) {
+      alert(errorThrown);
+   })
+ });
+
+
+ $('a[data-update-geo-db]').click(function(event){
+   event.preventDefault();
+   var json = getFeaturesJSON();
+   console.log("ajax:update_geo_db in console");
+   $.ajax({ url: "/theme_maps/<%=@theme_map.slug%>/update_geo_db",
+     method: "POST",
+     dataType: 'script',
+     data: {
+       theme_map: {"id":<%=@theme_map.id%> },
+       contentType: 'text/javascript',
+       features: unescape(json)}
+     })
+  .done(function(data) {
+  })
+  .fail(function (jqXHr, textStatus, errorThrown) {
+     alert(errorThrown);
+  })
+ });
+
+// <!-- end open_layers_interactive_functions -->
+
+
+</script>
+
+<!--  end show.html.erb  -->

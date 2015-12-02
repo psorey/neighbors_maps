@@ -1,5 +1,5 @@
 # Notes on how we create maps in this web application:
-#
+
 # Currently using Mapscript-Ruby to manipulate the (Mapserver MapObj) map_object,
 # then we save the map_object as a mapfile ('theme_map_name.map') to be
 # served as WMS layers through the CGI version of Mapserver, so we can take advantage
@@ -8,12 +8,12 @@
 # maps, and the present method does that well.
 # There may be an alternative using the Mapscript version of Mapserver
 # to send layers to the OpenLayers interface directly from the MapObj.
-#
+
 # In practice, the easiest path to great-looking on-line maps is to design their 'look and feel'
 # in a desktop GIS application such as QGIS, export a mapfile from QGIS, snip the
 # individual layers from the mapfile, then use the snippets to create 'map_layers'
 # in this web application, where they can be further tweaked and used in many different maps.
-#
+
 # MapObj and LayerObj are Mapscript classes.
 
 # TODO:
@@ -25,17 +25,21 @@
 require 'mapscript'
 include Mapscript
 
+
 class ThemeMap < ActiveRecord::Base
+
 
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   has_many :user_lines, :through => :map_layers
-
+  
+  attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
   #validates_presence_of :name #, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
+
 
 
   def interactive_map_layer_id
@@ -54,6 +58,8 @@ class ThemeMap < ActiveRecord::Base
   # test: make_mapfile should create a Mapfile in the mapserver directory  
   # test: make_mapfile should populate @layer_name_list: array of layer names, downcased and underscored 
   # TODO: factor out to mapfile.rb
+
+
   def make_mapfile
     # mapscript:
     @map = MapObj.new
@@ -80,7 +86,7 @@ class ThemeMap < ActiveRecord::Base
     @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
     @map.units = MS_FEET
     add_ordered_layers
-    @map.save("/home/paul/mapserver/my_recent_map.map")
+    @map.save("/home/paul/mapserver/my_recent_map.map") # add session_id to filename for concurrent users
   end
 
 
@@ -94,23 +100,28 @@ class ThemeMap < ActiveRecord::Base
   end
 
 
-  def mapfile_name
+  def mapfile_name  
     APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.dashed}.map"
   end
 
 
+  def sort_layers
+    self.theme_map_layers.sort!{ |a,b| a.draw_order <=> b.draw_order }
+  end
+
+
   def add_ordered_layers
-    # load the layer descriptions into the MapObj
+    return
     temp_layers = []
-    self.map_layers.each do |layer|
+    self.theme_map_layers.each do |layer|
       temp_layers << layer
     end
     temp_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
-    temp_layers.each do |map_layer|
+    temp_layers.each do |theme_map_layer|
       layer = LayerObj.new(@map)  # mapscript
       layer.debug = 3
-      layer.updateFromString(map_layer.layer_mapfile_text)  # mapscript
-      mapfile_layer_name = map_layer.name.dashed
+      layer.updateFromString(theme_map_layer.map_layer.layer_mapfile_text)  # mapscript
+      mapfile_layer_name = theme_map_layer.map_layer.name.dashed
       layer.name = mapfile_layer_name
     end
   end

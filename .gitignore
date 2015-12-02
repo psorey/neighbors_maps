@@ -2,7 +2,8 @@
 .redcar/*
 # .gitignore
 config/initializers/site_keys.rb
-config/*.yml
+config/database.yml
+config/config.yml
 config/environment.rb
 *.kpf
 /log/*.log

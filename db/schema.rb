@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111013547) do
+ActiveRecord::Schema.define(version: 20151128163559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,15 @@ ActiveRecord::Schema.define(version: 20151111013547) do
     t.text     "layer_mapfile_text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "draw_order",                     default: 50
     t.string   "srs",                limit: 255
     t.string   "url_extension",      limit: 255
     t.string   "template_file",      limit: 255
-    t.string   "projection",         limit: 255
     t.string   "wkt_extent",         limit: 255
     t.string   "units",              limit: 255
+    t.string   "data_mapfile"
+    t.string   "source"
+    t.string   "geometry_type"
+    t.boolean  "mapserver"
   end
 
   create_table "neighbors", force: :cascade do |t|
@@ -128,6 +130,8 @@ ActiveRecord::Schema.define(version: 20151111013547) do
     t.integer  "line_width"
     t.boolean  "is_interactive",             default: false
     t.string   "name",           limit: 255
+    t.string   "layer_type"
+    t.integer  "draw_order"
   end
 
   create_table "theme_maps", force: :cascade do |t|
@@ -153,21 +157,26 @@ ActiveRecord::Schema.define(version: 20151111013547) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "login",                     limit: 40
-    t.string   "name",                      limit: 100, default: ""
-    t.string   "email",                     limit: 100
-    t.string   "crypted_password",          limit: 40
-    t.string   "salt",                      limit: 40
+    t.string   "login",                  limit: 40
+    t.string   "name",                   limit: 100, default: ""
+    t.string   "email",                  limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token",            limit: 40
-    t.datetime "remember_token_expires_at"
-    t.string   "activation_code",           limit: 40
-    t.datetime "activated_at"
     t.integer  "neighbor_id"
+    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "walk_surveys", force: :cascade do |t|
     t.string   "neighbor_id", limit: 255

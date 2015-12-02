@@ -15,7 +15,8 @@
         <div id="navbar" class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li class="<%=params[:controller] == 'welcome'? "active":"" %>"><%=link_to 'home', controller: 'welcome' %></li>
-            <li class="<%=params[:controller] == 'theme_maps'? "active":"" %>"><%=link_to 'gis data maps', controller: 'theme_maps' %></li>
+            <li class="<%=params[:controller] == 'theme_maps'? "active":"" %>"><%=link_to 'theme maps', controller: 'theme_maps' %></li>
+            <li class="<%=params[:controller] == 'theme_map_layers'? "active":"" %>"><%= link_to 'theme map layers', :controller=> 'theme_map_layers'  %></li>
             <li class="<%=params[:controller] == 'map_layers'? "active":"" %>"><%= link_to 'map layers', :controller=> 'map_layers'  %></li>
           </ul>
         </div><!-- /.nav-collapse -->

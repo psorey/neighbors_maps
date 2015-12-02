@@ -1,0 +1,43 @@
+
+
+<%= form_for(@map_layer) do |f| %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+
+  <p>
+    <%= f.text_area :layer_mapfile_text, cols: "80", rows: "25" %>
+  </p>
+
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :mapserver %><br/>
+    <%= f.check_box :mapserver %>
+  </p> 
+
+  <p>
+    <%= f.label :source %><br/>
+    <%= f.text_area :source %>
+  </p> 
+
+  <p>
+    <%= f.label :srs %><br/>
+    <%= f.text_field :srs %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+
+<% end -%>
+

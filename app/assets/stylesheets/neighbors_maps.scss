@@ -40,7 +40,10 @@ a {
     border-left:1px dotted fuchsia;
 	}
   td {
-  	padding:11px 15px 15px 11px;
+  	padding-top:6px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 6px;
   	border-top:1px dotted fuchsia;
   	border-right:1px dotted fuchsia;
   }
@@ -118,6 +121,8 @@ img { border: $thin_border;}
 
 body {
   margin:0px;
+  margin-top:20px;
+  margin-bottom:24px;
   padding:0px;
   border:0px;
   text-align:left;
@@ -224,7 +229,7 @@ h1 {
  font-weight: normal;
  font-size: 26px;
  font-family: Arial,sans-serif;
- margin: 0px;
+ margin: 10px;
  padding: 2px;
 }
 
@@ -233,7 +238,7 @@ h2 {
  margin: 1px;
  font-family: Arial,sans-serif;
  font-weight: lighter;
- font-size: 20px;
+ font-size: 18px;
 }
 
 h3 {
