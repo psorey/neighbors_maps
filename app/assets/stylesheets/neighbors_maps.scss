@@ -23,7 +23,10 @@ $sidebar_font_size: small;
 @-ms-viewport{
   width: device-width;
 }
-
+.fill { 
+    min-height: 65%;
+    height: 65%;
+}
 
 a {
   font-size: $sidebar_font_size;
@@ -75,8 +78,8 @@ a {
 
 
 #map {
-  width: 950px;
-  height: 600px;
+//  width: 950px;
+//  height: 600px;
   border-right: $thin_border;
   border-bottom: $thin_border; 
   border: $thin_border;
@@ -122,7 +125,7 @@ img { border: $thin_border;}
 body {
   margin:0px;
   margin-top:20px;
-  margin-bottom:24px;
+  margin-bottom:14px;
   padding:0px;
   border:0px;
   text-align:left;

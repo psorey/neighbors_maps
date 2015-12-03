@@ -2,7 +2,7 @@
 
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span12">
+      <div class="span12 fill">
         <div id="map" class="map"></div>
         <form class="form-inline">
           <table class='my-map-controls'>
@@ -60,8 +60,8 @@ var circleFill = new ol.style.Fill({
 
 
 var stroke = new ol.style.Stroke({
-  color: 'rgba(0,0,0,1)',
-  width: 1
+  color: 'rgba(1,0,0,1)',
+  width: 3
 });
 
 
@@ -80,12 +80,12 @@ function labelStyleFunction(feature, resolution) {
     fill: fill,
     stroke: stroke,
     image: new ol.style.Circle({
-      radius: 10,
+      radius: 12,
       fill: new ol.style.Fill({
       color: 'rgba(255, 255, 150, 1)'
     }),
     stroke: new ol.style.Stroke({
-      color: 'rgba(255, 204, 0, 0.2)',
+      color: 'rgba(1, 0, 0, 0.5)',
       width: 1
     })
   }),
@@ -106,8 +106,12 @@ function labelStyleFunction(feature, resolution) {
 
 var vectorStyle = new ol.style.Style({
   fill: fill,
-  stroke: stroke
+  stroke: new ol.style.Stroke({
+    color: 'rgba(0,125,15,.7)',
+    width: 3
+  })
 });
+
 
 var o_layers = new ol.Collection();
 var b_layers = new ol.Collection();
@@ -119,7 +123,6 @@ var baseLayers = new ol.layer.Group();
 baseLayers.setLayers(b_layers);
 
 /*
-
 var numBaseLayers = 2;
 var numOverlayLayers = 3;
 
@@ -133,7 +136,6 @@ for(var i in baseLayers) {
   newlayer.opacity = baseLayers[i].opacity;
   newlayer.source = eval('new ol.source.' + baseLayers[i].map_layer.source);
   }
-
 */
 
 // todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
