@@ -141,8 +141,7 @@ for(var i in baseLayers) {
 
 var map = new ol.Map({
         target: 'map',
-        layers: [  
-      /*
+        layers: [
           new ol.layer.Group({
             'title': 'base maps',
              layers: [
@@ -170,12 +169,12 @@ var map = new ol.Map({
                  type: 'base',
                  visible: false,
                  source: new ol.source.ImageWMS({
-                   url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                   url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                    params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                    serverType: 'mapserver'
-               })})  
+               })})
              ]
-           }),  */
+           }),
 
             new ol.layer.Group({
                 title: 'overlays',
@@ -183,35 +182,35 @@ var map = new ol.Map({
                   new ol.layer.Image({
                     title: 'study blocks',
                     source: new ol.source.ImageWMS({
-                      url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                      url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                       params: {'LAYERS': 'study_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                       serverType: 'mapserver'
                     })}),
                     new ol.layer.Image({
                       title: 'study character',
                       source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                         params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                         serverType: 'mapserver'
                     })}),
                     new ol.layer.Image({
                       title: 'study corridors',
                       source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                         params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                         serverType: 'mapserver'
                     })}),
                     new ol.layer.Image({
                       title: 'neighbors',
                       source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                         params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                         serverType: 'mapserver'
                     })}),
                     new ol.layer.Image({
                       title: 'project boundary',
                       source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
                         params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
                         serverType: 'mapserver'
                     })}),
@@ -219,14 +218,14 @@ var map = new ol.Map({
   //                 new ol.layer.Image({
   //                      title: 'half-blocks',
   //                      source: new ol.source.ImageWMS({
-  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
   //                         params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
   //                         serverType: 'mapserver'
   //                 })}),
   //                 new ol.layer.Image({
   //                      title: 'p-patches',
   //                      source: new ol.source.ImageWMS({
-  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/my_recent_map.map',
+  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
   //                         params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
   //                         serverType: 'mapserver'
   //                  })}),
@@ -245,7 +244,7 @@ var map = new ol.Map({
             ]
           })
         ],
-    view: new ol.View({
+      view: new ol.View({
       // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
       center: [-13620870.52201, 6056409.356303 ],
       zoom: 14
@@ -379,7 +378,6 @@ var map = new ol.Map({
 
   // create array of circles and labels
   function makeLabeledDots() {
-    my_source = geom_layer.getSource();
     lineFeatures = featureSource.getFeatures();
     labelSource.clear();
     for (var i = 0; i < lineFeatures.length; i++) {
@@ -418,6 +416,8 @@ var map = new ol.Map({
    map.removeInteraction(draw);
    map.removeInteraction(modify);
    map.addInteraction(select);
+
+   deleteMode();
   });
 
  $('a[data-revert-geo-db]').click(function(event){

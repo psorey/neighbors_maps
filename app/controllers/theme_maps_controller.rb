@@ -4,6 +4,9 @@ require 'bluecloth'
 class ThemeMapsController < ApplicationController
 
 
+  # LogBuddy.init :logger => Logger.new('my_log.log')  
+
+
   before_filter :set_current_user
 
 
@@ -39,13 +42,14 @@ class ThemeMapsController < ApplicationController
 
     @geo_json = nil
     @theme_map.make_mapfile
-    if @theme_map.is_interactive
-      @geo_json = UserLine.load_geo_json(100) # id of interactive layer
-      jp = JSON.parse(@geo_json)
-      if jp["features"] == nil
+#    if @theme_map.is_interactive
+      user_geo_json = UserLine.load_geo_json(100) # id of interactive layer
+      @geo_json = user_geo_json
+      if @geo_json["features"] == nil
         @geo_json = "'none'"
       end
-    end
+      d{@geo_json}
+#    end
   end
 
 
@@ -94,8 +98,8 @@ class ThemeMapsController < ApplicationController
 
   def revert_geo_db
     @theme_map = ThemeMap.where(:slug => params[:id]).first
-    @current_neighbor_id = 44    # current_user.neighbor_id
-    @geo_json = UserLine.load_geo_json(100) # id of interactive layer
+    @current_neighbor_id = 44                   # current_user.neighbor_id
+    @geo_json = UserLine.load_geo_json(100)     # id of interactive layer
     render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: 'EPSG:3857'})); alert('reverted');"
   end
 
