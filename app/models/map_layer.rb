@@ -7,6 +7,7 @@ class MapLayer < ActiveRecord::Base
   has_many :theme_map_layers
   has_many :theme_maps, :through => :theme_map_layers
   has_many :user_lines
+  belongs_to :source
 
 end
 

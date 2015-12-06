@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128163559) do
+ActiveRecord::Schema.define(version: 20151205220033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,8 @@ ActiveRecord::Schema.define(version: 20151128163559) do
     t.string   "wkt_extent",         limit: 255
     t.string   "units",              limit: 255
     t.string   "data_mapfile"
-    t.string   "source"
     t.string   "geometry_type"
-    t.boolean  "mapserver"
+    t.integer  "source_id"
   end
 
   create_table "neighbors", force: :cascade do |t|
@@ -117,6 +116,16 @@ ActiveRecord::Schema.define(version: 20151128163559) do
 
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "url"
+    t.string   "wms_params"
+    t.string   "source_type"
+    t.string   "layer"
+    t.string   "server_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "theme_map_layers", force: :cascade do |t|
     t.integer  "theme_map_id"

@@ -4,7 +4,7 @@
 # then we save the map_object as a mapfile ('theme_map_name.map') to be
 # served as WMS layers through the CGI version of Mapserver, so we can take advantage
 # of the OpenLayers WMS layer functions. This does seem a round-about approach;
-# the main goal, however, is to simplify the on-line creation and modification of theme
+# the main goal, however, is to simplify the online creation and modification of theme
 # maps, and the present method does that well.
 # There may be an alternative using the Mapscript version of Mapserver
 # to send layers to the OpenLayers interface directly from the MapObj.
@@ -27,6 +27,7 @@ class ThemeMap < ActiveRecord::Base
 
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
+  belongs_to :source
 
   attr_accessor :map     # make the MapObj accessible to methods
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved

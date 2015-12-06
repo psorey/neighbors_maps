@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @source.url %>
+</p>
+
+<p>
+  <strong>Wms params:</strong>
+  <%= @source.wms_params %>
+</p>
+
+<p>
+  <strong>Source type:</strong>
+  <%= @source.source_type %>
+</p>
+
+<p>
+  <strong>Layer:</strong>
+  <%= @source.layer %>
+</p>
+
+<p>
+  <strong>Server type:</strong>
+  <%= @source.server_type %>
+</p>
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>

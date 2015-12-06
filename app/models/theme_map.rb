@@ -25,21 +25,22 @@
 require 'mapscript'
 include Mapscript
 
-
 class ThemeMap < ActiveRecord::Base
 
 
   has_many :theme_map_layers, :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   has_many :user_lines, :through => :map_layers
-  
+  has_many :sources, :through => :map_layers
+ 
+
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
+
 
   #validates_presence_of :name #, :layer_ids, :base_layer_ids 
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
-
 
 
   def interactive_map_layer_id
@@ -52,7 +53,11 @@ class ThemeMap < ActiveRecord::Base
     return nil
   end
 
-  
+
+  def as_json
+    context = ApplicationController.new.view_context
+    context.render('/theme_maps/theme_map.json.jbuilder', theme_map: self)
+  end
 
 
   # test: make_mapfile should create a Mapfile in the mapserver directory  

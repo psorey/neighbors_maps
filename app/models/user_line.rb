@@ -35,7 +35,12 @@ class UserLine < ActiveRecord::Base
         WHERE  user_id = 44 AND map_layer_id = 100) As lg ) As f ) As fc;
     SQL
      result = ActiveRecord::Base.connection.execute(query)
-     return result[0]["row_to_json"]
+     tj= JSON.parse(result[0]["row_to_json"])
+     if tj["features"] == nil
+       return "'none'"
+     else
+       return result[0]["row_to_json"]
+     end
   end
 
 

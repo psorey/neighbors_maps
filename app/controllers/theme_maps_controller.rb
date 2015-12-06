@@ -1,11 +1,6 @@
 require 'bluecloth'
-#require 'log_buddy/init'
 
 class ThemeMapsController < ApplicationController
-
-
-  # LogBuddy.init :logger => Logger.new('my_log.log')  
-
 
   before_filter :set_current_user
 
@@ -15,41 +10,39 @@ class ThemeMapsController < ApplicationController
   end
 
 
-
   def index
     @interactive_theme_maps = ThemeMap.where(is_interactive: true).order("name ASC")
     @theme_maps = ThemeMap.where(is_interactive: false).order("name ASC")
   end
 
 
-
   def show
-    @theme_map = ThemeMap.where(slug: params[:id]).first
+    @theme_map = ThemeMap.where(slug: params[:id]).includes(:map_layers).first
+    logger.debug "THEME MAP"
+    logger.debug @theme_map
     base_layers = []
     overlay_layers = []
     @theme_map.theme_map_layers.each do |tml|
+      ml = tml.map_layer
+      src = ml.source
+      d{ml} 
+      d{src}
       if tml.is_base_layer
         base_layers << tml
       else
         overlay_layers << tml
       end
     end
-
+    d{base_layers}
     @base_layers_json = base_layers.to_json
-    logger.debug @base_layers_json
+    d{ @base_layers_json }
     @overlay_layers_json = overlay_layers.to_json
-    logger.debug @overlay_layers_json
-
-    @geo_json = nil
     @theme_map.make_mapfile
-#    if @theme_map.is_interactive
-      user_geo_json = UserLine.load_geo_json(100) # id of interactive layer
-      @geo_json = user_geo_json
-      if @geo_json["features"] == nil
-        @geo_json = "'none'"
-      end
-      d{@geo_json}
-#    end
+    @geo_json = UserLine.load_geo_json(100) # returns 'none' if no user_lines
+    #json =  @theme_map.as_json( include: [:map_layers, :source]) 
+    #d{json}
+ 
+    render js: @theme_map
   end
 
 
@@ -100,7 +93,8 @@ class ThemeMapsController < ApplicationController
     @theme_map = ThemeMap.where(:slug => params[:id]).first
     @current_neighbor_id = 44                   # current_user.neighbor_id
     @geo_json = UserLine.load_geo_json(100)     # id of interactive layer
-    render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: 'EPSG:3857'})); alert('reverted');"
+    render :js => "featureSource.clear(); geoJson = #{@geo_json}; featureSource.addFeatures(gjFormat.readFeatures(geoJson,
+      { dataProjection: 'EPSG:3857'})); alert('reverted');"
   end
 
 

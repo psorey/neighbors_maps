@@ -18,7 +18,7 @@
             </form>
               <td><%= link_to "revert", @theme_map, data:{"revert-geo-db": "none"}  %></td>
               <td><%= link_to "save",   @theme_map, data:{"update-geo-db": "none"} %></td>
-              <td><%= link_to "delete feature",   @theme_map, data:{"delete-feature": "none"}  %></td>
+              <td><%= link_to "delete feature", @theme_map, data:{"delete-feature": "none"}  %></td>
               <td><%= link_to "help",   @theme_map, data:{"show-help": "none"}  %></td>
               <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
@@ -37,6 +37,7 @@ $( document ).ready(function() {
      $("select").each(function() { this.selectedIndex = 0 });
 });
 
+
 // if interactive
 // setup overlay drawing and editing...
 var features = new ol.Collection();
@@ -44,13 +45,14 @@ var featureSource = new ol.source.Vector({features:features});
 var labels = new ol.Collection();
 var labelSource = new ol.source.Vector({features:labels});
 
+
 var <%= @theme_map.name.dashed %>;
-var <%= @theme_map.name.dashed + '_labels'%>;
+var <%= @theme_map.name.dashed + '_labels' %>;
 var userId = <%=@current_user_id %>;
 
-// why is circle black if this is used for text style ???
+
 var fill = new ol.style.Fill({
-  color: 'rgba(0,1,1,0)'
+  color: 'rgba(0,0,0,1)'
 });
 
 
@@ -73,8 +75,8 @@ var lightStroke = new ol.style.Stroke({
 
 var styleCache = {};
 
-
 // the style function returns an array
+
 function labelStyleFunction(feature, resolution) {
   myStyle = new ol.style.Style({
     fill: fill,
@@ -85,8 +87,8 @@ function labelStyleFunction(feature, resolution) {
       color: 'rgba(255, 255, 150, 1)'
     }),
     stroke: new ol.style.Stroke({
-      color: 'rgba(1, 0, 0, 0.5)',
-      width: 1
+      color: 'rgba(0, 0, 0, 0.9)',
+      width: 2
     })
   }),
   text: new ol.style.Text({
@@ -104,10 +106,11 @@ function labelStyleFunction(feature, resolution) {
   return[myStyle];
 };
 
+
 var vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: new ol.style.Stroke({
-    color: 'rgba(0,125,15,.7)',
+    color: 'rgba(255,0,0,.7)',
     width: 3
   })
 });
@@ -122,21 +125,59 @@ overlayLayers.setLayers(o_layers);
 var baseLayers = new ol.layer.Group();
 baseLayers.setLayers(b_layers);
 
-/*
 var numBaseLayers = 2;
 var numOverlayLayers = 3;
 
-for(var i in baseLayers) {
+var gjBaseLayers = <%=raw @base_layers_json %>
+
+for(var i in gjBaseLayers) {
   var newlayer;
-  console.log(baseLayers[i]);
-  newlayer = eval('new ol.layer' + baseLayers[i].layer_type);
-  newlayer.title = baseLayers[i].name;
-  newlayer.type = 'base';
-  newlayer.visible = baseLayers[i].visible;
-  newlayer.opacity = baseLayers[i].opacity;
-  newlayer.source = eval('new ol.source.' + baseLayers[i].map_layer.source);
+  console.log(gjBaseLayers[i].layer_type);
+  newLayer = createLayer(gjBaseLayers[i].layer_type);
+  newLayer.title = gjBaseLayers[i].name;
+  if(gjBaseLayers[i].is_base_layer) {
+    newLayer.type  = 'base';
   }
-*/
+  newLayer.visible = gjBaseLayers[i].visible;
+  newLayer.opacity = gjBaseLayers[i].opacity;
+  newLayer.source = createSource(gjBaseLayers[i].map_layer.source.source_type);
+}
+
+
+function createLayer(layerType) {
+  switch(layerType) {
+    case 'Image':
+        console.log("Image");
+        return new ol.layer.Image();
+        break;
+    case 'Tile':
+        console.log("Tile");
+        return new ol.layer.Tile();
+        break;
+    case 'Vector':
+        return new ol.layer.Vector();
+        break;
+  }
+}
+
+
+function createSource(sourceType) {
+  switch(sourceType) {
+    case 'Stamen':
+        return new ol.source.Stamen();
+        break;
+    case 'OSM':
+        return new ol.source.OSM();
+        break;
+    case 'MapQuest':
+        return new ol.source.MapQuest();
+        break;
+    case 'ImageWMS':
+        return new ol.source.ImageWMS();
+        break;
+  }
+}
+
 
 // todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
 // todo: property from theme_map [overrides theme_map_layer?] overrides map_layer properties
@@ -165,7 +206,16 @@ var map = new ol.Map({
                  type: 'base',
                  visible: false,
                  source: new ol.source.MapQuest({layer: 'sat'})
-               }),
+                 }),
+               new ol.layer.Image({
+                 title: 'parcels',
+                 type: 'base',
+                 visible: false,
+                 source: new ol.source.ImageWMS({
+                   url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
+                   params: {'LAYERS': 'parcel_outlines', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
+                   serverType: 'mapserver'
+               })}),
                new ol.layer.Image({
                  title: 'greenwood aerial',
                  type: 'base',
@@ -224,6 +274,7 @@ var map = new ol.Map({
   //                         params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
   //                         serverType: 'mapserver'
   //                 })}),
+  //
   //                 new ol.layer.Image({
   //                      title: 'p-patches',
   //                      source: new ol.source.ImageWMS({
@@ -334,7 +385,8 @@ var map = new ol.Map({
    featureSource.on('addfeature', function(event) {
      console.log("added a feature");
      if(event.feature.get("number") == undefined ) {
-       event.feature.set("number", 0); // todo get number from user input
+        var numProp = prompt(prompt_title, prompt_string);
+        event.feature.set("number", numProp); // todo get number from user input
      }
    });
 

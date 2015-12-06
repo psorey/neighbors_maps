@@ -8,7 +8,7 @@ class ThemeMapLayer < ActiveRecord::Base
 
   belongs_to :theme_map
   belongs_to :map_layer
-  
+ 
 #  validates_numericality_of :draw_order, :only_integer => true, :allow_nil => false, :message => 'must be an integer between 0 and 100'
 #  validates_inclusion_of :draw_order, :in => 0..100, :message => "can only be between 0 and 100.", :allow_nil => false
 #  validates_uniqueness_of :draw_order, :message => 'must be unique'

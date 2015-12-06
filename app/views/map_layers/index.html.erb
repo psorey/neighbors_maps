@@ -6,16 +6,14 @@
     <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
     <th>Description</th>
-    <th>Source</th>
-    <th>Mapserv</th>
+    <th>Source Id</th>
   </tr>
 
 <% @map_layers.each do |map_layer| %>
   <tr>
     <td><%=h map_layer.name %></td>
     <td><%=h map_layer.description %></td>
-    <td><%=h map_layer.source %></td>
-    <td><%= map_layer.mapserver ? "*":""%></td>
+    <td><%=h map_layer.source_id %></td>
 
     <td>&nbsp; &nbsp; <%= link_to 'Show', map_layer %></td>
     <td><%= link_to 'Edit', edit_map_layer_path(map_layer) %></td>
