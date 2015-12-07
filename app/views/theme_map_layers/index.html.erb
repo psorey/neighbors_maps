@@ -6,7 +6,8 @@
     <th>Layer Name</th>
 
     <th>Base</th>
-    <th>Interactive</th>
+
+    <th>Visible</th>
     <th>Draw Order</th>
 
 
@@ -22,7 +23,8 @@
     <td><%=h theme_map_layer.theme_map.name %></td>
     <td><%=h theme_map_layer.map_layer.name %></td>
     <td><%=h theme_map_layer.is_base_layer ? "*":"" %></td>
-    <td><%=h theme_map_layer.is_interactive ? "*":"" %></td>
+
+    <td><%=h theme_map_layer.visible ? "*":"" %></td>
 
 
     <td><%=h theme_map_layer.draw_order %></td>

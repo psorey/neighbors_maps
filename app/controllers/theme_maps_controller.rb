@@ -2,6 +2,7 @@ require 'bluecloth'
 
 class ThemeMapsController < ApplicationController
 
+
   before_filter :set_current_user
 
 
@@ -10,39 +11,20 @@ class ThemeMapsController < ApplicationController
   end
 
 
+
   def index
     @interactive_theme_maps = ThemeMap.where(is_interactive: true).order("name ASC")
     @theme_maps = ThemeMap.where(is_interactive: false).order("name ASC")
   end
 
 
+
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).includes(:map_layers).first
-    logger.debug "THEME MAP"
-    logger.debug @theme_map
-    base_layers = []
-    overlay_layers = []
-    @theme_map.theme_map_layers.each do |tml|
-      ml = tml.map_layer
-      src = ml.source
-      d{ml} 
-      d{src}
-      if tml.is_base_layer
-        base_layers << tml
-      else
-        overlay_layers << tml
-      end
-    end
-    d{base_layers}
-    @base_layers_json = base_layers.to_json
-    d{ @base_layers_json }
-    @overlay_layers_json = overlay_layers.to_json
-    @theme_map.make_mapfile
+    @theme_map_json = @theme_map.as_json
     @geo_json = UserLine.load_geo_json(100) # returns 'none' if no user_lines
-    #json =  @theme_map.as_json( include: [:map_layers, :source]) 
-    #d{json}
- 
-    render js: @theme_map
+    # render js: @theme_map
+
   end
 
 

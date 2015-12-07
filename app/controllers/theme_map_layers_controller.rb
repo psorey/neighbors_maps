@@ -51,7 +51,8 @@ class ThemeMapLayersController < ApplicationController
 private
 
   def theme_map_layer_params
-    params.require(:theme_map_layer).permit(:name, :theme_map_id, :map_layer_id, :is_interactive, :is_base_layer, :draw_order, :layer_type, :line_color, :line_width, :fill_color, :opacity)
+    params.require(:theme_map_layer).permit(:name, :theme_map_id, :map_layer_id, :is_interactive, :is_base_layer, :draw_order,
+                                            :visible, :layer_type, :line_color, :line_width, :fill_color, :opacity)
   end
 
 end

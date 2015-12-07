@@ -119,39 +119,46 @@ var vectorStyle = new ol.style.Style({
 var o_layers = new ol.Collection();
 var b_layers = new ol.Collection();
 
-var overlayLayers = new ol.layer.Group();
-overlayLayers.setLayers(o_layers);
 
-var baseLayers = new ol.layer.Group();
-baseLayers.setLayers(b_layers);
+var numBaseLayers;
+var numOverlayLayers;
 
-var numBaseLayers = 2;
-var numOverlayLayers = 3;
+var tmJson = <%=raw @theme_map_json %>;
 
-var gjBaseLayers = <%=raw @base_layers_json %>
+var tmLayers = tmJson["layers"];
 
-for(var i in gjBaseLayers) {
-  var newlayer;
-  console.log(gjBaseLayers[i].layer_type);
-  newLayer = createLayer(gjBaseLayers[i].layer_type);
-  newLayer.title = gjBaseLayers[i].name;
-  if(gjBaseLayers[i].is_base_layer) {
-    newLayer.type  = 'base';
+var newLayer;
+for(var i in tmLayers) {
+  var layer = tmLayers[i];
+  newLayer = createLayer(layer.layerType);
+  newLayer.set("title", layer.name);
+  newLayer.set("opacity", layer.opacity);
+  var source = createSource(layer["source"]);
+  newLayer.setSource(source);
+  if(layer.isBaseLayer) {
+    newLayer.set("type","base");
+    newLayer.set("visible", layer.visible);
+    b_layers.push(newLayer);
+  } else {
+    o_layers.push(newLayer);
   }
-  newLayer.visible = gjBaseLayers[i].visible;
-  newLayer.opacity = gjBaseLayers[i].opacity;
-  newLayer.source = createSource(gjBaseLayers[i].map_layer.source.source_type);
 }
 
+
+var overlayLayers = new ol.layer.Group();
+overlayLayers.set("title","Overlays");
+overlayLayers.setLayers(o_layers);
+var baseLayers = new ol.layer.Group();
+baseLayers.set("title", "Base Layers");
+baseLayers.setLayers(b_layers);
+console.log(baseLayers.title);
 
 function createLayer(layerType) {
   switch(layerType) {
     case 'Image':
-        console.log("Image");
         return new ol.layer.Image();
         break;
     case 'Tile':
-        console.log("Tile");
         return new ol.layer.Tile();
         break;
     case 'Vector':
@@ -161,144 +168,41 @@ function createLayer(layerType) {
 }
 
 
-function createSource(sourceType) {
-  switch(sourceType) {
+function createSource(src) {
+  switch(src["sourceType"]) {
     case 'Stamen':
-        return new ol.source.Stamen();
+      return new ol.source.Stamen({layer: src["sourceLayer"]});
         break;
     case 'OSM':
         return new ol.source.OSM();
         break;
     case 'MapQuest':
-        return new ol.source.MapQuest();
+        return new ol.source.MapQuest({layer: src["sourceLayer"]});
         break;
     case 'ImageWMS':
-        return new ol.source.ImageWMS();
+        return new ol.source.ImageWMS({ url: src["wmsUrl"],
+          params: {'LAYERS': src["sourceLayer"], 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
+          serverType: src["wmsServerType"]
+        });
         break;
+    default:
+        return;
   }
 }
 
+var blayers = baseLayers.getLayers();
+for(i in blayers) {
+     console.log(blayers.title);
+     console.log(blayers.type);
+}
 
 // todo: load layer data from theme_map, theme_map_layer, and map_layer JSON
 // todo: property from theme_map [overrides theme_map_layer?] overrides map_layer properties
 
 var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Group({
-            'title': 'base maps',
-             layers: [
-               new ol.layer.Tile({
-                 title: 'watercolor',
-                 type: 'base',
-                 visible: true,
-                 opacity: .4,
-                 source: new ol.source.Stamen({ layer: 'watercolor' })
-               }),
-               new ol.layer.Tile({
-                 title: 'openStreetMap',
-                 type: 'base',
-                 visible: false,
-                 source: new ol.source.OSM()
-               }),
-               new ol.layer.Tile({
-                 title: 'satellite',
-                 type: 'base',
-                 visible: false,
-                 source: new ol.source.MapQuest({layer: 'sat'})
-                 }),
-               new ol.layer.Image({
-                 title: 'parcels',
-                 type: 'base',
-                 visible: false,
-                 source: new ol.source.ImageWMS({
-                   url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                   params: {'LAYERS': 'parcel_outlines', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                   serverType: 'mapserver'
-               })}),
-               new ol.layer.Image({
-                 title: 'greenwood aerial',
-                 type: 'base',
-                 visible: false,
-                 source: new ol.source.ImageWMS({
-                   url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                   params: {'LAYERS': 'greenwood_aerial', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                   serverType: 'mapserver'
-               })})
-             ]
-           }),
-
-            new ol.layer.Group({
-                title: 'overlays',
-                layers: [
-                  new ol.layer.Image({
-                    title: 'study blocks',
-                    source: new ol.source.ImageWMS({
-                      url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                      params: {'LAYERS': 'study_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                      serverType: 'mapserver'
-                    })}),
-                    new ol.layer.Image({
-                      title: 'study character',
-                      source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'study_character', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                        serverType: 'mapserver'
-                    })}),
-                    new ol.layer.Image({
-                      title: 'study corridors',
-                      source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'study_corridors', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                        serverType: 'mapserver'
-                    })}),
-                    new ol.layer.Image({
-                      title: 'neighbors',
-                      source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'neighbors', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                        serverType: 'mapserver'
-                    })}),
-                    new ol.layer.Image({
-                      title: 'project boundary',
-                      source: new ol.source.ImageWMS({
-                        url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-                        params: {'LAYERS': 'project_boundary', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-                        serverType: 'mapserver'
-                    })}),
-
-  //                 new ol.layer.Image({
-  //                      title: 'half-blocks',
-  //                      source: new ol.source.ImageWMS({
-  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-  //                         params: {'LAYERS': 'half_blocks', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-  //                         serverType: 'mapserver'
-  //                 })}),
-  //
-  //                 new ol.layer.Image({
-  //                      title: 'p-patches',
-  //                      source: new ol.source.ImageWMS({
-  //                         url: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map',
-  //                         params: {'LAYERS': 'p-patches', 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
-  //                         serverType: 'mapserver'
-  //                  })}),
-
-                // setup overlay drawing and editing...
-                <%= @theme_map.name.dashed %> = new ol.layer.Vector({
-                  title: "user-drawn lines",  // /var featureOverlay = new ol.layer.Vector({
-                  source: featureSource,
-                  style: vectorStyle
-                }),
-                <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
-                title: "user labels",
-                source: labelSource,
-                style: labelStyleFunction // dotStyle
-              })
-            ]
-          })
-        ],
+      target: 'map',
+      layers: [ baseLayers ,  overlayLayers],
       view: new ol.View({
-      // center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
       center: [-13620870.52201, 6056409.356303 ],
       zoom: 14
     })
