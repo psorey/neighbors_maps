@@ -10,15 +10,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">greenwood.streetscapes.org</a>
+          <a class="navbar-brand" href="#"><%= content_for :navbar_brand %></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li class="<%=params[:controller] == 'welcome'? "active":"" %>"><%=link_to 'home', controller: 'welcome' %></li>
             <li class="<%=params[:controller] == 'theme_maps'? "active":"" %>"><%=link_to 'theme maps', controller: 'theme_maps' %></li>
-            <li class="<%=params[:controller] == 'theme_map_layers'? "active":"" %>"><%= link_to 'theme map layers', :controller=> 'theme_map_layers'  %></li>
             <li class="<%=params[:controller] == 'map_layers'? "active":"" %>"><%= link_to 'map layers', :controller=> 'map_layers'  %></li>
-            <li class="<%=params[:controller] == 'sources'? "active":"" %>"><%= link_to 'sources', :controller=> 'sources'  %></li>
  
           </ul>
         </div><!-- /.nav-collapse -->

@@ -1,18 +1,15 @@
-<h1>Listing theme_map_layers</h1>
+<% content_for :navbar_brand do %>
+Theme Map Layers
+
+<% end -%>
 
 <table class='grid'>
   <tr>
     <th>Theme Map Name</th>
     <th>Layer Title</th>
-
     <th>Base</th>
     <th>Visible</th>
     <th>Draw Order</th>
-
-
-    <th>Line Color</th>
-    <th>Line Width</th>
-    <th>Fill Color</th>
     <th>Layer Type</th>
     <th>Opacity</th>
   </tr>
@@ -25,11 +22,7 @@
 
     <td><%=h theme_map_layer.visible ? "*":"" %></td>
 
-
     <td><%=h theme_map_layer.draw_order %></td>
-    <td><%=h theme_map_layer.line_color %></td>
-    <td><%=h theme_map_layer.line_width %></td>
-    <td><%=h theme_map_layer.fill_color %></td>
     <td><%=h theme_map_layer.layer_type %></td>
     <td><%=h theme_map_layer.opacity %></td>
 

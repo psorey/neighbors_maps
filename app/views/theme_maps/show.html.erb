@@ -1,7 +1,7 @@
 <!---   show.html.erb -->
 
-<% content_for :nav_bar_brand do %>
-  <% params[:theme_map][:slug]  %>
+<% content_for :navbar_brand do %>
+  <%= @theme_map.name  %>
 <% end -%>
 
   <div class="container-fluid">

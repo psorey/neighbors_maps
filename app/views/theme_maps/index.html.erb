@@ -1,3 +1,8 @@
+
+<% content_for :navbar_brand do %>
+  Theme Maps
+<% end -%>
+
 <% if @interactive_theme_maps %>
   <%= render :partial => 'list_theme_maps', :locals => { :maps => @interactive_theme_maps} %>
 <% end %>
