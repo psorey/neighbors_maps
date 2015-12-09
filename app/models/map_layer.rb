@@ -9,6 +9,13 @@ class MapLayer < ActiveRecord::Base
   has_many :user_lines
   belongs_to :source
 
+
+  def get_vector_data
+    # json  { :
+  end
+
+
+
 end
 
 

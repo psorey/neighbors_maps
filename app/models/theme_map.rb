@@ -46,15 +46,6 @@ class ThemeMap < ActiveRecord::Base
     :message => "only: alpha-numeric, period, underscore, dash, space"
 
 
-  def interactive_map_layer_id
-    self.theme_map_layers.each do |layer|
-      logger.debug layer.inspect
-      if layer.is_interactive
-        return layer.map_layer_id
-      end
-    end
-    return nil
-  end
 
 
   def as_json
