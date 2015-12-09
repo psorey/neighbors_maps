@@ -1,16 +1,16 @@
-
-
 <%= form_for(@theme_map_layer) do |f| %>
-
   <p>
     <%= f.label "theme map" %><br />
-   <%= f.select("theme_map_id", ThemeMap.order('name ASC').collect { |p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+    <%= f.select("theme_map_id", ThemeMap.order('name ASC').collect { |p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
   </p>
-
   <p>
     <%= f.label "map layer" %><br />
-   <%= f.select("map_layer_id", MapLayer.order('name ASC').collect { |p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
-   </p>
+    <%= f.select("map_layer_id", MapLayer.order('name ASC').collect { |p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+  </p>
+  <p>
+    <%= f.label "Layer Title" %><br />
+    <%= f.text_field :title %>
+  </p>
    <p>
     <%= f.label "visible" %><br />
     <%= f.check_box :visible %>
@@ -39,16 +39,17 @@
     <%= f.label :fill_color %><br />
     <%= f.text_field :fill_color %>
   </p>
-   <p>
+  <p>
     <%= f.label :layer_type %><br />
     <%= f.text_field :layer_type %>
-  </p> <p>
+  </p>
+  <p>
     <%= f.label :opacity %><br />
     <%= f.number_field :opacity %>
   </p>
   <p>
     <%= f.submit 'Update' %>
   </p>
-<% end %>
+<% end -%>
 
 

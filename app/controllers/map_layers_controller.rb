@@ -58,7 +58,9 @@ class MapLayersController < ApplicationController
 
 
   def map_layers_params
-    params.require(:map_layer).permit(:name, :description, :layer_mapfile_text, :source_id, :srs, :geometry_type, :data_mapfile, :units, :url_extension )
+    params.require(:map_layer).permit( :name, :description, :layer_mapfile_text, :source_id, :srs, :geometry_type,
+                                       :data_mapfile, :units, :url_extension, :source_url, :source_type, :source_layer,
+                                       :source_server_type, :is_local_mapserver )
   end
 
 

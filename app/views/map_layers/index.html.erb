@@ -3,18 +3,19 @@
 
 <table class='grid'>
   <tr>
-    <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
+    <th>Name </th>
     <th>Description</th>
-    <th>Source Id</th>
+    <th>Source Type</th>
+    <th>Local?</th>
   </tr>
 
 <% @map_layers.each do |map_layer| %>
   <tr>
     <td><%=h map_layer.name %></td>
     <td><%=h map_layer.description %></td>
-    <td><%=h map_layer.source_id %></td>
-
+    <td><%=h map_layer.source_type %></td>
+    <td><%=h map_layer.is_local_mapserver ? "local":"" %></td>
+    
     <td>&nbsp; &nbsp; <%= link_to 'Show', map_layer %></td>
     <td><%= link_to 'Edit', edit_map_layer_path(map_layer) %></td>
     <td><%= link_to 'Destroy', map_layer, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -22,4 +23,3 @@
 <% end %>
 </table>
 <p><%= link_to 'New map_layer', new_map_layer_path %></p>
-<br />

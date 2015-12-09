@@ -2,7 +2,7 @@
 <h2 id="title"><%=h @theme_map.name %> </h2>  
 <p class='alert_text'>(admin page)</p>
 
-<%= form_for @theme_map do |f| -%>
+<%= form_for @theme_map do |f| %>
   <%= f.label 'Map Title' %><br />
   <%= f.text_field :name %>
   <p>
@@ -11,38 +11,39 @@
   </p>  
   <p>
     <%= f.label "thumbnail_url" %><br />
-    <%= f.text_field :thumbnail_url %>
+    <%= f.text_field :thumbnail_url , size:"40" %>
   </p>  
+  
+<table class="grid">
+  <tr>
+   <th>Title</th>
+   <th>MapLayer</th>
+   <th>Base?</th>
+   <th>Visible?</th>
+    <th>Opacity</th>
+    <th>Order</th>
+    <th>LayerType</th>
 
 
-  <table>
-    <tr>
-      <th>Include:</th>
-      <th>Base Layer:</th>
-      <th>Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </th>
-      <th>Description</th>
-    </tr>
-    <% @map_layers.each do |layer| %>
-      <tr>
-        <td><%= check_box_tag "theme_map[layer_ids][]", layer.id, @theme_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
-        <td><%= check_box_tag "theme_map[base_layer_ids][]", layer.id, @base_layer_ids.include?(layer.id), {:id => "layer_#{layer.id}"}%></td>
-        <td><%=h layer.name %></td>
-        <td><%=h layer.description %></td>
-      </tr>
-    <% end %>
+  </tr>
+  <%= f.label "theme map layers: " %>
+  <%= f.fields_for :theme_map_layers do |ff| %>
+    <%= render partial: 'theme_map_layer_fields', locals: {f: ff} %>
+  <% end -%>
   </table>
 
-  <br />
+  <%= link_to_add_fields "add theme map layer", f, :theme_map_layers %>
+  
   <p>
     <%= f.submit 'Update' %>
   </p>
   <p>
     <%= f.label :description %><br />
-    <p> Note: First paragraph to be a concise summary, the rest can be verbose and helpful to new user. </p>
+ <p> Note: First paragraph to be a concise summary, the rest can be verbose and helpful to new user.
+</p>
     <%= f.text_area :description %>
   </p>
-<% end %>
+<% end -%>
 
 
 <%= link_to 'Show', @theme_map %> |

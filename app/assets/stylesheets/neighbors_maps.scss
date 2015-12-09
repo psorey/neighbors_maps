@@ -16,7 +16,7 @@ $sidebar_font_size: small;
 
 
 p {
-  font-size:12px;
+  font-size:11px;
 }
 
 
@@ -34,7 +34,7 @@ a {
   &:active { text-decoration:none; font-weight:bold;}   
 }
 
-$grid_lines_color: fuchsia - #441122;
+$grid_lines_color: fuchsia - #441133;
 .grid {
   table {
     border-bottom:1px solid $grid_lines_color;
@@ -46,7 +46,7 @@ $grid_lines_color: fuchsia - #441122;
   }
 
   td {
-  	padding:11px 15px 15px 11px;
+  	padding:5px;
   	border-top:1px solid $grid_lines_color;
   	border-right:1px solid $grid_lines_color;
         background-color: $body_bg + #111121;
@@ -83,8 +83,10 @@ $grid_lines_color: fuchsia - #441122;
 
 
 #map {
-  width: 900px;
-  height: 530px;
+  // width: 900px;
+  width:95%;
+  // height: 530px;
+  height: 95%;
   border-right: $thin_border;
   border-bottom: $thin_border; 
   border: $thin_border;
@@ -141,7 +143,7 @@ body {
   width:100%;
   border-style: solid;
   background-color: $body_bg;
-  font-size: 14px;
+  font-size: 12px;
   color: $body_text;
 }
 

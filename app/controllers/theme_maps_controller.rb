@@ -22,6 +22,7 @@ class ThemeMapsController < ApplicationController
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).includes(:map_layers).first
     @theme_map_json = @theme_map.as_json
+    @theme_map.make_mapfile
     @geo_json = UserLine.load_geo_json(100) # returns 'none' if no user_lines
     # render js: @theme_map
 
@@ -153,8 +154,15 @@ class ThemeMapsController < ApplicationController
 
 
   def theme_map_params
-    params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[], :base_layer_ids=>[],  :user_lines_attributes => [:id, :name, :geometry, :text, :number, :amount, :map_layer_id, :user_id])
+    params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[],
+                        :base_layer_ids=>[],  
+                        :user_lines_attributes => [:id, :name, :geometry, :text, :number,
+                           :amount, :map_layer_id, :user_id], 
+                        :theme_map_layers_attributes => [:title, :map_layer_id, :id, 
+                           :_destroy, :is_base_layer, :opacity, :layer_type, :draw_order, :visible ]
+    )
   end
+
 
 
 end

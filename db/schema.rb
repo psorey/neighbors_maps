@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207204906) do
+ActiveRecord::Schema.define(version: 20151209020911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20151207204906) do
     t.string   "data_mapfile"
     t.string   "geometry_type"
     t.integer  "source_id"
+    t.string   "source_url"
+    t.string   "source_type"
+    t.string   "source_server_type"
+    t.string   "source_layer"
+    t.boolean  "is_local_mapserver"
   end
 
   create_table "neighbors", force: :cascade do |t|
@@ -130,18 +135,15 @@ ActiveRecord::Schema.define(version: 20151207204906) do
   create_table "theme_map_layers", force: :cascade do |t|
     t.integer  "theme_map_id"
     t.integer  "map_layer_id"
-    t.string   "line_color",     limit: 255
-    t.string   "fill_color",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_base_layer",              default: false
+    t.boolean  "is_base_layer",  default: false
     t.integer  "opacity"
-    t.integer  "line_width"
-    t.boolean  "is_interactive",             default: false
-    t.string   "name",           limit: 255
+    t.boolean  "is_interactive", default: false
     t.string   "layer_type"
     t.integer  "draw_order"
     t.boolean  "visible"
+    t.string   "title"
   end
 
   create_table "theme_maps", force: :cascade do |t|

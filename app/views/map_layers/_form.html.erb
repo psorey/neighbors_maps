@@ -1,35 +1,45 @@
 
 
 <%= form_for(@map_layer) do |f| %>
-
   <p>
     <%= f.submit 'Update' %>
   </p>
-
   <p>
+  <%= f.label :layer_mapfile_text %></br>
     <%= f.text_area :layer_mapfile_text, cols: "80", rows: "25" %>
   </p>
-
-  <p>
+   <p>
     <%= f.label :name %><br/>
     <%= f.text_field :name %>
-  </p>
-
+    </p>
   <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.label "source id" %><br/>
-    <%= f.number_field :source_id %>
-  </p> 
-
+    <%= f.label "local mapserver?" %><br/>
+    <%= f.check_box :is_local_mapserver %>
+    </p>
   <p>
     <%= f.label :srs %><br/>
     <%= f.text_field :srs %>
   </p>
-
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label "source url" %><br/>
+    <%= f.text_field :source_url %>
+  </p> 
+  <p>
+    <%= f.label "source type" %><br/>
+    <%= f.text_field :source_type %>
+  </p> 
+  <p>
+    <%= f.label "source layer" %><br/>
+    <%= f.text_field :source_layer %>
+  </p> 
+  <p>
+    <%= f.label "source server type" %><br/>
+    <%= f.text_field :source_server_type %>
+  </p> 
   <p>
     <%= f.submit 'Update' %>
   </p>

@@ -28,11 +28,14 @@ include Mapscript
 class ThemeMap < ActiveRecord::Base
 
 
-  has_many :theme_map_layers, :dependent => :delete_all
+  has_many :theme_map_layers # :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   has_many :user_lines, :through => :map_layers
   has_many :sources, :through => :map_layers
  
+  accepts_nested_attributes_for :theme_map_layers
+  accepts_nested_attributes_for :map_layers
+  accepts_nested_attributes_for :sources
 
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
@@ -76,8 +79,11 @@ class ThemeMap < ActiveRecord::Base
 
     @map.setExtent( 1262053, 205541, 1285032, 260122 )
     @map.debug = 3
+    #colorobj = ColorObj.new
+    #colorobj.imagecolor(255,255,255)
 
-    @map.transparent = MS_TRUE
+    #logger.debug @map.colorObj.setRGB(255,255,255)
+    #@map.transparent = MS_TRUE
     @map.setConfigOption("MS_ERROR_FILE", "/home/paul/mapserver/error.log")
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
@@ -90,8 +96,9 @@ class ThemeMap < ActiveRecord::Base
     @map.web.metadata.set("wms_srs", "EPSG:4326 EPSG:3857")
     @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
     @map.units = MS_FEET
+    logger.debug("map stuff")
     add_ordered_layers
-    @map.save("/home/paul/mapserver/my_recent_map.map") # add session_id to filename for concurrent users
+    @map.save("/home/paul/mapserver/gs_team_study_areas.map") # add session_id to filename for concurrent users
   end
 
 
@@ -116,18 +123,20 @@ class ThemeMap < ActiveRecord::Base
 
 
   def add_ordered_layers
-    return
+    #return
     temp_layers = []
     self.theme_map_layers.each do |layer|
       temp_layers << layer
     end
     temp_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
     temp_layers.each do |theme_map_layer|
-      layer = LayerObj.new(@map)  # mapscript
-      layer.debug = 3
-      layer.updateFromString(theme_map_layer.map_layer.layer_mapfile_text)  # mapscript
-      mapfile_layer_name = theme_map_layer.map_layer.name.dashed
-      layer.name = mapfile_layer_name
+      if theme_map_layer.map_layer.layer_mapfile_text != ""
+        layer = LayerObj.new(@map)  # mapscript
+        layer.debug = 3
+        layer.updateFromString(theme_map_layer.map_layer.layer_mapfile_text)  # mapscript
+        #mapfile_layer_name = theme_map_layer.map_layer.name.dashed
+        #layer.name = mapfile_layer_name
+      end
     end
   end
 
