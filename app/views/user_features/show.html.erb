@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Map layer:</strong>
+  <%= @user_feature.map_layer_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_feature.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user_feature.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @user_feature.text %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @user_feature.number %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @user_feature.amount %>
+</p>
+
+<%= link_to 'Edit', edit_user_feature_path(@user_feature) %> |
+<%= link_to 'Back', user_features_path %>

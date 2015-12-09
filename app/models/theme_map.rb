@@ -33,7 +33,7 @@ class ThemeMap < ActiveRecord::Base
   has_many :user_lines, :through => :map_layers
   has_many :sources, :through => :map_layers
  
-  accepts_nested_attributes_for :theme_map_layers
+  accepts_nested_attributes_for :theme_map_layers, allow_destroy: true
   accepts_nested_attributes_for :map_layers
   accepts_nested_attributes_for :sources
 

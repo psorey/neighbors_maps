@@ -25,7 +25,6 @@ class ThemeMapsController < ApplicationController
     @theme_map.make_mapfile
     @geo_json = UserLine.load_geo_json(100) # returns 'none' if no user_lines
     # render js: @theme_map
-
   end
 
 

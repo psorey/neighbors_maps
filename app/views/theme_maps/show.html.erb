@@ -8,7 +8,9 @@
     <div class="row-fluid">
       <div class="span12 fill">
         <div id="map" class="map"></div>
+        <% if @theme_map.is_interactive  %>
         <form class="form-inline">
+
           <table class='my-map-controls'>
             <tr>
               <td><label>mapping tasks: &nbsp;</label>
@@ -27,6 +29,7 @@
               <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>
             </tr>
           </table>
+          <% end -%>
           <div style="height: 30px; width: 90px;">
             <div id="indicator" style="display: none; height: 20px; text-align: center;">edits saved</div>
           </div>
@@ -232,8 +235,8 @@ if(tmJson["is_interactive"]){
   })
   map.addLayer(<%= @theme_map.name.dashed %>);
   map.addLayer(<%= @theme_map.name.dashed + '_labels' %>);
-}
 
+  }
 
   // DELETE_MODE:
   // selection interaction for deleting exactly one feature
@@ -380,7 +383,7 @@ if(tmJson["is_interactive"]){
     win.setAjaxContent("/theme_maps/<%=@theme_map.slug%>/send_help",{ id: '<%=@theme_map.name %>'});
     win.show();
   }
-
+ // end interactive ??
   var savedColor = $('a[data-delete-feature]').css("color");
 
   $('a[data-delete-feature]').click(function(event){

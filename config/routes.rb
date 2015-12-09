@@ -1,4 +1,5 @@
 NeighborsMaps::Application.routes.draw do
+  resources :user_features
   resources :sources
   resources :features
 
