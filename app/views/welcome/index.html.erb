@@ -1,2 +1,41 @@
+<% content_for :navbar_brand do %>
+  Interactive Web GIS Database and Mapping Tools 
+<% end -%>
+<div  class="grid" height="100%"> 
 
-<%= raw @html  %>
+  <div class="row" >
+    <div class="col-xs-4"><%= raw @intro %></div>
+    <div class="col-xs-4">
+      <%= image_tag "walking_path_survey_img",  class: "img-responsive imageClip centered" , style:"height: 280px;" %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag "study_areas",  class: "img-responsive imageClip centered", style:"height: 280px;" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <%= image_tag "half-blocks",  class: "img-responsive imageClip" , style:"height: 350px;"%>
+    </div>
+    <div class="col-xs-6"><%= raw @technology %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5"><%= raw @more_detail %></div>
+    <div class="col-xs-7">
+      <%= image_tag "edit_theme_map",  class: "img-responsive imageClip centered" , style:"height: 340px;" %>
+    </div>
+
+  </div> 
+  
+  <div class="row">
+    <div class="col-xs-7"><%= raw @project_background %></div>
+    <div class="col-xs-5">
+      <%= image_tag "Greenwood-team_site-visit_29apr10",  class: "img-responsive imageClip", style:"height: 280px;" %>
+    </div>
+  </div>
+
+</div>
+
+
+

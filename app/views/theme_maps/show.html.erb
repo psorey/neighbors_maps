@@ -91,11 +91,11 @@ function labelStyleFunction(feature, resolution) {
     image: new ol.style.Circle({
       radius: 12,
       fill: new ol.style.Fill({
-      color: 'rgba(255, 255, 150, .8)'
+      color: 'rgba(255, 255, 255, .9)'
     }),
     stroke: new ol.style.Stroke({
-      color: 'rgba(0, 0, 0, 0.5)',
-      width: 2
+      color: 'rgba(255, 0, 0, .9)',
+      width: 3
     })
   }),
   text: new ol.style.Text({
@@ -117,8 +117,8 @@ function labelStyleFunction(feature, resolution) {
 var vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: new ol.style.Stroke({
-    color: 'rgba(255,0,0,.7)',
-    width: 4
+    color: 'rgba(255,0,0,.9)',
+    width: 5
   })
 });
 

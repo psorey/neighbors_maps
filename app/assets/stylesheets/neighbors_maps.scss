@@ -15,14 +15,89 @@ $sidebar_hover: #404055;
 $sidebar_font_size: small;
 
 
+img { border: $thin_border;}
+
+
+body {
+  margin:0px;
+  margin-top:30px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding:0px;
+  border:0px;
+  text-align:left;
+  font-family:"Trebuchet MS", Arial,sans-serif;
+  width:100%;
+  border-style: solid;
+  background-color: $body_bg;
+  font-size: 12px;
+  color: $body_text;
+}
+em {
+  font-style: italic;
+}
+
+h1 {
+ color: #6f9f9e;
+ font-weight: normal;
+ font-size: 26px;
+ font-family: Arial,sans-serif;
+ margin: 0px;
+ margin-top: 3px;
+ margin-bottom: 3px;
+ padding: 2px;
+}
+
+
+h2 {
+ color: #123;
+ margin: 1px;
+ font-family: Arial,sans-serif;
+ font-weight: lighter;
+ font-size: 20px;
+ margin-top: 0px;
+ margin-bottom: 16px;
+}
+
+
+h3 {
+ color: #145;
+ font-family: Arial,sans-serif;
+ font-size: 16px;
+ margin-top: 0px;
+}
+
+
+h4 {
+ font-family: Arial,sans-serif;
+ font-style: normal;
+ background: transparent;
+ font-size: 14px;
+}
+
+
+input {
+  font-family:Arial,sans-serif;
+  font-weight:bold;
+  color:#666;
+}
+
 p {
-  font-size:11px;
+  font-size:12px;
 }
 
 
 ul {
-  list-style: circle;
+  list-style: disc;
   margin-left: 25px;
+}
+
+
+li {
+  margin: 0px;
+  padding: 0px;
+  color: #113;
+  font-style: italic;
 }
 
 
@@ -34,8 +109,43 @@ a {
   &:active { text-decoration:none; font-weight:bold;}   
 }
 
+
+form.button-to {
+ font-size: 16px;
+}
+
+
+input.btn { 
+  font-size: 16px;
+ 
+} 
+
+
+[class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 15px;
+    margin:15px;
+    //background-color: rgba(86, 61, 124, 0.15);
+    //background-color: $body_bg;
+    //border: 1px solid rgba(86, 61, 124, 0.2);
+    border: none;
+}
+
+.row {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+.centered {  
+   display:block;
+//   margin:auto;
+}
+
+
 $grid_lines_color: fuchsia - #441133;
-.grid {
+.pretty-grid {
   table {
     border-bottom:1px solid $grid_lines_color;
     border-left:1px solid $grid_lines_color;
@@ -62,15 +172,6 @@ $grid_lines_color: fuchsia - #441133;
   }
 } /* end grid */
     
-
-/* set the size of the map image here... */
-
-
-.map {
-  height: 400px;
-  width: 100%;
-}
-
 
 .ol-attribution {
   max-width: calc(100%-3em);
@@ -125,26 +226,6 @@ $grid_lines_color: fuchsia - #441133;
 {
   width: 600px;
   p, ul { margin: 5px;}
-}
-
-
-img { border: $thin_border;}
-
-
-body {
-  margin:0px;
-  margin-top:30px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  padding:0px;
-  border:0px;
-  text-align:left;
-  font-family:"Trebuchet MS", Arial,sans-serif;
-  width:100%;
-  border-style: solid;
-  background-color: $body_bg;
-  font-size: 12px;
-  color: $body_text;
 }
 
 
@@ -236,47 +317,6 @@ body {
   background: $banner_bg;
 }
 
-h1 {
- color: #6f9f9e;
- font-weight: normal;
- font-size: 26px;
- font-family: Arial,sans-serif;
- margin: 0px;
- margin-top: 8px;
- margin-bottom: 3px;
- padding: 2px;
-}
-
-h2 {
- color: #166;
- margin: 1px;
- font-family: Arial,sans-serif;
- font-weight: lighter;
- font-size: 20px;
- margin-top: 20px;
- margin-bottom: 15px;
-}
-
-
-h3 {
- font-family: Arial,sans-serif;
- font-size: 16px;
-}
-
-h4 {
- font-family: Arial,sans-serif;
- font-style: normal;
- background: transparent;
- font-size: 14px;
-}
-
-
-
-input {
-  font-family:Arial,sans-serif;
-  font-weight:bold;
-  color:#666;
-}
 
 .left_padding {
    padding-left: 40px;
@@ -312,15 +352,6 @@ input {
   color:#162;
   padding:20px;
 }
-
-form.button-to {
- font-size: 16px;
-}
-
-input.btn { 
-  font-size: 16px;
- 
-} 
 
 /* END:mainlayout */
 /* The error box */
