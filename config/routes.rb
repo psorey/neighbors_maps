@@ -7,7 +7,7 @@ NeighborsMaps::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'theme_maps#index'
+  root 'welcome#index'
   resources :theme_map_layers
   resources :map_layers
   

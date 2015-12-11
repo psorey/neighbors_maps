@@ -85,11 +85,13 @@ I was web communications consultant and member of the design team, funded by a S
 The other design team members were a landscape architect, a civil engineer, a community outreach specialist, and a finance specialist to research possible funding sources. 
 
 ###Next Steps
-
-* Take the project to the next level -- gather the data
-* Find and organize a neighborhood-based group to work with 
+* Focus on study areas already identified
+* Work with the City to define a hierarchy of path-types from crushed-rock to standard City sidewalks with curb and gutter
+* Find or organize a neighborhood-based group to work with
+* Find a non-profit organization willing to sponsor
 * Apply for another Department of Neighborhoods Large Matching Grant
 * Train volunteers to assist neighbors entering data
+* Gather the data
 
 STRING
 

@@ -16,24 +16,24 @@
               <td><label>mapping tasks: &nbsp;</label>
                 <select id="type">
                   <option value="None" selected >--select--</option>
-                  <option value="Point">describe destinations</option>
+                  <!--        <option value="Point">describe destinations</option>   -->
                   <option value="LineString">draw walking paths</option>
-                  <option value="Polygon">identify safety issues</option>
+                  <!-- <option value="Polygon">identify safety issues</option>   -->
                 </select>
               </td>
             </form>
               <td><%= link_to "revert", @theme_map, data:{"revert-geo-db": "none"}  %></td>
               <td><%= link_to "save",   @theme_map, data:{"update-geo-db": "none"} %></td>
               <td><%= link_to "delete feature", @theme_map, data:{"delete-feature": "none"}  %></td>
-              <td><%= link_to "help",   @theme_map, data:{"show-help": "none"}  %></td>
-              <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>
+              <!--     <td><%= link_to "help",   @theme_map, data:{"show-help": "none"}  %></td>  -->
+              <!--     <td><%= link_to 'edit theme map', edit_theme_map_path(@theme_map) %></td>  -->
             </tr>
           </table>
           <% end -%>
-          <div style="height: 30px; width: 90px;">
+          <!--        <div style="height: 30px; width: 90px;">
             <div id="indicator" style="display: none; height: 20px; text-align: center;">edits saved</div>
           </div>
-          <div id="status"></div>
+          <div id="status"></div>  -->
       </div>
     </div>
   </div>
@@ -75,10 +75,9 @@ var stroke = new ol.style.Stroke({
 
 
 var lightStroke = new ol.style.Stroke({
-  color: 'rgba(1,1,1,1)',
+  color: 'rgba(0,0,0,1)',
   width: 1
 });
-
 
 var styleCache = {};
 
@@ -99,14 +98,14 @@ function labelStyleFunction(feature, resolution) {
     })
   }),
   text: new ol.style.Text({
-    textAlign: "Start",
-    textBaseline: "Middle",
+    textAlign: "center",
+    textBaseline: "middle",
     font: 'Normal 12px Arial',
     text: feature.get("number").toString(),
     fill: fill,
     stroke: lightStroke,
-    offsetX: -3,
-    offsetY: 5,
+    offsetX: 0,
+    offsetY: 0,
     rotation: 0
     })
   })
@@ -184,7 +183,7 @@ function createSource(src) {
     case 'MapQuest':
       return new ol.source.MapQuest({layer: src["sourceLayer"]});
       break;
-    case 'ImageWMS': // and is local mapserver WMS: need to allow other WMS
+    case 'ImageWMS': // and is local mapserver WMS: need to allow remote WMS
       return new ol.source.ImageWMS({ url: src["sourceUrl"],
         params: {'LAYERS': src["sourceLayer"], 'VERSION': '1.1.1', 'SRS':'EPSG:3857' },
         serverType: src["wmsServerType"]
