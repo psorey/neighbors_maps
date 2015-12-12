@@ -45,18 +45,6 @@ $( document ).ready(function() {
 });
 
 
-// if interactive
-// setup overlay drawing and editing...
-var features = new ol.Collection();
-var featureSource = new ol.source.Vector({features:features});
-var labels = new ol.Collection();
-var labelSource = new ol.source.Vector({features:labels});
-
-
-var <%= @theme_map.name.dashed %>;
-var <%= @theme_map.name.dashed + '_labels' %>;
-var userId = <%=@current_user_id %>;
-
 
 var fill = new ol.style.Fill({
   color: 'rgba(0,0,0,1)'
@@ -125,36 +113,51 @@ var vectorStyle = new ol.style.Style({
 var o_layers = new ol.Collection();
 var b_layers = new ol.Collection();
 
-var numBaseLayers;
-var numOverlayLayers;
-
-// import theme map json object
-var tmJson = <%=raw @theme_map_json %>;
-var tmLayers = tmJson["layers"];
-var newLayer;
-
-for(var i in tmLayers) {
-  var layer = tmLayers[i];
-  newLayer = createLayer(layer.layerType);
-  newLayer.set("title", layer.title);
-  newLayer.set("opacity", layer.opacity/100);
-  var source = createSource(layer["source"]);
-  newLayer.setSource(source);
-  if(layer.isBaseLayer) {
-    newLayer.set("type","base");
-    newLayer.set("visible", layer.visible);
-    b_layers.push(newLayer);
-  } else {
-    o_layers.push(newLayer);
-  }
-}
-
+//var numBaseLayers;
+//var numOverlayLayers;
 var overlayLayers = new ol.layer.Group();
 overlayLayers.set("title","Overlays");
 overlayLayers.setLayers(o_layers);
 var baseLayers = new ol.layer.Group();
 baseLayers.set("title", "Base Layers");
 baseLayers.setLayers(b_layers);
+
+
+// if interactive
+// setup overlay drawing and editing...
+var features = new ol.Collection();
+var featureSource = new ol.source.Vector({features:features});
+var labels = new ol.Collection();
+var labelSource = new ol.source.Vector({features:labels});
+
+
+var <%= @theme_map.name.dashed %>;              // var gs-team-study-areas
+var <%= @theme_map.name.dashed + '_labels' %>;  // var gs-team-study-areas_labels
+
+var userId = <%=@current_user_id %>;
+
+// import theme map json object
+var tmJson = <%=raw @theme_map_json %>;
+var tmLayers = tmJson["layers"];
+var newLayer;
+
+
+
+for(var i in tmLayers) {
+  var layer = tmLayers[i];
+  newLayer = createLayer(layer.layerType);
+  newLayer.set("title", layer.title);
+  newLayer.set("opacity", layer.opacity/100);
+  newLayer.set("visible", layer.visible);
+  var source = createSource(layer["source"]);
+  newLayer.setSource(source);
+  if(layer.isBaseLayer) {
+    newLayer.set("type","base");
+    b_layers.push(newLayer);
+  } else {
+    o_layers.push(newLayer);
+  }
+}
 
 
 function createLayer(layerType) {
@@ -192,6 +195,17 @@ function createSource(src) {
     case 'TileJSON':
       return new ol.source.TileJSON({ url: src["sourceUrl"]});
       break;
+    case 'Vector':
+      return new ol.source.Vector({ url: src[""]})
+        title: src[""],
+        source: featureSource,
+    style: vectorStyle
+  }),
+  <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
+    title: "labels",
+    source: labelSource,
+    style: labelStyleFunction // dotStyle
+  })
     default:
       console.log("no constructor for that source type");
   }
@@ -205,36 +219,35 @@ var map = new ol.Map({
       layers: [ baseLayers ,  overlayLayers],
       view: new ol.View({
       center: [-13620870.52201, 6056409.356303 ],
-      zoom: 14
+      zoom: 14"]})
     })
   });
 
   var layerSwitcher = new ol.control.LayerSwitcher({
-    tipLabel: 'layer controls'   // Optional label for button
+    tipLabel: 'layer controls'
   });
 
   map.addControl(layerSwitcher);
   var scaleControl = new ol.control.ScaleLine();
   map.addControl(scaleControl);
 
-
+//todo: multiple vector layers here:
   /////////////////////////////////////////  interactive ///////////////////////////////
 
 if(tmJson["is_interactive"]){
   // setup overlay drawing and editing...
   <%= @theme_map.name.dashed %> = new ol.layer.Vector({
-    title: "user-drawn lines",  // /var featureOverlay = new ol.layer.Vector({
+    title: <%= @theme_map.name %>,
     source: featureSource,
     style: vectorStyle
   }),
   <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
-    title: "user labels",
+    title: "labels",
     source: labelSource,
     style: labelStyleFunction // dotStyle
   })
   map.addLayer(<%= @theme_map.name.dashed %>);
   map.addLayer(<%= @theme_map.name.dashed + '_labels' %>);
-
   }
 
   // DELETE_MODE:
