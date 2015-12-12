@@ -23,6 +23,11 @@ Web and database technologies include:
 
 Click [here](http://github.com/psorey/neighbors_maps "Paul Sorey's Github account: Ruby, Javascript, HTML, CSS") to see the code at Gihub.
 
+Click [here](http://maps.artpluslogic.com "pWebGIS") for demo website. 
+
+
+
+
 Shapefiles, high-resolution aerial photographs, and non-interactive database features are styled and served as WMS layers by Mapserver via CGI commands. A *mapfile* containing specifications for a graphical map and data for display, used by Mapserver to retrieve and style layer images, is created on-the-fly at the server.  
 
 WMS layers from remote servers such as openstreetmaps.org are also imported as base layer options.
