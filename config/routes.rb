@@ -8,6 +8,7 @@ NeighborsMaps::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  get 'welcome/write_project_markdown' => 'welcome#write_project_markdown'
   resources :theme_map_layers
   resources :map_layers
   

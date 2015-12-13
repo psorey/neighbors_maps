@@ -26,7 +26,8 @@ body {
   padding:0px;
   border:0px;
   text-align:left;
-  font-family:"Trebuchet MS", Arial,sans-serif;
+ // font-family:"Trebuchet MS", Arial,sans-serif;
+
   width:100%;
   border-style: solid;
   background-color: $body_bg;
@@ -41,35 +42,40 @@ h1 {
  color: #6f9f9e;
  font-weight: normal;
  font-size: 26px;
- font-family: Arial,sans-serif;
+// font-family: Arial,sans-serif;
  margin: 0px;
  margin-top: 3px;
  margin-bottom: 3px;
  padding: 2px;
 }
-
+$row-left-padding: 12px;
 
 h2 {
  color: #123;
  margin: 1px;
- font-family: Arial,sans-serif;
+// font-family: Arial,sans-serif;
  font-weight: lighter;
  font-size: 20px;
  margin-top: 0px;
  margin-bottom: 16px;
+ margin-left: 0px;
+ padding-left: 0px;
+ position: relative;
+ left: -$row-left-padding;
 }
 
 
 h3 {
  color: #145;
- font-family: Arial,sans-serif;
+// font-family: Arial,sans-serif;
  font-size: 16px;
  margin-top: 0px;
+
 }
 
 
 h4 {
- font-family: Arial,sans-serif;
+// font-family: Arial,sans-serif;
  font-style: normal;
  background: transparent;
  font-size: 14px;
@@ -125,7 +131,7 @@ input.btn {
     padding-top: 15px;
     padding-bottom: 15px;
     padding: 15px;
-    margin:15px;
+    margin:0px;
     //background-color: rgba(86, 61, 124, 0.15);
     //background-color: $body_bg;
     //border: 1px solid rgba(86, 61, 124, 0.2);
@@ -135,6 +141,9 @@ input.btn {
 .row {
   margin-top: 0px;
   margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: $row-left-padding;
 }
 
 

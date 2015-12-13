@@ -1,32 +1,27 @@
 
 ##Interactive Planning Tools
-### Planning Pedestrian Path Improvements for the Greenwood Neighborhood
+### Planning Pedestrian and Bicycle Path Improvements for the Greenwood Neighborhood in Seattle
 
-This interactive mapping tool began with a Seattle neighborhood project, to gather data from each participating neighbor about their experience walking in the neighborhood. We wanted to collect data about:
+This interactive mapping tool began with a Seattle neighborhood project, to gather data from each participating neighbor about their experience walking in the neighborhood. We wanted to collect and publish data about:
 
-* existing patterns of pedestrian circulation
-* frequented destinations
-* problem areas, safety issues
+* existing patterns of pedestrian and bicycle circulation,
+* frequented destinations,
+* problem areas, safety issues,
 
-to find opportunities for making improvements to pedestrian infrastructure, and to establish a hierarchy of needs for deciding how to use limited resources for the best outcome.
-
+to find opportunities for making improvements to pedestrian and bicycle infrastructure, and to establish a hierarchy of needs for deciding how to use limited resources for the best outcome.
 
 
 ###Description of Technology 
 
-Web and database technologies include:
+Web and database open source technologies include:
 
-* PostGIS and Postgresql
-* UNM Mapserver and Ruby Mapscript
-* OpenLayers3 client-side map display library
-* Ruby on Rails web application framework
+* [PostGIS](http://postgis.org) and Postgresql
+* [Mapserver](http://mapserver.org) and Ruby Mapscript
+* [OpenLayers3](http://openlayers.org) client-side map display library
+* [Ruby on Rails](http://rubyonrails.org) web application framework
+* Ubuntu Linux / Apache server
 
 Click [here](http://github.com/psorey/neighbors_maps "Paul Sorey's Github account: Ruby, Javascript, HTML, CSS") to see the code at Gihub.
-
-Click [here](http://maps.artpluslogic.com "pWebGIS") for demo website. 
-
-
-
 
 Shapefiles, high-resolution aerial photographs, and non-interactive database features are styled and served as WMS layers by Mapserver via CGI commands. A *mapfile* containing specifications for a graphical map and data for display, used by Mapserver to retrieve and style layer images, is created on-the-fly at the server.  
 
@@ -35,7 +30,6 @@ WMS layers from remote servers such as openstreetmaps.org are also imported as b
 User-created map features on **interactive layers** are served directly, via geoJSON, to an OpenLayers vector layer with interactive drawing and editing tools.
 
 An administrative user can edit and create new theme maps, assembling any number of layers and styling them for a particular purpose.
-
 
 
 ###How Maps are Created
@@ -47,19 +41,18 @@ in this web application, where they can be further tweaked and used in many diff
 
 ###Interactive Layers
 
-Each registered user can populate their own layers with requested information. For *Walking* *Paths* *Survey*, the user's residence is shown; the user draws the actual routes taken from their residence, and frequency of trips.  User layers can be edited only by the user. Administrators can combine all users' data from a survey, apply number-crunching algorithms, and generate, say, a heatmap showing the most heavily-used routes.
+Each registered user can populate their own layers with requested information. For *Walking Paths*, the user's residence is shown; the user draws the actual routes taken from their residence, and frequency of trips.  User layers can be edited only by the user. Administrators can combine all users' data from a survey, apply number-crunching algorithms, and generate, say, a heatmap showing the most heavily-used routes.
 
 
 
 ###To Do
 
-* Migrate away from using mapfile text snippets, toward creating layers via parameters. One reason is to make the parameters easily editable. 
+* Migrate away from using mapfile text snippets, toward creating layers via parameters. One reason is to make the parameters easily editable.
 * Enable administrators to design and implement interactive survey layers.
 
 
-
 ###Greenwood Neighborhood Project Background
-I was web communications consultant and member of the design team, funded by a Seattle Department of Neighborhoods Large Grant to study the Greenwood neighborhood and plan an approach to understanding existing conditions and designing improvements to streets and paths. 
+I was web communications consultant and member of the design team, funded by a Seattle Department of Neighborhoods Large Grant to study the Greenwood neighborhood and plan an approach to understanding existing conditions and designing improvements to streets and paths.
 
 The other design team members were a landscape architect, a civil engineer, a community outreach specialist, and a finance specialist to research possible funding sources. 
 
@@ -71,5 +64,3 @@ The other design team members were a landscape architect, a civil engineer, a co
 * Apply for another Department of Neighborhoods Large Matching Grant
 * Train volunteers to assist neighbors entering data
 * Gather the data
-
-
