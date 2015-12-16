@@ -22,8 +22,11 @@ body {
   margin:0px;
   margin-top:24px;
   margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 30px;
+
   padding:0px;
+  padding-right:10px;
   border:0px;
   text-align:left;
  // font-family:"Trebuchet MS", Arial,sans-serif;
@@ -61,7 +64,7 @@ h2 {
  margin-left: 0px;
  padding-left: 0px;
  position: relative;
- left: -$row-left-padding;
+ //left: -$row-left-padding;
 }
 
 
@@ -108,7 +111,7 @@ li {
 
 
 a {
-  font-size: $sidebar_font_size;
+  font-size: 12px; //$sidebar_font_size;
   &:link {text-decoration:none; font-weight:bold;}  
   &:visited { text-decoration:none; font-weight:bold;} 
   &:hover {text-decoration:none; font-weight:bold;}  
@@ -123,9 +126,20 @@ form.button-to {
 
 input.btn { 
   font-size: 16px;
- 
-} 
+}
 
+
+
+
+
+
+
+
+.container {
+//  margin-left: 15px;
+//  margin-right: 15px;
+//  width: 100%;
+}
 
 [class*="col-"] {
     padding-top: 15px;
@@ -147,9 +161,20 @@ input.btn {
 }
 
 
-.centered {  
+.centered {
    display:block;
-//   margin:auto;
+   margin:auto;
+}
+
+
+div.figure {
+  p {
+  padding-top: 5px;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  }
 }
 
 
@@ -163,12 +188,11 @@ $grid_lines_color: fuchsia - #441133;
         padding-right: 7px;
         //font-weight: bold;
   }
-
   td {
-  	padding:5px;
-  	border-top:1px solid $grid_lines_color;
-  	border-right:1px solid $grid_lines_color;
-        background-color: $body_bg + #111121;
+  padding:5px;
+  border-top:1px solid $grid_lines_color;
+  border-right:1px solid $grid_lines_color;
+     background-color: $body_bg + #111121;
   }
   ul {
   	margin-top:10px;

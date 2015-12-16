@@ -52,7 +52,7 @@ class ThemeMapsController < ApplicationController
       new_layer.map_layer_id = map_layer_id
       @theme_map.theme_map_layers << new_layer
     end
-    @theme_map.create_slug
+    @theme_map.to_param
     if @theme_map.save!
       redirect_to(@theme_map, notice: "'#{@theme_map.name}' was successfully created.")
     else

@@ -5,25 +5,29 @@
 
   <div class="row" >
     <div class="col-xs-4"><%= raw @intro %></div>
-    <div class="col-xs-4">
-      <%= image_tag "walking_path_survey_img",  class: "img-responsive imageClip centered" , style:"height: 280px;" %>
+    <div class="col-xs-4 figure">
+      <%= image_tag "walking_path_survey_img",  class: "img-responsive imageClip centered" , style:"height: 280px;"  %>
+      <p>walking paths interactive survey</p>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-4 figure">
       <%= image_tag "study_areas",  class: "img-responsive imageClip centered", style:"height: 280px;" %>
+      <p>focus study areas identified by the team</p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-6 figure">
       <%= image_tag "half-blocks",  class: "img-responsive imageClip" , style:"height: 350px;"%>
+      <p>we divided the neighborhood into 'half-blocks', our proposed smallest organizational unit for neighborhood planning</p>
     </div>
     <div class="col-xs-6"><%= raw @technology %></div>
   </div>
 
   <div class="row">
     <div class="col-xs-5"><%= raw @more_detail %></div>
-    <div class="col-xs-7">
-      <%= image_tag "edit_theme_map",  class: "img-responsive imageClip centered" , style:"height: 340px;" %>
+    <div class="col-xs-7 figure">
+      <%= image_tag "edit_theme_map",  class: "img-responsive imageClip centered", style:"height: 340px;" %>
+      <p> back-end administrators page for creating and editing maps and layers
     </div>
 
   </div> 

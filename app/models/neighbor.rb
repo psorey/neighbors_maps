@@ -29,16 +29,4 @@ class Neighbor < ActiveRecord::Base
   end
 end
 
-=begin
- SELECT
-  m.name,
-  sum(ST_Length(r.the_geom))/1000 as roads_km
-FROM
-  bc_roads AS r,
-  bc_municipality AS m
-WHERE
-  ST_Contains(m.the_geom,r.the_geom)
-GROUP BY m.name
-ORDER BY roads_km; 
-end
-=end
+

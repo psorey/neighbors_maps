@@ -1,4 +1,5 @@
-json.extract! theme_map, :slug, :is_interactive  # , :description json.
+
+json.extract! theme_map, :slug, :is_interactive  #  :description json.
 
 json.layers theme_map.theme_map_layers do |tml|
   json.title tml.title
@@ -20,4 +21,16 @@ json.layers theme_map.theme_map_layers do |tml|
   end
 end
 
+=begin
 
+for vector layers:
+
+  title,
+  vector_geometry_style, 
+  vector_label_style,
+  geometry_type ?,
+  geoJson (geometry,name,text,amount,number),
+  is_interactive,
+  (generate source name from title)
+
+=end

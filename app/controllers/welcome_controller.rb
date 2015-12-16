@@ -3,8 +3,8 @@ require 'bluecloth'
 class WelcomeController < ApplicationController
   
   def write_project_markdown
-    @string = project_markdown
-    logger.debug  @str1 + @str2 + @str3 + @str4
+    project_markdown
+    @string = @str1 + @str2 + @str3 + @str4
   end
 
 
@@ -16,10 +16,9 @@ class WelcomeController < ApplicationController
   def project_markdown
 @str1 = <<-STRING
 
-##Interactive Planning Tools
-### Planning Pedestrian and Bicycle Path Improvements for the Greenwood Neighborhood in Seattle
-
-This interactive mapping tool began with a Seattle neighborhood project, to gather data from each participating neighbor about their experience walking in the neighborhood. We wanted to collect and publish data about:
+##Interactive Web Mapping 
+### Neighborhood Planning Tool 
+This interactive mapping tool began with a Seattle neighborhood project, planning pedestrian and bicycle path improvements for the Greenwood neighborhood. We wanted to gather data from every household about how people walk and bike in the neighborhood. We wanted to collect and publish data about:
 
 * existing patterns of pedestrian and bicycle circulation,
 * frequented destinations,
@@ -96,13 +95,14 @@ I was web communications consultant and member of the design team, funded by a S
 The other design team members were a landscape architect, a civil engineer, a community outreach specialist, and a finance specialist to research possible funding sources. 
 
 ###Next Steps
-* Focus on study areas already identified
 * Work with the City to define a hierarchy of path-types from crushed-rock to standard City sidewalks with curb and gutter
 * Find or organize a neighborhood-based group to work with
 * Find a non-profit organization willing to sponsor
 * Apply for another Department of Neighborhoods Large Matching Grant
 * Train volunteers to assist neighbors entering data
 * Gather the data
+* Analyze the data and publish results
+* Generate recommendations for development strategy
 
 STRING
 

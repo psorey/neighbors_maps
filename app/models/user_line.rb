@@ -1,25 +1,10 @@
 require 'rgeo/geo_json'
 
 class UserLine < ActiveRecord::Base
+
   include ActionView::Helpers::OutputSafetyHelper
 
-
   belongs_to :map_layer
-
-
-  def save_geo_json
-    query = <<-SQL
-       WITH data AS (SELECT #{geo_json_sample}::json AS fc)
-       INSERT INTO user_lines (id, geometry, name, text, number, value) SELECT
-         (feat->>'id')::int AS id,
-         ST_SetSRID(ST_GeomFromGeoJSON(feat->>'geometry'),3857) AS geometry,
-         feat->'properties
-         FROM (
-         SELECT json_array_elements(fc->'features') AS feat
-         FROM data ) AS f;
-     SQL
-     result = ActiveRecord::Base.connection.execute(query)
-  end
 
 
   def self.load_geo_json(map_layer_id)  #TODO pass in user_id and map_layer_id

@@ -1,7 +1,5 @@
 NeighborsMaps::Application.routes.draw do
-  resources :user_features
-  resources :sources
-  resources :features
+  resources :vector_features
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -28,14 +26,10 @@ NeighborsMaps::Application.routes.draw do
   resources :guide
   resources :welcome 
   resources :administrators  
-  resources :projects  
   
   
   # design resources, maps, photos, videos, cad:
-  resources :site_photos
-  resources :precompiled_maps
-  resources :views
-  resources :neighbor_surveys
+
   resources :walk_surveys
   resources :overall_map
   resources :half_blocks

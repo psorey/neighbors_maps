@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vector_feature.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @vector_feature.text %>
+</p>
+
+<p>
+  <strong>Vector type:</strong>
+  <%= @vector_feature.vector_type %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @vector_feature.amount %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @vector_feature.number %>
+</p>
+
+<p>
+  <strong>Guid:</strong>
+  <%= @vector_feature.guid %>
+</p>
+
+<%= link_to 'Edit', edit_vector_feature_path(@vector_feature) %> |
+<%= link_to 'Back', vector_features_path %>

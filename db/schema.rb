@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209172955) do
+ActiveRecord::Schema.define(version: 20151213162713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,12 +203,18 @@ ActiveRecord::Schema.define(version: 20151209172955) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "walk_surveys", force: :cascade do |t|
-    t.string   "neighbor_id", limit: 255
-    t.text     "frequency"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.geometry "route",       limit: {:srid=>4326, :type=>"line_string"}
+  create_table "vector_features", force: :cascade do |t|
+    t.string   "guid"
+    t.integer  "map_layer_id"
+    t.integer  "user_id"
+    t.string   "vector_type"
+    t.text     "text"
+    t.string   "value"
+    t.float    "amount"
+    t.integer  "number"
+    t.geometry "geometry",     limit: {:srid=>0, :type=>"geometry"}
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
 end

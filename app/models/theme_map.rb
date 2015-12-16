@@ -27,16 +27,13 @@ include Mapscript
 
 class ThemeMap < ActiveRecord::Base
 
-
   has_many :theme_map_layers # :dependent => :delete_all
   has_many :map_layers, :through => :theme_map_layers
   has_many :user_lines, :through => :map_layers
-  has_many :sources, :through => :map_layers
+  has_many :vector_features, :through => :map_layers
 
   accepts_nested_attributes_for :theme_map_layers, allow_destroy: true
   accepts_nested_attributes_for :map_layers
-  accepts_nested_attributes_for :sources
-
 
   attr_accessor :layer_name_list, :base_layer_ids, :layer_ids   # passed as params but not saved
 
@@ -45,7 +42,6 @@ class ThemeMap < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "that name has already been used"
   validates_format_of :name, :with => /\A[A-Za-z0-9_\-\.\s]+\Z/,
     :message => "only: alpha-numeric, period, underscore, dash, space"
-
 
 
 
@@ -81,7 +77,9 @@ class ThemeMap < ActiveRecord::Base
     @map.setProjection("init=epsg:2926")
     @map.web.metadata.set("wms_enable_request", "GetMap GetCapabilities GetFeatureInfo GetLegendGraphic")
     @map.web.metadata.set("wms_title", "#{self.name.dashed}")
-    @map.web.metadata.set("wms_onlineresource", "localhost/cgi-bin/mapserv?map=#{mapfile_name}&")
+ #   @map.web.metadata.set("wms_onlineresource", APP_CONFIG['MAPSERVER_URL'] + self.name.dashed +'&')
+
+#MAPSERVER_URL: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/'
     @map.web.metadata.set("wms_srs", "EPSG:4326 EPSG:3857")
     @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
     @map.units = MS_FEET

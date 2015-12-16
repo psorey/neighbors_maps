@@ -30,17 +30,8 @@ class NeighborsController < ApplicationController
     if params[:search_column]
       if params[:order_by]
         @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
-        #if APP_CONFIG['RAILS_VERSION'] == '2.3.8'
-        #  @neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list].split })
-        #else # rails3
-        #  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)  # !!! how to order?
-        #end
       else
         @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
-        #if APP_CONFIG['RAILS_VERSION'] == '2.3.8'
-        #  @neighbors = Neighbor.find(:all, :conditions => { params[:search_column] => params[:match_list].split })
-        #else #rails3
-        #  @neighbors = Neighbor.where(params[:search_column] => params[:match_list].split)
       end
     else # no params
       @neighbors = Neighbor.all
@@ -69,6 +60,7 @@ class NeighborsController < ApplicationController
 
   def edit
     @neighbor = Neighbor.find(params[:id])
+    logger.debug @neighbor.inspect
     if @neighbor.improvements == nil
       @neighbor.improvements = []
     end

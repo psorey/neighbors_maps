@@ -67,7 +67,7 @@ var lightStroke = new ol.style.Stroke({
   width: 1
 });
 
-var styleCache = {};
+var styleCache = {};  // todo: use it
 
 // the style function returns an array
 
@@ -133,6 +133,10 @@ var labelSource = new ol.source.Vector({features:labels});
 
 var <%= @theme_map.name.dashed %>;              // var gs-team-study-areas
 var <%= @theme_map.name.dashed + '_labels' %>;  // var gs-team-study-areas_labels
+
+// import non-interactive vector layer data
+
+
 
 var userId = <%=@current_user_id %>;
 

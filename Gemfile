@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -42,7 +43,7 @@ gem 'kaminari'
 gem 'devise'
 gem 'execjs', '1.4'
 gem 'therubyracer'
-gem 'jquery-ui-rails'
+
 
 
 group :development, :test do
@@ -56,7 +57,6 @@ end
 
 group :test do
   gem "capybara"
-
 end
 
 
@@ -79,7 +79,7 @@ gem "open4"
 gem "Platform"
 gem "POpen4"
 gem 'proj4rb', '~> 0', :require => "proj4"
-gem 'rgeo'
+gem 'rgeo', require: false
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson', '~> 0.3.1'
 

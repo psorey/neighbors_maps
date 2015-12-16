@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vector Features</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Text</th>
+      <th>Vector type</th>
+      <th>Amount</th>
+      <th>Number</th>
+      <th>Guid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vector_features.each do |vector_feature| %>
+      <tr>
+        <td><%= vector_feature.name %></td>
+        <td><%= vector_feature.text %></td>
+        <td><%= vector_feature.vector_type %></td>
+        <td><%= vector_feature.amount %></td>
+        <td><%= vector_feature.number %></td>
+        <td><%= vector_feature.guid %></td>
+        <td><%= link_to 'Show', vector_feature %></td>
+        <td><%= link_to 'Edit', edit_vector_feature_path(vector_feature) %></td>
+        <td><%= link_to 'Destroy', vector_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vector feature', new_vector_feature_path %>
