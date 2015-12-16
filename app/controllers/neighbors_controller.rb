@@ -6,7 +6,6 @@ require 'proj4'
 
 
 class NeighborsController < ApplicationController
-
   # !!! require_role "admin", :only => :index # only admin gets to see all the neighbors
 
   def to_yaml

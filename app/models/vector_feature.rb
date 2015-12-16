@@ -6,8 +6,10 @@ class VectorFeature < ActiveRecord::Base
   include ActionView::Helpers::OutputSafetyHelper
 
   belongs_to :map_layer
-
-  def self.load_geo_json(map_layer_id, only_current_user = false)  #TODO pass in user_id and map_layer_id
+  belongs_to :user
+  
+  # load all vector_features on map_layer, or only those of current user...
+  def self.load_geo_json(map_layer_id, only_current_user = false) 
     current_user_sql = ""
     if only_current_user == true
       current_user_sql = "user_id = #{current_user.id} AND "
@@ -30,6 +32,22 @@ class VectorFeature < ActiveRecord::Base
      else
        return result[0]["row_to_json"]
      end
+  end
+
+
+  def as_geo_json
+    query = <<-SQL
+       SELECT row_to_json(fc)
+        FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+        FROM ( SELECT 'Feature' As type
+      , ST_AsGeoJSON(lg.geometry)::json As geometry
+      , lg.id AS id
+      , row_to_json((SELECT l FROM (SELECT id, value, text, number, amount) As l
+        )) As properties
+        FROM ( SELECT * FROM vector_features 
+        WHERE id = #{self.id}) As lg ) As f ) As fc;
+    SQL
+     
   end
 
 

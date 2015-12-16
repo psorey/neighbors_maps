@@ -8,6 +8,9 @@ json.layers theme_map.theme_map_layers do |tml|
   json.opacity tml.opacity
   json.visible tml.visible
   json.drawOrder tml.draw_order
+  if tml.layer_type == 'Vector'
+    json.geojson  VectorFeature::load_geo_json(tml.map_layer_id) 
+  end
   json.source do |json|
     json.sourceType tml.map_layer.source_type
     json.sourceLayer tml.map_layer.source_layer

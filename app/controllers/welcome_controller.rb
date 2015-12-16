@@ -39,8 +39,9 @@ STRING
 Web and database open source technologies include:
 
 * [PostGIS](http://postgis.org) and Postgresql
-* [Mapserver](http://mapserver.org) and Ruby Mapscript
+* [Mapserver](http://mapserver.org) and Ruby [Mapscript](http://mapserver.org/mapscript/mapscript.html) 
 * [OpenLayers3](http://openlayers.org) client-side map display library
+* [GeoJSON](http://geojson.org) geographic data format 
 * [Ruby on Rails](http://rubyonrails.org) web application framework
 * Ubuntu Linux / Apache server
 

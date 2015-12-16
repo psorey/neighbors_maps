@@ -2,10 +2,11 @@
 
 <h1>Listing Vector Features</h1>
 
-<table>
+<table class="pretty-grid">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Map Layer Name</th>
+      <th>Value</th>
       <th>Text</th>
       <th>Vector type</th>
       <th>Amount</th>
@@ -18,12 +19,14 @@
   <tbody>
     <% @vector_features.each do |vector_feature| %>
       <tr>
-        <td><%= vector_feature.name %></td>
+        <td><%= vector_feature.map_layer.name %></td>
+        <td><%= vector_feature.value %></td>
         <td><%= vector_feature.text %></td>
         <td><%= vector_feature.vector_type %></td>
         <td><%= vector_feature.amount %></td>
         <td><%= vector_feature.number %></td>
         <td><%= vector_feature.guid %></td>
+        <td><%= vector_feature.geometry.as_text %></td>
         <td><%= link_to 'Show', vector_feature %></td>
         <td><%= link_to 'Edit', edit_vector_feature_path(vector_feature) %></td>
         <td><%= link_to 'Destroy', vector_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>

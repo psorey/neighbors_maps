@@ -92,8 +92,8 @@ function labelStyleFunction(feature, resolution) {
     text: feature.get("number").toString(),
     fill: fill,
     stroke: lightStroke,
-    offsetX: 0,
-    offsetY: 0,
+    offsetX:  0,
+    offsetY:  0,
     rotation: 0
     })
   })
@@ -137,6 +137,7 @@ var <%= @theme_map.name.dashed + '_labels' %>;  // var gs-team-study-areas_label
 // import non-interactive vector layer data
 
 
+var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
 
 var userId = <%=@current_user_id %>;
 
@@ -144,17 +145,27 @@ var userId = <%=@current_user_id %>;
 var tmJson = <%=raw @theme_map_json %>;
 var tmLayers = tmJson["layers"];
 var newLayer;
+var layer;
+var source;
+var vGeoJson;
 
-
+console.log(tmLayers);
 
 for(var i in tmLayers) {
-  var layer = tmLayers[i];
+  layer = tmLayers[i];
   newLayer = createLayer(layer.layerType);
   newLayer.set("title", layer.title);
   newLayer.set("opacity", layer.opacity/100);
   newLayer.set("visible", layer.visible);
-  var source = createSource(layer["source"]);
+  source = createSource(layer["source"]);
   newLayer.setSource(source);
+  if(layer.layerType == 'Vector'){
+    vGeoJson = layer["geojson"];
+    console.log(vGeoJson);
+    if(vGeoJson != 'none') {
+      source.addFeatures(gjFormat.readFeatures(vGeoJson, { dataProjection: "EPSG:3857"}));
+    }
+  }
   if(layer.isBaseLayer) {
     newLayer.set("type","base");
     b_layers.push(newLayer);
@@ -200,16 +211,8 @@ function createSource(src) {
       return new ol.source.TileJSON({ url: src["sourceUrl"]});
       break;
     case 'Vector':
-      return new ol.source.Vector({ url: src[""]})
-        title: src[""],
-        source: featureSource,
-    style: vectorStyle
-  }),
-  <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
-    title: "labels",
-    source: labelSource,
-    style: labelStyleFunction // dotStyle
-  })
+      return new ol.source.Vector();
+      break;
     default:
       console.log("no constructor for that source type");
   }
@@ -223,7 +226,7 @@ var map = new ol.Map({
       layers: [ baseLayers ,  overlayLayers],
       view: new ol.View({
       center: [-13620870.52201, 6056409.356303 ],
-      zoom: 14"]})
+      zoom: "14"
     })
   });
 
@@ -321,6 +324,7 @@ if(tmJson["is_interactive"]){
      makeLabeledDots(<%= @theme_map.name.dashed %>, <%= @theme_map.name.dashed  + '_labels' %>);
    });
 
+
    featureSource.on('addfeature', function(event) {
      console.log("added a feature");
      if(event.feature.get("number") == undefined ) {
@@ -335,7 +339,6 @@ if(tmJson["is_interactive"]){
 
    // store all data in LineString feature; data generates labeled dot on separate 'label' layer
    // load data from server into featureSource:
-  var gjFormat = new ol.format.GeoJSON({ defaultDataProjection: "EPSG:3857"});
   var geoJson = <%= raw @geo_json %>;
   if(geoJson != 'none') {
     featureSource.addFeatures(gjFormat.readFeatures(geoJson, { dataProjection: "EPSG:3857"}));
