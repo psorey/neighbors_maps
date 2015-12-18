@@ -69,5 +69,47 @@ FEATURES
       
   end
 
+  def self.to_mercator(geom)
+    proj4_2926 = '+proj=lcc +lat_1=48.73333333333333 +lat_2=47.5 +lat_0=47 +lon_0=-120.8333333333333 +x_0=500000.0001016001' +
+                  ' +y_0=0 +ellps=GRS80 +to_meter=0.3048006096012192 +no_defs'
+
+    wkt_2926 = <<-WKT
+              'PROJCS["NAD83(HARN) / Washington North (ftUS)",GEOGCS["NAD83(HARN)",
+                DATUM["NAD83_High_Accuracy_Regional_Network",SPHEROID["GRS 1980",6378137,298.257222101,
+                AUTHORITY["EPSG","7019"]],AUTHORITY["EPSG","6152"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
+                UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4152"]],
+                UNIT["US survey foot",0.3048006096012192,AUTHORITY["EPSG","9003"]],
+                PROJECTION["Lambert_Conformal_Conic_2SP"],PARAMETER["standard_parallel_1",48.73333333333333],
+                PARAMETER["standard_parallel_2",47.5],PARAMETER["latitude_of_origin",47],PARAMETER["central_meridian",
+                -120.8333333333333],PARAMETER["false_easting",1640416.667],PARAMETER["false_northing",0],
+                AUTHORITY["EPSG","2926"],AXIS["X",EAST],AXIS["Y",NORTH]]'
+                WKT
+
+    proj4_3857 = '+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +a=6378137 +b=6378137 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
+
+    wkt_3857 = <<-WKT
+               'PROJCS["WGS 84 / Pseudo-Mercator",GEOGCS["Popular Visualisation CRS",DATUM["Popular_Visualisation_Datum",
+               SPHEROID["Popular Visualisation Sphere",6378137,0,AUTHORITY["EPSG","7059"]],TOWGS84[0,0,0,0,0,0,0],
+               AUTHORITY["EPSG","6055"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],
+               UNIT["degree",0.01745329251994328,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4055"]],
+               UNIT["metre",1,AUTHORITY["EPSG","9001"]],PROJECTION["Mercator_1SP"],
+               PARAMETER["central_meridian",0],PARAMETER["scale_factor",1],PARAMETER["false_easting",0],
+               PARAMETER["false_northing",0],AUTHORITY["EPSG","3785"],AXIS["X",EAST],AXIS["Y",NORTH]]'
+               WKT
+
+    factory_2926 = RGeo::Cartesian.factory(:srid => 2926, :proj4 => proj4_2926, :coord_sys => wkt_2926)
+    factory_3857 = RGeo::Cartesian.factory(:srid => 3875, :proj4 => proj4_3857, :coord_sys => wkt_3857)
+    temp_geom = RGeo::Feature.cast(geom, factory: factory_2926, project: false)
+    new_geom = RGeo::Feature.cast(temp_geom, factory: factory_3857, project: true)
+  end
+
+  def self.to_vector_feature(neighbor)
+    vf = VectorFeature.new
+    vf.user_id = neighbor.user_id
+    vf.map_layer_id = 33
+    vf.value = neighbor.last_name1
+    vf.geometry = VectorFeature::to_mercator neighbor.location
+    vf.save
+  end
 
 end

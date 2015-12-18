@@ -21,13 +21,14 @@ class ThemeMapsController < ApplicationController
 
   def show
     @theme_map = ThemeMap.where(slug: params[:id]).includes(:map_layers).first
-    @theme_map_json = @theme_map.as_json
-    @theme_map.make_mapfile
+    @theme_map_json = @theme_map.as_json    # send all the layers
+    @theme_map.make_mapfile                 # 
     @geo_json = UserLine.load_geo_json(100) # returns 'none' if no user_lines
     # render js: @theme_map
   end
-
-
+ 
+# i'm very much like a duck, now, I let it fall off my back. but i'm just like...omg!... katie was awesome...kelly ross
+# 
 
   def new
     @theme_map = ThemeMap.new

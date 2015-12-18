@@ -244,7 +244,7 @@ var map = new ol.Map({
 if(tmJson["is_interactive"]){
   // setup overlay drawing and editing...
   <%= @theme_map.name.dashed %> = new ol.layer.Vector({
-    title: <%= @theme_map.name %>,
+    title: '<%= @theme_map.name %>',
     source: featureSource,
     style: vectorStyle
   }),
