@@ -249,7 +249,7 @@ if(tmJson["is_interactive"]){
     style: vectorStyle
   }),
   <%= @theme_map.name.dashed + '_labels' %> = new ol.layer.Vector({
-    title: "labels",
+    title: '<%=@theme_map.name%>'+ "labels",
     source: labelSource,
     style: labelStyleFunction // dotStyle
   })

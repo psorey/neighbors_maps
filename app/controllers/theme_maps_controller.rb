@@ -155,12 +155,11 @@ class ThemeMapsController < ApplicationController
 
   def theme_map_params
     params.require(:theme_map).permit(:id, :name, :description, :slug, :is_interactive, :thumbnail_url, :layer_ids=>[],
-                        :base_layer_ids=>[],  
+                        :base_layer_ids=>[]
                         :user_lines_attributes => [:id, :name, :geometry, :text, :number,
-                           :amount, :map_layer_id, :user_id], 
-                        :theme_map_layers_attributes => [:title, :map_layer_id, :id, 
-                           :_destroy, :is_base_layer, :opacity, :layer_type, :draw_order, :visible ]
-    )
+                           :amount, :map_layer_id, :user_id],
+                        :theme_map_layers_attributes => [:title, :map_layer_id, :id, :is_interactive,
+                           :_destroy, :is_base_layer, :opacity, :layer_type, :draw_order, :visible ]  )
   end
 
 

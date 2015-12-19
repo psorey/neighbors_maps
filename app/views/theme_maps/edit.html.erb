@@ -14,19 +14,20 @@
     <%= f.text_field :thumbnail_url , size:"40" %>
   </p>  
   
-<table class="grid">
+<table class="pretty-grid">
   <tr>
    <th>Title</th>
    <th>MapLayer</th>
    <th>Base?</th>
    <th>Visible?</th>
+   <th>Interactive?</th>
     <th>Opacity</th>
     <th>Order</th>
     <th>LayerType</th>
 
 
   </tr>
-  <%= f.label "theme map layers: " %>
+  <h3>  Theme Map Layers</h3>
   <%= f.fields_for :theme_map_layers do |ff| %>
     <%= render partial: 'theme_map_layer_fields', locals: {f: ff} %>
   <% end -%>

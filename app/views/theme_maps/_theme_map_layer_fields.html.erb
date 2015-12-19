@@ -3,6 +3,7 @@
   <td><%= f.select("map_layer_id", MapLayer.order('name ASC').collect { |p| [ p.name, p.id ] }, {include_blank: 'None'}) %></td>
   <td><%= f.check_box :is_base_layer %></td>
   <td><%= f.check_box :visible %></td>
+  <td><%= f.check_box :is_interactive %></td>
   <td><%= f.number_field :opacity, style:"width: 50px;" %></td>
   <td><%= f.number_field :draw_order, style:"width: 50px;" %></td>
   <td><%= f.text_field :layer_type, size:"5" %></td>
