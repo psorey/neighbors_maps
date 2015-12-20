@@ -121,7 +121,7 @@ class ThemeMap < ActiveRecord::Base
     temp_layers.each do |theme_map_layer|
       if theme_map_layer.map_layer.layer_mapfile_text != ""
         layer = LayerObj.new(@map)  # mapscript
-        layer.debug = 3
+        layer.debug = 5
         layer.updateFromString(theme_map_layer.map_layer.layer_mapfile_text)  # mapscript
       end
     end
