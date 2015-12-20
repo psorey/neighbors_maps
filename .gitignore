@@ -2,6 +2,7 @@
 .redcar/*
 # .gitignore
 config/initializers/site_keys.rb
+config/initializers/secret_token.rb
 config/database.yml
 config/config.yml
 config/environment.rb
