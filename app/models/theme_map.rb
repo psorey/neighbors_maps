@@ -70,7 +70,7 @@ class ThemeMap < ActiveRecord::Base
     # colorobj.imagecolor(255,255,255)
     # logger.debug @map.colorObj.setRGB(255,255,255)
     # @map.transparent = MS_TRUE
-    @map.setConfigOption("MS_ERROR_FILE", "/home/paul/mapserver/error.log")
+    @map.setConfigOption("MS_ERRORFILE", "/home/paul/mapserver/error.log")
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
     @map.shapepath = APP_CONFIG['MAPSERVER_DIRECTORY'] + "data"
