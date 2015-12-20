@@ -64,22 +64,24 @@ class ThemeMap < ActiveRecord::Base
     outf.transparent = MS_TRUE
     outf.mimetype = "image/png"
     outf.imagemode = MS_IMAGEMODE_RGBA
-    @map.setExtent( 1262053, 205541, 1285032, 260122 )
-    @map.debug = 3
+   # @map.setExtent( 1262053, 205541, 1285032, 260122 )
+    @map.debug = 5
     # colorobj = ColorObj.new
     # colorobj.imagecolor(255,255,255)
     # logger.debug @map.colorObj.setRGB(255,255,255)
     # @map.transparent = MS_TRUE
-    # @map.setConfigOption("MS_ERRORFILE", "/home/paul/mapserver/error.log")
+
+
+    @map.setConfigOption("MS_ERRORFILE", "/home/paul/mapserver/error.log")
     @map.setSymbolSet(APP_CONFIG['MAPSERVER_SYMBOL_FILE'])
     @map.setFontSet(APP_CONFIG['MAPSERVER_FONTS_FILE'])
     @map.shapepath = APP_CONFIG['MAPSERVER_DIRECTORY'] + "data"
     @map.setProjection("init=epsg:2926")
     @map.web.metadata.set("wms_enable_request", "GetMap GetCapabilities GetFeatureInfo GetLegendGraphic")
     @map.web.metadata.set("wms_title", "#{self.name.dashed}")
- #   @map.web.metadata.set("wms_onlineresource", APP_CONFIG['MAPSERVER_URL'] + self.name.dashed +'&')
+    @map.web.metadata.set("wms_onlineresource", "#{APP_CONFIG['MAPSERVER_URL']}" + "#{self.name.dashed}" +'&')
 
-#MAPSERVER_URL: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/'
+    #MAPSERVER_URL: 'http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/'
     @map.web.metadata.set("wms_srs", "EPSG:4326 EPSG:3857")
     @map.web.metadata.set("wms_feature_info_mime_type", "text/html")
     @map.units = MS_FEET
@@ -98,7 +100,7 @@ class ThemeMap < ActiveRecord::Base
   end
 
 
-  def mapfile_name  
+  def mapfile_name
     APP_CONFIG['MAPSERVER_DIRECTORY'] + "#{self.name.dashed}.map"
   end
 
