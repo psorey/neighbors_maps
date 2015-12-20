@@ -365,7 +365,7 @@ if(tmJson["is_interactive"]){
   }
     
   // needed?
-  var typeSelect = document.getElementById('type');
+  var typeSelect = document.getElementById('type') | "None"
   
   typeSelect.onchange = function(e) {
       map.removeInteraction(draw);
