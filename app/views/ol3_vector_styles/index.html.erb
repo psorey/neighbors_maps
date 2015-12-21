@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ol3 Vector Styles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Alias</th>
+      <th>Stroke width</th>
+      <th>Font size</th>
+      <th>Stroke color</th>
+      <th>Font color</th>
+      <th>Fill color</th>
+      <th>Style type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ol3_vector_styles.each do |ol3_vector_style| %>
+      <tr>
+        <td><%= ol3_vector_style.name %></td>
+        <td><%= ol3_vector_style.alias %></td>
+        <td><%= ol3_vector_style.stroke_width %></td>
+        <td><%= ol3_vector_style.font_size %></td>
+        <td><%= ol3_vector_style.stroke_color %></td>
+        <td><%= ol3_vector_style.font_color %></td>
+        <td><%= ol3_vector_style.fill_color %></td>
+        <td><%= ol3_vector_style.style_type %></td>
+        <td><%= link_to 'Show', ol3_vector_style %></td>
+        <td><%= link_to 'Edit', edit_ol3_vector_style_path(ol3_vector_style) %></td>
+        <td><%= link_to 'Destroy', ol3_vector_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ol3 vector style', new_ol3_vector_style_path %>

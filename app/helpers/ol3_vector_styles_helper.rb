@@ -1,0 +1,2 @@
+module Ol3VectorStylesHelper
+end

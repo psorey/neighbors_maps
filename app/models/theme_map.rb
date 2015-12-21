@@ -65,7 +65,7 @@ class ThemeMap < ActiveRecord::Base
     outf.mimetype = "image/png"
     outf.imagemode = MS_IMAGEMODE_RGBA
    # @map.setExtent( 1262053, 205541, 1285032, 260122 )
-    @map.debug = 5
+    @map.debug = APP_CONFIG['MAPSERVER_DEBUG_LEVEL']
     # colorobj = ColorObj.new
     # colorobj.imagecolor(255,255,255)
     # logger.debug @map.colorObj.setRGB(255,255,255)
@@ -119,9 +119,9 @@ class ThemeMap < ActiveRecord::Base
     end
     temp_layers.sort! { |a,b| a.draw_order <=> b.draw_order }
     temp_layers.each do |theme_map_layer|
-      if theme_map_layer.map_layer.layer_mapfile_text != ""
+      if theme_map_layer.map_layer.is_local_mapserver
         layer = LayerObj.new(@map)  # mapscript
-        layer.debug = 5
+        layer.debug = APP_CONFIG['MAPSERVER_DEBUG_LEVEL'] #5
         layer.updateFromString(theme_map_layer.map_layer.layer_mapfile_text)  # mapscript
       end
     end

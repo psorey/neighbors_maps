@@ -1,4 +1,5 @@
 NeighborsMaps::Application.routes.draw do
+  resources :ol3_vector_styles
   resources :vector_features
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,49 @@
+<%= form_for(@ol3_vector_style) do |f| %>
+  <% if @ol3_vector_style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ol3_vector_style.errors.count, "error") %> prohibited this ol3_vector_style from being saved:</h2>
+
+      <ul>
+      <% @ol3_vector_style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :alias %><br>
+    <%= f.text_field :alias %>
+  </div>
+  <div class="field">
+    <%= f.label :stroke_width %><br>
+    <%= f.text_field :stroke_width %>
+  </div>
+  <div class="field">
+    <%= f.label :font_size %><br>
+    <%= f.text_field :font_size %>
+  </div>
+  <div class="field">
+    <%= f.label :stroke_color %><br>
+    <%= f.text_field :stroke_color %>
+  </div>
+  <div class="field">
+    <%= f.label :font_color %><br>
+    <%= f.text_field :font_color %>
+  </div>
+  <div class="field">
+    <%= f.label :fill_color %><br>
+    <%= f.text_field :fill_color %>
+  </div>
+  <div class="field">
+    <%= f.label :style_type %><br>
+    <%= f.text_field :style_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,0 @@
-http://localhost/cgi-bin/mapserv?mode=browse&layer=parcel_outlines2&map=/home/paul/mapserver/gs_team_study_areas.map
-
-
-
-http://localhost/cgi-bin/mapserv?map=/home/paul/mapserver/gs_team_study_areas.map&LAYERS=parcel_outlines&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&FORMAT=application/openlayers&WIDTH=912&HEIGHT=612&SRS=EPSG:4326&BBOX=1159300,223000,1369500,283500
