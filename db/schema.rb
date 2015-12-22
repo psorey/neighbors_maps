@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213162713) do
+ActiveRecord::Schema.define(version: 20151221210520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,21 @@ ActiveRecord::Schema.define(version: 20151213162713) do
     t.date     "signup_date"
     t.integer  "user_id"
     t.geometry "location",           limit: {:srid=>4326, :type=>"point"}
+  end
+
+  create_table "ol3_vector_styles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "alias"
+    t.float    "stroke_width"
+    t.float    "font_size"
+    t.string   "stroke_color"
+    t.string   "font_color"
+    t.string   "fill_color"
+    t.string   "style_type"
+    t.string   "image_style"
+    t.string   "label_style_function"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "projects", force: :cascade do |t|

@@ -9,6 +9,8 @@ class CreateOl3VectorStyles < ActiveRecord::Migration
       t.string :font_color
       t.string :fill_color
       t.string :style_type
+      t.string :image_style
+      t.string :label_style_function
 
       t.timestamps null: false
     end

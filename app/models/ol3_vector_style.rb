@@ -1,14 +1,5 @@
 class Ol3VectorStyle < ActiveRecord::Base
 
-  def default_style
-    @fill_color = "#ffffff88"
-    @stroke_color = '#3399CC'
-    @stroke_width = 1.25
-    @image_style = "Circle"
-    @image_style_radius = 10
-    @image_style_fill_color = "#aabbff88"
-  end
-
 end
 
 
