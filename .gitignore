@@ -1,6 +1,5 @@
-# .gitignore for 'green2'
-.redcar/*
-# .gitignore
+
+
 config/initializers/site_keys.rb
 config/initializers/secret_token.rb
 config/database.yml
@@ -10,6 +9,7 @@ config/environment.rb
 /log/*.log
 /tmp/*
 /
-# Gemfile
-# Gemfile.lock
-# /db/schema.rb
+public
+/public
+*.sql
+
